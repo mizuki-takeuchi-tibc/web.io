@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webクリエイター能力試験 スタンダード_竹内先生期末テスト対策 勉強資料</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1f4e79;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
+    }
+
+    section {
+      background-color: #fff;
+      margin-bottom: 24px;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: #1f4e79;
+      border-left: 6px solid #1f4e79;
+      padding-left: 12px;
+      margin-top: 0;
+    }
+
+    h3 {
+      color: #2d6a9f;
+      margin-top: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background-color: #fff;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e8f1f8;
+    }
+
+    code {
+      background-color: #eef2f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    pre {
+      background-color: #222;
+      color: #f8f8f2;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    .important {
+      background-color: #fff7d6;
+      border-left: 6px solid #f0b400;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 6px;
+    }
+
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li::before {
+      content: "□ ";
+      color: #1f4e79;
+      font-weight: bold;
+    }
+
+    .summary-box {
+      background-color: #eef7ff;
+      border: 1px solid #b8d9f2;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background-color: #1f4e79;
+      color: #fff;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Webクリエイター能力試験 スタンダード_竹内先生期末テスト対策</h1>
+    <p>4択テスト用 勉強資料</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>この資料について</h2>
+      <p>
+        この資料では、HTML・CSSの基本、画像、フォーム、レスポンシブ対応など、
+        Webページ制作に必要な基礎知識を整理しています。
+      </p>
+      <div class="important">
+        <strong>テストでは、この資料に書かれている内容を中心に出題します。</strong>
+      </div>
+    </section>
+
+    <section>
+      <h2>1. HTMLの基本構造</h2>
+      <p>
+        HTMLは、Webページの内容や構造を作るための言語です。
+        HTML文書では、最初にDOCTYPE宣言を書き、その下にHTML全体の構造を記述します。
+      </p>
+
+      <h3>基本の形</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;ページタイトル&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;見出し&lt;/h1&gt;
+  &lt;p&gt;本文です。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h3>覚えること</h3>
+      <table>
+        <tr>
+          <th>内容</th>
+          <th>コード</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td>DOCTYPE宣言</td>
+          <td><code>&lt;!DOCTYPE html&gt;</code></td>
+          <td>HTML5の文書であることを示す</td>
+        </tr>
+        <tr>
+          <td>文字コード</td>
+          <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+          <td>日本語を正しく表示する</td>
+        </tr>
+        <tr>
+          <td>ページタイトル</td>
+          <td><code>&lt;title&gt;</code></td>
+          <td>ブラウザのタブなどに表示される</td>
+        </tr>
+        <tr>
+          <td>本文</td>
+          <td><code>&lt;body&gt;</code></td>
+          <td>ブラウザに表示される内容を書く</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>2. CSSの読み込み</h2>
+      <p>
+        CSSは、Webページの見た目を整えるための言語です。
+        外部CSSファイルを読み込むには、<code>&lt;link&gt;</code> 要素を使います。
+      </p>
+
+      <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+
+      <table>
+        <tr>
+          <th>記述</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>rel="stylesheet"</code></td>
+          <td>CSSファイルであることを示す</td>
+        </tr>
+        <tr>
+          <td><code>href="style.css"</code></td>
+          <td>読み込むCSSファイルの場所を指定する</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. 画像の表示</h2>
+      <p>画像を表示するときは、<code>&lt;img&gt;</code> 要素を使います。</p>
+
+      <pre><code>&lt;img src="photo.jpg" alt="写真"&gt;</code></pre>
+
+      <table>
+        <tr>
+          <th>属性</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>src</code></td>
+          <td>画像ファイルの場所を指定する</td>
+        </tr>
+        <tr>
+          <td><code>alt</code></td>
+          <td>画像が表示されないときの代替テキスト</td>
+        </tr>
+      </table>
+
+      <div class="important">
+        <strong>覚える：</strong>
+        画像は <code>&lt;img src="画像ファイル" alt="説明"&gt;</code>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. リンク</h2>
+      <p>
+        別のページやサイトに移動するリンクを作るには、
+        <code>&lt;a&gt;</code> 要素を使います。
+      </p>
+
+      <pre><code>&lt;a href="about.html"&gt;会社概要&lt;/a&gt;</code></pre>
+
+      <table>
+        <tr>
+          <th>要素・属性</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>&lt;a&gt;</code></td>
+          <td>リンクを作る要素</td>
+        </tr>
+        <tr>
+          <td><code>href</code></td>
+          <td>リンク先を指定する属性</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>5. 見出し・段落・改行</h2>
+
+      <h3>見出し</h3>
+      <p>最も大きな見出しは <code>&lt;h1&gt;</code> です。</p>
+      <pre><code>&lt;h1&gt;ページのタイトル&lt;/h1&gt;</code></pre>
+
+      <h3>段落</h3>
+      <p>文章のまとまりは <code>&lt;p&gt;</code> で表します。</p>
+      <pre><code>&lt;p&gt;これは段落です。&lt;/p&gt;</code></pre>
+
+      <h3>改行</h3>
+      <p>改行だけを入れたいときは <code>&lt;br&gt;</code> を使います。</p>
+      <pre><code>東京都&lt;br&gt;
+新宿区</code></pre>
+
+      <table>
+        <tr>
+          <th>要素</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>&lt;h1&gt;</code></td>
+          <td>最も重要な見出し</td>
+        </tr>
+        <tr>
+          <td><code>&lt;p&gt;</code></td>
+          <td>段落</td>
+        </tr>
+        <tr>
+          <td><code>&lt;br&gt;</code></td>
+          <td>改行</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. リスト</h2>
+
+      <h3>順序のないリスト</h3>
+      <p>順番に意味がないリストには、<code>&lt;ul&gt;</code> と <code>&lt;li&gt;</code> を使います。</p>
+
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;りんご&lt;/li&gt;
+  &lt;li&gt;みかん&lt;/li&gt;
+  &lt;li&gt;バナナ&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+      <h3>順序付きリスト</h3>
+      <p>番号付きのリストには、<code>&lt;ol&gt;</code> と <code>&lt;li&gt;</code> を使います。</p>
+
+      <pre><code>&lt;ol&gt;
+  &lt;li&gt;HTMLを書く&lt;/li&gt;
+  &lt;li&gt;CSSを書く&lt;/li&gt;
+  &lt;li&gt;ブラウザで確認する&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+      <table>
+        <tr>
+          <th>要素</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>&lt;ul&gt;</code></td>
+          <td>順序のないリスト</td>
+        </tr>
+        <tr>
+          <td><code>&lt;ol&gt;</code></td>
+          <td>順序付きリスト</td>
+        </tr>
+        <tr>
+          <td><code>&lt;li&gt;</code></td>
+          <td>リストの項目</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>7. HTMLのコメント</h2>
+      <p>
+        HTMLの中にメモを書きたいときは、コメントを使います。
+        コメントはブラウザには表示されません。
+      </p>
+
+      <pre><code>&lt;!-- ここはコメントです --&gt;</code></pre>
+
+      <div class="important">
+        <strong>覚える：</strong>
+        HTMLのコメントは <code>&lt;!-- コメント --&gt;</code>
+      </div>
+    </section>
+
+    <section>
+      <h2>8. HTML5の構造を表す要素</h2>
+      <p>
+        HTML5では、ページの役割に合わせた意味のある要素が使えます。
+      </p>
+
+      <table>
+        <tr>
+          <th>要素</th>
+          <th>役割</th>
+        </tr>
+        <tr>
+          <td><code>&lt;header&gt;</code></td>
+          <td>ヘッダー部分</td>
+        </tr>
+        <tr>
+          <td><code>&lt;nav&gt;</code></td>
+          <td>ナビゲーション</td>
+        </tr>
+        <tr>
+          <td><code>&lt;main&gt;</code></td>
+          <td>主要コンテンツ</td>
+        </tr>
+        <tr>
+          <td><code>&lt;section&gt;</code></td>
+          <td>内容のまとまり</td>
+        </tr>
+        <tr>
+          <td><code>&lt;article&gt;</code></td>
+          <td>独立した記事</td>
+        </tr>
+        <tr>
+          <td><code>&lt;footer&gt;</code></td>
+          <td>フッター部分</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>9. id属性とclass属性</h2>
+      <p>
+        HTMLでは、要素に名前を付けるために <code>id</code> や <code>class</code> を使います。
+        CSSで特定の要素にスタイルを当てるときにも使います。
+      </p>
+
+      <h3>id属性</h3>
+      <p>
+        <code>id</code> は、ページ内で原則として一意にします。
+        CSSで指定するときは <code>#</code> を使います。
+      </p>
+
+      <pre><code>&lt;div id="main"&gt;メイン部分&lt;/div&gt;
+
+#main {
+  color: red;
+}</code></pre>
+
+      <h3>class属性</h3>
+      <p>
+        <code>class</code> は、複数の要素に同じ名前を付けることができます。
+        CSSで指定するときは <code>.</code> を使います。
+      </p>
+
+      <pre><code>&lt;p class="text"&gt;文章1&lt;/p&gt;
+&lt;p class="text"&gt;文章2&lt;/p&gt;
+
+.text {
+  color: blue;
+}</code></pre>
+
+      <table>
+        <tr>
+          <th>属性</th>
+          <th>CSSでの書き方</th>
+          <th>特徴</th>
+        </tr>
+        <tr>
+          <td><code>id</code></td>
+          <td><code>#id名</code></td>
+          <td>ページ内で一意</td>
+        </tr>
+        <tr>
+          <td><code>class</code></td>
+          <td><code>.class名</code></td>
+          <td>複数の要素に使える</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>10. CSSの基本</h2>
+      <p>CSSは、HTMLの見た目を指定するために使います。</p>
+
+      <h3>CSSの基本形</h3>
+      <pre><code>セレクタ {
+  プロパティ: 値;
+}</code></pre>
+
+      <h3>例</h3>
+      <pre><code>p {
+  color: red;
+}</code></pre>
+
+      <p>
+        この場合、すべての <code>&lt;p&gt;</code> 要素の文字色が赤になります。
+      </p>
+    </section>
+
+    <section>
+      <h2>11. よく使うCSSプロパティ</h2>
+
+      <table>
+        <tr>
+          <th>目的</th>
+          <th>CSSプロパティ</th>
+          <th>例</th>
+        </tr>
+        <tr>
+          <td>文字色を変える</td>
+          <td><code>color</code></td>
+          <td><code>color: red;</code></td>
+        </tr>
+        <tr>
+          <td>背景色を変える</td>
+          <td><code>background-color</code></td>
+          <td><code>background-color: #f5f5f5;</code></td>
+        </tr>
+        <tr>
+          <td>文字サイズを変える</td>
+          <td><code>font-size</code></td>
+          <td><code>font-size: 16px;</code></td>
+        </tr>
+        <tr>
+          <td>文字を中央揃えにする</td>
+          <td><code>text-align</code></td>
+          <td><code>text-align: center;</code></td>
+        </tr>
+        <tr>
+          <td>外側の余白</td>
+          <td><code>margin</code></td>
+          <td><code>margin: 20px;</code></td>
+        </tr>
+        <tr>
+          <td>内側の余白</td>
+          <td><code>padding</code></td>
+          <td><code>padding: 20px;</code></td>
+        </tr>
+        <tr>
+          <td>枠線</td>
+          <td><code>border</code></td>
+          <td><code>border: 1px solid #000;</code></td>
+        </tr>
+        <tr>
+          <td>幅</td>
+          <td><code>width</code></td>
+          <td><code>width: 300px;</code></td>
+        </tr>
+        <tr>
+          <td>角を丸くする</td>
+          <td><code>border-radius</code></td>
+          <td><code>border-radius: 10px;</code></td>
+        </tr>
+        <tr>
+          <td>非表示にする</td>
+          <td><code>display: none;</code></td>
+          <td><code>display: none;</code></td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>12. marginとpaddingの違い</h2>
+      <p>
+        <code>margin</code> と <code>padding</code> はどちらも余白ですが、場所が違います。
+      </p>
+
+      <table>
+        <tr>
+          <th>プロパティ</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>margin</code></td>
+          <td>要素の外側の余白</td>
+        </tr>
+        <tr>
+          <td><code>padding</code></td>
+          <td>要素の内側の余白</td>
+        </tr>
+      </table>
+
+      <pre><code>.box {
+  margin: 20px;
+  padding: 10px;
+}</code></pre>
+
+      <div class="important">
+        <strong>覚える：</strong>
+        外側が <code>margin</code>、内側が <code>padding</code>
+      </div>
+    </section>
+
+    <section>
+      <h2>13. Flexbox(期末テスト対象外)</h2>
+      <p>
+        Flexboxは、要素を横並びにしたり、中央揃えにしたりするときに使うCSSのレイアウト方法です。
+      </p>
+
+      <h3>Flexboxを使う基本</h3>
+      <pre><code>.container {
+  display: flex;
+}</code></pre>
+
+      <h3>横方向の中央揃え</h3>
+      <pre><code>.container {
+  display: flex;
+  justify-content: center;
+}</code></pre>
+
+      <table>
+        <tr>
+          <th>指定</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>display: flex;</code></td>
+          <td>Flexboxを有効にする</td>
+        </tr>
+        <tr>
+          <td><code>justify-content: center;</code></td>
+          <td>主軸方向に中央揃えする</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>14. box-sizing(期末テスト対象外)</h2>
+      <p>
+        <code>box-sizing: border-box;</code> を指定すると、
+        <code>padding</code> や <code>border</code> を含めて幅や高さを計算します。
+      </p>
+
+      <pre><code>.box {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}</code></pre>
+
+      <div class="important">
+        <strong>覚える：</strong>
+        <code>box-sizing: border-box;</code> は、paddingやborderを含めて幅を計算する。
+      </div>
+    </section>
+
+    <section>
+      <h2>15. 疑似クラス :hover(期末テスト対象外)</h2>
+      <p>
+        マウスカーソルが要素の上に乗ったときのスタイルを指定するには、
+        <code>:hover</code> を使います。
+      </p>
+
+      <pre><code>a:hover {
+  color: red;
+}</code></pre>
+
+      <table>
+        <tr>
+          <th>疑似クラス</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>:hover</code></td>
+          <td>マウスが乗ったとき</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>16. CSSの優先順位(期末テスト対象外)</h2>
+      <p>
+        CSSでは、同じ要素に複数のスタイルが指定された場合、どの指定が優先されるかが決まっています。
+      </p>
+
+      <h3>同じ強さなら後に書いたCSSが優先</h3>
+      <pre><code>p {
+  color: blue;
+}
+
+p {
+  color: red;
+}</code></pre>
+
+      <p>
+        この場合、後に書かれた <code>color: red;</code> が優先されるため、文字色は赤になります。
+      </p>
+
+      <h3>セレクタの強さ</h3>
+      <div class="summary-box">
+        <p><strong>idセレクタ &gt; classセレクタ &gt; 要素セレクタ &gt; 全称セレクタ</strong></p>
+      </div>
+
+      <table>
+        <tr>
+          <th>セレクタ</th>
+          <th>例</th>
+          <th>優先度</th>
+        </tr>
+        <tr>
+          <td>idセレクタ</td>
+          <td><code>#main</code></td>
+          <td>高い</td>
+        </tr>
+        <tr>
+          <td>classセレクタ</td>
+          <td><code>.text</code></td>
+          <td>中</td>
+        </tr>
+        <tr>
+          <td>要素セレクタ</td>
+          <td><code>p</code></td>
+          <td>低い</td>
+        </tr>
+        <tr>
+          <td>全称セレクタ</td>
+          <td><code>*</code></td>
+          <td>さらに低い</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>17. フォーム(期末テスト対象外)</h2>
+      <p>
+        フォームは、ユーザーが情報を入力するための部品です。
+      </p>
+
+      <h3>入力欄</h3>
+      <pre><code>&lt;input type="text"&gt;</code></pre>
+
+      <h3>メールアドレス入力欄</h3>
+      <pre><code>&lt;input type="email"&gt;</code></pre>
+
+      <h3>複数行の入力欄</h3>
+      <pre><code>&lt;textarea&gt;&lt;/textarea&gt;</code></pre>
+
+      <h3>プルダウンメニュー</h3>
+      <pre><code>&lt;select&gt;
+  &lt;option&gt;東京&lt;/option&gt;
+  &lt;option&gt;大阪&lt;/option&gt;
+  &lt;option&gt;福岡&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+      <h3>ラベルの関連付け</h3>
+      <pre><code>&lt;label for="name"&gt;名前&lt;/label&gt;
+&lt;input type="text" id="name"&gt;</code></pre>
+
+      <table>
+        <tr>
+          <th>部品</th>
+          <th>HTML</th>
+        </tr>
+        <tr>
+          <td>入力欄</td>
+          <td><code>&lt;input&gt;</code></td>
+        </tr>
+        <tr>
+          <td>メール入力欄</td>
+          <td><code>&lt;input type="email"&gt;</code></td>
+        </tr>
+        <tr>
+          <td>複数行入力欄</td>
+          <td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td>
+        </tr>
+        <tr>
+          <td>プルダウン</td>
+          <td><code>&lt;select&gt;</code> と <code>&lt;option&gt;</code></td>
+        </tr>
+        <tr>
+          <td>ラベルの関連付け</td>
+          <td><code>label for</code> と <code>input id</code></td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>18. 画像形式</h2>
+      <p>
+        Webページでは、画像形式の特徴を理解して使い分けることが大切です。
+      </p>
+
+      <table>
+        <tr>
+          <th>画像形式</th>
+          <th>特徴</th>
+        </tr>
+        <tr>
+          <td>JPEG</td>
+          <td>写真に向いている</td>
+        </tr>
+        <tr>
+          <td>PNG</td>
+          <td>透明部分を扱える</td>
+        </tr>
+      </table>
+
+      <div class="important">
+        <strong>覚える：</strong>
+        写真はJPEG、透明部分がある画像はPNG。
+      </div>
+    </section>
+
+    <section>
+      <h2>19. レスポンシブ対応とviewport(期末テスト対象外)</h2>
+      <p>
+        スマートフォンやタブレットなど、画面サイズが違う端末に対応することを
+        レスポンシブ対応といいます。
+      </p>
+
+      <p>
+        スマートフォン表示に対応するためには、<code>&lt;head&gt;</code> 内にviewport設定を書きます。
+      </p>
+
+      <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+      <table>
+        <tr>
+          <th>内容</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>width=device-width</code></td>
+          <td>端末の画面幅に合わせる</td>
+        </tr>
+        <tr>
+          <td><code>initial-scale=1.0</code></td>
+          <td>初期表示倍率を1.0にする</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>20. 必ず覚える重要コード一覧</h2>
+
+      <h3>HTML基本</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;meta charset="UTF-8"&gt;
+
+&lt;title&gt;ページタイトル&lt;/title&gt;
+
+&lt;body&gt;
+  表示される内容
+&lt;/body&gt;</code></pre>
+
+      <h3>CSS読み込み</h3>
+      <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+
+      <h3>画像</h3>
+      <pre><code>&lt;img src="photo.jpg" alt="写真"&gt;</code></pre>
+
+      <h3>リンク</h3>
+      <pre><code>&lt;a href="about.html"&gt;会社概要&lt;/a&gt;</code></pre>
+
+      <h3>リスト</h3>
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;項目&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;項目&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+      <h3>コメント</h3>
+      <pre><code>&lt;!-- コメント --&gt;</code></pre>
+
+      <h3>classとid</h3>
+      <pre><code>&lt;p class="text"&gt;文章&lt;/p&gt;
+
+.text {
+  color: blue;
+}
+
+&lt;div id="main"&gt;内容&lt;/div&gt;
+
+#main {
+  color: red;
+}</code></pre>
+
+      <h3>Flexbox（期末テスト対象外）</h3>
+      <pre><code>.container {
+  display: flex;
+  justify-content: center;
+}</code></pre>
+
+      <h3>hover（期末テスト対象外）</h3>
+      <pre><code>a:hover {
+  color: red;
+}</code></pre>
+
+      <h3>viewport（期末テスト対象外）</h3>
+      <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+    </section>
+
+    <section>
+      <h2>21. 重要用語まとめ</h2>
+
+      <table>
+        <tr>
+          <th>用語</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td>Webページの構造を作る言語</td>
+        </tr>
+        <tr>
+          <td>CSS</td>
+          <td>Webページの見た目を整える言語</td>
+        </tr>
+        <tr>
+          <td>要素</td>
+          <td><code>&lt;p&gt;</code> や <code>&lt;h1&gt;</code> などのHTMLの部品</td>
+        </tr>
+        <tr>
+          <td>属性</td>
+          <td><code>src</code> や <code>href</code> など、要素に情報を追加するもの</td>
+        </tr>
+        <tr>
+          <td>セレクタ</td>
+          <td>CSSでどのHTMLにスタイルを当てるか指定するもの</td>
+        </tr>
+        <tr>
+          <td>プロパティ</td>
+          <td>CSSで変更したい項目</td>
+        </tr>
+        <tr>
+          <td>値</td>
+          <td>プロパティに設定する内容</td>
+        </tr>
+        <tr>
+          <td>id</td>
+          <td>ページ内で一意に使う名前</td>
+        </tr>
+        <tr>
+          <td>class</td>
+          <td>複数の要素に使える名前</td>
+        </tr>
+        <tr>
+          <td>Flexbox（期末テスト対象外）</td>
+          <td>要素を並べるためのCSSレイアウト</td>
+        </tr>
+        <tr>
+          <td>レスポンシブ（期末テスト対象外）</td>
+          <td>画面サイズに合わせて表示を調整すること</td>
+        </tr>
+        <tr>
+          <td>viewport（期末テスト対象外）</td>
+          <td>スマホ表示に対応するための表示設定</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>22. テスト直前チェックリスト</h2>
+
+      <h3>HTML</h3>
+      <ul class="checklist">
+        <li>HTML5のDOCTYPE宣言は <code>&lt;!DOCTYPE html&gt;</code></li>
+        <li>文字コード指定は <code>&lt;meta charset="UTF-8"&gt;</code></li>
+        <li>ページタイトルは <code>&lt;title&gt;</code></li>
+        <li>本文は <code>&lt;body&gt;</code> に書く</li>
+        <li>CSS読み込みは <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
+        <li>画像は <code>&lt;img src="画像ファイル" alt="説明"&gt;</code></li>
+        <li>リンクは <code>&lt;a href="リンク先"&gt;文字&lt;/a&gt;</code></li>
+        <li>段落は <code>&lt;p&gt;</code></li>
+        <li>改行は <code>&lt;br&gt;</code></li>
+        <li>コメントは <code>&lt;!-- コメント --&gt;</code></li>
+      </ul>
+
+      <h3>HTML5構造</h3>
+      <ul class="checklist">
+        <li>ヘッダーは <code>&lt;header&gt;</code></li>
+        <li>ナビゲーションは <code>&lt;nav&gt;</code></li>
+        <li>メインコンテンツは <code>&lt;main&gt;</code></li>
+        <li>セクションは <code>&lt;section&gt;</code></li>
+        <li>記事は <code>&lt;article&gt;</code></li>
+        <li>フッターは <code>&lt;footer&gt;</code></li>
+      </ul>
+
+      <h3>CSS</h3>
+      <ul class="checklist">
+        <li>classセレクタは <code>.class名</code></li>
+        <li>idセレクタは <code>#id名</code></li>
+        <li>文字色は <code>color</code></li>
+        <li>背景色は <code>background-color</code></li>
+        <li>文字サイズは <code>font-size</code></li>
+        <li>中央揃えは <code>text-align: center;</code></li>
+        <li>外側の余白は <code>margin</code></li>
+        <li>内側の余白は <code>padding</code></li>
+        <li>枠線は <code>border</code></li>
+        <li>幅は <code>width</code></li>
+        <li>角丸は <code>border-radius</code></li>
+        <li>非表示は <code>display: none;</code></li>
+      </ul>
+
+      <h3>レイアウト・フォーム・画像(期末テスト対象外)</h3>
+      <ul class="checklist">
+        <li>Flexboxを使うには <code>display: flex;</code></li>
+        <li>横方向中央揃えは <code>justify-content: center;</code></li>
+        <li><code>box-sizing: border-box;</code> はpaddingやborderを含めて幅を計算する</li>
+        <li>入力欄は <code>&lt;input&gt;</code></li>
+        <li>メール入力は <code>&lt;input type="email"&gt;</code></li>
+        <li>複数行入力は <code>&lt;textarea&gt;&lt;/textarea&gt;</code></li>
+        <li>プルダウンは <code>&lt;select&gt;</code> と <code>&lt;option&gt;</code></li>
+        <li>写真にはJPEGが向いている</li>
+        <li>透明部分にはPNGが向いている</li>
+        <li>スマホ対応にはviewportを書く</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>23. 特に間違えやすいポイント</h2>
+
+      <h3>1. &lt;head&gt; と &lt;header&gt; は違う</h3>
+      <table>
+        <tr>
+          <th>要素</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>&lt;head&gt;</code></td>
+          <td>ページの設定情報を書く場所</td>
+        </tr>
+        <tr>
+          <td><code>&lt;header&gt;</code></td>
+          <td>ページ上部のヘッダー部分</td>
+        </tr>
+      </table>
+
+      <h3>2. &lt;link&gt; と &lt;a&gt; は違う</h3>
+      <table>
+        <tr>
+          <th>要素</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td><code>&lt;link&gt;</code></td>
+          <td>CSSなどの外部ファイルを読み込む</td>
+        </tr>
+        <tr>
+          <td><code>&lt;a&gt;</code></td>
+          <td>他のページへリンクする</td>
+        </tr>
+      </table>
+
+      <h3>3. src と href の違い</h3>
+      <table>
+        <tr>
+          <th>属性</th>
+          <th>よく使う場面</th>
+        </tr>
+        <tr>
+          <td><code>src</code></td>
+          <td>画像やスクリプトのファイル指定</td>
+        </tr>
+        <tr>
+          <td><code>href</code></td>
+          <td>リンク先やCSSファイルの指定</td>
+        </tr>
+      </table>
+
+      <h3>4. classとidのCSS指定</h3>
+      <table>
+        <tr>
+          <th>種類</th>
+          <th>CSS記号</th>
+        </tr>
+        <tr>
+          <td>class</td>
+          <td><code>.</code></td>
+        </tr>
+        <tr>
+          <td>id</td>
+          <td><code>#</code></td>
+        </tr>
+      </table>
+
+      <h3>5. marginとpaddingの違い</h3>
+      <table>
+        <tr>
+          <th>プロパティ</th>
+          <th>場所</th>
+        </tr>
+        <tr>
+          <td><code>margin</code></td>
+          <td>外側の余白</td>
+        </tr>
+        <tr>
+          <td><code>padding</code></td>
+          <td>内側の余白</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>24. 暗記用まとめ</h2>
+
+      <pre><code>HTML5の最初は &lt;!DOCTYPE html&gt;
+文字コードは &lt;meta charset="UTF-8"&gt;
+タイトルは &lt;title&gt;
+本文は &lt;body&gt;
+
+CSS読み込みは link
+画像は img src alt
+リンクは a href
+
+ulは順不同リスト
+olは番号付きリスト
+liはリスト項目
+
+classは .class名
+idは #id名
+
+文字色は color
+背景色は background-color
+文字サイズは font-size
+外余白は margin
+内余白は padding
+枠線は border
+
+Flexboxは display: flex（期末テスト対象外）
+中央揃えは justify-content: center（期末テスト対象外）
+
+画像の代替テキストは alt
+写真はJPEG
+透明はPNG
+
+スマホ対応は viewport（期末テスト対象外）</code></pre>
+    </section>
+
+    <section>
+      <h2>25. テスト勉強のおすすめ順番</h2>
+
+      <ol>
+        <li>HTMLの基本構造</li>
+        <li>よく使うHTMLタグ</li>
+        <li>CSSの基本プロパティ</li>
+        <li>classとid</li>
+        <li>フォーム</li>
+        <li>画像形式</li>
+      </ol>
+
+      <div class="important">
+        <strong>以上の内容を覚えておけば、今回の4択テストには十分対応できます。</strong>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Webクリエイター能力試験 スタンダード_竹内先生期末テスト対策 勉強資料</p>
+  </footer>
+
+</body>
+</html>
