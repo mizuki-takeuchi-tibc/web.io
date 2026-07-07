@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python試験対策資料</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --main: #2563eb;
+      --main-dark: #1e40af;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --code-bg: #111827;
+      --code-text: #e5e7eb;
+      --accent: #f59e0b;
+      --danger: #dc2626;
+      --success: #16a34a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+        "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px 16px;
+    }
+
+    nav a {
+      display: inline-block;
+      color: var(--main-dark);
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: 18px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    h2 {
+      border-left: 6px solid var(--main);
+      padding-left: 12px;
+      color: var(--main-dark);
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 28px;
+      color: #111827;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    h4 {
+      margin-bottom: 6px;
+      color: #374151;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      background: white;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eff6ff;
+      color: #1e3a8a;
+    }
+
+    code {
+      background: #eef2ff;
+      color: #1e40af;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.95em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px;
+      border-radius: 12px;
+      overflow-x: auto;
+      line-height: 1.6;
+      margin: 14px 0;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    .note {
+      border-left: 5px solid var(--accent);
+      background: #fffbeb;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    .danger {
+      border-left: 5px solid var(--danger);
+      background: #fef2f2;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    .success {
+      border-left: 5px solid var(--success);
+      background: #f0fdf4;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .checklist li {
+      margin-bottom: 6px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--main-dark);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 32px 20px;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    @media print {
+      nav {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      section {
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Python試験対策資料</h1>
+  <p>基本演算・文字列・リスト・制御構造・コレクション・関数・ファイル操作をまとめて復習</p>
+</header>
+
+<nav>
+  <a href="#numbers">1. 数値計算</a>
+  <a href="#strings">2. 文字列</a>
+  <a href="#lists">3. リスト</a>
+  <a href="#control">4. 制御構造</a>
+  <a href="#collections">5. コレクション</a>
+  <a href="#functions">6. 関数</a>
+  <a href="#files">7. ファイル・CSV</a>
+  <a href="#quiz">8. 練習問題</a>
+  <a href="#checklist">9. チェックリスト</a>
+</nav>
+
+<main>
+
+<section id="intro">
+  <h2>この資料の使い方</h2>
+  <p>
+    この資料はPythonの基礎試験対策として、重要事項を
+    <strong>要点・コード例・注意点・練習問題</strong> の形で整理したものです。
+  </p>
+
+  <div class="note">
+    <strong>試験でよく問われる観点</strong>
+    <ul>
+      <li>実行結果がどうなるか</li>
+      <li>エラーになるかどうか</li>
+      <li>戻り値が何か</li>
+      <li>元のオブジェクトが変更されるか</li>
+      <li>ミュータブル・イミュータブルの違い</li>
+      <li><code>break</code> とループの <code>else</code> の関係</li>
+      <li>関数のデフォルト引数の落とし穴</li>
+    </ul>
+  </div>
+</section>
+
+<section id="numbers">
+  <h2>1. 数値計算と基本演算</h2>
+
+  <h3>1.1 算術演算子</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>演算子</th>
+        <th>意味</th>
+        <th>例</th>
+        <th>結果</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>+</code></td>
+        <td>加算</td>
+        <td><code>3 + 2</code></td>
+        <td><code>5</code></td>
+      </tr>
+      <tr>
+        <td><code>-</code></td>
+        <td>減算</td>
+        <td><code>3 - 2</code></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>*</code></td>
+        <td>乗算</td>
+        <td><code>3 * 2</code></td>
+        <td><code>6</code></td>
+      </tr>
+      <tr>
+        <td><code>/</code></td>
+        <td>除算</td>
+        <td><code>5 / 2</code></td>
+        <td><code>2.5</code></td>
+      </tr>
+      <tr>
+        <td><code>//</code></td>
+        <td>フロア除算</td>
+        <td><code>5 // 2</code></td>
+        <td><code>2</code></td>
+      </tr>
+      <tr>
+        <td><code>%</code></td>
+        <td>剰余</td>
+        <td><code>5 % 2</code></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>**</code></td>
+        <td>べき乗</td>
+        <td><code>2 ** 3</code></td>
+        <td><code>8</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>1.2 <code>/</code> は常に浮動小数点数を返す</h3>
+
+  <pre><code>print(4 / 2)
+print(type(4 / 2))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>2.0
+&lt;class 'float'&gt;</code></pre>
+
+  <div class="note">
+    整数同士の割り算でも、<code>/</code> の結果は <code>float</code> になります。
+  </div>
+
+  <h3>1.3 <code>//</code> と <code>%</code></h3>
+
+  <pre><code>print(17 // 3)
+print(17 % 3)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>5
+2</code></pre>
+
+  <p>次の関係が成り立ちます。</p>
+
+  <pre><code>17 == 3 * (17 // 3) + (17 % 3)</code></pre>
+
+  <h3>1.4 負の数のフロア除算に注意</h3>
+
+  <pre><code>print(-7 // 3)
+print(-7 % 3)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>-3
+2</code></pre>
+
+  <div class="danger">
+    <code>//</code> は0に近い方向への切り捨てではありません。
+    小さい方向、つまり床関数的に処理されます。
+  </div>
+
+  <h3>1.5 剰余の利用例</h3>
+
+  <h4>偶数・奇数判定</h4>
+
+  <pre><code>n = 10
+
+if n % 2 == 0:
+    print("偶数")
+else:
+    print("奇数")</code></pre>
+
+  <h4>素数判定</h4>
+
+  <pre><code>n = 17
+
+for i in range(2, n):
+    if n % i == 0:
+        print("素数ではない")
+        break
+else:
+    print("素数")</code></pre>
+
+  <h3>1.6 代入演算子</h3>
+
+  <pre><code>i = 0
+i += 1
+
+print(i)</code></pre>
+
+  <p>これは次と同じ意味です。</p>
+
+  <pre><code>i = i + 1</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>書き方</th>
+        <th>意味</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>x += 1</code></td>
+        <td><code>x = x + 1</code></td>
+      </tr>
+      <tr>
+        <td><code>x -= 1</code></td>
+        <td><code>x = x - 1</code></td>
+      </tr>
+      <tr>
+        <td><code>x *= 2</code></td>
+        <td><code>x = x * 2</code></td>
+      </tr>
+      <tr>
+        <td><code>x /= 2</code></td>
+        <td><code>x = x / 2</code></td>
+      </tr>
+      <tr>
+        <td><code>x //= 2</code></td>
+        <td><code>x = x // 2</code></td>
+      </tr>
+      <tr>
+        <td><code>x %= 2</code></td>
+        <td><code>x = x % 2</code></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="strings">
+  <h2>2. 文字列 <code>str</code> 型</h2>
+
+  <h3>2.1 文字列の基本</h3>
+
+  <pre><code>s1 = 'Python'
+s2 = "Python"
+
+print(type(s1))</code></pre>
+
+  <p>シングルクォートでもダブルクォートでも文字列になります。</p>
+
+  <h3>2.2 文字列はイミュータブル</h3>
+
+  <p>文字列は作成後に中身を書き換えられません。</p>
+
+  <pre><code>word = "Python"
+word[0] = "J"</code></pre>
+
+  <p>これはエラーです。</p>
+
+  <pre><code>TypeError: 'str' object does not support item assignment</code></pre>
+
+  <div class="success">
+    文字列を変更したい場合は、新しい文字列を作ります。
+  </div>
+
+  <pre><code>word = "Python"
+new_word = "J" + word[1:]
+
+print(new_word)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Jython</code></pre>
+
+  <h3>2.3 エスケープシーケンス</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>書き方</th>
+        <th>意味</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>\n</code></td>
+        <td>改行</td>
+      </tr>
+      <tr>
+        <td><code>\t</code></td>
+        <td>タブ</td>
+      </tr>
+      <tr>
+        <td><code>\\</code></td>
+        <td>バックスラッシュ</td>
+      </tr>
+      <tr>
+        <td><code>\'</code></td>
+        <td>シングルクォート</td>
+      </tr>
+      <tr>
+        <td><code>\"</code></td>
+        <td>ダブルクォート</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pre><code>print("Hello\nPython")</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Hello
+Python</code></pre>
+
+  <h3>2.4 raw文字列</h3>
+
+  <pre><code>print(r"C:\new\test")</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>C:\new\test</code></pre>
+
+  <div class="note">
+    文字列の前に <code>r</code> をつけると、<code>\n</code> や <code>\t</code> が特殊な意味を持たず、そのまま扱われます。
+  </div>
+
+  <h3>2.5 文字列の連結</h3>
+
+  <pre><code>a = "Py"
+b = "thon"
+
+print(a + b)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Python</code></pre>
+
+  <p>文字列リテラル同士は隣り合わせで自動連結されます。</p>
+
+  <pre><code>s = "Py" "thon"
+print(s)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Python</code></pre>
+
+  <div class="danger">
+    変数と文字列リテラルは自動連結されません。
+  </div>
+
+  <pre><code>prefix = "Py"
+print(prefix + "thon")</code></pre>
+
+  <h3>2.6 インデックス</h3>
+
+  <pre><code>word = "Python"
+
+print(word[0])
+print(word[1])
+print(word[-1])</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>P
+y
+n</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>指定</th>
+        <th>意味</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>word[0]</code></td>
+        <td>先頭</td>
+      </tr>
+      <tr>
+        <td><code>word[1]</code></td>
+        <td>2文字目</td>
+      </tr>
+      <tr>
+        <td><code>word[-1]</code></td>
+        <td>最後</td>
+      </tr>
+      <tr>
+        <td><code>word[-2]</code></td>
+        <td>後ろから2番目</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.7 スライス</h3>
+
+  <pre><code>word = "Python"
+
+print(word[0:2])
+print(word[2:5])
+print(word[:2])
+print(word[2:])</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Py
+tho
+Py
+thon</code></pre>
+
+  <div class="note">
+    スライスは <code>文字列[開始:終了]</code> の形です。
+    開始位置は含み、終了位置は含みません。
+  </div>
+
+  <h3>2.8 スライスは範囲外でもエラーにならない</h3>
+
+  <pre><code>word = "Python"
+
+print(word[4:100])
+print(word[100:])</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>on
+</code></pre>
+
+  <div class="danger">
+    通常のインデックス指定は範囲外だと <code>IndexError</code> になります。
+  </div>
+
+  <pre><code>word[100]</code></pre>
+</section>
+
+<section id="lists">
+  <h2>3. リスト <code>list</code> 型とデータ構造</h2>
+
+  <h3>3.1 リストの基本</h3>
+
+  <pre><code>nums = [1, 2, 3, 4]
+words = ["apple", "banana", "orange"]
+mixed = [1, "Python", True]</code></pre>
+
+  <h3>3.2 リストはミュータブル</h3>
+
+  <pre><code>nums = [1, 2, 3]
+nums[0] = 100
+
+print(nums)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>[100, 2, 3]</code></pre>
+
+  <h3>3.3 リストの連結とネスト</h3>
+
+  <pre><code>a = [1, 2]
+b = [3, 4]
+
+print(a + b)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>[1, 2, 3, 4]</code></pre>
+
+  <pre><code>matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(matrix[0])
+print(matrix[0][1])</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>[1, 2, 3]
+2</code></pre>
+
+  <h3>3.4 主要メソッド</h3>
+
+  <div class="grid">
+    <div class="card">
+      <h4><code>append(x)</code></h4>
+      <p>末尾に1要素を追加。</p>
+      <pre><code>a = [1, 2]
+a.append([3, 4])
+print(a)</code></pre>
+      <pre><code>[1, 2, [3, 4]]</code></pre>
+    </div>
+
+    <div class="card">
+      <h4><code>extend(L)</code></h4>
+      <p>別のリストなどの要素をまとめて追加。</p>
+      <pre><code>a = [1, 2]
+a.extend([3, 4])
+print(a)</code></pre>
+      <pre><code>[1, 2, 3, 4]</code></pre>
+    </div>
+
+    <div class="card">
+      <h4><code>insert(i, x)</code></h4>
+      <p>指定位置に挿入。大きすぎる位置なら末尾。</p>
+      <pre><code>a = [1, 2, 4]
+a.insert(2, 3)
+print(a)</code></pre>
+      <pre><code>[1, 2, 3, 4]</code></pre>
+    </div>
+
+    <div class="card">
+      <h4><code>remove(x)</code></h4>
+      <p>指定した値の最初の要素を削除。</p>
+      <pre><code>a = [1, 2, 3, 2]
+a.remove(2)
+print(a)</code></pre>
+      <pre><code>[1, 3, 2]</code></pre>
+    </div>
+
+    <div class="card">
+      <h4><code>pop(i)</code></h4>
+      <p>指定位置の要素を削除し、その値を返す。</p>
+      <pre><code>a = [10, 20, 30]
+x = a.pop(1)
+print(x)
+print(a)</code></pre>
+      <pre><code>20
+[10, 30]</code></pre>
+    </div>
+
+    <div class="card">
+      <h4><code>sort()</code></h4>
+      <p>元のリストをその場で並べ替える。</p>
+      <pre><code>a = [3, 1, 2]
+result = a.sort()
+print(a)
+print(result)</code></pre>
+      <pre><code>[1, 2, 3]
+None</code></pre>
+    </div>
+  </div>
+
+  <h3>3.5 <code>sort()</code> の応用</h3>
+
+  <pre><code>words = ["Python", "AI", "program"]
+words.sort(key=len)
+
+print(words)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>['AI', 'Python', 'program']</code></pre>
+
+  <pre><code>nums = [3, 1, 2]
+nums.sort(reverse=True)
+
+print(nums)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>[3, 2, 1]</code></pre>
+
+  <div class="danger">
+    <code>remove()</code> は値を指定します。
+    <code>pop()</code> は位置を指定します。
+    この違いは試験でよく問われます。
+  </div>
+</section>
+
+<section id="control">
+  <h2>4. 制御構造</h2>
+
+  <h3>4.1 <code>while</code> 文</h3>
+
+  <pre><code>i = 0
+
+while i &lt; 3:
+    print(i)
+    i += 1</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>0
+1
+2</code></pre>
+
+  <h3>4.2 <code>while True</code></h3>
+
+  <pre><code>while True:
+    command = input("入力してください: ")
+    if command == "end":
+        break</code></pre>
+
+  <p><code>while True</code> は無限ループです。終了条件として <code>break</code> を使うことが多いです。</p>
+
+  <h3>4.3 <code>for</code> 文と <code>range()</code></h3>
+
+  <pre><code>for i in range(5):
+    print(i)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>0
+1
+2
+3
+4</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>書き方</th>
+        <th>生成される値</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>range(5)</code></td>
+        <td><code>0, 1, 2, 3, 4</code></td>
+      </tr>
+      <tr>
+        <td><code>range(1, 5)</code></td>
+        <td><code>1, 2, 3, 4</code></td>
+      </tr>
+      <tr>
+        <td><code>range(1, 10, 2)</code></td>
+        <td><code>1, 3, 5, 7, 9</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <code>range()</code> の終了値は含まれません。
+    また、<code>range</code> はリストではなく、必要な値を順に生成する軽量なオブジェクトです。
+  </div>
+
+  <pre><code>print(range(5))
+print(list(range(5)))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>range(0, 5)
+[0, 1, 2, 3, 4]</code></pre>
+
+  <h3>4.4 <code>break</code></h3>
+
+  <pre><code>for i in range(5):
+    if i == 3:
+        break
+    print(i)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>0
+1
+2</code></pre>
+
+  <h3>4.5 <code>continue</code></h3>
+
+  <pre><code>for i in range(5):
+    if i == 2:
+        continue
+    print(i)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>0
+1
+3
+4</code></pre>
+
+  <h3>4.6 ループの <code>else</code></h3>
+
+  <pre><code>for i in range(3):
+    print(i)
+else:
+    print("正常終了")</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>0
+1
+2
+正常終了</code></pre>
+
+  <p><code>break</code> された場合、<code>else</code> は実行されません。</p>
+
+  <pre><code>for i in range(3):
+    if i == 1:
+        break
+    print(i)
+else:
+    print("正常終了")</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>0</code></pre>
+
+  <div class="danger">
+    ループの <code>else</code> は、<code>if</code> ではなく <code>for</code> や <code>while</code> に対応します。
+  </div>
+
+  <h3>4.7 <code>pass</code></h3>
+
+  <pre><code>def todo():
+    pass</code></pre>
+
+  <p><code>pass</code> は何もしない文です。構文上、文が必要な場所で使います。</p>
+
+  <h3>4.8 <code>match</code> 文</h3>
+
+  <pre><code>status = 404
+
+match status:
+    case 200:
+        print("OK")
+    case 404:
+        print("Not Found")
+    case _:
+        print("Other")</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Not Found</code></pre>
+
+  <h4><code>case _</code> はワイルドカード</h4>
+
+  <pre><code>case _:
+    print("その他")</code></pre>
+
+  <h4><code>|</code> によるパターン統合</h4>
+
+  <pre><code>status = 403
+
+match status:
+    case 401 | 403 | 404:
+        print("Not allowed")
+    case _:
+        print("Other")</code></pre>
+
+  <h4>ガード条件 <code>if</code></h4>
+
+  <pre><code>x = 10
+
+match x:
+    case n if n &gt; 0:
+        print("正の数")
+    case n if n &lt; 0:
+        print("負の数")
+    case _:
+        print("ゼロ")</code></pre>
+</section>
+
+<section id="collections">
+  <h2>5. コレクション：辞書・集合・タプル</h2>
+
+  <h3>5.1 辞書 <code>dict</code></h3>
+
+  <pre><code>person = {
+    "name": "Tanaka",
+    "age": 20
+}
+
+print(person["name"])
+print(person["age"])</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Tanaka
+20</code></pre>
+
+  <h4>追加・変更</h4>
+
+  <pre><code>person = {"name": "Tanaka"}
+
+person["age"] = 20
+person["name"] = "Suzuki"
+
+print(person)</code></pre>
+
+  <h4><code>get()</code></h4>
+
+  <pre><code>person = {"name": "Tanaka"}
+
+print(person.get("age"))
+print(person.get("age", 0))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>None
+0</code></pre>
+
+  <h4>辞書のループ</h4>
+
+  <pre><code>scores = {"Alice": 80, "Bob": 90}
+
+for name, score in scores.items():
+    print(name, score)</code></pre>
+
+  <h4>ループ中に辞書サイズを変更しない</h4>
+
+  <div class="danger">
+    辞書をループしている最中に削除や追加をしてサイズを変えると、エラーになることがあります。
+  </div>
+
+  <p>安全な書き方：</p>
+
+  <pre><code>users = {
+    "Alice": "active",
+    "Bob": "inactive"
+}
+
+for name, status in users.copy().items():
+    if status == "inactive":
+        del users[name]</code></pre>
+
+  <h3>5.2 集合 <code>set</code></h3>
+
+  <pre><code>s = {1, 2, 3, 3, 2}
+print(s)</code></pre>
+
+  <p>出力例：</p>
+
+  <pre><code>{1, 2, 3}</code></pre>
+
+  <div class="note">
+    集合は重複しない値を持ちます。順序は保証されません。
+  </div>
+
+  <h4>リストから重複を削除</h4>
+
+  <pre><code>nums = [1, 2, 2, 3, 3, 3]
+unique = set(nums)
+
+print(unique)</code></pre>
+
+  <h4>集合演算</h4>
+
+  <pre><code>a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a | b)
+print(a &amp; b)
+print(a - b)
+print(a ^ b)</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>演算</th>
+        <th>意味</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>a | b</code></td>
+        <td>和集合</td>
+      </tr>
+      <tr>
+        <td><code>a &amp; b</code></td>
+        <td>積集合</td>
+      </tr>
+      <tr>
+        <td><code>a - b</code></td>
+        <td>差集合</td>
+      </tr>
+      <tr>
+        <td><code>a ^ b</code></td>
+        <td>対称差</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="danger">
+    空集合は <code>set()</code> で作ります。
+    <code>{}</code> は空の辞書です。
+  </div>
+
+  <h3>5.3 タプル <code>tuple</code></h3>
+
+  <pre><code>t = (1, 2, 3)
+print(t[0])</code></pre>
+
+  <p>タプルは変更できません。</p>
+
+  <pre><code>t = (1, 2, 3)
+t[0] = 100</code></pre>
+
+  <p>これは <code>TypeError</code> になります。</p>
+
+  <h4>1要素タプル</h4>
+
+  <pre><code>t1 = (1,)
+t2 = (1)
+
+print(type(t1))
+print(type(t2))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>&lt;class 'tuple'&gt;
+&lt;class 'int'&gt;</code></pre>
+
+  <h4>アンパック</h4>
+
+  <pre><code>x, y = (10, 20)
+
+print(x)
+print(y)</code></pre>
+</section>
+
+<section id="functions">
+  <h2>6. 関数</h2>
+
+  <h3>6.1 関数の定義</h3>
+
+  <pre><code>def greet():
+    print("Hello")
+
+greet()</code></pre>
+
+  <h3>6.2 引数と戻り値</h3>
+
+  <pre><code>def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(result)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>8</code></pre>
+
+  <h3>6.3 <code>return</code> がない場合</h3>
+
+  <pre><code>def hello():
+    print("Hello")
+
+x = hello()
+print(x)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Hello
+None</code></pre>
+
+  <div class="note">
+    関数が明示的に値を返さない場合、戻り値は <code>None</code> です。
+  </div>
+
+  <h3>6.4 デフォルト引数</h3>
+
+  <pre><code>def greet(name="Guest"):
+    print("Hello", name)
+
+greet()
+greet("Alice")</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>Hello Guest
+Hello Alice</code></pre>
+
+  <h4>デフォルト引数は定義時に評価される</h4>
+
+  <pre><code>i = 5
+
+def f(x=i):
+    print(x)
+
+i = 10
+f()</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>5</code></pre>
+
+  <h4>可変オブジェクトをデフォルト引数にしない</h4>
+
+  <pre><code>def add_item(x, items=[]):
+    items.append(x)
+    return items
+
+print(add_item(1))
+print(add_item(2))
+print(add_item(3))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>[1]
+[1, 2]
+[1, 2, 3]</code></pre>
+
+  <div class="danger">
+    デフォルト引数のリストが共有されるため、前回の結果が残ります。
+  </div>
+
+  <p>安全な書き方：</p>
+
+  <pre><code>def add_item(x, items=None):
+    if items is None:
+        items = []
+    items.append(x)
+    return items</code></pre>
+
+  <h3>6.5 <code>*args</code></h3>
+
+  <p>任意個の位置引数を受け取ります。関数内ではタプルになります。</p>
+
+  <pre><code>def total(*args):
+    print(args)
+    return sum(args)
+
+print(total(1, 2, 3))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>(1, 2, 3)
+6</code></pre>
+
+  <h3>6.6 <code>**kwargs</code></h3>
+
+  <p>任意個のキーワード引数を受け取ります。関数内では辞書になります。</p>
+
+  <pre><code>def show_info(**kwargs):
+    print(kwargs)
+
+show_info(name="Alice", age=20)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>{'name': 'Alice', 'age': 20}</code></pre>
+
+  <h3>6.7 <code>/</code> と <code>*</code> による引数制限</h3>
+
+  <h4><code>/</code> より前は位置専用引数</h4>
+
+  <pre><code>def func(a, b, /):
+    print(a, b)
+
+func(1, 2)</code></pre>
+
+  <p>次はエラーです。</p>
+
+  <pre><code>func(a=1, b=2)</code></pre>
+
+  <h4><code>*</code> より後はキーワード専用引数</h4>
+
+  <pre><code>def func(a, *, b):
+    print(a, b)
+
+func(1, b=2)</code></pre>
+
+  <p>次はエラーです。</p>
+
+  <pre><code>func(1, 2)</code></pre>
+
+  <h3>6.8 ラムダ式</h3>
+
+  <pre><code>square = lambda x: x ** 2
+
+print(square(5))</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>25</code></pre>
+
+  <h4><code>sort()</code> と <code>lambda</code></h4>
+
+  <pre><code>students = [
+    ("Alice", 80),
+    ("Bob", 90),
+    ("Charlie", 70)
+]
+
+students.sort(key=lambda x: x[1])
+
+print(students)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>[('Charlie', 70), ('Alice', 80), ('Bob', 90)]</code></pre>
+</section>
+
+<section id="files">
+  <h2>7. ファイル操作とCSV作成</h2>
+
+  <h3>7.1 <code>open()</code></h3>
+
+  <pre><code>open(ファイル名, モード, encoding="utf-8")</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>モード</th>
+        <th>意味</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>"r"</code></td>
+        <td>読み取り</td>
+      </tr>
+      <tr>
+        <td><code>"w"</code></td>
+        <td>書き込み。既存ファイルは上書き</td>
+      </tr>
+      <tr>
+        <td><code>"a"</code></td>
+        <td>追記</td>
+      </tr>
+      <tr>
+        <td><code>"r+"</code></td>
+        <td>読み書き</td>
+      </tr>
+      <tr>
+        <td><code>"b"</code></td>
+        <td>バイナリモード</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>7.2 <code>with</code> 文</h3>
+
+  <pre><code>with open("sample.txt", "r", encoding="utf-8") as f:
+    data = f.read()</code></pre>
+
+  <div class="success">
+    <code>with</code> を使うと、自動的にファイルが閉じられます。
+    <code>f.close()</code> を自分で書く必要がありません。
+  </div>
+
+  <h3>7.3 ファイルへの書き込み</h3>
+
+  <pre><code>with open("output.txt", "w", encoding="utf-8") as f:
+    f.write("Hello\n")
+    f.write("Python\n")</code></pre>
+
+  <div class="danger">
+    <code>"w"</code> は上書きです。
+    既に同名ファイルがある場合、元の内容は消えます。
+  </div>
+
+  <h3>7.4 ファイルの読み込み</h3>
+
+  <h4>全体を読む</h4>
+
+  <pre><code>with open("sample.txt", "r", encoding="utf-8") as f:
+    data = f.read()</code></pre>
+
+  <h4>1行ずつ読む</h4>
+
+  <pre><code>with open("sample.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line)</code></pre>
+
+  <h3>7.5 <code>strip()</code> と <code>split()</code></h3>
+
+  <pre><code>line = "apple,100\n"
+
+line = line.strip()
+data = line.split(",")
+
+print(data)</code></pre>
+
+  <p>出力：</p>
+
+  <pre><code>['apple', '100']</code></pre>
+
+  <p>数値として使いたい場合は型変換します。</p>
+
+  <pre><code>name, price = line.split(",")
+price = int(price)</code></pre>
+
+  <h3>7.6 簡単なCSV作成</h3>
+
+  <pre><code>data = [
+    ["name", "score"],
+    ["Alice", 80],
+    ["Bob", 90]
+]
+
+with open("scores.csv", "w", encoding="utf-8") as f:
+    for row in data:
+        line = f"{row[0]},{row[1]}\n"
+        f.write(line)</code></pre>
+
+  <h3>7.7 CSVの読み込み</h3>
+
+  <pre><code>with open("scores.csv", "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+        row = line.split(",")
+        print(row)</code></pre>
+
+  <h3>7.8 <code>csv</code> モジュール</h3>
+
+  <p>
+    単純なCSVなら <code>split(",")</code> でも処理できます。
+    しかし、値の中にカンマが含まれる場合は <code>csv</code> モジュールを使うのが安全です。
+  </p>
+
+  <pre><code>import csv
+
+with open("scores.csv", "r", encoding="utf-8", newline="") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(row)</code></pre>
+
+  <h4>CSVの書き込み</h4>
+
+  <pre><code>import csv
+
+data = [
+    ["name", "score"],
+    ["Alice", 80],
+    ["Bob", 90]
+]
+
+with open("scores.csv", "w", encoding="utf-8", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerows(data)</code></pre>
+
+  <div class="note">
+    CSVファイルを扱うときは、<code>newline=""</code> を指定するのが一般的です。
+  </div>
+</section>
+
+<section id="quiz">
+  <h2>8. 練習問題</h2>
+
+  <details>
+    <summary>問題1：次の出力は？</summary>
+    <pre><code>print(7 / 2)
+print(7 // 2)
+print(7 % 2)</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>3.5
+3
+1</code></pre>
+  </details>
+
+  <details>
+    <summary>問題2：次の出力は？</summary>
+    <pre><code>s = "Python"
+print(s[1:4])
+print(s[:2])
+print(s[3:])</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>yth
+Py
+hon</code></pre>
+  </details>
+
+  <details>
+    <summary>問題3：次のコードは実行できるか？</summary>
+    <pre><code>s = "abc"
+s[0] = "A"</code></pre>
+    <p><strong>解答：</strong> 実行できません。文字列はイミュータブルなので <code>TypeError</code> になります。</p>
+  </details>
+
+  <details>
+    <summary>問題4：次の出力は？</summary>
+    <pre><code>lst = [1, 2]
+lst.append([3, 4])
+print(lst)</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>[1, 2, [3, 4]]</code></pre>
+  </details>
+
+  <details>
+    <summary>問題5：次の出力は？</summary>
+    <pre><code>lst = [1, 2]
+lst.extend([3, 4])
+print(lst)</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>[1, 2, 3, 4]</code></pre>
+  </details>
+
+  <details>
+    <summary>問題6：次の出力は？</summary>
+    <pre><code>lst = [3, 1, 2]
+result = lst.sort()
+
+print(lst)
+print(result)</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>[1, 2, 3]
+None</code></pre>
+  </details>
+
+  <details>
+    <summary>問題7：次の出力は？</summary>
+    <pre><code>for i in range(3):
+    print(i)
+else:
+    print("done")</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>0
+1
+2
+done</code></pre>
+  </details>
+
+  <details>
+    <summary>問題8：次の出力は？</summary>
+    <pre><code>for i in range(3):
+    if i == 1:
+        break
+    print(i)
+else:
+    print("done")</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>0</code></pre>
+  </details>
+
+  <details>
+    <summary>問題9：次の出力は？</summary>
+    <pre><code>def f(x, items=[]):
+    items.append(x)
+    return items
+
+print(f(10))
+print(f(20))</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>[10]
+[10, 20]</code></pre>
+  </details>
+
+  <details>
+    <summary>問題10：次の出力は？</summary>
+    <pre><code>d = {"a": 1, "b": 2}
+
+for key, value in d.items():
+    print(key, value)</code></pre>
+    <p><strong>解答：</strong></p>
+    <pre><code>a 1
+b 2</code></pre>
+  </details>
+</section>
+
+<section id="checklist">
+  <h2>9. 最終チェックリスト</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>数値</h3>
+      <ul class="checklist">
+        <li>□ <code>/</code> は常に <code>float</code></li>
+        <li>□ <code>//</code> はフロア除算</li>
+        <li>□ <code>%</code> は剰余</li>
+        <li>□ <code>**</code> はべき乗</li>
+        <li>□ <code>+=</code> は自己代入の省略形</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>文字列</h3>
+      <ul class="checklist">
+        <li>□ <code>str</code> はイミュータブル</li>
+        <li>□ <code>\n</code>, <code>\t</code> の意味</li>
+        <li>□ raw文字列 <code>r"..."</code></li>
+        <li>□ スライスは終了位置を含まない</li>
+        <li>□ スライス範囲外はエラーにならない</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>リスト</h3>
+      <ul class="checklist">
+        <li>□ <code>list</code> はミュータブル</li>
+        <li>□ <code>append</code> と <code>extend</code> の違い</li>
+        <li>□ <code>remove</code> は値を削除</li>
+        <li>□ <code>pop</code> は位置を削除して値を返す</li>
+        <li>□ <code>sort()</code> は戻り値 <code>None</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>制御構造</h3>
+      <ul class="checklist">
+        <li>□ <code>while True</code> は無限ループ</li>
+        <li>□ <code>range</code> は stop を含まない</li>
+        <li>□ <code>break</code> は内側のループを抜ける</li>
+        <li>□ <code>continue</code> は次の繰り返しへ</li>
+        <li>□ ループの <code>else</code> は <code>break</code> されなかった時だけ</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>コレクション</h3>
+      <ul class="checklist">
+        <li>□ <code>dict</code> はキーと値</li>
+        <li>□ 辞書ループ中にサイズ変更しない</li>
+        <li>□ <code>set</code> は重複なし・順序なし</li>
+        <li>□ <code>tuple</code> はイミュータブル</li>
+        <li>□ 1要素タプルは <code>(x,)</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>関数</h3>
+      <ul class="checklist">
+        <li>□ <code>return</code> がないと <code>None</code></li>
+        <li>□ デフォルト引数は定義時に評価</li>
+        <li>□ 可変デフォルト引数に注意</li>
+        <li>□ <code>*args</code> はタプル</li>
+        <li>□ <code>**kwargs</code> は辞書</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>ファイル・CSV</h3>
+      <ul class="checklist">
+        <li>□ <code>open(filename, mode, encoding)</code></li>
+        <li>□ <code>"w"</code> は上書き書き込み</li>
+        <li>□ <code>with open(...)</code> を使う</li>
+        <li>□ <code>strip()</code> は改行などを除去</li>
+        <li>□ 複雑なCSVは <code>csv</code> モジュールを使う</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Python試験対策資料 HTML版</p>
+</footer>
+
+</body>
+</html>
