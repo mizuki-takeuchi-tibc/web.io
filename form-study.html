@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HTMLフォーム学習用</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #27ae60;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    section {
+      padding: 25px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    h2 {
+      border-left: 6px solid #27ae60;
+      padding-left: 10px;
+      color: #1e874b;
+    }
+
+    code {
+      background-color: #eafaf1;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background-color: white;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #dff5e8;
+    }
+
+    .point {
+      background-color: #fff8d6;
+      border-left: 6px solid #f2c94c;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    .check {
+      background-color: #eafaf1;
+      border-left: 6px solid #27ae60;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    .danger {
+      background-color: #fdecea;
+      border-left: 6px solid #eb5757;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+    }
+
+    .sample-form {
+      background-color: #f8fbff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
+
+    .sample-form label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 5px;
+    }
+
+    .sample-form input[type="text"],
+    .sample-form input[type="email"],
+    .sample-form input[type="password"],
+    .sample-form input[type="number"],
+    .sample-form input[type="date"],
+    .sample-form textarea,
+    .sample-form select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #999;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .sample-form textarea {
+      height: 100px;
+    }
+
+    .sample-form button,
+    .sample-form input[type="submit"],
+    .sample-form input[type="reset"] {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #27ae60;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .sample-form input[type="reset"] {
+      background-color: #999;
+    }
+
+    .sample-form button:hover,
+    .sample-form input[type="submit"]:hover {
+      background-color: #1e874b;
+    }
+
+    .test-link {
+      display: inline-block;
+      background-color: #27ae60;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .test-link:hover {
+      background-color: #1e874b;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>HTMLフォーム学習用</h1>
+  <p>入力フォームの作り方を覚えよう</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>1. フォームとは</h2>
+
+    <p>
+      フォームは、Webページでユーザーに情報を入力してもらうための仕組みです。
+    </p>
+
+    <p>
+      例えば、名前を入力したり、メールアドレスを入力したり、
+      アンケートに答えたりするときにフォームを使います。
+    </p>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      HTMLでフォームを作るときは <code>&lt;form&gt;</code> を使う。
+    </div>
+
+    <h3>フォームの例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="sample-name">名前</label>
+        <input type="text" id="sample-name" name="name">
+
+        <label for="sample-message">メッセージ</label>
+        <textarea id="sample-message" name="message"></textarea>
+
+        <input type="submit" value="送信">
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. フォームの基本形</h2>
+
+    <p>
+      フォームは <code>&lt;form&gt;</code> の中に、
+      入力欄やボタンを書いて作ります。
+    </p>
+
+    <pre><code>&lt;form action="送信先" method="post"&gt;
+  &lt;label for="name"&gt;名前&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+
+  &lt;input type="submit" value="送信"&gt;
+&lt;/form&gt;</code></pre>
+
+    <table>
+      <tr>
+        <th>部分</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>&lt;form&gt;</code></td>
+        <td>フォーム全体を表す</td>
+      </tr>
+      <tr>
+        <td><code>action</code></td>
+        <td>入力内容の送信先を指定する</td>
+      </tr>
+      <tr>
+        <td><code>method</code></td>
+        <td>送信方法を指定する</td>
+      </tr>
+      <tr>
+        <td><code>&lt;label&gt;</code></td>
+        <td>入力欄の説明を書く</td>
+      </tr>
+      <tr>
+        <td><code>&lt;input&gt;</code></td>
+        <td>入力欄を作る</td>
+      </tr>
+      <tr>
+        <td><code>type="submit"</code></td>
+        <td>送信ボタンを作る</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>3. formタグ</h2>
+
+    <p>
+      <code>&lt;form&gt;</code> は、フォーム全体を囲むタグです。
+      入力欄やボタンは、基本的に <code>&lt;form&gt;</code> の中に書きます。
+    </p>
+
+    <pre><code>&lt;form&gt;
+  入力欄やボタンを書く
+&lt;/form&gt;</code></pre>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      フォーム全体は <code>&lt;form&gt;</code> で囲む。
+    </div>
+  </section>
+
+  <section>
+    <h2>4. action属性とmethod属性</h2>
+
+    <p>
+      <code>&lt;form&gt;</code> には、よく
+      <code>action</code> と <code>method</code> を書きます。
+    </p>
+
+    <pre><code>&lt;form action="contact.php" method="post"&gt;
+  ...
+&lt;/form&gt;</code></pre>
+
+    <table>
+      <tr>
+        <th>属性</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>action</code></td>
+        <td>フォームの送信先を指定する</td>
+      </tr>
+      <tr>
+        <td><code>method</code></td>
+        <td>送信方法を指定する</td>
+      </tr>
+    </table>
+
+    <h3>methodの種類</h3>
+
+    <table>
+      <tr>
+        <th>method</th>
+        <th>特徴</th>
+      </tr>
+      <tr>
+        <td><code>get</code></td>
+        <td>入力内容がURLに表示される。検索フォームなどで使うことがある。</td>
+      </tr>
+      <tr>
+        <td><code>post</code></td>
+        <td>入力内容がURLに表示されにくい。お問い合わせフォームなどで使うことが多い。</td>
+      </tr>
+    </table>
+
+    <div class="check">
+      <strong>授業で覚えるポイント：</strong><br>
+      <code>action</code> は送信先、<code>method</code> は送信方法。
+    </div>
+  </section>
+
+  <section>
+    <h2>5. inputタグ</h2>
+
+    <p>
+      <code>&lt;input&gt;</code> は、1行の入力欄やボタンなどを作るタグです。
+      <code>type</code> 属性の値によって、入力欄の種類が変わります。
+    </p>
+
+    <pre><code>&lt;input type="text" name="username"&gt;</code></pre>
+
+    <table>
+      <tr>
+        <th>属性</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>type</code></td>
+        <td>入力欄の種類を指定する</td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td>送信するときのデータ名を指定する</td>
+      </tr>
+      <tr>
+        <td><code>id</code></td>
+        <td>labelと関連付けたり、CSSで指定したりするときに使う</td>
+      </tr>
+      <tr>
+        <td><code>value</code></td>
+        <td>初期値やボタンに表示する文字を指定する</td>
+      </tr>
+      <tr>
+        <td><code>placeholder</code></td>
+        <td>入力例を薄い文字で表示する</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. よく使うinputのtype</h2>
+
+    <table>
+      <tr>
+        <th>type</th>
+        <th>意味</th>
+        <th>例</th>
+      </tr>
+      <tr>
+        <td><code>text</code></td>
+        <td>1行のテキスト入力</td>
+        <td><code>&lt;input type="text"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>email</code></td>
+        <td>メールアドレス入力</td>
+        <td><code>&lt;input type="email"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>password</code></td>
+        <td>パスワード入力</td>
+        <td><code>&lt;input type="password"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>number</code></td>
+        <td>数字入力</td>
+        <td><code>&lt;input type="number"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>date</code></td>
+        <td>日付入力</td>
+        <td><code>&lt;input type="date"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>radio</code></td>
+        <td>1つだけ選ぶ選択肢</td>
+        <td><code>&lt;input type="radio"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>checkbox</code></td>
+        <td>複数選べる選択肢</td>
+        <td><code>&lt;input type="checkbox"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>submit</code></td>
+        <td>送信ボタン</td>
+        <td><code>&lt;input type="submit"&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>reset</code></td>
+        <td>入力内容をリセットするボタン</td>
+        <td><code>&lt;input type="reset"&gt;</code></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>7. テキスト入力欄</h2>
+
+    <p>
+      名前や住所など、1行の文字を入力する欄は
+      <code>type="text"</code> を使います。
+    </p>
+
+    <pre><code>&lt;label for="name"&gt;名前&lt;/label&gt;
+&lt;input type="text" id="name" name="name"&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="text-sample">名前</label>
+        <input type="text" id="text-sample" name="name" placeholder="例：山田太郎">
+      </form>
+    </div>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      1行の文字入力は <code>&lt;input type="text"&gt;</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>8. labelタグ</h2>
+
+    <p>
+      <code>&lt;label&gt;</code> は、入力欄の説明を表すタグです。
+      <code>for</code> 属性と入力欄の <code>id</code> を同じにすると、
+      ラベルと入力欄を関連付けることができます。
+    </p>
+
+    <pre><code>&lt;label for="email"&gt;メールアドレス&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;</code></pre>
+
+    <table>
+      <tr>
+        <th>部分</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>for="email"</code></td>
+        <td>どの入力欄の説明かを指定する</td>
+      </tr>
+      <tr>
+        <td><code>id="email"</code></td>
+        <td>入力欄につける名前のようなもの</td>
+      </tr>
+    </table>
+
+    <div class="check">
+      <strong>ポイント：</strong><br>
+      <code>label</code> の <code>for</code> と、入力欄の <code>id</code> は同じ名前にする。
+    </div>
+  </section>
+
+  <section>
+    <h2>9. placeholder属性</h2>
+
+    <p>
+      <code>placeholder</code> は、入力欄の中に入力例を表示する属性です。
+    </p>
+
+    <pre><code>&lt;input type="text" name="name" placeholder="例：山田太郎"&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="placeholder-sample">名前</label>
+        <input type="text" id="placeholder-sample" name="name" placeholder="例：山田太郎">
+      </form>
+    </div>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      <code>placeholder</code> は入力例を表示する。
+    </div>
+  </section>
+
+  <section>
+    <h2>10. メールアドレス入力</h2>
+
+    <p>
+      メールアドレスを入力する欄は <code>type="email"</code> を使います。
+    </p>
+
+    <pre><code>&lt;label for="mail"&gt;メールアドレス&lt;/label&gt;
+&lt;input type="email" id="mail" name="mail"&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="email-sample">メールアドレス</label>
+        <input type="email" id="email-sample" name="mail" placeholder="example@email.com">
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <h2>11. パスワード入力</h2>
+
+    <p>
+      パスワードを入力する欄は <code>type="password"</code> を使います。
+      入力した文字は、画面上では見えにくく表示されます。
+    </p>
+
+    <pre><code>&lt;label for="password"&gt;パスワード&lt;/label&gt;
+&lt;input type="password" id="password" name="password"&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="password-sample">パスワード</label>
+        <input type="password" id="password-sample" name="password">
+      </form>
+    </div>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      パスワード入力は <code>&lt;input type="password"&gt;</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>12. ラジオボタン</h2>
+
+    <p>
+      ラジオボタンは、いくつかの選択肢から
+      <strong>1つだけ選ぶ</strong> ときに使います。
+    </p>
+
+    <pre><code>&lt;p&gt;好きな季節&lt;/p&gt;
+
+&lt;label&gt;
+  &lt;input type="radio" name="season" value="spring"&gt; 春
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="radio" name="season" value="summer"&gt; 夏
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="radio" name="season" value="winter"&gt; 冬
+&lt;/label&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <p><strong>好きな季節</strong></p>
+
+        <label>
+          <input type="radio" name="season" value="spring"> 春
+        </label>
+
+        <label>
+          <input type="radio" name="season" value="summer"> 夏
+        </label>
+
+        <label>
+          <input type="radio" name="season" value="winter"> 冬
+        </label>
+      </form>
+    </div>
+
+    <div class="check">
+      <strong>重要：</strong><br>
+      ラジオボタンで1つだけ選ばせたいときは、
+      同じグループの <code>name</code> を同じにする。
+    </div>
+  </section>
+
+  <section>
+    <h2>13. チェックボックス</h2>
+
+    <p>
+      チェックボックスは、いくつかの選択肢から
+      <strong>複数選べる</strong> ときに使います。
+    </p>
+
+    <pre><code>&lt;p&gt;好きな食べ物&lt;/p&gt;
+
+&lt;label&gt;
+  &lt;input type="checkbox" name="food" value="sushi"&gt; 寿司
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="checkbox" name="food" value="ramen"&gt; ラーメン
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="checkbox" name="food" value="curry"&gt; カレー
+&lt;/label&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <p><strong>好きな食べ物</strong></p>
+
+        <label>
+          <input type="checkbox" name="food" value="sushi"> 寿司
+        </label>
+
+        <label>
+          <input type="checkbox" name="food" value="ramen"> ラーメン
+        </label>
+
+        <label>
+          <input type="checkbox" name="food" value="curry"> カレー
+        </label>
+      </form>
+    </div>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      ラジオボタンは1つだけ、チェックボックスは複数選べる。
+    </div>
+  </section>
+
+  <section>
+    <h2>14. textareaタグ</h2>
+
+    <p>
+      長い文章を入力する欄は <code>&lt;textarea&gt;</code> を使います。
+      感想、自己紹介文、お問い合わせ内容などに使います。
+    </p>
+
+    <pre><code>&lt;label for="message"&gt;メッセージ&lt;/label&gt;
+&lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="textarea-sample">自己紹介</label>
+        <textarea id="textarea-sample" name="profile" placeholder="自己紹介を書いてください"></textarea>
+      </form>
+    </div>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      長い文章の入力は <code>&lt;textarea&gt;</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>15. selectタグ</h2>
+
+    <p>
+      プルダウンメニューを作るときは
+      <code>&lt;select&gt;</code> と <code>&lt;option&gt;</code> を使います。
+    </p>
+
+    <pre><code>&lt;label for="country"&gt;出身国&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+  &lt;option value="vietnam"&gt;ベトナム&lt;/option&gt;
+  &lt;option value="china"&gt;中国&lt;/option&gt;
+  &lt;option value="nepal"&gt;ネパール&lt;/option&gt;
+  &lt;option value="japan"&gt;日本&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="country-sample">出身国</label>
+        <select id="country-sample" name="country">
+          <option value="">選んでください</option>
+          <option value="vietnam">ベトナム</option>
+          <option value="china">中国</option>
+          <option value="nepal">ネパール</option>
+          <option value="myanmar">ミャンマー</option>
+          <option value="japan">日本</option>
+          <option value="other">その他</option>
+        </select>
+      </form>
+    </div>
+
+    <table>
+      <tr>
+        <th>タグ</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>&lt;select&gt;</code></td>
+        <td>プルダウンメニュー全体</td>
+      </tr>
+      <tr>
+        <td><code>&lt;option&gt;</code></td>
+        <td>選択肢</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>16. required属性</h2>
+
+    <p>
+      <code>required</code> をつけると、入力必須の項目になります。
+      未入力のまま送信しようとすると、ブラウザが注意を表示します。
+    </p>
+
+    <pre><code>&lt;input type="text" name="name" required&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="required-sample">名前 必須</label>
+        <input type="text" id="required-sample" name="name" required>
+
+        <input type="submit" value="送信">
+      </form>
+    </div>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      <code>required</code> は入力必須にする属性。
+    </div>
+  </section>
+
+  <section>
+    <h2>17. 送信ボタンとリセットボタン</h2>
+
+    <p>
+      フォームを送信するボタンは <code>type="submit"</code>、
+      入力内容を消すボタンは <code>type="reset"</code> を使います。
+    </p>
+
+    <pre><code>&lt;input type="submit" value="送信"&gt;
+&lt;input type="reset" value="リセット"&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form>
+        <label for="button-sample">名前</label>
+        <input type="text" id="button-sample" name="name">
+
+        <input type="submit" value="送信">
+        <input type="reset" value="リセット">
+      </form>
+    </div>
+
+    <table>
+      <tr>
+        <th>コード</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>type="submit"</code></td>
+        <td>送信ボタン</td>
+      </tr>
+      <tr>
+        <td><code>type="reset"</code></td>
+        <td>リセットボタン</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>18. name属性とvalue属性</h2>
+
+    <p>
+      フォームでは <code>name</code> と <code>value</code> が大切です。
+    </p>
+
+    <table>
+      <tr>
+        <th>属性</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td>送信するときの項目名</td>
+      </tr>
+      <tr>
+        <td><code>value</code></td>
+        <td>送信される値、またはボタンに表示する文字</td>
+      </tr>
+    </table>
+
+    <pre><code>&lt;input type="radio" name="gender" value="male"&gt; 男性
+&lt;input type="radio" name="gender" value="female"&gt; 女性</code></pre>
+
+    <div class="check">
+      <strong>ポイント：</strong><br>
+      <code>name</code> はデータの名前、<code>value</code> は送られる内容。
+    </div>
+  </section>
+
+  <section>
+    <h2>19. フォームにCSSを当てる</h2>
+
+    <p>
+      フォームはCSSを使うと、入力しやすく見やすいデザインにできます。
+    </p>
+
+    <pre><code>form {
+  background-color: #f8fbff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  margin-top: 15px;
+}</code></pre>
+
+    <table>
+      <tr>
+        <th>CSS</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>width: 100%;</code></td>
+        <td>入力欄を横幅いっぱいにする</td>
+      </tr>
+      <tr>
+        <td><code>padding</code></td>
+        <td>入力欄の内側の余白</td>
+      </tr>
+      <tr>
+        <td><code>border</code></td>
+        <td>入力欄の枠線</td>
+      </tr>
+      <tr>
+        <td><code>border-radius</code></td>
+        <td>角を丸くする</td>
+      </tr>
+      <tr>
+        <td><code>background-color</code></td>
+        <td>背景色を指定する</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>20. お問い合わせフォームの完成例</h2>
+
+    <p>
+      ここまで学習したタグを使うと、次のようなフォームを作ることができます。
+    </p>
+
+    <pre><code>&lt;form action="#" method="post"&gt;
+  &lt;label for="name"&gt;名前&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+
+  &lt;label for="email"&gt;メールアドレス&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="country"&gt;出身国&lt;/label&gt;
+  &lt;select id="country" name="country"&gt;
+    &lt;option value=""&gt;選んでください&lt;/option&gt;
+    &lt;option value="vietnam"&gt;ベトナム&lt;/option&gt;
+    &lt;option value="china"&gt;中国&lt;/option&gt;
+    &lt;option value="nepal"&gt;ネパール&lt;/option&gt;
+    &lt;option value="other"&gt;その他&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;p&gt;好きな学習内容&lt;/p&gt;
+  &lt;label&gt;
+    &lt;input type="checkbox" name="study" value="html"&gt; HTML
+  &lt;/label&gt;
+  &lt;label&gt;
+    &lt;input type="checkbox" name="study" value="css"&gt; CSS
+  &lt;/label&gt;
+
+  &lt;label for="message"&gt;メッセージ&lt;/label&gt;
+  &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
+
+  &lt;input type="submit" value="送信"&gt;
+  &lt;input type="reset" value="リセット"&gt;
+&lt;/form&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <div class="sample-form">
+      <form action="#" method="post">
+        <label for="complete-name">名前</label>
+        <input type="text" id="complete-name" name="name" required>
+
+        <label for="complete-email">メールアドレス</label>
+        <input type="email" id="complete-email" name="email" required>
+
+        <label for="complete-country">出身国</label>
+        <select id="complete-country" name="country">
+          <option value="">選んでください</option>
+          <option value="vietnam">ベトナム</option>
+          <option value="china">中国</option>
+          <option value="nepal">ネパール</option>
+          <option value="myanmar">ミャンマー</option>
+          <option value="other">その他</option>
+        </select>
+
+        <p><strong>好きな学習内容</strong></p>
+        <label>
+          <input type="checkbox" name="study" value="html"> HTML
+        </label>
+        <label>
+          <input type="checkbox" name="study" value="css"> CSS
+        </label>
+        <label>
+          <input type="checkbox" name="study" value="design"> デザイン
+        </label>
+
+        <label for="complete-message">メッセージ</label>
+        <textarea id="complete-message" name="message"></textarea>
+
+        <input type="submit" value="送信">
+        <input type="reset" value="リセット">
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <h2>21. よくある間違い</h2>
+
+    <h3>間違い1：formタグで囲んでいない</h3>
+
+    <div class="danger">
+      <strong>悪い例：</strong>
+    </div>
+
+    <pre><code>&lt;input type="text" name="name"&gt;
+&lt;input type="submit" value="送信"&gt;</code></pre>
+
+    <p>
+      入力欄や送信ボタンは、基本的に <code>&lt;form&gt;</code> の中に書きます。
+    </p>
+
+    <div class="check">
+      <strong>正しい例：</strong>
+    </div>
+
+    <pre><code>&lt;form&gt;
+  &lt;input type="text" name="name"&gt;
+  &lt;input type="submit" value="送信"&gt;
+&lt;/form&gt;</code></pre>
+
+    <h3>間違い2：labelのforとinputのidが違う</h3>
+
+    <div class="danger">
+      <strong>悪い例：</strong>
+    </div>
+
+    <pre><code>&lt;label for="user"&gt;名前&lt;/label&gt;
+&lt;input type="text" id="name" name="name"&gt;</code></pre>
+
+    <div class="check">
+      <strong>正しい例：</strong>
+    </div>
+
+    <pre><code>&lt;label for="name"&gt;名前&lt;/label&gt;
+&lt;input type="text" id="name" name="name"&gt;</code></pre>
+
+    <h3>間違い3：radioのnameをバラバラにする</h3>
+
+    <p>
+      ラジオボタンで1つだけ選ばせたい場合は、同じグループの
+      <code>name</code> を同じにします。
+    </p>
+
+    <div class="danger">
+      <strong>悪い例：</strong>
+    </div>
+
+    <pre><code>&lt;input type="radio" name="spring" value="spring"&gt; 春
+&lt;input type="radio" name="summer" value="summer"&gt; 夏</code></pre>
+
+    <div class="check">
+      <strong>正しい例：</strong>
+    </div>
+
+    <pre><code>&lt;input type="radio" name="season" value="spring"&gt; 春
+&lt;input type="radio" name="season" value="summer"&gt; 夏</code></pre>
+  </section>
+
+  <section>
+    <h2>22. 必ず覚える重要コード</h2>
+
+    <h3>基本のフォーム</h3>
+
+    <pre><code>&lt;form action="#" method="post"&gt;
+  &lt;label for="name"&gt;名前&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+
+  &lt;input type="submit" value="送信"&gt;
+&lt;/form&gt;</code></pre>
+
+    <h3>長い文章の入力</h3>
+
+    <pre><code>&lt;textarea name="message"&gt;&lt;/textarea&gt;</code></pre>
+
+    <h3>プルダウンメニュー</h3>
+
+    <pre><code>&lt;select name="country"&gt;
+  &lt;option value="vietnam"&gt;ベトナム&lt;/option&gt;
+  &lt;option value="china"&gt;中国&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+    <h3>ラジオボタン</h3>
+
+    <pre><code>&lt;input type="radio" name="season" value="spring"&gt; 春
+&lt;input type="radio" name="season" value="summer"&gt; 夏</code></pre>
+
+    <h3>チェックボックス</h3>
+
+    <pre><code>&lt;input type="checkbox" name="food" value="sushi"&gt; 寿司
+&lt;input type="checkbox" name="food" value="ramen"&gt; ラーメン</code></pre>
+  </section>
+
+  <section>
+    <h2>23. テスト直前チェックリスト</h2>
+
+    <ul>
+      <li>フォーム全体は <code>&lt;form&gt;</code></li>
+      <li>1行の入力欄は <code>&lt;input&gt;</code></li>
+      <li>長い文章の入力は <code>&lt;textarea&gt;</code></li>
+      <li>プルダウンメニューは <code>&lt;select&gt;</code></li>
+      <li>選択肢は <code>&lt;option&gt;</code></li>
+      <li>入力欄の説明は <code>&lt;label&gt;</code></li>
+      <li>1行テキストは <code>type="text"</code></li>
+      <li>メールアドレスは <code>type="email"</code></li>
+      <li>パスワードは <code>type="password"</code></li>
+      <li>ラジオボタンは <code>type="radio"</code></li>
+      <li>チェックボックスは <code>type="checkbox"</code></li>
+      <li>送信ボタンは <code>type="submit"</code></li>
+      <li>リセットボタンは <code>type="reset"</code></li>
+      <li><code>required</code> は入力必須</li>
+      <li><code>placeholder</code> は入力例</li>
+      <li><code>action</code> は送信先</li>
+      <li><code>method</code> は送信方法</li>
+      <li><code>name</code> は送信するときの項目名</li>
+      <li><code>value</code> は送信される値やボタンの文字</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>24. 暗記用まとめ</h2>
+
+    <pre><code>form はフォーム全体
+
+input は1行入力やボタン
+textarea は長い文章
+select はプルダウン
+option は選択肢
+
+label は入力欄の説明
+
+type="text" は文字入力
+type="email" はメール
+type="password" はパスワード
+type="radio" は1つ選ぶ
+type="checkbox" は複数選ぶ
+type="submit" は送信
+type="reset" はリセット
+
+action は送信先
+method は送信方法
+
+name は項目名
+value は送信される値
+placeholder は入力例
+required は入力必須</code></pre>
+  </section>
+
+  <section>
+    <h2>25. 練習問題</h2>
+
+    <p>
+      フォームについて学習した内容を確認するために、
+      練習問題に挑戦しましょう。
+    </p>
+
+    <p>
+      問題では、<code>&lt;form&gt;</code>、<code>&lt;input&gt;</code>、
+      <code>&lt;label&gt;</code>、<code>&lt;textarea&gt;</code>、
+      <code>&lt;select&gt;</code>、<code>type</code> 属性などについて確認します。
+    </p>
+
+    <div class="point">
+      <strong>テストについて：</strong><br>
+      「採点する」ボタンを押すまで、答えは表示されません。<br>
+      すべての問題に答えてから採点しましょう。
+    </div>
+
+    <p>
+      <a href="form-test.html" class="test-link">フォーム確認テストを始める</a>
+    </p>
+  </section>
+
+<section>
+  <h2>26. 実践課題</h2>
+
+  <h3>課題：自己紹介サイトにお問い合わせフォームを作ろう</h3>
+
+  <p>
+    自己紹介サイトで使っている <strong>MySiteフォルダ</strong> の中に、
+    フォームを使ったページを作りましょう。
+  </p>
+
+  <p>
+    ファイル名は <code>contact.html</code> にします。
+  </p>
+
+  <p>
+    このページでは、見た人があなたにメッセージを送るための
+    お問い合わせフォームを作ります。
+  </p>
+
+  <div class="point">
+    <strong>課題の目的：</strong><br>
+    <code>&lt;form&gt;</code>、<code>&lt;label&gt;</code>、
+    <code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、
+    <code>&lt;select&gt;</code> を使って、
+    入力フォームを作る練習をします。
+  </div>
+
+  <h3>保存場所</h3>
+
+  <div class="check">
+    <strong>必ず守ること：</strong><br>
+    作成した <code>contact.html</code> は、
+    自己紹介サイトの <strong>MySiteフォルダ</strong> の中に保存してください。
+  </div>
+
+  <pre><code>MySite
+├── index.html
+├── profile.html
+├── country.html
+├── contact.html
+└── style.css</code></pre>
+
+  <h3>作るフォームの内容</h3>
+
+  <ul>
+    <li>名前を入力する欄</li>
+    <li>メールアドレスを入力する欄</li>
+    <li>出身国を選ぶプルダウンメニュー</li>
+    <li>好きな内容を選ぶチェックボックス</li>
+    <li>メッセージを書く欄</li>
+    <li>送信ボタン</li>
+    <li>リセットボタン</li>
+    <li>メインページに戻るリンク</li>
+  </ul>
+
+  <h3>完成イメージのHTML</h3>
+
+  <pre><code>&lt;h1&gt;お問い合わせ&lt;/h1&gt;
+
+&lt;p&gt;
+  私の自己紹介サイトを見てくれてありがとうございます。
+  メッセージがあれば、下のフォームに入力してください。
+&lt;/p&gt;
+
+&lt;form action="#" method="post"&gt;
+
+  &lt;label for="name"&gt;名前&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+
+  &lt;label for="email"&gt;メールアドレス&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="country"&gt;出身国&lt;/label&gt;
+  &lt;select id="country" name="country"&gt;
+    &lt;option value=""&gt;選んでください&lt;/option&gt;
+    &lt;option value="vietnam"&gt;ベトナム&lt;/option&gt;
+    &lt;option value="china"&gt;中国&lt;/option&gt;
+    &lt;option value="nepal"&gt;ネパール&lt;/option&gt;
+    &lt;option value="myanmar"&gt;ミャンマー&lt;/option&gt;
+    &lt;option value="other"&gt;その他&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;p&gt;興味がある内容&lt;/p&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" name="interest" value="country"&gt;
+    私の国について
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" name="interest" value="food"&gt;
+    好きな食べ物について
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" name="interest" value="hobby"&gt;
+    趣味について
+  &lt;/label&gt;
+
+  &lt;label for="message"&gt;メッセージ&lt;/label&gt;
+  &lt;textarea id="message" name="message" required&gt;&lt;/textarea&gt;
+
+  &lt;input type="submit" value="送信"&gt;
+  &lt;input type="reset" value="リセット"&gt;
+
+&lt;/form&gt;
+
+&lt;a href="index.html"&gt;メインページへ戻る&lt;/a&gt;</code></pre>
+
+  <h3>課題の条件</h3>
+
+  <ul>
+    <li><code>contact.html</code> を作る</li>
+    <li><code>contact.html</code> を <strong>MySiteフォルダ</strong> の中に保存する</li>
+    <li><code>&lt;h1&gt;</code> でページタイトルを書く</li>
+    <li><code>&lt;p&gt;</code> で説明文を書く</li>
+    <li><code>&lt;form&gt;</code> を使う</li>
+    <li><code>&lt;label&gt;</code> を使う</li>
+    <li><code>&lt;input type="text"&gt;</code> を使う</li>
+    <li><code>&lt;input type="email"&gt;</code> を使う</li>
+    <li><code>&lt;textarea&gt;</code> を使う</li>
+    <li><code>&lt;select&gt;</code> と <code>&lt;option&gt;</code> を使う</li>
+    <li><code>&lt;input type="submit"&gt;</code> を使う</li>
+    <li><code>&lt;input type="reset"&gt;</code> を使う</li>
+    <li>CSSでフォームを見やすくする</li>
+    <li><code>index.html</code> に戻るリンクを作る</li>
+  </ul>
+
+  <h3>チャレンジ</h3>
+
+  <p>余裕がある人は、次のことにも挑戦しましょう。</p>
+
+  <ul>
+    <li><code>required</code> を使って入力必須にする</li>
+    <li><code>placeholder</code> を使って入力例を表示する</li>
+    <li>ラジオボタンを使う</li>
+    <li>チェックボックスを3つ以上作る</li>
+    <li>フォームの背景色やボタンの色を変える</li>
+    <li>入力欄の角を丸くする</li>
+  </ul>
+</section>
+
+
+</main>
+
+<footer>
+  HTMLフォーム学習用ページ
+</footer>
+
+</body>
+</html>
