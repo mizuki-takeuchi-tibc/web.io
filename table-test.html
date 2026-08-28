@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HTMLテーブル確認テスト</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #2f80ed;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    .info {
+      background-color: #eef6ff;
+      border-left: 6px solid #2f80ed;
+      padding: 15px;
+      margin-bottom: 25px;
+    }
+
+    .question {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    .question h3 {
+      margin-top: 0;
+      color: #1f5fbf;
+    }
+
+    .choices label {
+      display: block;
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .choices label:hover {
+      background-color: #f0f6ff;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background-color: #2f80ed;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #1f5fbf;
+    }
+
+    .result {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #eafaf1;
+      border-left: 6px solid #27ae60;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      border-left: 5px solid #999;
+    }
+
+    .correct {
+      background-color: #eafaf1;
+      border-left-color: #27ae60;
+    }
+
+    .incorrect {
+      background-color: #fdecea;
+      border-left-color: #eb5757;
+    }
+
+    .unanswered {
+      background-color: #fff8d6;
+      border-left-color: #f2c94c;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #2f80ed;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>HTMLテーブル確認テスト</h1>
+  <p>table・tr・th・td・CSSの確認をしましょう</p>
+</header>
+
+<main>
+
+  <div class="info">
+    <h2>テストの説明</h2>
+    <p>
+      HTMLのテーブルに関する確認テストです。<br>
+      それぞれの問題で、正しい答えを1つ選んでください。
+    </p>
+    <p>
+      <strong>「採点する」ボタンを押すまで、答えは表示されません。</strong>
+    </p>
+  </div>
+
+  <form id="quizForm">
+
+    <div class="question" data-answer="c">
+      <h3>問題1</h3>
+      <p>HTMLで表全体を作るタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q1" value="a"> &lt;tr&gt;</label>
+        <label><input type="radio" name="q1" value="b"> &lt;td&gt;</label>
+        <label><input type="radio" name="q1" value="c"> &lt;table&gt;</label>
+        <label><input type="radio" name="q1" value="d"> &lt;th&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;table&gt;<br>
+        &lt;table&gt; は表全体を表すタグです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題2</h3>
+      <p>表の1行を表すタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q2" value="a"> &lt;tr&gt;</label>
+        <label><input type="radio" name="q2" value="b"> &lt;td&gt;</label>
+        <label><input type="radio" name="q2" value="c"> &lt;caption&gt;</label>
+        <label><input type="radio" name="q2" value="d"> &lt;thead&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;tr&gt;<br>
+        &lt;tr&gt; は table row の意味で、表の1行を表します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題3</h3>
+      <p>表の見出しセルに使うタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q3" value="a"> &lt;td&gt;</label>
+        <label><input type="radio" name="q3" value="b"> &lt;th&gt;</label>
+        <label><input type="radio" name="q3" value="c"> &lt;tr&gt;</label>
+        <label><input type="radio" name="q3" value="d"> &lt;table&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;th&gt;<br>
+        &lt;th&gt; は見出しセルに使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題4</h3>
+      <p>普通のデータを入れるセルに使うタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q4" value="a"> &lt;td&gt;</label>
+        <label><input type="radio" name="q4" value="b"> &lt;th&gt;</label>
+        <label><input type="radio" name="q4" value="c"> &lt;tbody&gt;</label>
+        <label><input type="radio" name="q4" value="d"> &lt;caption&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;td&gt;<br>
+        &lt;td&gt; は普通のデータセルに使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題5</h3>
+      <p>表にタイトルをつけるタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q5" value="a"> &lt;title&gt;</label>
+        <label><input type="radio" name="q5" value="b"> &lt;h1&gt;</label>
+        <label><input type="radio" name="q5" value="c"> &lt;p&gt;</label>
+        <label><input type="radio" name="q5" value="d"> &lt;caption&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;caption&gt;<br>
+        &lt;caption&gt; は表のタイトルを表します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題6</h3>
+      <p>横方向にセルを結合する属性はどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q6" value="a"> rowspan</label>
+        <label><input type="radio" name="q6" value="b"> src</label>
+        <label><input type="radio" name="q6" value="c"> colspan</label>
+        <label><input type="radio" name="q6" value="d"> href</label>
+      </div>
+      <div class="answer">
+        正解：colspan<br>
+        colspan は横方向、つまり列を結合するときに使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題7</h3>
+      <p>縦方向にセルを結合する属性はどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q7" value="a"> rowspan</label>
+        <label><input type="radio" name="q7" value="b"> colspan</label>
+        <label><input type="radio" name="q7" value="c"> class</label>
+        <label><input type="radio" name="q7" value="d"> alt</label>
+      </div>
+      <div class="answer">
+        正解：rowspan<br>
+        rowspan は縦方向、つまり行を結合するときに使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題8</h3>
+      <p>次のコードで、セルはいくつ分横に結合されますか。</p>
+      <pre><code>&lt;th colspan="3"&gt;まとめ&lt;/th&gt;</code></pre>
+      <div class="choices">
+        <label><input type="radio" name="q8" value="a"> 2つ分</label>
+        <label><input type="radio" name="q8" value="b"> 3つ分</label>
+        <label><input type="radio" name="q8" value="c"> 4つ分</label>
+        <label><input type="radio" name="q8" value="d"> 結合されない</label>
+      </div>
+      <div class="answer">
+        正解：3つ分<br>
+        colspan="3" は、横に3つ分のセルを結合します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題9</h3>
+      <p>次のコードで、セルはいくつ分縦に結合されますか。</p>
+      <pre><code>&lt;td rowspan="2"&gt;月曜日&lt;/td&gt;</code></pre>
+      <div class="choices">
+        <label><input type="radio" name="q9" value="a"> 1つ分</label>
+        <label><input type="radio" name="q9" value="b"> 横に2つ分</label>
+        <label><input type="radio" name="q9" value="c"> 縦に2つ分</label>
+        <label><input type="radio" name="q9" value="d"> 縦に3つ分</label>
+      </div>
+      <div class="answer">
+        正解：縦に2つ分<br>
+        rowspan="2" は、縦に2つ分のセルを結合します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題10</h3>
+      <p>テーブルの枠線をCSSで指定するときに使うプロパティはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q10" value="a"> color</label>
+        <label><input type="radio" name="q10" value="b"> font-size</label>
+        <label><input type="radio" name="q10" value="c"> margin</label>
+        <label><input type="radio" name="q10" value="d"> border</label>
+      </div>
+      <div class="answer">
+        正解：border<br>
+        border は枠線を指定するCSSプロパティです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題11</h3>
+      <p>セルの内側の余白を指定するCSSプロパティはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q11" value="a"> margin</label>
+        <label><input type="radio" name="q11" value="b"> padding</label>
+        <label><input type="radio" name="q11" value="c"> border</label>
+        <label><input type="radio" name="q11" value="d"> width</label>
+      </div>
+      <div class="answer">
+        正解：padding<br>
+        padding は要素の内側の余白を指定します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題12</h3>
+      <p>セル同士の枠線を重ねて、すっきり表示するCSSはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q12" value="a"> border-collapse: collapse;</label>
+        <label><input type="radio" name="q12" value="b"> text-align: center;</label>
+        <label><input type="radio" name="q12" value="c"> background-color: white;</label>
+        <label><input type="radio" name="q12" value="d"> width: 100%;</label>
+      </div>
+      <div class="answer">
+        正解：border-collapse: collapse;<br>
+        表の線を1本にまとめて、見やすくする指定です。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題13</h3>
+      <p>次のコードで正しい説明はどれですか。</p>
+      <pre><code>&lt;tr&gt;
+  &lt;th&gt;名前&lt;/th&gt;
+  &lt;th&gt;年齢&lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+      <div class="choices">
+        <label><input type="radio" name="q13" value="a"> 表全体を作っている</label>
+        <label><input type="radio" name="q13" value="b"> 普通のデータセルを2つ作っている</label>
+        <label><input type="radio" name="q13" value="c"> 見出しセルを2つ持つ1行を作っている</label>
+        <label><input type="radio" name="q13" value="d"> 画像を表示している</label>
+      </div>
+      <div class="answer">
+        正解：見出しセルを2つ持つ1行を作っている<br>
+        &lt;tr&gt; は1行、&lt;th&gt; は見出しセルです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題14</h3>
+      <p>次のうち、正しいテーブルの書き方はどれですか。</p>
+      <div class="choices">
+        <label>
+          <input type="radio" name="q14" value="a">
+          &lt;table&gt;&lt;td&gt;名前&lt;/td&gt;&lt;/table&gt;
+        </label>
+        <label>
+          <input type="radio" name="q14" value="b">
+          &lt;table&gt;&lt;tr&gt;&lt;td&gt;名前&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        </label>
+        <label>
+          <input type="radio" name="q14" value="c">
+          &lt;tr&gt;&lt;table&gt;&lt;td&gt;名前&lt;/td&gt;&lt;/table&gt;&lt;/tr&gt;
+        </label>
+        <label>
+          <input type="radio" name="q14" value="d">
+          &lt;td&gt;&lt;tr&gt;&lt;table&gt;名前&lt;/table&gt;&lt;/tr&gt;&lt;/td&gt;
+        </label>
+      </div>
+      <div class="answer">
+        正解：&lt;table&gt;&lt;tr&gt;&lt;td&gt;名前&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;<br>
+        &lt;td&gt; は必ず &lt;tr&gt; の中に書きます。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題15</h3>
+      <p>次の表を作るとき、1行目の「項目」「母国」「日本」にはどのタグを使うのがよいですか。</p>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr>
+          <th style="border:1px solid #333; padding:8px;">項目</th>
+          <th style="border:1px solid #333; padding:8px;">母国</th>
+          <th style="border:1px solid #333; padding:8px;">日本</th>
+        </tr>
+        <tr>
+          <td style="border:1px solid #333; padding:8px;">食べ物</td>
+          <td style="border:1px solid #333; padding:8px;">フォー</td>
+          <td style="border:1px solid #333; padding:8px;">寿司</td>
+        </tr>
+      </table>
+      <div class="choices">
+        <label><input type="radio" name="q15" value="a"> &lt;td&gt;</label>
+        <label><input type="radio" name="q15" value="b"> &lt;p&gt;</label>
+        <label><input type="radio" name="q15" value="c"> &lt;caption&gt;</label>
+        <label><input type="radio" name="q15" value="d"> &lt;th&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;th&gt;<br>
+        「項目」「母国」「日本」は表の見出しなので、&lt;th&gt; を使います。
+      </div>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">採点する</button>
+
+  </form>
+
+  <div id="result" class="result"></div>
+
+  <a href="table.html" class="back-link">メインページへ戻る</a>
+
+</main>
+
+<script>
+  function checkAnswers() {
+    const questions = document.querySelectorAll(".question");
+    let score = 0;
+    let total = questions.length;
+
+    questions.forEach((question, index) => {
+      const correctAnswer = question.dataset.answer;
+      const selected = question.querySelector("input[type='radio']:checked");
+      const answerBox = question.querySelector(".answer");
+
+      question.classList.remove("correct", "incorrect", "unanswered");
+
+      if (!selected) {
+        question.classList.add("unanswered");
+        answerBox.innerHTML += "<br><strong>あなたの答え：</strong>未回答";
+      } else if (selected.value === correctAnswer) {
+        score++;
+        question.classList.add("correct");
+        answerBox.innerHTML += "<br><strong>あなたの答え：</strong>正解";
+      } else {
+        question.classList.add("incorrect");
+        answerBox.innerHTML += "<br><strong>あなたの答え：</strong>不正解";
+      }
+
+      answerBox.style.display = "block";
+    });
+
+    const result = document.getElementById("result");
+    result.style.display = "block";
+    result.innerHTML = `
+      <h2>採点結果</h2>
+      <p><strong>${total}問中 ${score}問正解です。</strong></p>
+      <p>正解と解説を確認しましょう。</p>
+    `;
+
+    const inputs = document.querySelectorAll("input[type='radio']");
+    inputs.forEach(input => {
+      input.disabled = true;
+    });
+
+    const button = document.querySelector("button");
+    button.disabled = true;
+    button.textContent = "採点済み";
+    button.style.backgroundColor = "#999";
+
+    result.scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>
