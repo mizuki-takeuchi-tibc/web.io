@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HTMLテーブル学習用</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #2f80ed;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    section {
+      padding: 25px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    h2 {
+      border-left: 6px solid #2f80ed;
+      padding-left: 10px;
+      color: #1f5fbf;
+    }
+
+    code {
+      background-color: #eef3ff;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background-color: white;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e3efff;
+    }
+
+    caption {
+      caption-side: top;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .point {
+      background-color: #fff8d6;
+      border-left: 6px solid #f2c94c;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    .check {
+      background-color: #eafaf1;
+      border-left: 6px solid #27ae60;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    .danger {
+      background-color: #fdecea;
+      border-left: 6px solid #eb5757;
+      padding: 12px 15px;
+      margin: 15px 0;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+    }
+
+    .sample-table th {
+      background-color: #dbeafe;
+    }
+
+    .sample-table tr:nth-child(even) {
+      background-color: #f8fbff;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+.test-link {
+  display: inline-block;
+  background-color: #2f80ed;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.test-link:hover {
+  background-color: #1f5fbf;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>竹内先生集中講義TABLE学習用</h1>
+  <p>表を作るためのHTMLタグとCSSを覚えよう</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>1. テーブルとは</h2>
+    <p>
+      テーブルは、データを行と列で整理して表示するために使います。
+      例えば、時間割、成績表、料金表、商品一覧などを作るときに便利です。
+    </p>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      HTMLで表を作るときは <code>&lt;table&gt;</code> を使う。
+    </div>
+  </section>
+
+  <section>
+    <h2>2. テーブルで使う基本タグ</h2>
+
+    <table>
+      <caption>テーブルでよく使うHTMLタグ</caption>
+      <tr>
+        <th>タグ</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>&lt;table&gt;</code></td>
+        <td>表全体を表す</td>
+      </tr>
+      <tr>
+        <td><code>&lt;tr&gt;</code></td>
+        <td>表の1行を表す</td>
+      </tr>
+      <tr>
+        <td><code>&lt;th&gt;</code></td>
+        <td>見出しセルを表す</td>
+      </tr>
+      <tr>
+        <td><code>&lt;td&gt;</code></td>
+        <td>普通のデータセルを表す</td>
+      </tr>
+      <tr>
+        <td><code>&lt;caption&gt;</code></td>
+        <td>表のタイトルを表す</td>
+      </tr>
+    </table>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      <code>table</code> は表全体、<code>tr</code> は行、<code>th</code> は見出し、<code>td</code> はデータ。
+    </div>
+  </section>
+
+  <section>
+    <h2>3. 基本のテーブル</h2>
+
+    <p>次のように書くと、簡単な表を作ることができます。</p>
+
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;名前&lt;/th&gt;
+    &lt;th&gt;年齢&lt;/th&gt;
+    &lt;th&gt;出身地&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;田中&lt;/td&gt;
+    &lt;td&gt;18&lt;/td&gt;
+    &lt;td&gt;東京&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;佐藤&lt;/td&gt;
+    &lt;td&gt;19&lt;/td&gt;
+    &lt;td&gt;大阪&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <table class="sample-table">
+      <tr>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>出身地</th>
+      </tr>
+      <tr>
+        <td>田中</td>
+        <td>18</td>
+        <td>東京</td>
+      </tr>
+      <tr>
+        <td>佐藤</td>
+        <td>19</td>
+        <td>大阪</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>4. table・tr・th・tdの関係</h2>
+
+    <p>テーブルは、次のような構造になっています。</p>
+
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;見出し1&lt;/th&gt;
+    &lt;th&gt;見出し2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;データ1&lt;/td&gt;
+    &lt;td&gt;データ2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <table>
+      <tr>
+        <th>部分</th>
+        <th>説明</th>
+      </tr>
+      <tr>
+        <td><code>&lt;table&gt;</code></td>
+        <td>表全体を囲む</td>
+      </tr>
+      <tr>
+        <td><code>&lt;tr&gt;</code></td>
+        <td>1行ごとに書く</td>
+      </tr>
+      <tr>
+        <td><code>&lt;th&gt;</code></td>
+        <td>見出しのセルに使う</td>
+      </tr>
+      <tr>
+        <td><code>&lt;td&gt;</code></td>
+        <td>普通のデータのセルに使う</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>5. captionで表のタイトルをつける</h2>
+
+    <p>
+      <code>&lt;caption&gt;</code> を使うと、表にタイトルを付けることができます。
+      表の内容が何を表しているのか分かりやすくなります。
+    </p>
+
+    <pre><code>&lt;table&gt;
+  &lt;caption&gt;成績表&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;科目&lt;/th&gt;
+    &lt;th&gt;点数&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;国語&lt;/td&gt;
+    &lt;td&gt;80&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <table>
+      <caption>成績表</caption>
+      <tr>
+        <th>科目</th>
+        <th>点数</th>
+      </tr>
+      <tr>
+        <td>国語</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>数学</td>
+        <td>90</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. thead・tbody・tfoot</h2>
+
+    <p>
+      表の構造を分かりやすくするために、
+      <code>&lt;thead&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;tfoot&gt;</code>
+      を使うことがあります。
+    </p>
+
+    <table>
+      <tr>
+        <th>タグ</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>&lt;thead&gt;</code></td>
+        <td>表のヘッダー部分</td>
+      </tr>
+      <tr>
+        <td><code>&lt;tbody&gt;</code></td>
+        <td>表の本体部分</td>
+      </tr>
+      <tr>
+        <td><code>&lt;tfoot&gt;</code></td>
+        <td>表のフッター部分、合計など</td>
+      </tr>
+    </table>
+
+    <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;商品&lt;/th&gt;
+      &lt;th&gt;価格&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;りんご&lt;/td&gt;
+      &lt;td&gt;100円&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;みかん&lt;/td&gt;
+      &lt;td&gt;80円&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;th&gt;合計&lt;/th&gt;
+      &lt;td&gt;180円&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>価格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>りんご</td>
+          <td>100円</td>
+        </tr>
+        <tr>
+          <td>みかん</td>
+          <td>80円</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>合計</th>
+          <td>180円</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <section>
+    <h2>7. 列を結合する colspan</h2>
+
+    <p>
+      横方向、つまり列を結合したいときは <code>colspan</code> 属性を使います。
+    </p>
+
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th colspan="2"&gt;プロフィール&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;名前&lt;/td&gt;
+    &lt;td&gt;田中&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <table>
+      <tr>
+        <th colspan="2">プロフィール</th>
+      </tr>
+      <tr>
+        <td>名前</td>
+        <td>田中</td>
+      </tr>
+      <tr>
+        <td>年齢</td>
+        <td>18</td>
+      </tr>
+    </table>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      <code>colspan="2"</code> は、横に2つ分のセルを結合する。
+    </div>
+  </section>
+
+  <section>
+    <h2>8. 行を結合する rowspan</h2>
+
+    <p>
+      縦方向、つまり行を結合したいときは <code>rowspan</code> 属性を使います。
+    </p>
+
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;曜日&lt;/th&gt;
+    &lt;th&gt;科目&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;月曜日&lt;/td&gt;
+    &lt;td&gt;国語&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;数学&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>表示例</h3>
+
+    <table>
+      <tr>
+        <th>曜日</th>
+        <th>科目</th>
+      </tr>
+      <tr>
+        <td rowspan="2">月曜日</td>
+        <td>国語</td>
+      </tr>
+      <tr>
+        <td>数学</td>
+      </tr>
+      <tr>
+        <td>火曜日</td>
+        <td>英語</td>
+      </tr>
+    </table>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      <code>rowspan="2"</code> は、縦に2つ分のセルを結合する。
+    </div>
+  </section>
+
+  <section>
+    <h2>9. テーブルにCSSを当てる</h2>
+
+    <p>
+      HTMLだけでも表は作れますが、見た目を整えるにはCSSを使います。
+    </p>
+
+    <pre><code>table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+th {
+  background-color: #e3efff;
+}</code></pre>
+
+    <table>
+      <tr>
+        <th>CSS</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>width: 100%;</code></td>
+        <td>表の幅を親要素いっぱいにする</td>
+      </tr>
+      <tr>
+        <td><code>border-collapse: collapse;</code></td>
+        <td>セル同士の線を重ねて、すっきり表示する</td>
+      </tr>
+      <tr>
+        <td><code>border</code></td>
+        <td>枠線をつける</td>
+      </tr>
+      <tr>
+        <td><code>padding</code></td>
+        <td>セルの内側の余白をつける</td>
+      </tr>
+      <tr>
+        <td><code>background-color</code></td>
+        <td>背景色をつける</td>
+      </tr>
+    </table>
+
+    <div class="check">
+      <strong>ポイント：</strong><br>
+      テーブルの枠線は、HTMLの <code>border</code> 属性ではなく、CSSの <code>border</code> で指定するのが基本です。
+    </div>
+  </section>
+
+  <section>
+    <h2>10. よく使うテーブル用CSS</h2>
+
+    <table>
+      <tr>
+        <th>目的</th>
+        <th>CSS</th>
+        <th>例</th>
+      </tr>
+      <tr>
+        <td>表の線を1本にする</td>
+        <td><code>border-collapse</code></td>
+        <td><code>border-collapse: collapse;</code></td>
+      </tr>
+      <tr>
+        <td>枠線をつける</td>
+        <td><code>border</code></td>
+        <td><code>border: 1px solid #000;</code></td>
+      </tr>
+      <tr>
+        <td>内側の余白</td>
+        <td><code>padding</code></td>
+        <td><code>padding: 10px;</code></td>
+      </tr>
+      <tr>
+        <td>文字を中央揃え</td>
+        <td><code>text-align</code></td>
+        <td><code>text-align: center;</code></td>
+      </tr>
+      <tr>
+        <td>背景色</td>
+        <td><code>background-color</code></td>
+        <td><code>background-color: #eee;</code></td>
+      </tr>
+      <tr>
+        <td>幅</td>
+        <td><code>width</code></td>
+        <td><code>width: 100%;</code></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>11. thとtdの違い</h2>
+
+    <table>
+      <tr>
+        <th>タグ</th>
+        <th>意味</th>
+        <th>使う場所</th>
+      </tr>
+      <tr>
+        <td><code>&lt;th&gt;</code></td>
+        <td>見出しセル</td>
+        <td>項目名、列名、行名など</td>
+      </tr>
+      <tr>
+        <td><code>&lt;td&gt;</code></td>
+        <td>データセル</td>
+        <td>実際のデータ</td>
+      </tr>
+    </table>
+
+    <div class="point">
+      <strong>覚える：</strong><br>
+      <code>th</code> は見出し、<code>td</code> は普通のデータ。
+    </div>
+  </section>
+
+  <section>
+    <h2>12. よくある間違い</h2>
+
+    <h3>間違い1：trを書かずにtdを書く</h3>
+
+    <div class="danger">
+      <strong>悪い例：</strong>
+    </div>
+
+    <pre><code>&lt;table&gt;
+  &lt;td&gt;名前&lt;/td&gt;
+  &lt;td&gt;年齢&lt;/td&gt;
+&lt;/table&gt;</code></pre>
+
+    <p>
+      <code>&lt;td&gt;</code> は必ず <code>&lt;tr&gt;</code> の中に書きます。
+    </p>
+
+    <div class="check">
+      <strong>正しい例：</strong>
+    </div>
+
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;名前&lt;/td&gt;
+    &lt;td&gt;年齢&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>間違い2：見出しにもtdを使ってしまう</h3>
+
+    <p>
+      表の見出しには、できるだけ <code>&lt;th&gt;</code> を使います。
+    </p>
+
+    <h3>間違い3：colspanとrowspanを逆に覚える</h3>
+
+    <table>
+      <tr>
+        <th>属性</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><code>colspan</code></td>
+        <td>横方向、列を結合する</td>
+      </tr>
+      <tr>
+        <td><code>rowspan</code></td>
+        <td>縦方向、行を結合する</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>13. 必ず覚える重要コード</h2>
+
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;見出し1&lt;/th&gt;
+    &lt;th&gt;見出し2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;データ1&lt;/td&gt;
+    &lt;td&gt;データ2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <pre><code>table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #000;
+  padding: 10px;
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>14. テスト直前チェックリスト</h2>
+
+    <ul>
+      <li>表全体は <code>&lt;table&gt;</code></li>
+      <li>1行は <code>&lt;tr&gt;</code></li>
+      <li>見出しセルは <code>&lt;th&gt;</code></li>
+      <li>普通のデータセルは <code>&lt;td&gt;</code></li>
+      <li>表のタイトルは <code>&lt;caption&gt;</code></li>
+      <li>表のヘッダー部分は <code>&lt;thead&gt;</code></li>
+      <li>表の本体部分は <code>&lt;tbody&gt;</code></li>
+      <li>表のフッター部分は <code>&lt;tfoot&gt;</code></li>
+      <li>横にセルを結合するのは <code>colspan</code></li>
+      <li>縦にセルを結合するのは <code>rowspan</code></li>
+      <li>枠線はCSSの <code>border</code> で指定する</li>
+      <li>セルの内側の余白は <code>padding</code></li>
+      <li>セルの線をすっきりさせるには <code>border-collapse: collapse;</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>15. 暗記用まとめ</h2>
+
+    <pre><code>table は表全体
+tr は1行
+th は見出し
+td はデータ
+
+caption は表のタイトル
+
+colspan は横に結合
+rowspan は縦に結合
+
+border は枠線
+padding は内側の余白
+border-collapse: collapse; は線を重ねる</code></pre>
+  </section>
+
+<section>
+  <h2>16. 練習問題</h2>
+
+  <p>
+    テーブルについて学習した内容を確認するために、
+    練習問題に挑戦しましょう。
+  </p>
+
+  <p>
+    問題では、<code>&lt;table&gt;</code>、<code>&lt;tr&gt;</code>、
+    <code>&lt;th&gt;</code>、<code>&lt;td&gt;</code>、
+    <code>colspan</code>、<code>rowspan</code>、
+    テーブル用CSSなどについて確認します。
+  </p>
+
+  <div class="point">
+    <strong>テストについて：</strong><br>
+    「採点する」ボタンを押すまで、答えは表示されません。<br>
+    すべての問題に答えてから採点しましょう。
+  </div>
+
+  <p>
+    <a href="table-test.html" class="test-link">テーブル確認テストを始める</a>
+  </p>
+</section>
+
+
+<section>
+  <h2>17. 実践課題</h2>
+
+  <h3>課題：母国と日本の違いを表でまとめよう</h3>
+
+  <p>
+    自己紹介サイトで使っている <strong>MySiteフォルダ</strong> の中に、
+    テーブルを使ったページを作りましょう。
+  </p>
+
+  <p>
+    ファイル名は <code>country.html</code> にします。
+  </p>
+
+  <p>
+    テーマは「母国と日本の違い」です。
+    自分の母国と日本を比べて、違うところや似ているところを
+    HTMLの表で分かりやすくまとめてください。
+  </p>
+
+  <div class="point">
+    <strong>課題の目的：</strong><br>
+    <code>&lt;table&gt;</code>、<code>&lt;tr&gt;</code>、
+    <code>&lt;th&gt;</code>、<code>&lt;td&gt;</code> を使って、
+    情報を表として整理する練習をします。
+  </div>
+
+  <h3>保存場所</h3>
+
+  <div class="check">
+    <strong>必ず守ること：</strong><br>
+    作成した <code>country.html</code> は、
+    自己紹介サイトの <strong>MySiteフォルダ</strong> の中に保存してください。
+  </div>
+
+  <pre><code>MySite
+├── index.html
+├── profile.html
+├── country.html
+└── style.css</code></pre>
+
+  <h3>作る表の例</h3>
+
+  <table>
+    <caption>母国と日本の違い</caption>
+    <tr>
+      <th>項目</th>
+      <th>母国</th>
+      <th>日本</th>
+    </tr>
+    <tr>
+      <td>あいさつ</td>
+      <td>シンチャオ</td>
+      <td>こんにちは</td>
+    </tr>
+    <tr>
+      <td>食べ物</td>
+      <td>フォー</td>
+      <td>寿司、ラーメン</td>
+    </tr>
+    <tr>
+      <td>交通</td>
+      <td>バイクが多い</td>
+      <td>電車が多い</td>
+    </tr>
+    <tr>
+      <td>季節</td>
+      <td>暑い季節が長い</td>
+      <td>四季がある</td>
+    </tr>
+    <tr>
+      <td>学校生活</td>
+      <td>朝から勉強します</td>
+      <td>授業の時間が決まっています</td>
+    </tr>
+  </table>
+
+  <h3>書く内容の例</h3>
+
+  <p>表の項目は、次の中から選んでもいいです。</p>
+
+  <ul>
+    <li>あいさつ</li>
+    <li>食べ物</li>
+    <li>交通</li>
+    <li>季節</li>
+    <li>学校生活</li>
+    <li>服</li>
+    <li>家族</li>
+    <li>有名な場所</li>
+    <li>お祭り</li>
+    <li>休みの日の過ごし方</li>
+    <li>マナー</li>
+    <li>日本に来てびっくりしたこと</li>
+    <li>日本の好きなところ</li>
+  </ul>
+
+  <h3>必ず使うタグ</h3>
+
+  <ul>
+    <li><code>&lt;table&gt;</code>：表全体</li>
+    <li><code>&lt;tr&gt;</code>：表の1行</li>
+    <li><code>&lt;th&gt;</code>：見出しセル</li>
+    <li><code>&lt;td&gt;</code>：データセル</li>
+  </ul>
+
+  <h3>できれば使うタグ・属性</h3>
+
+  <ul>
+    <li><code>&lt;caption&gt;</code>：表のタイトル</li>
+    <li><code>colspan</code>：横方向のセル結合</li>
+    <li><code>rowspan</code>：縦方向のセル結合</li>
+  </ul>
+
+  <h3>完成イメージのHTML</h3>
+
+  <pre><code>&lt;h1&gt;母国と日本の違い&lt;/h1&gt;
+
+&lt;p&gt;
+  このページでは、私の母国と日本の違いを表で紹介します。
+&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;caption&gt;母国と日本の比較表&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;項目&lt;/th&gt;
+    &lt;th&gt;母国&lt;/th&gt;
+    &lt;th&gt;日本&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;あいさつ&lt;/td&gt;
+    &lt;td&gt;シンチャオ&lt;/td&gt;
+    &lt;td&gt;こんにちは&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;食べ物&lt;/td&gt;
+    &lt;td&gt;フォー&lt;/td&gt;
+    &lt;td&gt;寿司、ラーメン&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;交通&lt;/td&gt;
+    &lt;td&gt;バイクが多い&lt;/td&gt;
+    &lt;td&gt;電車が多い&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;季節&lt;/td&gt;
+    &lt;td&gt;暑い季節が長い&lt;/td&gt;
+    &lt;td&gt;四季がある&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;学校生活&lt;/td&gt;
+    &lt;td&gt;朝から勉強します&lt;/td&gt;
+    &lt;td&gt;授業の時間が決まっています&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+  <h3>課題の条件</h3>
+
+  <ul>
+    <li><code>country.html</code> を作る</li>
+    <li><code>country.html</code> を <strong>MySiteフォルダ</strong> の中に保存する</li>
+    <li>表のタイトルをつける</li>
+    <li>母国と日本を比べる表を作る</li>
+    <li>項目を5つ以上書く</li>
+    <li><code>&lt;table&gt;</code> を使う</li>
+    <li><code>&lt;tr&gt;</code> を使う</li>
+    <li><code>&lt;th&gt;</code> を使う</li>
+    <li><code>&lt;td&gt;</code> を使う</li>
+    <li>CSSで表に枠線をつける</li>
+    <li>セルに余白をつける</li>
+    <li><code>index.html</code> に戻るリンクを作る</li>
+  </ul>
+
+  <h3>チャレンジ</h3>
+
+  <p>余裕がある人は、次のことにも挑戦しましょう。</p>
+
+  <ul>
+    <li><code>caption</code> を使って表のタイトルを書く</li>
+    <li><code>colspan</code> を使ってまとめの行を作る</li>
+    <li>見出しセルの背景色を変える</li>
+    <li>表のデザインを自分らしくする</li>
+    <li>母国の写真や国旗の画像を入れる</li>
+  </ul>
+
+  <h3>colspanを使ったまとめ行の例</h3>
+
+  <pre><code>&lt;tr&gt;
+  &lt;th colspan="3"&gt;まとめ&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td colspan="3"&gt;
+    母国と日本にはいろいろな違いがありますが、
+    どちらにも良いところがあります。
+  &lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+</section>
+
+
+
+</main>
+
+<footer>
+  HTMLテーブル学習用ページ
+</footer>
+
+</body>
+</html>
