@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HTMLフォーム確認テスト</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #27ae60;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    .info {
+      background-color: #eafaf1;
+      border-left: 6px solid #27ae60;
+      padding: 15px;
+      margin-bottom: 25px;
+    }
+
+    .question {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    .question h3 {
+      margin-top: 0;
+      color: #1e874b;
+    }
+
+    .choices label {
+      display: block;
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .choices label:hover {
+      background-color: #f0fff6;
+    }
+
+    pre {
+      background-color: #1e1e1e;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      background-color: #eafaf1;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background-color: #27ae60;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #1e874b;
+    }
+
+    .result {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #eafaf1;
+      border-left: 6px solid #27ae60;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      border-left: 5px solid #999;
+    }
+
+    .correct {
+      background-color: #eafaf1;
+      border-left-color: #27ae60;
+    }
+
+    .incorrect {
+      background-color: #fdecea;
+      border-left-color: #eb5757;
+    }
+
+    .unanswered {
+      background-color: #fff8d6;
+      border-left-color: #f2c94c;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #27ae60;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .sample-form {
+      background-color: #f8fbff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .sample-form input,
+    .sample-form textarea,
+    .sample-form select {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>HTMLフォーム確認テスト</h1>
+  <p>form・input・label・textarea・selectなどを確認しよう</p>
+</header>
+
+<main>
+
+  <div class="info">
+    <h2>テストの説明</h2>
+    <p>
+      HTMLフォームに関する確認テストです。<br>
+      それぞれの問題で、正しい答えを1つ選んでください。
+    </p>
+    <p>
+      <strong>「採点する」ボタンを押すまで、答えは表示されません。</strong>
+    </p>
+  </div>
+
+  <form id="quizForm">
+
+    <div class="question" data-answer="c">
+      <h3>問題1</h3>
+      <p>フォーム全体を表すHTMLタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q1" value="a"> &lt;input&gt;</label>
+        <label><input type="radio" name="q1" value="b"> &lt;label&gt;</label>
+        <label><input type="radio" name="q1" value="c"> &lt;form&gt;</label>
+        <label><input type="radio" name="q1" value="d"> &lt;textarea&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;form&gt;<br>
+        &lt;form&gt; はフォーム全体を囲むタグです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題2</h3>
+      <p>1行の文字入力欄を作るときに使うコードはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q2" value="a"> &lt;input type="text"&gt;</label>
+        <label><input type="radio" name="q2" value="b"> &lt;input type="radio"&gt;</label>
+        <label><input type="radio" name="q2" value="c"> &lt;textarea&gt;</label>
+        <label><input type="radio" name="q2" value="d"> &lt;select&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;input type="text"&gt;<br>
+        名前などの1行入力には type="text" を使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題3</h3>
+      <p>長い文章を入力する欄を作るタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q3" value="a"> &lt;input type="text"&gt;</label>
+        <label><input type="radio" name="q3" value="b"> &lt;textarea&gt;</label>
+        <label><input type="radio" name="q3" value="c"> &lt;option&gt;</label>
+        <label><input type="radio" name="q3" value="d"> &lt;button&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;textarea&gt;<br>
+        感想やメッセージなど、長い文章の入力には &lt;textarea&gt; を使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題4</h3>
+      <p>入力欄の説明を表すタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q4" value="a"> &lt;form&gt;</label>
+        <label><input type="radio" name="q4" value="b"> &lt;input&gt;</label>
+        <label><input type="radio" name="q4" value="c"> &lt;p&gt;</label>
+        <label><input type="radio" name="q4" value="d"> &lt;label&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;label&gt;<br>
+        &lt;label&gt; は入力欄の説明を書くタグです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題5</h3>
+      <p><code>&lt;label&gt;</code> の <code>for</code> 属性と同じ値にするものはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q5" value="a"> 入力欄の id</label>
+        <label><input type="radio" name="q5" value="b"> 入力欄の type</label>
+        <label><input type="radio" name="q5" value="c"> フォームの action</label>
+        <label><input type="radio" name="q5" value="d"> ボタンの value</label>
+      </div>
+      <div class="answer">
+        正解：入力欄の id<br>
+        label の for と input の id を同じにすると、ラベルと入力欄が関連付きます。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題6</h3>
+      <p>メールアドレス入力欄を作るときに使うコードはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q6" value="a"> &lt;input type="text"&gt;</label>
+        <label><input type="radio" name="q6" value="b"> &lt;input type="password"&gt;</label>
+        <label><input type="radio" name="q6" value="c"> &lt;input type="email"&gt;</label>
+        <label><input type="radio" name="q6" value="d"> &lt;input type="checkbox"&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;input type="email"&gt;<br>
+        メールアドレスの入力欄には type="email" を使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題7</h3>
+      <p>パスワード入力欄を作るときに使うコードはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q7" value="a"> &lt;input type="text"&gt;</label>
+        <label><input type="radio" name="q7" value="b"> &lt;input type="password"&gt;</label>
+        <label><input type="radio" name="q7" value="c"> &lt;input type="email"&gt;</label>
+        <label><input type="radio" name="q7" value="d"> &lt;textarea&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;input type="password"&gt;<br>
+        パスワード入力では、入力した文字が画面上で見えにくく表示されます。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題8</h3>
+      <p>複数の選択肢から1つだけ選ばせたいときに使うものはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q8" value="a"> ラジオボタン</label>
+        <label><input type="radio" name="q8" value="b"> チェックボックス</label>
+        <label><input type="radio" name="q8" value="c"> テキストエリア</label>
+        <label><input type="radio" name="q8" value="d"> リセットボタン</label>
+      </div>
+      <div class="answer">
+        正解：ラジオボタン<br>
+        ラジオボタンは、複数の選択肢から1つだけ選ぶときに使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題9</h3>
+      <p>複数の選択肢を選べるようにしたいときに使うものはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q9" value="a"> ラジオボタン</label>
+        <label><input type="radio" name="q9" value="b"> パスワード入力</label>
+        <label><input type="radio" name="q9" value="c"> 送信ボタン</label>
+        <label><input type="radio" name="q9" value="d"> チェックボックス</label>
+      </div>
+      <div class="answer">
+        正解：チェックボックス<br>
+        チェックボックスは、複数選択できる項目に使います。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題10</h3>
+      <p>プルダウンメニューを作るタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q10" value="a"> &lt;textarea&gt;</label>
+        <label><input type="radio" name="q10" value="b"> &lt;select&gt;</label>
+        <label><input type="radio" name="q10" value="c"> &lt;label&gt;</label>
+        <label><input type="radio" name="q10" value="d"> &lt;form&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;select&gt;<br>
+        プルダウンメニューは &lt;select&gt; で作ります。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題11</h3>
+      <p><code>&lt;select&gt;</code> の中の選択肢を作るタグはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q11" value="a"> &lt;input&gt;</label>
+        <label><input type="radio" name="q11" value="b"> &lt;choice&gt;</label>
+        <label><input type="radio" name="q11" value="c"> &lt;option&gt;</label>
+        <label><input type="radio" name="q11" value="d"> &lt;item&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;option&gt;<br>
+        &lt;select&gt; の中に &lt;option&gt; を書いて選択肢を作ります。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題12</h3>
+      <p>フォームの送信ボタンを作るコードはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q12" value="a"> &lt;input type="submit"&gt;</label>
+        <label><input type="radio" name="q12" value="b"> &lt;input type="reset"&gt;</label>
+        <label><input type="radio" name="q12" value="c"> &lt;input type="text"&gt;</label>
+        <label><input type="radio" name="q12" value="d"> &lt;input type="radio"&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;input type="submit"&gt;<br>
+        type="submit" はフォームを送信するボタンです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題13</h3>
+      <p>入力内容をリセットするボタンを作るコードはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q13" value="a"> &lt;input type="button"&gt;</label>
+        <label><input type="radio" name="q13" value="b"> &lt;input type="submit"&gt;</label>
+        <label><input type="radio" name="q13" value="c"> &lt;input type="checkbox"&gt;</label>
+        <label><input type="radio" name="q13" value="d"> &lt;input type="reset"&gt;</label>
+      </div>
+      <div class="answer">
+        正解：&lt;input type="reset"&gt;<br>
+        type="reset" は、フォームの入力内容を元に戻すボタンです。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題14</h3>
+      <p>入力必須にする属性はどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q14" value="a"> placeholder</label>
+        <label><input type="radio" name="q14" value="b"> required</label>
+        <label><input type="radio" name="q14" value="c"> value</label>
+        <label><input type="radio" name="q14" value="d"> action</label>
+      </div>
+      <div class="answer">
+        正解：required<br>
+        required をつけると、その入力欄は必須項目になります。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題15</h3>
+      <p>入力欄の中に薄い文字で入力例を表示する属性はどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q15" value="a"> required</label>
+        <label><input type="radio" name="q15" value="b"> method</label>
+        <label><input type="radio" name="q15" value="c"> placeholder</label>
+        <label><input type="radio" name="q15" value="d"> checked</label>
+      </div>
+      <div class="answer">
+        正解：placeholder<br>
+        placeholder は入力例を表示する属性です。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題16</h3>
+      <p><code>action</code> 属性の意味として正しいものはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q16" value="a"> フォームの送信先を指定する</label>
+        <label><input type="radio" name="q16" value="b"> 入力欄の種類を指定する</label>
+        <label><input type="radio" name="q16" value="c"> 入力欄の説明を書く</label>
+        <label><input type="radio" name="q16" value="d"> 入力必須にする</label>
+      </div>
+      <div class="answer">
+        正解：フォームの送信先を指定する<br>
+        action は、フォームの入力内容をどこに送るかを指定します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="d">
+      <h3>問題17</h3>
+      <p><code>method</code> 属性の意味として正しいものはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q17" value="a"> 入力欄の名前を指定する</label>
+        <label><input type="radio" name="q17" value="b"> 入力例を表示する</label>
+        <label><input type="radio" name="q17" value="c"> ボタンの文字を指定する</label>
+        <label><input type="radio" name="q17" value="d"> フォームの送信方法を指定する</label>
+      </div>
+      <div class="answer">
+        正解：フォームの送信方法を指定する<br>
+        method は、get や post などの送信方法を指定します。
+      </div>
+    </div>
+
+    <div class="question" data-answer="b">
+      <h3>問題18</h3>
+      <p><code>name</code> 属性の意味として正しいものはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q18" value="a"> 入力欄の見た目を変える</label>
+        <label><input type="radio" name="q18" value="b"> 送信するときの項目名を指定する</label>
+        <label><input type="radio" name="q18" value="c"> 入力欄の説明を書く</label>
+        <label><input type="radio" name="q18" value="d"> 入力欄を必須にする</label>
+      </div>
+      <div class="answer">
+        正解：送信するときの項目名を指定する<br>
+        name は、フォーム送信時のデータの項目名になります。
+      </div>
+    </div>
+
+    <div class="question" data-answer="c">
+      <h3>問題19</h3>
+      <p>ラジオボタンで1つだけ選べるようにするために大切なことはどれですか。</p>
+      <div class="choices">
+        <label><input type="radio" name="q19" value="a"> 全ての value を同じにする</label>
+        <label><input type="radio" name="q19" value="b"> 全ての id を同じにする</label>
+        <label><input type="radio" name="q19" value="c"> 同じグループの name を同じにする</label>
+        <label><input type="radio" name="q19" value="d"> required を必ず外す</label>
+      </div>
+      <div class="answer">
+        正解：同じグループの name を同じにする<br>
+        ラジオボタンは、同じ name の中から1つだけ選べます。
+      </div>
+    </div>
+
+    <div class="question" data-answer="a">
+      <h3>問題20</h3>
+      <p>次のコードの説明として正しいものはどれですか。</p>
+
+      <pre><code>&lt;label for="name"&gt;名前&lt;/label&gt;
+&lt;input type="text" id="name" name="username"&gt;</code></pre>
+
+      <div class="choices">
+        <label><input type="radio" name="q20" value="a"> 名前を入力する1行の入力欄を作っている</label>
+        <label><input type="radio" name="q20" value="b"> 長い文章を入力する欄を作っている</label>
+        <label><input type="radio" name="q20" value="c"> プルダウンメニューを作っている</label>
+        <label><input type="radio" name="q20" value="d"> チェックボックスを作っている</label>
+      </div>
+      <div class="answer">
+        正解：名前を入力する1行の入力欄を作っている<br>
+        type="text" なので、1行のテキスト入力欄です。
+      </div>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">採点する</button>
+
+  </form>
+
+  <div id="result" class="result"></div>
+
+  <a href="form-study.html" class="back-link">フォーム学習ページへ戻る</a>
+
+</main>
+
+<script>
+  function checkAnswers() {
+    const questions = document.querySelectorAll(".question");
+    let score = 0;
+    const total = questions.length;
+
+    questions.forEach((question) => {
+      const correctAnswer = question.dataset.answer;
+      const selected = question.querySelector("input[type='radio']:checked");
+      const answerBox = question.querySelector(".answer");
+
+      question.classList.remove("correct", "incorrect", "unanswered");
+
+      if (!selected) {
+        question.classList.add("unanswered");
+        answerBox.innerHTML += "<br><strong>あなたの答え：</strong>未回答";
+      } else if (selected.value === correctAnswer) {
+        score++;
+        question.classList.add("correct");
+        answerBox.innerHTML += "<br><strong>あなたの答え：</strong>正解";
+      } else {
+        question.classList.add("incorrect");
+        answerBox.innerHTML += "<br><strong>あなたの答え：</strong>不正解";
+      }
+
+      answerBox.style.display = "block";
+    });
+
+    const result = document.getElementById("result");
+    result.style.display = "block";
+    result.innerHTML = `
+      <h2>採点結果</h2>
+      <p><strong>${total}問中 ${score}問正解です。</strong></p>
+      <p>正解と解説を確認しましょう。</p>
+    `;
+
+    const inputs = document.querySelectorAll("input[type='radio']");
+    inputs.forEach(input => {
+      input.disabled = true;
+    });
+
+    const button = document.querySelector("button");
+    button.disabled = true;
+    button.textContent = "採点済み";
+    button.style.backgroundColor = "#999";
+
+    result.scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>
