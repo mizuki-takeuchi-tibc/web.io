@@ -185,33 +185,24 @@
       background: var(--orange);
     }
 
+    /* PCでは表彰台らしく 2位・1位・3位 の並び */
     .podium-card.rank-1 {
       min-height: 245px;
       border-color: var(--gold);
       transform: translateY(-12px);
+      order: 2;
     }
-/* PCでは表彰台らしく 2位・1位・3位 の並びにする */
-.podium-card.rank-1 {
-  order: 2;
-}
-
-.podium-card.rank-2 {
-  order: 1;
-}
-
-.podium-card.rank-3 {
-  order: 3;
-}
-
 
     .podium-card.rank-2 {
       min-height: 215px;
       border-color: var(--silver);
+      order: 1;
     }
 
     .podium-card.rank-3 {
       min-height: 200px;
       border-color: var(--bronze);
+      order: 3;
     }
 
     .medal {
@@ -426,19 +417,19 @@
       .podium-card.rank-3 {
         min-height: auto;
         transform: none;
-  /* スマホでは 1位・2位・3位 の順に縦表示 */
-  .podium-card.rank-1 {
-    order: 1;
-  }
+      }
 
-  .podium-card.rank-2 {
-    order: 2;
-  }
+      /* スマホでは 1位・2位・3位 の順に縦表示 */
+      .podium-card.rank-1 {
+        order: 1;
+      }
 
-  .podium-card.rank-3 {
-    order: 3;
-  }
+      .podium-card.rank-2 {
+        order: 2;
+      }
 
+      .podium-card.rank-3 {
+        order: 3;
       }
 
       .grid {
@@ -518,6 +509,7 @@
               <div class="mission-desc">松山の歴史を知るクイズ！</div>
             </div>
           </div>
+
           <div class="mission">
             <div class="mission-icon">♨️</div>
             <div>
@@ -525,6 +517,7 @@
               <div class="mission-desc">日本最古級の温泉に挑戦！</div>
             </div>
           </div>
+
           <div class="mission">
             <div class="mission-icon">🍊</div>
             <div>
@@ -532,6 +525,7 @@
               <div class="mission-desc">愛媛の味覚で勝負！</div>
             </div>
           </div>
+
           <div class="mission">
             <div class="mission-icon">🃏</div>
             <div>
@@ -539,6 +533,7 @@
               <div class="mission-desc">運と戦略のカードバトル！</div>
             </div>
           </div>
+
           <div class="mission">
             <div class="mission-icon">👻</div>
             <div>
@@ -546,6 +541,7 @@
               <div class="mission-desc">反射神経と観察力で勝負！</div>
             </div>
           </div>
+
           <div class="mission">
             <div class="mission-icon">🎯</div>
             <div>
@@ -558,11 +554,13 @@
     </div>
 
     <h2 class="section-title">📊 詳細得点表</h2>
+
     <section class="panel">
       <div class="panel-header">
         <span>全員のスコア</span>
         <span>自動更新</span>
       </div>
+
       <div class="table-wrap">
         <table id="scoreTable"></table>
       </div>
@@ -574,16 +572,10 @@
   </main>
 
   <script>
-    // ==================================================
-    // ここだけ変更してください
-    // ==================================================
     const SHEET_ID = "1-wPpJnmGCoo1NyWW0crTvIHS1aU9VxzIvQMSNxyF4VM";
     const SHEET_NAME = "Scores";
-
-    // 何秒ごとに自動更新するか
     const REFRESH_SECONDS = 15;
 
-    // スプレッドシート未設定時に表示されるサンプルデータ
     const demoData = [
       { "名前": "ライン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0 },
       { "名前": "ジンジンエイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0 },
@@ -612,7 +604,9 @@
     }
 
     function calculateTotal(player) {
-      return gameColumns.reduce((sum, col) => sum + toNumber(player[col]), 0);
+      return gameColumns.reduce((sum, col) => {
+        return sum + toNumber(player[col]);
+      }, 0);
     }
 
     function sortPlayers(data) {
@@ -624,90 +618,99 @@
         .sort((a, b) => b.合計 - a.合計);
     }
 
- function fetchSheetData() {
-  return new Promise((resolve, reject) => {
-    if (!SHEET_ID || SHEET_ID === "ここにスプレッドシートIDを入れる") {
-      resolve(demoData);
-      return;
-    }
-
-    const callbackName = "sheetCallback_" + Date.now();
-
-    window[callbackName] = function(json) {
-      try {
-        if (!json || !json.table) {
-          reject(new Error("スプレッドシートのデータ形式が正しくありません"));
+    function fetchSheetData() {
+      return new Promise((resolve, reject) => {
+        if (!SHEET_ID || SHEET_ID === "ここにスプレッドシートIDを入れる") {
+          resolve(demoData);
           return;
         }
 
-        const cols = json.table.cols.map(col => col.label);
-        const rows = json.table.rows;
+        const callbackName = "sheetCallback_" + Date.now();
 
-        const data = rows
-          .map(row => {
-            const obj = {};
-            cols.forEach((col, index) => {
-              obj[col] = row.c[index] ? row.c[index].v : "";
-            });
-            return obj;
-          })
-          .filter(row => row["名前"]);
+        window[callbackName] = function(json) {
+          try {
+            if (!json || !json.table) {
+              reject(new Error("スプレッドシートのデータ形式が正しくありません"));
+              return;
+            }
 
-        resolve(data);
-      } catch (error) {
-        reject(error);
-      } finally {
-        delete window[callbackName];
-        script.remove();
-      }
-    };
+            const cols = json.table.cols.map(col => col.label);
+            const rows = json.table.rows || [];
 
-    const script = document.createElement("script");
+            const data = rows
+              .map(row => {
+                const obj = {};
 
-    script.src =
-      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq` +
-      `?tqx=out:json;responseHandler:${callbackName}` +
-      `&sheet=${encodeURIComponent(SHEET_NAME)}` +
-      `&cachebuster=${Date.now()}`;
+                cols.forEach((col, index) => {
+                  obj[col] = row.c[index] ? row.c[index].v : "";
+                });
 
-    script.onerror = function() {
-      delete window[callbackName];
-      script.remove();
-      reject(new Error("スプレッドシートを読み込めませんでした"));
-    };
+                return obj;
+              })
+              .filter(row => row["名前"]);
 
-    document.body.appendChild(script);
-  });
-}
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          } finally {
+            delete window[callbackName];
 
+            const script = document.getElementById(callbackName);
+            if (script) {
+              script.remove();
+            }
+          }
+        };
 
+        const script = document.createElement("script");
+        script.id = callbackName;
 
-  function renderPodium(players) {
-  const podium = document.getElementById("podium");
+        script.src =
+          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq` +
+          `?tqx=out:json;responseHandler:${callbackName}` +
+          `&sheet=${encodeURIComponent(SHEET_NAME)}` +
+          `&cachebuster=${Date.now()}`;
 
-  const top3 = players.slice(0, 3);
+        script.onerror = function() {
+          delete window[callbackName];
 
-  const rankInfo = {
-    1: { medal: "🥇", label: "1位", className: "rank-1" },
-    2: { medal: "🥈", label: "2位", className: "rank-2" },
-    3: { medal: "🥉", label: "3位", className: "rank-3" }
-  };
+          const scriptElement = document.getElementById(callbackName);
+          if (scriptElement) {
+            scriptElement.remove();
+          }
 
-  podium.innerHTML = top3.map((player, index) => {
-    const realRank = index + 1;
-    const info = rankInfo[realRank];
+          reject(new Error("スプレッドシートを読み込めませんでした"));
+        };
 
-    return `
-      <div class="podium-card ${info.className}">
-        <div class="medal">${info.medal}</div>
-        <div class="rank-label">${info.label}</div>
-        <div class="podium-name">${player["名前"]}</div>
-        <div class="podium-point">${player.合計} pt</div>
-      </div>
-    `;
-  }).join("");
-}
+        document.body.appendChild(script);
+      });
+    }
 
+    function renderPodium(players) {
+      const podium = document.getElementById("podium");
+
+      const top3 = players.slice(0, 3);
+
+      const rankInfo = {
+        1: { medal: "🥇", label: "1位", className: "rank-1" },
+        2: { medal: "🥈", label: "2位", className: "rank-2" },
+        3: { medal: "🥉", label: "3位", className: "rank-3" }
+      };
+
+      podium.innerHTML = top3.map((player, index) => {
+        const realRank = index + 1;
+        const info = rankInfo[realRank];
+
+        return `
+          <div class="podium-card ${info.className}">
+            <div class="medal">${info.medal}</div>
+            <div class="rank-label">${info.label}</div>
+            <div class="podium-name">${player["名前"]}</div>
+            <div class="podium-point">${player.合計} pt</div>
+          </div>
+        `;
+      }).join("");
+    }
 
     function renderRanking(players) {
       const rankingList = document.getElementById("rankingList");
@@ -768,6 +771,7 @@
 
     function updateTime() {
       const now = new Date();
+
       const text = now.toLocaleTimeString("ja-JP", {
         hour: "2-digit",
         minute: "2-digit",
