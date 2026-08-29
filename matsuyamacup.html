@@ -190,6 +190,19 @@
       border-color: var(--gold);
       transform: translateY(-12px);
     }
+/* PCでは表彰台らしく 2位・1位・3位 の並びにする */
+.podium-card.rank-1 {
+  order: 2;
+}
+
+.podium-card.rank-2 {
+  order: 1;
+}
+
+.podium-card.rank-3 {
+  order: 3;
+}
+
 
     .podium-card.rank-2 {
       min-height: 215px;
@@ -413,6 +426,19 @@
       .podium-card.rank-3 {
         min-height: auto;
         transform: none;
+  /* スマホでは 1位・2位・3位 の順に縦表示 */
+  .podium-card.rank-1 {
+    order: 1;
+  }
+
+  .podium-card.rank-2 {
+    order: 2;
+  }
+
+  .podium-card.rank-3 {
+    order: 3;
+  }
+
       }
 
       .grid {
@@ -656,35 +682,32 @@
 
 
 
-    function renderPodium(players) {
-      const podium = document.getElementById("podium");
+  function renderPodium(players) {
+  const podium = document.getElementById("podium");
 
-      const top3 = [
-        players[1],
-        players[0],
-        players[2]
-      ].filter(Boolean);
+  const top3 = players.slice(0, 3);
 
-      const rankInfo = {
-        1: { medal: "🥇", label: "1位", className: "rank-1" },
-        2: { medal: "🥈", label: "2位", className: "rank-2" },
-        3: { medal: "🥉", label: "3位", className: "rank-3" }
-      };
+  const rankInfo = {
+    1: { medal: "🥇", label: "1位", className: "rank-1" },
+    2: { medal: "🥈", label: "2位", className: "rank-2" },
+    3: { medal: "🥉", label: "3位", className: "rank-3" }
+  };
 
-      podium.innerHTML = top3.map(player => {
-        const realRank = players.indexOf(player) + 1;
-        const info = rankInfo[realRank];
+  podium.innerHTML = top3.map((player, index) => {
+    const realRank = index + 1;
+    const info = rankInfo[realRank];
 
-        return `
-          <div class="podium-card ${info.className}">
-            <div class="medal">${info.medal}</div>
-            <div class="rank-label">${info.label}</div>
-            <div class="podium-name">${player["名前"]}</div>
-            <div class="podium-point">${player.合計} pt</div>
-          </div>
-        `;
-      }).join("");
-    }
+    return `
+      <div class="podium-card ${info.className}">
+        <div class="medal">${info.medal}</div>
+        <div class="rank-label">${info.label}</div>
+        <div class="podium-name">${player["名前"]}</div>
+        <div class="podium-point">${player.合計} pt</div>
+      </div>
+    `;
+  }).join("");
+}
+
 
     function renderRanking(players) {
       const rankingList = document.getElementById("rankingList");
