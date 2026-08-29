@@ -10,14 +10,18 @@
       --orange: #ff8a00;
       --deep-orange: #ff5a1f;
       --yellow: #ffd166;
-      --navy: #13315c;
-      --blue: #2364aa;
-      --cream: #fff7df;
-      --pink: #ff6f91;
+      --navy: #183153;
+      --blue: #3a86ff;
+      --green: #06d6a0;
+      --pink: #ef476f;
+      --cream: #fff7e6;
+      --white: #ffffff;
+      --dark: #2b2b2b;
+      --muted: #666666;
       --gold: #ffd700;
       --silver: #c0c0c0;
       --bronze: #cd7f32;
-      --shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      --shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
     }
 
     * {
@@ -26,18 +30,20 @@
 
     body {
       margin: 0;
-      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
-      color: var(--navy);
-      min-height: 100vh;
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
       background:
-        radial-gradient(circle at 10% 15%, rgba(255, 209, 102, 0.95) 0 8%, transparent 9%),
-        radial-gradient(circle at 90% 20%, rgba(255, 138, 0, 0.8) 0 7%, transparent 8%),
-        radial-gradient(circle at 20% 85%, rgba(35, 100, 170, 0.2) 0 9%, transparent 10%),
-        linear-gradient(135deg, #fff3c4 0%, #ffd89b 35%, #ffb36b 65%, #ff7a45 100%);
+        radial-gradient(circle at top left, rgba(255, 209, 102, 0.35), transparent 28%),
+        radial-gradient(circle at top right, rgba(58, 134, 255, 0.2), transparent 28%),
+        linear-gradient(180deg, #fff7e6 0%, #fff 48%, #fff1d6 100%);
+      color: var(--dark);
       overflow-x: hidden;
     }
 
-    .floating {
+    a {
+      color: inherit;
+    }
+
+    .floating-bg {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -48,180 +54,191 @@
     .float-item {
       position: absolute;
       font-size: 34px;
-      opacity: 0.28;
-      animation: floatUp 12s linear infinite;
+      opacity: 0.15;
+      animation: float 9s ease-in-out infinite;
     }
 
-    .float-item:nth-child(1) { left: 6%; animation-delay: 0s; bottom: -50px; }
-    .float-item:nth-child(2) { left: 20%; animation-delay: 2s; bottom: -60px; }
-    .float-item:nth-child(3) { left: 42%; animation-delay: 4s; bottom: -40px; }
-    .float-item:nth-child(4) { left: 66%; animation-delay: 1s; bottom: -70px; }
-    .float-item:nth-child(5) { left: 83%; animation-delay: 5s; bottom: -55px; }
-    .float-item:nth-child(6) { left: 92%; animation-delay: 8s; bottom: -50px; }
-    .float-item:nth-child(7) { left: 34%; animation-delay: 6s; bottom: -65px; }
-    .float-item:nth-child(8) { left: 74%; animation-delay: 9s; bottom: -45px; }
-    .float-item:nth-child(9) { left: 53%; animation-delay: 3s; bottom: -75px; }
+    .float-item:nth-child(1) { top: 8%; left: 6%; animation-delay: 0s; }
+    .float-item:nth-child(2) { top: 18%; right: 8%; animation-delay: 1.3s; }
+    .float-item:nth-child(3) { top: 48%; left: 4%; animation-delay: 2.6s; }
+    .float-item:nth-child(4) { top: 62%; right: 5%; animation-delay: 3.9s; }
+    .float-item:nth-child(5) { top: 82%; left: 12%; animation-delay: 5.2s; }
+    .float-item:nth-child(6) { top: 78%; right: 18%; animation-delay: 6.5s; }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      12% { opacity: 0.35; }
-      100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(8deg);
+      }
     }
 
     .page {
       position: relative;
       z-index: 1;
-      width: min(1180px, calc(100% - 28px));
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 0 60px;
+      padding: 24px;
     }
 
     .hero {
       position: relative;
-      padding: 34px 24px 30px;
-      border-radius: 30px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,247,223,0.9)),
-        radial-gradient(circle at 80% 20%, rgba(255, 138, 0, 0.2), transparent 35%);
-      box-shadow: var(--shadow);
       overflow: hidden;
-      border: 4px solid rgba(255, 255, 255, 0.7);
+      border-radius: 30px;
+      padding: 46px 34px;
+      background:
+        linear-gradient(135deg, rgba(255, 138, 0, 0.92), rgba(255, 90, 31, 0.9)),
+        url("https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      box-shadow: var(--shadow);
+      text-align: center;
     }
 
     .hero::before {
-      content: "🏯 ♨️ 🍊 🎯 👻 🃏 🎤 🐺 📸";
+      content: "";
       position: absolute;
-      right: 22px;
-      top: 16px;
-      font-size: clamp(30px, 5vw, 58px);
-      opacity: 0.2;
-      letter-spacing: 8px;
-      white-space: nowrap;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25), transparent 20%),
+        radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.18), transparent 22%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(90deg, var(--orange), var(--deep-orange));
-      color: white;
       padding: 9px 16px;
       border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(8px);
       font-weight: 800;
-      box-shadow: 0 10px 22px rgba(255, 90, 31, 0.28);
-      margin-bottom: 12px;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(36px, 7vw, 82px);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: var(--navy);
-      text-shadow: 3px 3px 0 rgba(255, 209, 102, 0.9);
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      text-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
     }
 
-    .subtitle {
-      margin: 14px 0 0;
-      font-size: clamp(15px, 2.2vw, 22px);
+    .hero-subtitle {
+      margin: 18px auto 0;
+      max-width: 780px;
+      font-size: clamp(15px, 2.4vw, 21px);
       font-weight: 700;
-      color: #27476e;
+      line-height: 1.7;
     }
 
     .status-row {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 24px;
     }
 
     .pill {
-      background: rgba(255,255,255,0.85);
-      border: 2px solid rgba(19,49,92,0.08);
-      padding: 10px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 13px;
       border-radius: 999px;
-      font-weight: 800;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--deep-orange);
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+      font-size: 14px;
     }
 
-    .hero-actions {
+    .photo-buttons {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
-    .photo-submit-button {
+    .main-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 15px 24px;
+      border: none;
+      text-decoration: none;
+      padding: 14px 20px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #ff5a1f, #ff8a00, #ffd166);
+      background: linear-gradient(135deg, #183153, #3a86ff);
       color: white;
       font-weight: 900;
-      text-decoration: none;
-      box-shadow: 0 14px 28px rgba(255, 90, 31, 0.38);
+      box-shadow: 0 12px 28px rgba(24, 49, 83, 0.28);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 3px solid rgba(255,255,255,0.8);
     }
 
-    .photo-submit-button:hover {
+    .main-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 34px rgba(255, 90, 31, 0.5);
+      box-shadow: 0 16px 34px rgba(24, 49, 83, 0.34);
     }
 
-    .photo-note {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.8);
-      font-weight: 800;
-      color: #27476e;
-      border: 2px solid rgba(19,49,92,0.08);
+    .section {
+      margin-top: 28px;
     }
 
     .section-title {
-      margin: 34px 0 16px;
-      color: white;
-      font-size: clamp(24px, 4vw, 40px);
-      text-shadow: 2px 2px 0 rgba(19,49,92,0.35);
       display: flex;
       align-items: center;
       gap: 10px;
+      margin: 0 0 16px;
+      color: var(--navy);
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .section-title span {
+      font-size: 30px;
     }
 
     .podium {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 18px;
       align-items: end;
+      margin-top: 28px;
     }
 
     .podium-card {
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      text-align: center;
-      border: 4px solid rgba(255,255,255,0.75);
       position: relative;
       overflow: hidden;
-      min-height: 190px;
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+      border: 4px solid transparent;
+      text-align: center;
     }
 
-    .podium-card::after {
+    .podium-card::before {
       content: "";
       position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      right: -60px;
-      top: -70px;
-      opacity: 0.18;
-      background: var(--orange);
+      inset: -40%;
+      background: radial-gradient(circle, rgba(255, 138, 0, 0.16), transparent 48%);
+      transform: rotate(18deg);
+    }
+
+    .podium-inner {
+      position: relative;
+      z-index: 1;
     }
 
     .podium-card.rank-1 {
@@ -244,235 +261,270 @@
     }
 
     .medal {
-      font-size: 50px;
+      font-size: 48px;
       line-height: 1;
+      margin-bottom: 8px;
     }
 
     .rank-label {
-      font-weight: 900;
-      font-size: 18px;
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--cream);
       color: var(--deep-orange);
-      margin-top: 8px;
+      font-weight: 900;
+      margin-bottom: 12px;
     }
 
     .podium-name {
-      font-size: clamp(22px, 3vw, 34px);
+      font-size: 26px;
       font-weight: 900;
-      margin-top: 10px;
       color: var(--navy);
+      margin-bottom: 10px;
+      word-break: keep-all;
     }
 
-    .podium-point {
-      margin-top: 10px;
-      font-size: 24px;
+    .podium-score {
+      font-size: 34px;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--deep-orange);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      margin-top: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 28px;
     }
 
     .panel {
-      background: rgba(255,255,255,0.94);
+      background: rgba(255, 255, 255, 0.94);
       border-radius: 26px;
+      padding: 22px;
       box-shadow: var(--shadow);
-      overflow: hidden;
-      border: 4px solid rgba(255,255,255,0.7);
-    }
-
-    .panel-header {
-      padding: 18px 20px;
-      color: white;
-      background: linear-gradient(90deg, var(--navy), var(--blue));
-      font-size: 22px;
-      font-weight: 900;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
+      border: 1px solid rgba(255, 138, 0, 0.14);
     }
 
     .ranking-list {
-      padding: 14px;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 10px;
     }
 
     .rank-row {
       display: grid;
-      grid-template-columns: 58px 1fr 88px;
-      gap: 10px;
+      grid-template-columns: 58px 1fr 90px;
       align-items: center;
-      padding: 12px;
-      background: linear-gradient(90deg, #fff7df, #ffffff);
+      gap: 10px;
+      padding: 13px 14px;
       border-radius: 18px;
-      border: 2px solid rgba(255,138,0,0.18);
+      background: linear-gradient(90deg, #fff7e6, #ffffff);
+      border: 1px solid rgba(255, 138, 0, 0.17);
     }
 
-    .rank-num {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
+    .rank-no {
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
+      border-radius: 50%;
       background: var(--orange);
       color: white;
       font-weight: 900;
-      font-size: 20px;
-      box-shadow: 0 8px 14px rgba(255, 138, 0, 0.25);
     }
 
-    .player-name {
+    .rank-row:nth-child(1) .rank-no {
+      background: var(--gold);
+      color: #7a5500;
+    }
+
+    .rank-row:nth-child(2) .rank-no {
+      background: var(--silver);
+      color: #4d4d4d;
+    }
+
+    .rank-row:nth-child(3) .rank-no {
+      background: var(--bronze);
+      color: white;
+    }
+
+    .rank-name {
       font-weight: 900;
+      color: var(--navy);
       font-size: 18px;
-    }
-
-    .bar-wrap {
-      height: 10px;
-      background: rgba(19,49,92,0.1);
-      border-radius: 999px;
-      overflow: hidden;
-      margin-top: 6px;
-    }
-
-    .bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--orange), var(--pink));
-      border-radius: 999px;
-      transition: width 0.5s ease;
     }
 
     .point {
       text-align: right;
+      font-size: 22px;
+      font-weight: 900;
       color: var(--deep-orange);
-      font-weight: 900;
-      font-size: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-
-    th, td {
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(19,49,92,0.08);
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    th {
-      background: #fff0c2;
-      color: var(--navy);
-      font-weight: 900;
-      position: sticky;
-      top: 0;
-    }
-
-    td:first-child, th:first-child {
-      text-align: left;
-      font-weight: 900;
-    }
-
-    tbody tr:nth-child(even) {
-      background: rgba(255, 247, 223, 0.55);
-    }
-
-    .table-wrap {
-      max-height: 520px;
-      overflow: auto;
     }
 
     .missions {
-      padding: 16px;
       display: grid;
       gap: 12px;
     }
 
     .mission {
-      padding: 14px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #fff7df, #ffffff);
-      border: 2px solid rgba(19,49,92,0.08);
       display: grid;
-      grid-template-columns: 44px 1fr;
+      grid-template-columns: 48px 1fr;
       gap: 12px;
       align-items: center;
+      padding: 13px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #ffffff, #fff7e6);
+      border: 1px solid rgba(255, 138, 0, 0.16);
     }
 
     .mission-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 15px;
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
+      border-radius: 16px;
       background: linear-gradient(135deg, var(--orange), var(--deep-orange));
       color: white;
       font-size: 24px;
+      box-shadow: 0 10px 18px rgba(255, 90, 31, 0.22);
     }
 
     .mission-title {
       font-weight: 900;
+      color: var(--navy);
+      font-size: 17px;
     }
 
     .mission-desc {
+      margin-top: 3px;
+      color: var(--muted);
       font-size: 13px;
-      color: #516579;
-      margin-top: 2px;
-      font-weight: 700;
+      line-height: 1.5;
     }
 
     .photo-section {
-      margin-top: 18px;
-      padding: 18px;
-      border-radius: 24px;
       background:
-        linear-gradient(135deg, rgba(19,49,92,0.92), rgba(35,100,170,0.88)),
-        radial-gradient(circle at 80% 20%, rgba(255,209,102,0.28), transparent 40%);
+        linear-gradient(135deg, rgba(24, 49, 83, 0.95), rgba(58, 134, 255, 0.85)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
       color: white;
-      border: 4px solid rgba(255,255,255,0.65);
+      border-radius: 26px;
+      padding: 28px;
       box-shadow: var(--shadow);
+      margin-top: 28px;
+      text-align: center;
     }
 
-    .photo-section h3 {
-      margin: 0 0 8px;
-      font-size: 24px;
+    .photo-section h2 {
+      margin: 0 0 10px;
+      font-size: 30px;
     }
 
     .photo-section p {
-      margin: 0 0 14px;
+      margin: 0 auto 18px;
+      max-width: 760px;
+      line-height: 1.8;
       font-weight: 700;
-      line-height: 1.7;
     }
 
-    .photo-section .photo-submit-button {
-      margin-top: 4px;
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 138, 0, 0.16);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #f0e5d5;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: var(--navy);
+      color: white;
+      font-size: 13px;
+      z-index: 1;
+    }
+
+    td:first-child,
+    th:first-child {
+      text-align: left;
+      font-weight: 900;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fffaf0;
+    }
+
+    .total-cell {
+      font-weight: 900;
+      color: var(--deep-orange);
+      font-size: 18px;
     }
 
     .footer {
-      margin-top: 24px;
+      margin: 30px 0 8px;
       text-align: center;
-      color: white;
-      font-weight: 900;
-      text-shadow: 1px 1px 0 rgba(19,49,92,0.35);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
     }
 
-    .confetti {
-      animation: pop 0.8s ease both;
+    .last-updated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: white;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      color: var(--navy);
+      font-weight: 800;
+      margin-top: 10px;
     }
 
-    @keyframes pop {
-      0% { transform: scale(0.95); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .notice {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #fff3cd;
+      color: #7a5600;
+      font-weight: 800;
+      line-height: 1.6;
+      display: none;
     }
 
     @media (max-width: 820px) {
+      .page {
+        padding: 16px;
+      }
+
+      .hero {
+        padding: 30px 18px;
+        border-radius: 24px;
+      }
+
+      .status-row {
+        justify-content: flex-start;
+      }
+
+      .pill {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
       .podium {
         grid-template-columns: 1fr;
       }
@@ -504,100 +556,99 @@
         grid-template-columns: 50px 1fr 72px;
       }
 
+      .rank-name {
+        font-size: 15px;
+      }
+
       .point {
         font-size: 18px;
-      }
-
-      .hero {
-        padding: 28px 18px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .photo-submit-button,
-      .photo-note {
-        width: 100%;
       }
 
       table {
         font-size: 12px;
       }
 
-      th, td {
+      th,
+      td {
         padding: 10px 8px;
+      }
+
+      .photo-section {
+        padding: 24px 18px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="floating">
+  <div class="floating-bg">
     <div class="float-item">🍊</div>
     <div class="float-item">🏯</div>
     <div class="float-item">♨️</div>
-    <div class="float-item">🎯</div>
-    <div class="float-item">👻</div>
-    <div class="float-item">🃏</div>
+    <div class="float-item">🛬</div>
     <div class="float-item">🎤</div>
-    <div class="float-item">🐺</div>
     <div class="float-item">📸</div>
   </div>
 
   <main class="page">
-    <section class="hero confetti">
-      <div class="badge">🍊 留学生交流ゲーム大会 in 松山</div>
-      <h1>松山チャレンジカップ</h1>
-      <p class="subtitle">
-        松山城・道後温泉・みかん・カードゲーム・ダーツ・カラオケ・人狼・下灘エモフォトで、最強チャレンジャーを決めよう！
-      </p>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">🏆 INTERNATIONAL FRIENDSHIP GAME</div>
+        <h1>松山チャレンジカップ</h1>
+        <p class="hero-subtitle">
+          松山を楽しみながら、クイズ・ゲーム・写真・予想バトルでポイントを競う2泊3日の特別イベント！
+        </p>
 
-      <div class="status-row">
-        <div class="pill">🏯 松山城クイズ</div>
-        <div class="pill">♨️ 道後温泉クイズ</div>
-        <div class="pill">🍊 ブランドみかん飲み当て</div>
-        <div class="pill">🃏 大富豪</div>
-        <div class="pill">👻 オバケキャッチ</div>
-        <div class="pill">🎯 ダーツ</div>
-        <div class="pill">🎤 カラオケ得点バトル</div>
-        <div class="pill">🐺 人狼</div>
-        <div class="pill">📸 下灘エモフォト</div>
-      </div>
-
-      <div class="hero-actions">
-        <a href="#" target="_blank" rel="noopener noreferrer" class="photo-submit-button" id="photoFormButton">
-          📸 下灘エモフォトを提出する
-        </a>
-        <div class="photo-note">
-          🌅 テーマ：一番エモい下灘駅の写真
+        <div class="status-row">
+          <div class="pill">🛬 松山空港到着時間当て</div>
+          <div class="pill">🏯 松山城クイズ</div>
+          <div class="pill">♨️ 道後温泉クイズ</div>
+          <div class="pill">🍊 みかん飲み当て</div>
+          <div class="pill">🃏 大富豪</div>
+          <div class="pill">👻 オバケキャッチ</div>
+          <div class="pill">🎯 ダーツ</div>
+          <div class="pill">🎤 カラオケ得点バトル</div>
+          <div class="pill">🐺 人狼</div>
+          <div class="pill">📸 下灘エモフォト</div>
         </div>
+
+        <div class="photo-buttons">
+          <a id="photoFormButton" class="main-button" href="#" target="_blank" rel="noopener">
+            📸 下灘エモフォトを提出する
+          </a>
+        </div>
+
+        <div id="notice" class="notice"></div>
       </div>
     </section>
 
-    <h2 class="section-title">🏆 現在の表彰台</h2>
-    <section class="podium" id="podium"></section>
+    <section class="section">
+      <h2 class="section-title"><span>👑</span>現在の表彰台</h2>
+      <div id="podium" class="podium"></div>
+    </section>
 
-    <div class="grid">
-      <section class="panel">
-        <div class="panel-header">
-          <span>🔥 総合ランキング</span>
-          <span id="updatedAt">更新待ち</span>
-        </div>
-        <div class="ranking-list" id="rankingList"></div>
-      </section>
+    <section class="grid">
+      <div class="panel">
+        <h2 class="section-title"><span>🏅</span>総合ランキング</h2>
+        <div id="ranking" class="ranking-list"></div>
+      </div>
 
-      <section class="panel">
-        <div class="panel-header">
-          <span>🎮 Missions</span>
-        </div>
-
+      <div class="panel">
+        <h2 class="section-title"><span>🎮</span>競技一覧</h2>
         <div class="missions">
+          <div class="mission">
+            <div class="mission-icon">🛬</div>
+            <div>
+              <div class="mission-title">松山空港到着時間当て</div>
+              <div class="mission-desc">飛行機の実到着時刻を予想！一番近い人が勝利！</div>
+            </div>
+          </div>
+
           <div class="mission">
             <div class="mission-icon">🏯</div>
             <div>
               <div class="mission-title">松山城クイズ</div>
-              <div class="mission-desc">松山の歴史を知るクイズ！</div>
+              <div class="mission-desc">松山城の歴史や見どころをクイズで攻略！</div>
             </div>
           </div>
 
@@ -605,15 +656,15 @@
             <div class="mission-icon">♨️</div>
             <div>
               <div class="mission-title">道後温泉クイズ</div>
-              <div class="mission-desc">日本最古級の温泉に挑戦！</div>
+              <div class="mission-desc">日本最古級の温泉、道後温泉にまつわる問題に挑戦！</div>
             </div>
           </div>
 
           <div class="mission">
             <div class="mission-icon">🍊</div>
             <div>
-              <div class="mission-title">ブランドみかん飲み当て</div>
-              <div class="mission-desc">愛媛の味覚で勝負！</div>
+              <div class="mission-title">みかん飲み当て</div>
+              <div class="mission-desc">愛媛のブランドみかんジュースを味で当てよう！</div>
             </div>
           </div>
 
@@ -621,7 +672,7 @@
             <div class="mission-icon">🃏</div>
             <div>
               <div class="mission-title">大富豪</div>
-              <div class="mission-desc">運と戦略のカードバトル！</div>
+              <div class="mission-desc">トランプゲームで駆け引き勝負！</div>
             </div>
           </div>
 
@@ -629,7 +680,7 @@
             <div class="mission-icon">👻</div>
             <div>
               <div class="mission-title">オバケキャッチ</div>
-              <div class="mission-desc">反射神経と観察力で勝負！</div>
+              <div class="mission-desc">反射神経と判断力でアイテムをつかめ！</div>
             </div>
           </div>
 
@@ -661,40 +712,40 @@
             <div class="mission-icon">📸</div>
             <div>
               <div class="mission-title">下灘エモフォト</div>
-              <div class="mission-desc">下灘駅で一番エモい写真を撮ろう！</div>
+              <div class="mission-desc">下灘駅で一番エモい写真を撮影！AI審査や投票で勝負！</div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <section class="photo-section">
-      <h3>📸 下灘エモフォト提出</h3>
+      <h2>📸 下灘エモフォトチャレンジ</h2>
       <p>
-        下灘駅で撮った「一番エモい写真」をGoogleフォームから提出してください。<br>
-        写真はあとでAI審査やみんなの投票に使えます。
+        下灘駅で撮った「一番エモい写真」を提出しよう！<br>
+        写真はGoogleフォームから提出できます。AI審査・参加者投票・主催者点で採点します。
       </p>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="photo-submit-button" id="photoFormButton2">
-        🌅 写真提出フォームを開く
+      <a id="photoFormButton2" class="main-button" href="#" target="_blank" rel="noopener">
+        📤 写真提出フォームを開く
       </a>
     </section>
 
-    <h2 class="section-title">📊 詳細得点表</h2>
-
-    <section class="panel">
-      <div class="panel-header">
-        <span>全員のスコア</span>
-        <span>自動更新</span>
-      </div>
-
+    <section class="section panel">
+      <h2 class="section-title"><span>📊</span>得点詳細</h2>
       <div class="table-wrap">
-        <table id="scoreTable"></table>
+        <table>
+          <thead id="scoreHead"></thead>
+          <tbody id="scoreBody"></tbody>
+        </table>
       </div>
     </section>
 
-    <div class="footer">
-      🍊 Matsuyama Challenge Cup ｜ Friendship, Fun, and Challenge!
-    </div>
+    <footer class="footer">
+      <div>松山チャレンジカップ Scoreboard</div>
+      <div class="last-updated">
+        🔄 最終更新：<span id="lastUpdated">読み込み中...</span>
+      </div>
+    </footer>
   </main>
 
   <script>
@@ -704,20 +755,8 @@
 
     const PHOTO_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdhPn5S6vPvxwd34VhD5UF3POYncReHwcdxxfKjHyrABcCR-g/viewform?usp=dialog";
 
-    const demoData = [
-      { "名前": "ライン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ジンジンエイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "インダレイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ミンカンゾー", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "サン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "カイホウ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ジン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "スランモン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ギア", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ヴィ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 }
-    ];
-
     const gameColumns = [
+      "松山空港到着時間当て",
       "松山城クイズ",
       "道後温泉クイズ",
       "みかん飲み当て",
@@ -729,109 +768,274 @@
       "下灘エモフォト"
     ];
 
+    const demoData = [
+      {
+        "名前": "ライン",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "ジンジンエイ",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "インダレイ",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "ミンカンゾー",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "サン",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "カイホウ",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "ジン",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "スランモン",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "ギア",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      },
+      {
+        "名前": "ヴィ",
+        "松山空港到着時間当て": 0,
+        "松山城クイズ": 0,
+        "道後温泉クイズ": 0,
+        "みかん飲み当て": 0,
+        "大富豪": 0,
+        "オバケキャッチ": 0,
+        "ダーツ": 0,
+        "カラオケ得点バトル": 0,
+        "人狼": 0,
+        "下灘エモフォト": 0
+      }
+    ];
+
+    function showNotice(message) {
+      const notice = document.getElementById("notice");
+      if (!notice) return;
+
+      if (!message) {
+        notice.style.display = "none";
+        notice.textContent = "";
+        return;
+      }
+
+      notice.style.display = "block";
+      notice.textContent = message;
+    }
+
     function setupPhotoFormButtons() {
       const buttons = [
         document.getElementById("photoFormButton"),
         document.getElementById("photoFormButton2")
       ];
 
-      buttons.forEach(button => {
-        if (!button) return;
-
-        if (!PHOTO_FORM_URL || PHOTO_FORM_URL === "ここにGoogleフォームのURLを入れる") {
+      if (!PHOTO_FORM_URL || PHOTO_FORM_URL === "ここにGoogleフォームのURLを入れる") {
+        buttons.forEach((button) => {
+          if (!button) return;
           button.href = "#";
           button.addEventListener("click", function(event) {
             event.preventDefault();
-            alert("GoogleフォームのURLがまだ設定されていません。HTML内の PHOTO_FORM_URL を変更してください。");
+            alert("GoogleフォームのURLがまだ設定されていません。");
           });
-        } else {
-          button.href = PHOTO_FORM_URL;
-        }
+        });
+        return;
+      }
+
+      buttons.forEach((button) => {
+        if (!button) return;
+        button.href = PHOTO_FORM_URL;
       });
     }
 
     function toNumber(value) {
+      if (value === null || value === undefined || value === "") return 0;
       const num = Number(value);
       return Number.isFinite(num) ? num : 0;
     }
 
     function calculateTotal(player) {
-      return gameColumns.reduce((sum, col) => {
-        return sum + toNumber(player[col]);
+      return gameColumns.reduce((sum, column) => {
+        return sum + toNumber(player[column]);
       }, 0);
     }
 
-    function sortPlayers(data) {
-      return data
-        .map(player => ({
-          ...player,
-          合計: calculateTotal(player)
-        }))
-        .sort((a, b) => b.合計 - a.合計);
+    function normalizePlayers(players) {
+      return players.map((player) => {
+        const normalized = { ...player };
+
+        gameColumns.forEach((column) => {
+          normalized[column] = toNumber(normalized[column]);
+        });
+
+        normalized["合計"] = calculateTotal(normalized);
+        return normalized;
+      });
+    }
+
+    function sortPlayers(players) {
+      return [...players].sort((a, b) => {
+        if (b["合計"] !== a["合計"]) {
+          return b["合計"] - a["合計"];
+        }
+        return String(a["名前"]).localeCompare(String(b["名前"]), "ja");
+      });
     }
 
     function fetchSheetData() {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         if (!SHEET_ID || SHEET_ID === "ここにスプレッドシートIDを入れる") {
-          resolve(demoData);
+          resolve(normalizePlayers(demoData));
           return;
         }
 
-        const callbackName = "sheetCallback_" + Date.now();
+        const callbackName = "sheetCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+        const script = document.createElement("script");
 
-        window[callbackName] = function(json) {
+        const timeout = setTimeout(() => {
+          cleanup();
+          console.warn("スプレッドシートの読み込みがタイムアウトしました。デモデータを表示します。");
+          resolve(normalizePlayers(demoData));
+        }, 10000);
+
+        function cleanup() {
+          clearTimeout(timeout);
+          if (script.parentNode) {
+            script.parentNode.removeChild(script);
+          }
           try {
-            if (!json || !json.table) {
-              reject(new Error("スプレッドシートのデータ形式が正しくありません"));
-              return;
-            }
-
-            const cols = json.table.cols.map(col => col.label);
-            const rows = json.table.rows || [];
-
-            const data = rows
-              .map(row => {
-                const obj = {};
-
-                cols.forEach((col, index) => {
-                  obj[col] = row.c[index] ? row.c[index].v : "";
-                });
-
-                return obj;
-              })
-              .filter(row => row["名前"]);
-
-            resolve(data);
-          } catch (error) {
-            reject(error);
-          } finally {
             delete window[callbackName];
+          } catch (error) {
+            window[callbackName] = undefined;
+          }
+        }
 
-            const script = document.getElementById(callbackName);
-            if (script) {
-              script.remove();
-            }
+        window[callbackName] = function(response) {
+          cleanup();
+
+          try {
+            const table = response.table;
+            const headers = table.cols.map((col) => col.label || col.id);
+            const rows = table.rows.map((row) => {
+              const obj = {};
+
+              headers.forEach((header, index) => {
+                const cell = row.c[index];
+                obj[header] = cell ? (cell.v ?? cell.f ?? "") : "";
+              });
+
+              return obj;
+            }).filter((row) => row["名前"]);
+
+            resolve(normalizePlayers(rows));
+          } catch (error) {
+            console.error("スプレッドシート解析エラー:", error);
+            resolve(normalizePlayers(demoData));
           }
         };
 
-        const script = document.createElement("script");
-        script.id = callbackName;
-
-        script.src =
+        const url =
           `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq` +
           `?tqx=out:json;responseHandler:${callbackName}` +
           `&sheet=${encodeURIComponent(SHEET_NAME)}` +
           `&cachebuster=${Date.now()}`;
 
+        script.src = url;
         script.onerror = function() {
-          delete window[callbackName];
-
-          const scriptElement = document.getElementById(callbackName);
-          if (scriptElement) {
-            scriptElement.remove();
-          }
-
-          reject(new Error("スプレッドシートを読み込めませんでした"));
+          cleanup();
+          console.warn("スプレッドシートを読み込めませんでした。デモデータを表示します。");
+          resolve(normalizePlayers(demoData));
         };
 
         document.body.appendChild(script);
@@ -842,93 +1046,83 @@
       const podium = document.getElementById("podium");
       const top3 = players.slice(0, 3);
 
-      const rankInfo = {
-        1: { medal: "🥇", label: "1位", className: "rank-1" },
-        2: { medal: "🥈", label: "2位", className: "rank-2" },
-        3: { medal: "🥉", label: "3位", className: "rank-3" }
+      if (top3.length === 0) {
+        podium.innerHTML = "";
+        return;
+      }
+
+      const medalMap = {
+        1: "🥇",
+        2: "🥈",
+        3: "🥉"
       };
 
       podium.innerHTML = top3.map((player, index) => {
-        const realRank = index + 1;
-        const info = rankInfo[realRank];
+        const rank = index + 1;
 
         return `
-          <div class="podium-card ${info.className}">
-            <div class="medal">${info.medal}</div>
-            <div class="rank-label">${info.label}</div>
-            <div class="podium-name">${player["名前"]}</div>
-            <div class="podium-point">${player.合計} pt</div>
+          <div class="podium-card rank-${rank}">
+            <div class="podium-inner">
+              <div class="medal">${medalMap[rank]}</div>
+              <div class="rank-label">${rank}位</div>
+              <div class="podium-name">${player["名前"]}</div>
+              <div class="podium-score">${player["合計"]} pt</div>
+            </div>
           </div>
         `;
       }).join("");
     }
 
     function renderRanking(players) {
-      const rankingList = document.getElementById("rankingList");
-      const maxPoint = Math.max(...players.map(p => p.合計), 1);
+      const ranking = document.getElementById("ranking");
 
-      rankingList.innerHTML = players.map((player, index) => {
+      ranking.innerHTML = players.map((player, index) => {
         const rank = index + 1;
-        const width = Math.round((player.合計 / maxPoint) * 100);
-
-        let crown = "";
-        if (rank === 1) crown = " 🏆";
-        if (rank === 2) crown = " 🥈";
-        if (rank === 3) crown = " 🥉";
 
         return `
           <div class="rank-row">
-            <div class="rank-num">${rank}</div>
-            <div>
-              <div class="player-name">${player["名前"]}${crown}</div>
-              <div class="bar-wrap">
-                <div class="bar" style="width:${width}%"></div>
-              </div>
-            </div>
-            <div class="point">${player.合計}pt</div>
+            <div class="rank-no">${rank}</div>
+            <div class="rank-name">${player["名前"]}</div>
+            <div class="point">${player["合計"]} pt</div>
           </div>
         `;
       }).join("");
     }
 
     function renderTable(players) {
-      const table = document.getElementById("scoreTable");
-      const headers = ["順位", "名前", ...gameColumns, "合計"];
+      const scoreHead = document.getElementById("scoreHead");
+      const scoreBody = document.getElementById("scoreBody");
 
-      const thead = `
-        <thead>
+      scoreHead.innerHTML = `
+        <tr>
+          <th>名前</th>
+          ${gameColumns.map((column) => `<th>${column}</th>`).join("")}
+          <th>合計</th>
+        </tr>
+      `;
+
+      scoreBody.innerHTML = players.map((player) => {
+        return `
           <tr>
-            ${headers.map(h => `<th>${h}</th>`).join("")}
+            <td>${player["名前"]}</td>
+            ${gameColumns.map((column) => `<td>${toNumber(player[column])}</td>`).join("")}
+            <td class="total-cell">${player["合計"]}</td>
           </tr>
-        </thead>
-      `;
-
-      const tbody = `
-        <tbody>
-          ${players.map((player, index) => `
-            <tr>
-              <td>${index + 1}</td>
-              <td>${player["名前"]}</td>
-              ${gameColumns.map(col => `<td>${toNumber(player[col])}</td>`).join("")}
-              <td><strong>${player.合計}</strong></td>
-            </tr>
-          `).join("")}
-        </tbody>
-      `;
-
-      table.innerHTML = thead + tbody;
+        `;
+      }).join("");
     }
 
     function updateTime() {
       const now = new Date();
-
-      const text = now.toLocaleTimeString("ja-JP", {
+      const text = now.toLocaleString("ja-JP", {
+        month: "2-digit",
+        day: "2-digit",
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit"
       });
 
-      document.getElementById("updatedAt").textContent = `最終更新 ${text}`;
+      document.getElementById("lastUpdated").textContent = text;
     }
 
     async function updatePage() {
@@ -940,9 +1134,10 @@
         renderRanking(players);
         renderTable(players);
         updateTime();
+        showNotice("");
       } catch (error) {
         console.error(error);
-        document.getElementById("updatedAt").textContent = "読み込みエラー";
+        showNotice("データの読み込み中にエラーが発生しました。スプレッドシートの共有設定を確認してください。");
       }
     }
 
