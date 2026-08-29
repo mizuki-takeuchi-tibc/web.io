@@ -706,7 +706,7 @@
     const REFRESH_SECONDS = 15;
 
     // ここにGoogleフォームのURLを入れてください
-    const PHOTO_FORM_URL = "ここにGoogleフォームのURLを入れる";
+    const PHOTO_FORM_URL = "https://docs.google.com/forms/d/1yYUe8eGIwr_3ouIfYIJ9x3yE6oA7BJ5EsjOS7m5ZL-E/edit";
 
     const demoData = [
       { "名前": "ライン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
@@ -742,7 +742,7 @@
       buttons.forEach(button => {
         if (!button) return;
 
-        if (!PHOTO_FORM_URL || PHOTO_FORM_URL === "ここにGoogleフォームのURLを入れる") {
+        if (!PHOTO_FORM_URL || PHOTO_FORM_URL === "https://docs.google.com/forms/d/1yYUe8eGIwr_3ouIfYIJ9x3yE6oA7BJ5EsjOS7m5ZL-E/edit") {
           button.href = "#";
           button.addEventListener("click", function(event) {
             event.preventDefault();
@@ -776,7 +776,7 @@
 
     function fetchSheetData() {
       return new Promise((resolve, reject) => {
-        if (!SHEET_ID || SHEET_ID === "ここにスプレッドシートIDを入れる") {
+        if (!SHEET_ID || SHEET_ID === "1-wPpJnmGCoo1NyWW0crTvIHS1aU9VxzIvQMSNxyF4VM") {
           resolve(demoData);
           return;
         }
