@@ -1,0 +1,1322 @@
+以下をそのまま index.html に貼り付ければOKです。  
+チャレンジカップの詳細は薄めにして、旅のしおりとして完成版にしています。
+
+
+
+
+  
+  
+  松山研修旅行 旅のしおり｜2026年9月3日〜9月5日
+
+  
+    :root {
+      --orange: #f59e0b;
+      --deep-orange: #ea580c;
+      --green: #16a34a;
+      --mint: #ecfdf5;
+      --sky: #e0f2fe;
+      --white: #ffffff;
+      --black: #1f2937;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
+      --border: #e5e7eb;
+      --red: #ef4444;
+      --shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(22, 163, 74, 0.12), transparent 35%),
+        #fffaf0;
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 470px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.62), rgba(234, 88, 12, 0.35)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+      color: var(--white);
+      padding: 42px 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "🍊";
+      position: absolute;
+      right: 36px;
+      bottom: 18px;
+      font-size: 110px;
+      opacity: 0.2;
+      transform: rotate(-12deg);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.4vw, 1.35rem);
+      max-width: 720px;
+      opacity: 0.95;
+      margin-bottom: 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 860px;
+      margin-top: 26px;
+    }
+
+    .hero-info {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      padding: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-info span {
+      display: block;
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+
+    .hero-info strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-top: 3px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 18px 0;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 8px;
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .nav a:hover {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    section {
+      margin: 28px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 14px;
+    }
+
+    .section-title .emoji {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--orange), var(--deep-orange));
+      color: var(--white);
+      font-size: 1.55rem;
+      box-shadow: 0 10px 20px rgba(234, 88, 12, 0.25);
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.45rem, 4vw, 2.05rem);
+      line-height: 1.25;
+    }
+
+    .section-lead {
+      color: var(--gray);
+      margin: -5px 0 16px 64px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      padding: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .mini-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--mint);
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .tag.orange {
+      background: #fff7ed;
+      border-color: #fed7aa;
+      color: #9a3412;
+    }
+
+    .tag.blue {
+      background: var(--sky);
+      border-color: #bae6fd;
+      color: #075985;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      color: #7c2d12;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td.time {
+      font-weight: 800;
+      color: var(--deep-orange);
+      white-space: nowrap;
+      width: 140px;
+    }
+
+    .day-card {
+      border-left: 8px solid var(--orange);
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .day-header h3 {
+      font-size: 1.45rem;
+    }
+
+    .day-label {
+      background: linear-gradient(135deg, var(--orange), var(--deep-orange));
+      color: var(--white);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .note {
+      background: #fff7ed;
+      border-left: 5px solid var(--orange);
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-top: 14px;
+    }
+
+    .important {
+      background: #fef2f2;
+      border-left: 5px solid var(--red);
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-top: 14px;
+    }
+
+    .route-box {
+      background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+      border: 1px solid #bbf7d0;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+
+    .route-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      margin-top: 10px;
+      font-weight: 800;
+    }
+
+    .route-flow span {
+      background: var(--white);
+      border: 1px solid #bbf7d0;
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .link-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 10px;
+      padding: 9px 13px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .link-button:hover {
+      background: var(--deep-orange);
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .number-list {
+      padding-left: 1.3em;
+      margin-top: 10px;
+    }
+
+    .number-list li {
+      margin-bottom: 7px;
+    }
+
+    .prize-card {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.72), rgba(234, 88, 12, 0.5)),
+        url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1400&q=80")
+        center/cover;
+      border: none;
+    }
+
+    .prize-card h3 {
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+    }
+
+    .prize-card strong {
+      color: #fde68a;
+    }
+
+    .timeline-summary {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      font-weight: 800;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 10px 45px;
+      color: var(--gray);
+    }
+
+    .footer strong {
+      color: var(--deep-orange);
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .motto {
+      text-align: center;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--deep-orange);
+      letter-spacing: 0.04em;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .page {
+        padding: 12px;
+      }
+
+      .hero {
+        padding: 32px 22px;
+        min-height: 430px;
+        border-radius: 24px;
+      }
+
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-lead {
+        margin-left: 0;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .nav {
+        border-radius: 18px;
+      }
+
+      .nav-inner {
+        min-width: max-content;
+      }
+
+      table {
+        min-width: 720px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title .emoji {
+        width: 46px;
+        height: 46px;
+        border-radius: 15px;
+      }
+
+      .route-flow {
+        display: grid;
+      }
+
+      .route-flow .arrow {
+        display: none;
+      }
+    }
+  
+
+
+
+  
+    
+      🍊 伊予鉄訪問・松山研修旅行
+      松山研修旅行旅のしおり
+      
+        羽田空港から松山へ。伊予鉄での研修、愛媛こどもの城、松山城、道後温泉、
+        みかんジュース飲み比べ体験まで、3日間しっかり学んで楽しむ旅です。
+      
+
+      
+        
+          日程
+          2026年9月3日(木)〜5日(土)
+        
+        
+          期間
+          2泊3日
+        
+        
+          行き先
+          愛媛県松山市
+        
+        
+          宿泊
+          オトヤド
+        
+      
+    
+
+    
+      
+        概要
+        3日間の流れ
+        9/3
+        9/4
+        9/5
+        チャレンジカップ
+        費用
+        持ち物
+        ルール
+        緊急時
+      
+    
+
+    
+      
+        
+          📌
+          旅行概要
+        
+        まずは全体の基本情報です。
+
+        
+          
+            集合
+            9月3日(木) 11:30
+            羽田空港 集合
+          
+
+          
+            宿泊先
+            オトヤド
+            愛媛県松山市立花2丁目7-4
+            地図を開く
+          
+
+          
+            解散
+            9月5日(土) 21:20頃
+            羽田空港到着後、解散
+          
+        
+
+        
+          フライト情報
+          
+            
+              
+                
+                  日付
+                  区間
+                  時間
+                  メモ
+                
+              
+              
+                
+                  9月3日(木)
+                  羽田空港 → 松山空港
+                  12:05 → 13:30
+                  11:30に羽田空港集合
+                
+                
+                  9月5日(土)
+                  松山空港 → 羽田空港
+                  19:45 → 21:20
+                  松山空港には余裕を持って到着
+                
+              
+            
+          
+        
+      
+
+      
+        
+          🎯
+          この旅行の目的
+        
+
+        
+          
+            伊予鉄での研修を通して、地域交通や観光に関わる仕事について学ぶ。
+            愛媛こどもの城での体験を通して、接客や施設運営について考える。
+            松山城・道後温泉など、松山の歴史や文化を実際に感じる。
+            共同生活を通して、時間を守ること、協力すること、周りを見ることを大切にする。
+            ゲームや動画制作を通して、旅の思い出をみんなで形に残す。
+          
+        
+      
+
+      
+        
+          🗓️
+          3日間のまとめ
+        
+
+        
+          
+            9月3日(木)：羽田空港集合 → 松山空港へ → 公共交通でオトヤドへ → フジ立花店で買い出し → 夕食 → 水晶湯 → ゲーム・交流タイム
+          
+          
+            9月4日(金)：伊予鉄お迎え → 愛媛こどもの城 → ジップラインなどの体験 → 昼食 → 伊予鉄事業研修 → オトヤドへ → 東道後温泉 久米之癒 → みかん飲み当て・動画編集タイム
+          
+          
+            9月5日(土)：松山城観光 → 昼食 → 道後温泉観光 → 愛媛の食卓1970でみかんジュース飲み比べ体験 → 松山空港へ → 羽田空港到着・解散
+          
+        
+      
+
+      
+        
+          ✈️
+          9月3日(木) 1日目
+        
+        羽田から松山へ移動し、オトヤドで生活準備を整える日です。
+
+        
+          
+            1日目スケジュール
+            移動・買い出し・銭湯
+          
+
+          
+            
+              
+                
+                  時間
+                  内容
+                  場所・メモ
+                
+              
+              
+                
+                  11:30
+                  集合
+                  羽田空港。遅れないように集合。
+                
+                
+                  12:05
+                  羽田空港 出発
+                  松山空港へ。
+                
+                
+                  13:30
+                  松山空港 到着
+                  荷物確認後、公共交通でオトヤドへ移動。
+                
+                
+                  13:50〜14:50
+                  松山空港 → オトヤドへ移動
+                  コスト重視で、空港リムジンバス＋伊予鉄横河原線＋徒歩を利用。
+                
+                
+                  15:00
+                  オトヤド到着・部屋割り
+                  荷物整理、部屋の使い方確認。
+                
+                
+                  16:30
+                  夕食の買い出し
+                  
+                    フジ立花店へ。住所：愛媛県松山市立花2丁目7-11
+                    
+                    フジ立花店の地図
+                  
+                
+                
+                  18:00
+                  夕食準備
+                  オトヤドでみんなで準備。
+                
+                
+                  19:00
+                  夕食
+                  片付けまで協力する。
+                
+                
+                  20:30〜22:00
+                  水晶湯へ
+                  
+                    昔ながらの銭湯体験。住所：愛媛県松山市柳井町1-8-13
+                    
+                    ※営業日は事前確認。
+                    
+                    水晶湯の地図
+                  
+                
+                
+                  22:15〜23:30
+                  ゲーム・交流タイム
+                  オトヤドでカードゲームなど。翌日に備えて早めに寝る。
+                
+                
+                  23:30
+                  就寝目安
+                  夜更かししすぎない。
+                
+              
+            
+          
+
+          
+            松山空港からオトヤドまでの移動：コスト重視ルート
+            
+              タクシーではなく、公共交通を使って移動します。
+              目安は合計約45〜60分、料金は1人あたり約850〜900円です。
+            
+
+            
+              松山空港
+              →
+              空港リムジンバス
+              →
+              松山市駅
+              →
+              伊予鉄横河原線
+              →
+              いよ立花駅
+              →
+              徒歩約3分
+              →
+              オトヤド
+            
+
+            
+              料金目安：
+              空港リムジンバス 約620〜640円 ＋ 伊予鉄横河原線 約230〜250円。
+              合計 約850〜900円。
+            
+          
+        
+      
+
+      
+        
+          🎢
+          9月4日(金) 2日目
+        
+        伊予鉄のお迎えで、愛媛こどもの城と伊予鉄研修へ行く日です。
+
+        
+          
+            2日目スケジュール
+            伊予鉄・愛媛こどもの城・温泉
+          
+
+          
+            
+              
+                
+                  時間
+                  内容
+                  場所・メモ
+                
+              
+              
+                
+                  7:30
+                  起床
+                  朝の準備、荷物確認。
+                
+                
+                  8:00
+                  朝食
+                  オトヤドで朝食。
+                
+                
+                  8:50
+                  集合
+                  オトヤド前。9:00のお迎えに遅れない。
+                
+                
+                  9:00
+                  伊予鉄お迎え
+                  送迎で愛媛こどもの城へ。
+                
+                
+                  9:40
+                  愛媛こどもの城 到着
+                  説明を聞いて体験準備。
+                
+                
+                  10:00〜12:00
+                  ジップライン・施設体験
+                  安全説明をよく聞いて行動する。
+                
+                
+                  12:00〜13:00
+                  昼食
+                  城内レストランで昼食。
+                
+                
+                  13:00〜15:30
+                  接客・施設運営の体験
+                  働く人の動きや工夫を観察する。
+                
+                
+                  16:00〜17:00
+                  伊予鉄 事業研修
+                  伊予鉄の仕事、地域交通、観光との関わりを学ぶ。
+                
+                
+                  17:00
+                  研修終了
+                  送迎でオトヤド方面へ。
+                
+                
+                  18:00
+                  オトヤド帰着・夕食
+                  休憩、夕食、片付け。
+                
+                
+                  19:30〜21:00
+                  東道後温泉 久米之癒
+                  
+                    久米駅近くの温泉。住所：愛媛県松山市南久米町325-1
+                    
+                    久米之癒の地図
+                  
+                
+                
+                  21:00〜21:20
+                  オトヤド帰着・休憩
+                  水分補給、着替え、休憩。
+                
+                
+                  21:20〜22:00
+                  みかん飲み当て
+                  オトヤドで実施。愛媛の食卓1970では行いません。
+                
+                
+                  22:00〜23:30
+                  ゲーム・交流タイム／動画編集タイム
+                  旅のベスト動画の素材確認や編集も進める。
+                
+                
+                  23:30
+                  就寝目安
+                  最終日に備える。
+                
+              
+            
+          
+
+          
+            ポイント：
+            みかん飲み当ては、4日の夜にオトヤドで実施します。
+            5日の愛媛の食卓1970は「飲み比べ体験」であり、得点競技ではありません。
+          
+        
+      
+
+      
+        
+          🏯
+          9月5日(土) 3日目
+        
+        松山城、道後温泉、みかんジュース飲み比べ体験を楽しみ、羽田へ戻ります。
+
+        
+          
+            3日目スケジュール
+            松山城・道後温泉・帰路
+          
+
+          
+            
+              
+                
+                  時間
+                  内容
+                  場所・メモ
+                
+              
+              
+                
+                  7:30
+                  起床
+                  荷物整理、忘れ物チェック。
+                
+                
+                  8:00
+                  朝食
+                  オトヤドで朝食。
+                
+                
+                  9:00
+                  オトヤド出発
+                  荷物を持って移動。
+                
+                
+                  9:30
+                  松山城ロープウェイ乗り場 到着
+                  チケット購入、移動準備。
+                
+                
+                  10:00〜11:30
+                  松山城観光
+                  歴史、景色、写真撮影。松山城クイズの対象。
+                
+                
+                  12:00〜13:00
+                  昼食
+                  松山市内または道後方面で昼食。
+                
+                
+                  13:30〜14:20
+                  道後温泉周辺観光
+                  道後温泉本館周辺、商店街などを散策。道後温泉クイズの対象。
+                
+                
+                  14:20〜15:00
+                  愛媛の食卓1970
+                  
+                    みかんジュース飲み比べ体験。
+                    
+                    住所：愛媛県松山市道後湯之町12-30
+                    
+                    愛媛の食卓1970の地図
+                  
+                
+                
+                  15:00〜16:00
+                  道後温泉入浴または散策
+                  入浴する人、周辺散策する人で先生の指示に従って行動。
+                
+                
+                  16:45〜17:15
+                  おみやげ購入
+                  買い忘れがないようにする。
+                
+                
+                  17:15〜18:00
+                  松山空港へ移動
+                  余裕を持って空港へ。
+                
+                
+                  18:00〜19:20
+                  搭乗準備
+                  荷物整理、保安検査、夕食・軽食など。
+                
+                
+                  19:45
+                  松山空港 出発
+                  羽田空港へ。
+                
+                
+                  21:20
+                  羽田空港 到着
+                  荷物受け取り。
+                
+                
+                  21:45頃
+                  解散
+                  最後まで気を抜かず、安全に帰宅。
+                
+              
+            
+          
+
+          
+            注意：
+            愛媛の食卓1970では「みかんジュース飲み比べ体験」をします。
+            チャレンジカップの「みかん飲み当て」は、4日の夜にオトヤドで行います。
+          
+        
+      
+
+      
+        
+          🏆
+          松山チャレンジカップ
+        
+        詳細ルールは別ページで確認します。しおりでは概要だけ載せています。
+
+        
+          競技一覧
+          
+            🏯 松山城クイズ
+            ♨️ 道後温泉クイズ
+            🍊 みかん飲み当て
+            🃏 大富豪
+            👻 オバケキャッチ
+            🎯 ダーツ
+            🎤 カラオケ得点バトル
+            🐺 人狼
+            🎬 この旅のベスト動画
+          
+
+          
+            補足：
+            下灘駅には寄らないため「下灘エモフォト」は行いません。
+            代わりに、旅の思い出を動画にまとめる「この旅のベスト動画」を実施します。
+          
+        
+
+        
+          優勝賞品
+          
+            松山チャレンジカップの優勝者には、
+            先生が9月6日に届く新車でキャンプに連れて行ってあげる権
+            がプレゼントされます。
+          
+          
+            キャンプに行くメンバーは、
+            先生、
+            先生の親友（不動産会社社長）、
+            優勝者、
+            優勝者が指名した友達
+            の計4人です。
+          
+          
+            ※日程や場所などの詳細は、旅行後に相談して決めます。
+          
+        
+      
+
+      
+        
+          🎬
+          この旅のベスト動画
+        
+
+        
+          
+            旅の途中で撮った動画や写真を使って、旅行後または旅行中に
+            「この旅のベスト動画」を作成します。
+          
+
+          
+            
+              動画のテーマ
+              松山研修旅行の楽しさ、学び、思い出が伝わる動画。
+            
+            
+              注意
+              人が映る動画や写真は、本人が嫌がる使い方をしないこと。
+            
+          
+        
+      
+
+      
+        
+          💰
+          費用について
+        
+
+        
+          
+            みんなから預かったお金は、主に
+            飛行機代・宿泊費・オトヤドでの夜の食費
+            に使います。
+          
+          
+            余ったお金がある場合は、旅行後に返却します。
+          
+
+          
+            各自で支払うもの
+            
+              現地での電車賃・バス代などの交通費
+              昼食代
+              温泉・銭湯の入浴料
+              おみやげ代
+              飲み物・おやつなど個人的な買い物
+            
+          
+
+          
+            必要な場面で各自支払いができるように、現金や交通系ICカードなどを準備しておいてください。
+          
+        
+      
+
+      
+        
+          🎒
+          持ち物
+        
+
+        
+          
+            必ず持ってくるもの
+            
+              航空券情報・予約情報
+              在留カード
+              学生証
+              財布・現金
+              交通系ICカード
+              スマートフォン
+              充電器
+              着替え
+              洗面用具
+              常備薬
+              保険証または保険証情報
+            
+          
+
+          
+            あると便利なもの
+            
+              歩きやすい靴
+              帽子
+              日焼け止め
+              折りたたみ傘
+              エコバッグ
+              モバイルバッテリー
+              タオル
+              酔い止め
+              動画編集に使うアプリ
+              イヤホン
+            
+          
+        
+      
+
+      
+        
+          👕
+          服装の目安
+        
+
+        
+          
+            9月3日(木)
+            移動しやすい服装。飛行機や電車移動があるので、動きやすさ重視。
+          
+          
+            9月4日(金)
+            愛媛こどもの城で活動しやすい服装。ジップライン体験に向いた靴がおすすめ。
+          
+          
+            9月5日(土)
+            松山城・道後温泉周辺を歩くため、歩きやすい靴。暑さ対策も忘れずに。
+          
+        
+      
+
+      
+        
+          📣
+          旅行中のルール
+        
+
+        
+          
+            時間厳守。集合時間の5分前には集まる。
+            単独行動禁止。移動や観光中は、必ず複数人で行動する。
+            連絡を忘れない。何かあったらすぐに先生へ連絡する。
+            貴重品管理。財布、スマホ、在留カード、学生証は自分で管理する。
+            体調管理。無理をしない。体調が悪いときはすぐに伝える。
+            公共の場でのマナー。空港、電車、温泉、観光地では周りの人に迷惑をかけない。
+            写真・動画の扱い。人を撮るとき、投稿するときは相手の気持ちを考える。
+          
+        
+      
+
+      
+        
+          ♨️
+          銭湯・温泉でのマナー
+        
+
+        
+          
+            浴場では走らない。
+            湯船に入る前に体を洗う。
+            タオルを湯船に入れない。
+            大きな声で騒がない。
+            スマホやカメラを浴場で使わない。
+            出る前に忘れ物を確認する。
+          
+        
+      
+
+      
+        
+          🚨
+          緊急時の対応
+        
+
+        
+          
+            困ったことがあったら、すぐに先生に伝えてください。
+          
+
+          すぐに先生へ伝えること
+          
+            道に迷った
+            体調が悪い
+            財布やスマホをなくした
+            集合時間に遅れそう
+            トラブルがあった
+            一人では判断できないことがあった
+          
+        
+      
+
+      
+        
+          🧭
+          最終確認
+        
+
+        
+          
+            1日目：羽田 → 松山空港 → オトヤド → フジ立花店 → 夕食 → 水晶湯 → ゲーム・交流タイム
+            2日目：伊予鉄お迎え → 愛媛こどもの城 → 伊予鉄研修 → 久米之癒 → みかん飲み当て → 動画編集
+            3日目：松山城 → 道後温泉 → 愛媛の食卓1970 → 松山空港 → 羽田空港
+          
+
+          安全第一・時間厳守・みんなで楽しむ！
+        
+      
+    
+
+    
+      松山研修旅行 旅のしおり
+      2026年9月3日(木)〜9月5日(土) ／ 2泊3日
+    
+  
+
+  
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener("click", function(e) {
+        const targetId = this.getAttribute("href");
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
+  
+
