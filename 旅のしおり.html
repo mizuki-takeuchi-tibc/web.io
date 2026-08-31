@@ -474,15 +474,6 @@
       color: var(--gray);
     }
 
-    .motto {
-      text-align: center;
-      font-size: clamp(1.5rem, 4vw, 2.4rem);
-      font-weight: 900;
-      color: var(--deep-orange);
-      letter-spacing: 0.04em;
-      margin-top: 12px;
-    }
-
     @media (max-width: 850px) {
       .page {
         padding: 12px;
@@ -552,7 +543,7 @@
       <div class="hero-badge">🍊 伊予鉄訪問・松山研修旅行</div>
       <h1>松山研修旅行<br />旅のしおり</h1>
       <p class="hero-sub">
-        羽田空港から松山へ。伊予鉄での研修、愛媛こどもの城、松山城、道後温泉、
+        羽田空港から松山へ。伊予鉄での研修、えひめこどもの城、松山城、道後温泉、
         みかんジュース飲み比べ体験まで、3日間しっかり学んで楽しむ旅です。
       </p>
 
@@ -603,7 +594,7 @@
           <div class="mini-card">
             <h3>集合</h3>
             <p><strong>9月3日(木) 11:30</strong></p>
-            <p>羽田空港 集合</p>
+            <p>羽田空港 第2ターミナル</p>
           </div>
 
           <div class="mini-card">
@@ -621,12 +612,13 @@
         </div>
 
         <div class="card" style="margin-top:16px;">
-          <h3>フライト情報</h3>
+          <h3>飛行機の便</h3>
           <div class="table-wrap" style="margin-top:12px;">
             <table>
               <thead>
                 <tr>
                   <th>日付</th>
+                  <th>便名</th>
                   <th>区間</th>
                   <th>時間</th>
                   <th>メモ</th>
@@ -635,15 +627,17 @@
               <tbody>
                 <tr>
                   <td>9月3日(木)</td>
+                  <td><strong>ANA NH589</strong></td>
                   <td>羽田空港 → 松山空港</td>
                   <td>12:05 → 13:30</td>
-                  <td>11:30に羽田空港集合</td>
+                  <td>羽田空港 第2ターミナル。11:30集合。</td>
                 </tr>
                 <tr>
                   <td>9月5日(土)</td>
+                  <td><strong>ANA NH598</strong></td>
                   <td>松山空港 → 羽田空港</td>
                   <td>19:45 → 21:20</td>
-                  <td>松山空港には余裕を持って到着</td>
+                  <td>松山空港には余裕を持って到着。</td>
                 </tr>
               </tbody>
             </table>
@@ -660,7 +654,7 @@
         <div class="card">
           <ul class="check-list">
             <li>伊予鉄での研修を通して、地域交通や観光に関わる仕事について学ぶ。</li>
-            <li>愛媛こどもの城での体験を通して、接客や施設運営について考える。</li>
+            <li>えひめこどもの城での体験を通して、接客や施設運営について考える。</li>
             <li>松山城・道後温泉など、松山の歴史や文化を実際に感じる。</li>
             <li>共同生活を通して、時間を守ること、協力すること、周りを見ることを大切にする。</li>
             <li>ゲームや動画制作を通して、旅の思い出をみんなで形に残す。</li>
@@ -679,7 +673,7 @@
             9月3日(木)：羽田空港集合 → 松山空港へ → 公共交通でオトヤドへ → フジ立花店で買い出し → 夕食 → 水晶湯 → ゲーム・交流タイム
           </div>
           <div class="flow">
-            9月4日(金)：伊予鉄お迎え → 愛媛こどもの城 → ジップラインなどの体験 → 昼食 → 伊予鉄事業研修 → オトヤドへ → 東道後温泉 久米之癒 → みかん飲み当て・動画編集タイム
+            9月4日(金)：フジ立花店集合 → えひめこどもの城へ → 伊予鉄研修・接客体験 → 昼食 → 人材派遣の研修 → オトヤドへ → 久米之癒 → ゲーム・動画編集タイム
           </div>
           <div class="flow">
             9月5日(土)：松山城観光 → 昼食 → 道後温泉観光 → 愛媛の食卓1970でみかんジュース飲み比べ体験 → 松山空港へ → 羽田空港到着・解散
@@ -713,12 +707,12 @@
                 <tr>
                   <td class="time">11:30</td>
                   <td>集合</td>
-                  <td>羽田空港。遅れないように集合。</td>
+                  <td>羽田空港 第2ターミナル。遅れないように集合。</td>
                 </tr>
                 <tr>
                   <td class="time">12:05</td>
                   <td>羽田空港 出発</td>
-                  <td>松山空港へ。</td>
+                  <td>ANA NH589で松山空港へ。</td>
                 </tr>
                 <tr>
                   <td class="time">13:30</td>
@@ -816,12 +810,30 @@
           <div class="emoji">🎢</div>
           <h2>9月4日(金) 2日目</h2>
         </div>
-        <p class="section-lead">伊予鉄のお迎えで、愛媛こどもの城と伊予鉄研修へ行く日です。</p>
+        <p class="section-lead">伊予鉄の研修として、えひめこどもの城で接客体験や仕事の仕組みを学ぶ日です。</p>
 
         <div class="card day-card">
           <div class="day-header">
             <h3>2日目スケジュール</h3>
-            <span class="day-label">伊予鉄・愛媛こどもの城・温泉</span>
+            <span class="day-label">伊予鉄研修・えひめこどもの城</span>
+          </div>
+
+          <div class="grid-2" style="margin-bottom:16px;">
+            <div class="mini-card">
+              <h3>実施情報</h3>
+              <p><strong>実施日：</strong>2026年9月4日(金)</p>
+              <p><strong>受け入れ人数：</strong>10名</p>
+              <p><strong>実施会場：</strong>えひめこどもの城 オリエンテーションルーム</p>
+            </div>
+
+            <div class="mini-card">
+              <h3>集合情報</h3>
+              <p><strong>集合場所：</strong>フジ立花店</p>
+              <p><strong>住所：</strong>愛媛県松山市立花2丁目7-11</p>
+              <p><strong>集合時刻：</strong>8:30</p>
+              <p class="small">※集合後、えひめこどもの城へ移動します。</p>
+              <a class="link-button" href="https://www.google.com/maps/search/?api=1&query=フジ立花店+松山市立花2丁目7-11" target="_blank">集合場所の地図</a>
+            </div>
           </div>
 
           <div class="table-wrap">
@@ -845,49 +857,59 @@
                   <td>オトヤドで朝食。</td>
                 </tr>
                 <tr>
-                  <td class="time">8:50</td>
-                  <td>集合</td>
-                  <td>オトヤド前。9:00のお迎えに遅れない。</td>
+                  <td class="time">8:30</td>
+                  <td>フジ立花店に集合</td>
+                  <td>集合後、えひめこどもの城へ移動。</td>
                 </tr>
                 <tr>
-                  <td class="time">9:00</td>
-                  <td>伊予鉄お迎え</td>
-                  <td>送迎で愛媛こどもの城へ。</td>
+                  <td class="time">8:50〜9:00</td>
+                  <td>会社説明</td>
+                  <td>えひめこどもの城 オリエンテーションルーム。</td>
                 </tr>
                 <tr>
-                  <td class="time">9:40</td>
-                  <td>愛媛こどもの城 到着</td>
-                  <td>説明を聞いて体験準備。</td>
+                  <td class="time">9:10〜11:00</td>
+                  <td>班別体験①</td>
+                  <td>
+                    <strong>1班：</strong>遊具（てんとう虫のモノレール・ボート）の接客案内・体験
+                    <br />
+                    <strong>2班：</strong>ジップラインの接客案内・体験
+                  </td>
                 </tr>
                 <tr>
-                  <td class="time">10:00〜12:00</td>
-                  <td>ジップライン・施設体験</td>
-                  <td>安全説明をよく聞いて行動する。</td>
+                  <td class="time">11:00〜13:00</td>
+                  <td>班別体験②</td>
+                  <td>
+                    <strong>1班：</strong>ジップラインの案内
+                    <br />
+                    <strong>2班：</strong>遊具（てんとう虫のモノレール・ボート）の接客
+                    <br />
+                    ※前半と後半で1班・2班を入れ替え。
+                  </td>
                 </tr>
                 <tr>
-                  <td class="time">12:00〜13:00</td>
+                  <td class="time">13:00〜14:00</td>
                   <td>昼食</td>
-                  <td>城内レストランで昼食。</td>
+                  <td>えひめこどもの城内レストラン。</td>
                 </tr>
                 <tr>
-                  <td class="time">13:00〜15:30</td>
-                  <td>接客・施設運営の体験</td>
-                  <td>働く人の動きや工夫を観察する。</td>
+                  <td class="time">14:00〜16:00</td>
+                  <td>人材派遣の仕組みと仕事内容について</td>
+                  <td>面接・営業について学ぶ。</td>
                 </tr>
                 <tr>
-                  <td class="time">16:00〜17:00</td>
-                  <td>伊予鉄 事業研修</td>
-                  <td>伊予鉄の仕事、地域交通、観光との関わりを学ぶ。</td>
+                  <td class="time">16:00〜17:00頃</td>
+                  <td>会場片付け・宿泊施設へ移動</td>
+                  <td>会場片付けを行い、宿泊施設到着は17時頃を予定。</td>
                 </tr>
                 <tr>
-                  <td class="time">17:00</td>
-                  <td>研修終了</td>
-                  <td>送迎でオトヤド方面へ。</td>
+                  <td class="time">17:00頃</td>
+                  <td>オトヤド到着</td>
+                  <td>休憩、夕食準備。</td>
                 </tr>
                 <tr>
                   <td class="time">18:00</td>
-                  <td>オトヤド帰着・夕食</td>
-                  <td>休憩、夕食、片付け。</td>
+                  <td>夕食</td>
+                  <td>オトヤドで夕食。</td>
                 </tr>
                 <tr>
                   <td class="time">19:30〜21:00</td>
@@ -899,19 +921,9 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="time">21:00〜21:20</td>
-                  <td>オトヤド帰着・休憩</td>
-                  <td>水分補給、着替え、休憩。</td>
-                </tr>
-                <tr>
-                  <td class="time">21:20〜22:00</td>
-                  <td>みかん飲み当て</td>
-                  <td>オトヤドで実施。愛媛の食卓1970では行いません。</td>
-                </tr>
-                <tr>
-                  <td class="time">22:00〜23:30</td>
-                  <td>ゲーム・交流タイム／動画編集タイム</td>
-                  <td>旅のベスト動画の素材確認や編集も進める。</td>
+                  <td class="time">21:00〜23:30</td>
+                  <td>ゲーム・動画編集タイム</td>
+                  <td>オトヤドでチャレンジカップ、動画編集、交流。</td>
                 </tr>
                 <tr>
                   <td class="time">23:30</td>
@@ -920,12 +932,6 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-
-          <div class="note">
-            <strong>ポイント：</strong>
-            みかん飲み当ては、4日の夜にオトヤドで実施します。
-            5日の愛媛の食卓1970は「飲み比べ体験」であり、得点競技ではありません。
           </div>
         </div>
       </section>
@@ -1002,7 +1008,7 @@
                 <tr>
                   <td class="time">15:00〜16:00</td>
                   <td>道後温泉入浴または散策</td>
-                  <td>入浴する人、周辺散策する人で先生の指示に従って行動。</td>
+                  <td>先生の指示に従って行動。</td>
                 </tr>
                 <tr>
                   <td class="time">16:45〜17:15</td>
@@ -1022,7 +1028,7 @@
                 <tr>
                   <td class="time">19:45</td>
                   <td>松山空港 出発</td>
-                  <td>羽田空港へ。</td>
+                  <td>ANA NH598で羽田空港へ。</td>
                 </tr>
                 <tr>
                   <td class="time">21:20</td>
@@ -1037,12 +1043,6 @@
               </tbody>
             </table>
           </div>
-
-          <div class="important">
-            <strong>注意：</strong>
-            愛媛の食卓1970では「みかんジュース飲み比べ体験」をします。
-            チャレンジカップの「みかん飲み当て」は、4日の夜にオトヤドで行います。
-          </div>
         </div>
       </section>
 
@@ -1051,10 +1051,15 @@
           <div class="emoji">🏆</div>
           <h2>松山チャレンジカップ</h2>
         </div>
-        <p class="section-lead">詳細ルールは別ページで確認します。しおりでは概要だけ載せています。</p>
 
         <div class="card">
-          <h3>競技一覧</h3>
+          <p>
+            3日間を通して、旅の中でさまざまなゲームやチャレンジを実施します。
+            観察力、知識、運、チームワーク、表現力など、それぞれの能力を発揮して
+            優勝を目指しましょう。
+          </p>
+
+          <h3 style="margin-top:16px;">実施予定のチャレンジ</h3>
           <div class="tag-row">
             <span class="tag orange">🏯 松山城クイズ</span>
             <span class="tag orange">♨️ 道後温泉クイズ</span>
@@ -1065,12 +1070,6 @@
             <span class="tag blue">🎤 カラオケ得点バトル</span>
             <span class="tag blue">🐺 人狼</span>
             <span class="tag">🎬 この旅のベスト動画</span>
-          </div>
-
-          <div class="note">
-            <strong>補足：</strong>
-            下灘駅には寄らないため「下灘エモフォト」は行いません。
-            代わりに、旅の思い出を動画にまとめる「この旅のベスト動画」を実施します。
           </div>
         </div>
 
@@ -1090,7 +1089,7 @@
             の計4人です。
           </p>
           <p class="small" style="color:rgba(255,255,255,0.82); margin-top:10px;">
-            ※日程や場所などの詳細は、旅行後に相談して決めます。
+            ※キャンプの実施は卒業後を予定しています。日程や場所などの詳細は、旅行後に相談して決めます。
           </p>
         </div>
       </section>
@@ -1103,8 +1102,13 @@
 
         <div class="card">
           <p>
-            旅の途中で撮った動画や写真を使って、旅行後または旅行中に
-            「この旅のベスト動画」を作成します。
+            「この旅のベスト動画」は、松山チャレンジカップの一つでもあります。
+            旅の途中で撮った動画や写真を使って、この旅行がより思い出深くなるように、
+            動画を編集して完成させましょう。
+          </p>
+          <p style="margin-top:10px;">
+            完成した動画はみんなで見て投票し、チャレンジカップの得点にします。
+            面白さ、思い出感、編集の工夫、松山らしさなどを大切にしてください。
           </p>
 
           <div class="grid-2" style="margin-top:14px;">
@@ -1201,19 +1205,18 @@
           <h2>服装の目安</h2>
         </div>
 
-        <div class="grid-3">
-          <div class="mini-card">
-            <h3>9月3日(木)</h3>
-            <p>移動しやすい服装。飛行機や電車移動があるので、動きやすさ重視。</p>
-          </div>
-          <div class="mini-card">
-            <h3>9月4日(金)</h3>
-            <p>愛媛こどもの城で活動しやすい服装。ジップライン体験に向いた靴がおすすめ。</p>
-          </div>
-          <div class="mini-card">
-            <h3>9月5日(土)</h3>
-            <p>松山城・道後温泉周辺を歩くため、歩きやすい靴。暑さ対策も忘れずに。</p>
-          </div>
+        <div class="card">
+          <p>
+            3日間を通して、移動や観光、施設体験が多いため、
+            <strong>動きやすい服装</strong>で参加してください。
+          </p>
+          <ul class="check-list">
+            <li>歩きやすい靴</li>
+            <li>暑さ対策ができる服装</li>
+            <li>活動しやすいズボンや服</li>
+            <li>必要に応じて帽子や日焼け止め</li>
+            <li>温泉・銭湯後に着替えやすい服</li>
+          </ul>
         </div>
       </section>
 
@@ -1226,7 +1229,6 @@
         <div class="card">
           <ol class="number-list">
             <li><strong>時間厳守。</strong>集合時間の5分前には集まる。</li>
-            <li><strong>単独行動禁止。</strong>移動や観光中は、必ず複数人で行動する。</li>
             <li><strong>連絡を忘れない。</strong>何かあったらすぐに先生へ連絡する。</li>
             <li><strong>貴重品管理。</strong>財布、スマホ、在留カード、学生証は自分で管理する。</li>
             <li><strong>体調管理。</strong>無理をしない。体調が悪いときはすぐに伝える。</li>
@@ -1274,23 +1276,6 @@
             <li>トラブルがあった</li>
             <li>一人では判断できないことがあった</li>
           </ul>
-        </div>
-      </section>
-
-      <section id="summary">
-        <div class="section-title">
-          <div class="emoji">🧭</div>
-          <h2>最終確認</h2>
-        </div>
-
-        <div class="card">
-          <div class="timeline-summary">
-            <div class="flow">1日目：羽田 → 松山空港 → オトヤド → フジ立花店 → 夕食 → 水晶湯 → ゲーム・交流タイム</div>
-            <div class="flow">2日目：伊予鉄お迎え → 愛媛こどもの城 → 伊予鉄研修 → 久米之癒 → みかん飲み当て → 動画編集</div>
-            <div class="flow">3日目：松山城 → 道後温泉 → 愛媛の食卓1970 → 松山空港 → 羽田空港</div>
-          </div>
-
-          <p class="motto">安全第一・時間厳守・みんなで楽しむ！</p>
         </div>
       </section>
     </main>
