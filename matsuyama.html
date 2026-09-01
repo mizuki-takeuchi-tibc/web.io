@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>留学生のための松山城学習ページ</title>
+  <style>
+    :root {
+      --main: #1f4e5f;
+      --accent: #d99b28;
+      --bg: #f7f3ea;
+      --card: #ffffff;
+      --text: #222;
+      --soft: #e7dcc8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: var(--main);
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    section {
+      margin-bottom: 45px;
+    }
+
+    h2 {
+      border-left: 8px solid var(--accent);
+      padding-left: 12px;
+      color: var(--main);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: var(--main);
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      background: #fff8e8;
+      border-left: 6px solid var(--accent);
+      padding: 18px;
+      border-radius: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+
+    .card strong {
+      color: var(--main);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--soft);
+      color: var(--main);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .timeline {
+      border-left: 4px solid var(--main);
+      padding-left: 20px;
+    }
+
+    .timeline div {
+      margin-bottom: 18px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .vocab table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .vocab th,
+    .vocab td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .vocab th {
+      background: var(--main);
+      color: white;
+    }
+
+    .activity {
+      background: #eef6f8;
+      border: 1px solid #c8dce1;
+      padding: 20px;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+
+    .qa {
+      background: white;
+      border-left: 6px solid var(--accent);
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .qa .question {
+      font-weight: bold;
+      color: var(--main);
+      margin-bottom: 8px;
+    }
+
+    .qa .answer {
+      margin: 0;
+    }
+
+    footer {
+      background: var(--main);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffda7a;
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer .small {
+      color: #eee;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+    }
+    .checklist {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.08);
+      margin-bottom: 24px;
+    }
+
+    .checklist label {
+      display: block;
+      padding: 12px 10px;
+      border-bottom: 1px solid #e5e5e5;
+      cursor: pointer;
+    }
+
+    .checklist label:last-child {
+      border-bottom: none;
+    }
+
+    .checklist input[type="checkbox"] {
+      transform: scale(1.3);
+      margin-right: 10px;
+      accent-color: var(--main);
+    }
+
+    .reflection-box {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      border: 1px dashed var(--main);
+    }
+
+    .blank {
+      background: #f7f3ea;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 42px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>留学生のための松山城学習ページ</h1>
+    <p>
+      Matsuyama Castle Learning Page for International Students<br>
+      歴史・建築・地域文化を通して、日本の城と松山を学ぼう。
+    </p>
+  </header>
+
+  <nav>
+    <a href="#overview">概要</a>
+    <a href="#goals">学習目標</a>
+    <a href="#history">歴史</a>
+    <a href="#architecture">建築</a>
+    <a href="#culture">文化</a>
+    <a href="#vocab">語彙</a>
+    <a href="#fieldwork">見学ポイント</a>
+  </nav>
+
+  <main>
+
+    <section id="overview">
+      <h2>1. 松山城とは</h2>
+      <p class="lead">
+        松山城は、愛媛県松山市の中心部にある城です。
+        標高132mの勝山の上に本丸があり、松山市街や瀬戸内海を見渡すことができます。
+        江戸時代までに建てられた天守が残る「現存12天守」の一つとして知られています。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Basic Information</span>
+          <h3>基本情報</h3>
+          <p>
+            <strong>場所：</strong>愛媛県松山市<br>
+            <strong>築城開始：</strong>1602年<br>
+            <strong>築城者：</strong>加藤嘉明<br>
+            <strong>特徴：</strong>現存12天守の一つ
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Why Important?</span>
+          <h3>なぜ大切か</h3>
+          <p>
+            松山城は、江戸時代の城の姿を今に伝える貴重な文化財です。
+            天守を含む多くの建造物が重要文化財に指定されています。
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">For International Students</span>
+          <h3>留学生が学べること</h3>
+          <p>
+            日本の歴史、武士の社会、城の防御の工夫、地域観光、文化財保護について学ぶことができます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <h2>2. 学習目標</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>歴史を理解する</h3>
+          <p>
+            松山城がいつ、誰によって建てられたのかを知り、
+            江戸時代の政治や大名の役割について考えます。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>建築を観察する</h3>
+          <p>
+            天守、櫓、門、石垣などの役割を学び、
+            城がどのように敵から守られていたのかを理解します。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>地域文化を考える</h3>
+          <p>
+            松山城が現在の松山市の観光やまちづくりにどのように関係しているかを考えます。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>日本語で説明する</h3>
+          <p>
+            「天守」「石垣」「文化財」などの言葉を使って、
+            松山城について日本語で簡単に説明できるようになります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="history">
+      <h2>3. 松山城の歴史</h2>
+      <div class="timeline">
+        <div>
+          <h3>1602年：築城開始</h3>
+          <p>
+            関ヶ原の戦いで功績を上げた加藤嘉明が、1602年から松山城の築城を始めました。
+            完成までには約四半世紀、つまり約25年かかったとされています。
+          </p>
+        </div>
+
+        <div>
+          <h3>江戸時代：松山藩の中心</h3>
+          <p>
+            松山城は松山藩の政治の中心でした。
+            城は単なる軍事施設ではなく、地域を治めるための政治的な場所でもありました。
+          </p>
+        </div>
+
+        <div>
+          <h3>1784年：落雷による焼失</h3>
+          <p>
+            天守は1784年に落雷で焼失しました。
+            その後、1820年から再建工事が始まり、1854年に現在の天守が完成しました。
+          </p>
+        </div>
+
+        <div>
+          <h3>現在：文化財・観光地として保存</h3>
+          <p>
+            現在の松山城は、歴史を学ぶ場所であると同時に、
+            松山市を代表する観光地でもあります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <h2>4. 建築と防御の工夫</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>天守</h3>
+          <p>
+            天守は城の象徴的な建物です。
+            松山城の天守は、江戸時代から残る貴重な現存天守の一つです。
+          </p>
+          <p class="small">
+            English: The main keep is the symbolic central tower of the castle.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>石垣</h3>
+          <p>
+            高く積まれた石垣は、敵が簡単に侵入できないようにするための防御施設です。
+            石の積み方を見ると、当時の技術の高さがわかります。
+          </p>
+          <p class="small">
+            English: Stone walls protected the castle from enemies.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>門と通路</h3>
+          <p>
+            城の門や通路は、まっすぐ進みにくい構造になっています。
+            これは敵の進入を遅らせるための工夫です。
+          </p>
+          <p class="small">
+            English: Gates and paths were designed to slow down attackers.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>櫓</h3>
+          <p>
+            櫓は見張りや防御のための建物です。
+            松山城の野原櫓は、日本で唯一現存する望楼型二重櫓とされています。
+          </p>
+          <p class="small">
+            English: Turrets were used for watching and defending.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="culture">
+      <h2>5. 松山城から学ぶ日本文化</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>武士と大名</h3>
+          <p>
+            城は武士や大名の権力を示す場所でした。
+            松山城を学ぶことで、江戸時代の身分制度や政治の仕組みを理解できます。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>城とまちづくり</h3>
+          <p>
+            城の周りには城下町が発展しました。
+            現在の松山市の中心部にも、城下町の歴史が残っています。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>文化財を守る</h3>
+          <p>
+            古い建物を保存することは、過去の人々の生活や技術を未来に伝えることです。
+            文化財保護は、地域だけでなく世界の人々にとっても大切です。
+          </p>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h3>考えてみよう</h3>
+
+        <div class="qa">
+          <p class="question">Q. あなたの国にも城や歴史的な建物がありますか。</p>
+          <p class="answer">
+            A. 多くの国には、城、宮殿、寺院、教会、城壁、古い町並みなどの歴史的建造物があります。
+            それらは、その国や地域の歴史、宗教、政治、生活文化を知る手がかりになります。
+            松山城と自分の国の歴史的建造物を比べることで、共通点や違いを考えることができます。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q. 古い建物を保存することには、どんな意味がありますか。</p>
+          <p class="answer">
+            A. 古い建物を保存することには、過去の人々の技術や生活、考え方を未来に伝える意味があります。
+            また、地域の人々にとっては誇りやアイデンティティになります。
+            観光資源としても大切で、地域の経済や国際交流にもつながります。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q. 松山城を外国人観光客に紹介するとしたら、何を伝えるとよいですか。</p>
+          <p class="answer">
+            A. 松山城は、江戸時代から残る天守を持つ「現存12天守」の一つであることを伝えるとよいです。
+            また、山の上にあり、天守から松山市街や瀬戸内海を見渡せることも魅力です。
+            歴史だけでなく、景色、建築、防御の工夫、松山のまちとの関係も紹介できます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vocab" class="vocab">
+      <h2>6. 重要語彙</h2>
+      <table>
+        <tr>
+          <th>日本語</th>
+          <th>読み方</th>
+          <th>English</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td>城</td>
+          <td>しろ</td>
+          <td>castle</td>
+          <td>敵から守るため、また政治の中心として使われた建物</td>
+        </tr>
+        <tr>
+          <td>天守</td>
+          <td>てんしゅ</td>
+          <td>main keep</td>
+          <td>城の中心的・象徴的な建物</td>
+        </tr>
+        <tr>
+          <td>石垣</td>
+          <td>いしがき</td>
+          <td>stone wall</td>
+          <td>石を積んで作った防御の壁</td>
+        </tr>
+        <tr>
+          <td>櫓</td>
+          <td>やぐら</td>
+          <td>turret</td>
+          <td>見張りや防御のための建物</td>
+        </tr>
+        <tr>
+          <td>大名</td>
+          <td>だいみょう</td>
+          <td>feudal lord</td>
+          <td>江戸時代に領地を治めた武士の支配者</td>
+        </tr>
+        <tr>
+          <td>文化財</td>
+          <td>ぶんかざい</td>
+          <td>cultural property</td>
+          <td>歴史的・文化的に価値があるもの</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="fieldwork">
+      <h2>7. 見学するときのポイント</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>観察ポイント</h3>
+          <ul>
+            <li>石垣の高さや角度を見る</li>
+            <li>門の位置や通路の曲がり方を見る</li>
+            <li>天守から松山市街を見渡す</li>
+            <li>説明板の日本語と英語を比べる</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>見学前に知っておきたいこと</h3>
+          <p>
+            松山城は、ただ見るだけの観光地ではありません。
+            建物の配置、道の曲がり方、石垣の高さなどには、
+            敵から城を守るための意味があります。
+          </p>
+          <p>
+            見学するときは「なぜこの形になっているのか」を考えながら歩くと、
+            城の仕組みがより深く理解できます。
+          </p>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h3>質問と答え</h3>
+
+        <div class="qa">
+          <p class="question">Q1. なぜ松山城は山の上に建てられたのですか。</p>
+          <p class="answer">
+            A. 山の上に城を建てると、遠くまで見渡すことができ、敵の動きに早く気づくことができます。
+            また、敵が攻め上がるのが難しくなるため、防御に有利です。
+            松山城は勝山の上に本丸があり、地形そのものを防御に利用しています。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q2. 敵が攻めにくい工夫はどこにありますか。</p>
+          <p class="answer">
+            A. 石垣、門、曲がった通路、櫓などに工夫があります。
+            高い石垣は敵の侵入を防ぎ、門や通路はまっすぐ進みにくい構造になっています。
+            さらに、櫓から敵を見張ったり攻撃したりすることができました。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q3. 松山城の天守はなぜ貴重なのですか。</p>
+          <p class="answer">
+            A. 松山城の天守は、江戸時代までに建てられた天守が残る「現存12天守」の一つだからです。
+            日本には多くの城がありますが、昔の天守が現在まで残っている城は多くありません。
+            そのため、松山城は歴史的・文化的に価値が高い城です。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q4. 昔の城は、今の町にどんな影響を残していますか。</p>
+          <p class="answer">
+            A. 城の周りには城下町が作られ、人々の生活や商業が発展しました。
+            現在の松山市の中心部にも、城を中心に発展した町の歴史が残っています。
+            また、松山城は現在も観光や地域のシンボルとして、松山市のまちづくりに関わっています。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q5. 松山城を学ぶことで、どのような日本文化がわかりますか。</p>
+          <p class="answer">
+            A. 武士や大名の社会、江戸時代の政治、城下町の発展、文化財を守る考え方などがわかります。
+            城は軍事施設であるだけでなく、政治、文化、地域社会の中心でもありました。
+            そのため、松山城を学ぶことは、日本の歴史と地域文化を学ぶことにつながります。
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="enjoy">
+      <h2>8. 松山城の楽しみ方チェックリスト</h2>
+
+      <p class="lead">
+        松山城は、歴史を学ぶだけでなく、景色や建築、町とのつながりを楽しむことができます。
+        見学しながら、できたことにチェックを入れてみましょう。
+      </p>
+
+      <div class="checklist">
+        <label>
+          <input type="checkbox">
+          ロープウェイやリフト、または登城道を使って山の上まで行く
+        </label>
+
+        <label>
+          <input type="checkbox">
+          天守から松山市街や瀬戸内海の景色を見る
+        </label>
+
+        <label>
+          <input type="checkbox">
+          石垣の高さや石の積み方を観察する
+        </label>
+
+        <label>
+          <input type="checkbox">
+          門や通路がまっすぐではない理由を考える
+        </label>
+
+        <label>
+          <input type="checkbox">
+          天守や櫓など、城の建物の役割を確認する
+        </label>
+
+        <label>
+          <input type="checkbox">
+          松山城と自分の国の歴史的建物を比べて考える
+        </label>
+
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+  <footer>
+    <p>留学生のための松山城学習ページ</p>
+    <p class="small">
+      このページは授業・事前学習・見学後の振り返りに利用できます。
+    </p>
+  </footer>
+
+</body>
+</html>
