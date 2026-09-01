@@ -428,6 +428,46 @@
       font-weight: 700;
     }
 
+    .mission-content {
+  min-width: 0;
+}
+
+.mission-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.mission-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange), var(--deep-orange));
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(255, 90, 31, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mission-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 9px 16px rgba(255, 90, 31, 0.34);
+}
+
+.mission-link.study {
+  background: linear-gradient(90deg, var(--blue), var(--navy));
+}
+
+.mission-link.rule {
+  background: linear-gradient(90deg, var(--pink), var(--deep-orange));
+}
+
+
     .photo-section {
       margin-top: 18px;
       padding: 18px;
@@ -550,7 +590,7 @@
       <div class="badge">🍊 留学生交流ゲーム大会 in 松山</div>
       <h1>松山チャレンジカップ</h1>
       <p class="subtitle">
-        松山城・道後温泉・みかん・カードゲーム・ダーツ・カラオケ・人狼・下灘エモフォトで、最強チャレンジャーを決めよう！
+        松山城・道後温泉・みかん・カードゲーム・ダーツ・カラオケ・人狼・旅のベスト動画で、最強チャレンジャーを決めよう！
       </p>
 
       <div class="status-row">
@@ -562,16 +602,17 @@
         <div class="pill">🎯 ダーツ</div>
         <div class="pill">🎤 カラオケ得点バトル</div>
         <div class="pill">🐺 人狼</div>
-        <div class="pill">📸 下灘エモフォト</div>
+        <div class="pill">🎬 旅のベスト動画</div>
       </div>
 
       <div class="hero-actions">
-        <a href="#" target="_blank" rel="noopener noreferrer" class="photo-submit-button" id="photoFormButton">
-          📸 下灘エモフォトを提出する
-        </a>
-        <div class="photo-note">
-          🌅 テーマ：一番エモい下灘駅の写真
-        </div>
+<a href="#" target="_blank" rel="noopener noreferrer" class="photo-submit-button" id="photoFormButton">
+  🎬 旅のベスト動画を提出する
+</a>
+<div class="photo-note">
+  🎞️ テーマ：この旅で一番心に残ったベスト動画
+</div>
+
       </div>
     </section>
 
@@ -592,92 +633,119 @@
           <span>🎮 Missions</span>
         </div>
 
-        <div class="missions">
-          <div class="mission">
-            <div class="mission-icon">🏯</div>
-            <div>
-              <div class="mission-title">松山城クイズ</div>
-              <div class="mission-desc">松山の歴史を知るクイズ！</div>
-            </div>
-          </div>
+ <div class="missions">
+  <div class="mission">
+    <div class="mission-icon">🏯</div>
+    <div class="mission-content">
+      <div class="mission-title">松山城クイズ</div>
+      <div class="mission-desc">松山の歴史を知るクイズ！</div>
+      <div class="mission-links">
+        <a href="matsuyama.html" target="_blank" rel="noopener noreferrer" class="mission-link study">
+          📖 事前学習
+        </a>
+      </div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">♨️</div>
-            <div>
-              <div class="mission-title">道後温泉クイズ</div>
-              <div class="mission-desc">日本最古級の温泉に挑戦！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">♨️</div>
+    <div class="mission-content">
+      <div class="mission-title">道後温泉クイズ</div>
+      <div class="mission-desc">日本最古級の温泉に挑戦！</div>
+      <div class="mission-links">
+        <a href="dogo.html" target="_blank" rel="noopener noreferrer" class="mission-link study">
+          📖 事前学習
+        </a>
+      </div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">🍊</div>
-            <div>
-              <div class="mission-title">ブランドみかん飲み当て</div>
-              <div class="mission-desc">愛媛の味覚で勝負！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">🍊</div>
+    <div class="mission-content">
+      <div class="mission-title">ブランドみかん飲み当て</div>
+      <div class="mission-desc">愛媛の味覚で勝負！</div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">🃏</div>
-            <div>
-              <div class="mission-title">大富豪</div>
-              <div class="mission-desc">運と戦略のカードバトル！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">🃏</div>
+    <div class="mission-content">
+      <div class="mission-title">大富豪</div>
+      <div class="mission-desc">運と戦略のカードバトル！</div>
+      <div class="mission-links">
+        <a href="大富豪ルール.html" target="_blank" rel="noopener noreferrer" class="mission-link rule">
+          🃏 ルールを見る
+        </a>
+      </div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">👻</div>
-            <div>
-              <div class="mission-title">オバケキャッチ</div>
-              <div class="mission-desc">反射神経と観察力で勝負！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">👻</div>
+    <div class="mission-content">
+      <div class="mission-title">オバケキャッチ</div>
+      <div class="mission-desc">反射神経と観察力で勝負！</div>
+      <div class="mission-links">
+        <a href="お化けキャッチルール.html" target="_blank" rel="noopener noreferrer" class="mission-link rule">
+          👻 ルールを見る
+        </a>
+      </div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">🎯</div>
-            <div>
-              <div class="mission-title">ダーツ</div>
-              <div class="mission-desc">集中力で高得点を狙え！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">🎯</div>
+    <div class="mission-content">
+      <div class="mission-title">ダーツ</div>
+      <div class="mission-desc">集中力で高得点を狙え！</div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">🎤</div>
-            <div>
-              <div class="mission-title">カラオケ得点バトル</div>
-              <div class="mission-desc">歌唱力と盛り上げ力で高得点を狙え！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">🎤</div>
+    <div class="mission-content">
+      <div class="mission-title">カラオケ得点バトル</div>
+      <div class="mission-desc">歌唱力と盛り上げ力で高得点を狙え！</div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">🐺</div>
-            <div>
-              <div class="mission-title">人狼</div>
-              <div class="mission-desc">推理力とトーク力で勝利をつかめ！</div>
-            </div>
-          </div>
+  <div class="mission">
+    <div class="mission-icon">🐺</div>
+    <div class="mission-content">
+      <div class="mission-title">人狼</div>
+      <div class="mission-desc">推理力とトーク力で勝利をつかめ！</div>
+      <div class="mission-links">
+        <a href="人狼ルール.html" target="_blank" rel="noopener noreferrer" class="mission-link rule">
+          🐺 ルールを見る
+        </a>
+      </div>
+    </div>
+  </div>
 
-          <div class="mission">
-            <div class="mission-icon">📸</div>
-            <div>
-              <div class="mission-title">下灘エモフォト</div>
-              <div class="mission-desc">下灘駅で一番エモい写真を撮ろう！</div>
-            </div>
-          </div>
-        </div>
+  <div class="mission">
+    <div class="mission-icon">🎬</div>
+    <div class="mission-content">
+      <div class="mission-title">旅のベスト動画</div>
+      <div class="mission-desc">2泊3日の旅で一番よかった瞬間を動画で残そう！</div>
+    </div>
+  </div>
+</div>
+
       </section>
     </div>
 
-    <section class="photo-section">
-      <h3>📸 下灘エモフォト提出</h3>
-      <p>
-        下灘駅で撮った「一番エモい写真」をGoogleフォームから提出してください。<br>
-        写真はあとでAI審査やみんなの投票に使えます。
-      </p>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="photo-submit-button" id="photoFormButton2">
-        🌅 写真提出フォームを開く
-      </a>
-    </section>
+<section class="photo-section">
+  <h3>🎬 旅のベスト動画提出</h3>
+  <p>
+    2泊3日の旅の中で撮った「一番心に残った動画」をGoogleフォームから提出してください。<br>
+    動画はあとでAI審査やみんなの投票に使えます。
+  </p>
+  <a href="#" target="_blank" rel="noopener noreferrer" class="photo-submit-button" id="photoFormButton2">
+    🎞️ 動画提出フォームを開く
+  </a>
+</section>
+
 
     <h2 class="section-title">📊 詳細得点表</h2>
 
@@ -705,16 +773,16 @@
     const PHOTO_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdhPn5S6vPvxwd34VhD5UF3POYncReHwcdxxfKjHyrABcCR-g/viewform?usp=dialog";
 
     const demoData = [
-      { "名前": "ライン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ジンジンエイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "インダレイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ミンカンゾー", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "サン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "カイホウ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ジン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "スランモン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ギア", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 },
-      { "名前": "ヴィ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "下灘エモフォト": 0 }
+      { "名前": "ライン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "ジンジンエイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "インダレイ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "ミンカンゾー", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "サン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "カイホウ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "ジン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "スランモン", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "ギア", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 },
+      { "名前": "ヴィ", "松山城クイズ": 0, "道後温泉クイズ": 0, "みかん飲み当て": 0, "大富豪": 0, "オバケキャッチ": 0, "ダーツ": 0, "カラオケ得点バトル": 0, "人狼": 0, "旅のベスト動画": 0 }
     ];
 
     const gameColumns = [
@@ -726,7 +794,7 @@
       "ダーツ",
       "カラオケ得点バトル",
       "人狼",
-      "下灘エモフォト"
+      "旅のベスト動画"
     ];
 
     function setupPhotoFormButtons() {
