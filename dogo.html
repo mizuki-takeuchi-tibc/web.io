@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>留学生のための道後温泉学習ページ</title>
+  <style>
+    :root {
+      --main: #7a3e2f;
+      --accent: #d99b28;
+      --bg: #f8f1e7;
+      --card: #ffffff;
+      --text: #222;
+      --soft: #ead7c2;
+      --blue: #dceff2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    header {
+      background:
+        linear-gradient(rgba(90, 45, 32, .65), rgba(90, 45, 32, .65)),
+        linear-gradient(135deg, #8f4b38, #d99b28);
+      color: white;
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: var(--main);
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    section {
+      margin-bottom: 45px;
+    }
+
+    h2 {
+      border-left: 8px solid var(--accent);
+      padding-left: 12px;
+      color: var(--main);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: var(--main);
+      margin-top: 0;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      background: #fff8e8;
+      border-left: 6px solid var(--accent);
+      padding: 18px;
+      border-radius: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    }
+
+    .card strong {
+      color: var(--main);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--soft);
+      color: var(--main);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .timeline {
+      border-left: 4px solid var(--main);
+      padding-left: 20px;
+    }
+
+    .timeline div {
+      margin-bottom: 18px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .vocab table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .vocab th,
+    .vocab td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .vocab th {
+      background: var(--main);
+      color: white;
+    }
+
+    .activity {
+      background: #eef6f8;
+      border: 1px solid #c8dce1;
+      padding: 20px;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+
+    .qa {
+      background: white;
+      border-left: 6px solid var(--accent);
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .qa .question {
+      font-weight: bold;
+      color: var(--main);
+      margin-bottom: 8px;
+    }
+
+    .qa .answer {
+      margin: 0;
+    }
+
+    .checklist {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.08);
+      margin-bottom: 24px;
+    }
+
+    .checklist label {
+      display: block;
+      padding: 12px 10px;
+      border-bottom: 1px solid #e5e5e5;
+      cursor: pointer;
+    }
+
+    .checklist label:last-child {
+      border-bottom: none;
+    }
+
+    .checklist input[type="checkbox"] {
+      transform: scale(1.3);
+      margin-right: 10px;
+      accent-color: var(--main);
+    }
+
+    .reflection-box {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      border: 1px dashed var(--main);
+    }
+
+    .blank {
+      background: #f8f1e7;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 42px;
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .note {
+      background: #fff;
+      border-left: 6px solid #b94a48;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    footer {
+      background: var(--main);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffda7a;
+    }
+
+    footer .small {
+      color: #eee;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+
+      .vocab table {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>留学生のための道後温泉学習ページ</h1>
+    <p>
+      Dogo Onsen Learning Page for International Students<br>
+      歴史・温泉文化・入浴マナー・文学を通して、日本の温泉文化を学ぼう。
+    </p>
+  </header>
+
+  <nav>
+    <a href="#overview">概要</a>
+    <a href="#goals">学習目標</a>
+    <a href="#history">歴史</a>
+    <a href="#honkan">本館</a>
+    <a href="#culture">文化</a>
+    <a href="#manners">入浴マナー</a>
+    <a href="#vocab">語彙</a>
+    <a href="#fieldwork">質問と答え</a>
+    <a href="#enjoy">楽しみ方</a>
+  </nav>
+
+  <main>
+
+    <section id="overview">
+      <h2>1. 道後温泉とは</h2>
+      <p class="lead">
+        道後温泉は、愛媛県松山市にある温泉地です。
+        約3000年の歴史を持つといわれ、日本最古の温泉の一つとして知られています。
+        道後温泉本館は、温泉に入るための公衆浴場でありながら、国の重要文化財にも指定されている特別な建物です。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Basic Information</span>
+          <h3>基本情報</h3>
+          <p>
+            <strong>場所：</strong>愛媛県松山市道後<br>
+            <strong>特徴：</strong>日本最古といわれる温泉の一つ<br>
+            <strong>代表的な建物：</strong>道後温泉本館<br>
+            <strong>文化財：</strong>道後温泉本館は国の重要文化財
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Why Important?</span>
+          <h3>なぜ大切か</h3>
+          <p>
+            道後温泉は、入浴文化、文学、観光、まちづくりが結びついた場所です。
+            温泉は体を温めるだけでなく、人々が交流し、地域の文化をつくる場でもあります。
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">For International Students</span>
+          <h3>留学生が学べること</h3>
+          <p>
+            日本の温泉文化、公共の場でのマナー、歴史的建築の保存、夏目漱石の文学、地域観光について学ぶことができます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <h2>2. 学習目標</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>温泉文化を理解する</h3>
+          <p>
+            日本では、温泉は体を洗う場所だけではなく、休養、交流、観光、地域文化と深く関係しています。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>歴史を学ぶ</h3>
+          <p>
+            道後温泉に伝わる白鷺伝説、聖徳太子の来浴伝承、道後温泉本館の改築などを通して、長い歴史を理解します。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>入浴マナーを知る</h3>
+          <p>
+            公衆浴場を利用するときの日本のマナーを知り、文化の違いを尊重して行動できるようになります。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>日本語で説明する</h3>
+          <p>
+            「温泉」「公衆浴場」「源泉かけ流し」「文化財」などの言葉を使って、道後温泉について説明できるようになります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="history">
+      <h2>3. 道後温泉の歴史</h2>
+
+      <div class="timeline">
+        <div>
+          <h3>古代：白鷺伝説</h3>
+          <p>
+            道後温泉には、けがをした白鷺が温泉で足をいやしたという伝説があります。
+            この伝説から、道後温泉は昔から「体をいやす湯」として人々に知られていたことがわかります。
+          </p>
+        </div>
+
+        <div>
+          <h3>神話：玉の石の説話</h3>
+          <p>
+            大国主命と少彦名命の伝説も残っています。
+            病気になった少彦名命が道後温泉の湯で元気になり、石の上で踊ったと伝えられています。
+            その石は「玉の石」と呼ばれています。
+          </p>
+        </div>
+
+        <div>
+          <h3>飛鳥時代：聖徳太子の来浴伝承</h3>
+          <p>
+            聖徳太子が道後温泉を訪れたという伝承があります。
+            道後温泉は、古くから皇室や貴族にも知られた温泉地でした。
+          </p>
+        </div>
+
+        <div>
+          <h3>江戸時代：温泉施設の整備</h3>
+          <p>
+            松山藩の時代には、身分や利用者に応じて浴槽が分けられるなど、温泉施設が整えられていきました。
+            温泉は地域の人々の生活と深く関係していました。
+          </p>
+        </div>
+
+        <div>
+          <h3>1894年：道後温泉本館の改築</h3>
+          <p>
+            初代道後湯之町町長の伊佐庭如矢は、道後の将来を考えて、老朽化していた道後温泉本館の改築を進めました。
+            1894年に現在につながる本館が完成しました。
+          </p>
+        </div>
+
+        <div>
+          <h3>1994年：重要文化財に指定</h3>
+          <p>
+            道後温泉本館は、1994年に公衆浴場として初めて国の重要文化財に指定されました。
+            今も入浴できる文化財として、とても珍しい存在です。
+          </p>
+        </div>
+
+        <div>
+          <h3>2024年：保存修理工事が完了</h3>
+          <p>
+            道後温泉本館では、歴史的な価値を未来に残すための保存修理工事が行われました。
+            約6年にわたる工事は2024年12月に完了しました。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="honkan">
+      <h2>4. 道後温泉本館と3つの外湯</h2>
+
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Honkan</span>
+          <h3>道後温泉本館</h3>
+          <p>
+            道後温泉のシンボルです。
+            木造の歴史的建築で、現在も公衆浴場として利用されています。
+            屋上には振鷺閣があり、時刻を知らせる刻太鼓が鳴らされます。
+          </p>
+          <p class="small">
+            English: Dogo Onsen Honkan is the symbolic public bathhouse of Dogo Onsen.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Asuka no Yu</span>
+          <h3>道後温泉別館 飛鳥乃湯泉</h3>
+          <p>
+            飛鳥時代の建築様式を取り入れた新しい湯屋です。
+            道後温泉にまつわる伝説や物語を、愛媛の伝統工芸やアートで表現しています。
+          </p>
+          <p class="small">
+            English: Asuka no Yu is a newer bathhouse inspired by the Asuka period.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="tag">Tsubaki no Yu</span>
+          <h3>椿の湯</h3>
+          <p>
+            松山市民に親しまれている公衆浴場です。
+            道後商店街の中央にあり、地元の人々の生活に近い温泉文化を感じることができます。
+          </p>
+          <p class="small">
+            English: Tsubaki no Yu is a local public bath loved by residents.
+          </p>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h3>注目ポイント</h3>
+        <ul>
+          <li>道後温泉本館は、入浴できる文化財である。</li>
+          <li>飛鳥乃湯泉では、温泉と伝統工芸・アートの関係を見ることができる。</li>
+          <li>椿の湯では、地域の人々の日常に近い温泉文化を感じられる。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="culture">
+      <h2>5. 道後温泉から学ぶ日本文化</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>温泉といやし</h3>
+          <p>
+            日本では、温泉は体を温めるだけでなく、疲れを取り、心を落ち着かせる場所として大切にされてきました。
+            道後温泉の白鷺伝説にも、「いやしの湯」という考え方が表れています。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>公衆浴場と地域社会</h3>
+          <p>
+            公衆浴場は、地域の人々が日常的に使う場所です。
+            そこでは、他の人と同じ空間を使うため、マナーや思いやりが重要になります。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>文学とのつながり</h3>
+          <p>
+            夏目漱石は松山に英語教師として滞在しました。
+            小説『坊っちゃん』に登場する温泉は、道後温泉がモデルだといわれています。
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>文化財を使いながら守る</h3>
+          <p>
+            道後温泉本館は、見るだけの文化財ではなく、今も入浴できる建物です。
+            「使いながら守る」という文化財保存の考え方を学ぶことができます。
+          </p>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h3>考えてみよう</h3>
+
+        <div class="qa">
+          <p class="question">Q. 温泉は、なぜ日本の文化として大切にされているのですか。</p>
+          <p class="answer">
+            A. 日本には火山が多く、各地に温泉があります。
+            温泉は体を温めたり疲れを取ったりする場所であると同時に、家族や地域の人々、観光客が交流する場所でもあります。
+            そのため、温泉は日本の生活文化や観光文化と深く関係しています。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q. 道後温泉本館が重要文化財であることには、どんな意味がありますか。</p>
+          <p class="answer">
+            A. 道後温泉本館は、歴史的な建物として価値があるだけでなく、現在も公衆浴場として使われています。
+            建物の美しさ、歴史、地域の人々との関係を未来に伝えるため、文化財として大切に保存されています。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q. 『坊っちゃん』と道後温泉にはどのような関係がありますか。</p>
+          <p class="answer">
+            A. 夏目漱石の小説『坊っちゃん』に登場する「住田温泉」は、道後温泉がモデルだといわれています。
+            この小説によって、道後温泉は文学と結びついた観光地としても知られるようになりました。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="manners">
+      <h2>6. 温泉に入るときのマナー</h2>
+
+      <p class="lead">
+        温泉は多くの人が一緒に使う公共の場所です。
+        気持ちよく利用するために、日本の入浴マナーを知っておきましょう。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>入る前に体を洗う</h3>
+          <p>
+            湯船に入る前に、シャワーや洗い場で体を洗います。
+            これは、みんなで使う湯をきれいに保つための大切なマナーです。
+          </p>
+          <p class="small">
+            English: Wash your body before entering the bath.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>タオルを湯船に入れない</h3>
+          <p>
+            小さなタオルは体を洗うために使いますが、湯船の中には入れません。
+            湯船の外や頭の上に置く人もいます。
+          </p>
+          <p class="small">
+            English: Do not put your towel into the bath water.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>泳がない・騒がない</h3>
+          <p>
+            温泉はプールではありません。
+            湯船の中で泳いだり、大きな声で騒いだりしないようにします。
+          </p>
+          <p class="small">
+            English: Do not swim or make loud noise in the bath.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>写真を撮らない</h3>
+          <p>
+            脱衣所や浴室では、他の人のプライバシーを守るため、写真や動画を撮ってはいけません。
+          </p>
+          <p class="small">
+            English: Do not take photos in changing rooms or bathing areas.
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>注意：</strong>
+        施設によって、タトゥー、入浴着、体調不良時の入浴などに関するルールが違う場合があります。
+        利用する前に、施設の案内を確認しましょう。
+      </div>
+    </section>
+
+    <section id="vocab" class="vocab">
+      <h2>7. 重要語彙</h2>
+
+      <table>
+        <tr>
+          <th>日本語</th>
+          <th>読み方</th>
+          <th>English</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td>温泉</td>
+          <td>おんせん</td>
+          <td>hot spring</td>
+          <td>地下からわき出る温かい水、またはそれを利用した入浴施設</td>
+        </tr>
+        <tr>
+          <td>公衆浴場</td>
+          <td>こうしゅうよくじょう</td>
+          <td>public bathhouse</td>
+          <td>多くの人が利用できる入浴施設</td>
+        </tr>
+        <tr>
+          <td>湯船</td>
+          <td>ゆぶね</td>
+          <td>bathtub</td>
+          <td>温泉やお風呂のお湯が入っている場所</td>
+        </tr>
+        <tr>
+          <td>源泉かけ流し</td>
+          <td>げんせんかけながし</td>
+          <td>free-flowing hot spring water</td>
+          <td>源泉から出た湯を加温・加水せずに使う方法</td>
+        </tr>
+        <tr>
+          <td>文化財</td>
+          <td>ぶんかざい</td>
+          <td>cultural property</td>
+          <td>歴史的・文化的に価値があるもの</td>
+        </tr>
+        <tr>
+          <td>重要文化財</td>
+          <td>じゅうようぶんかざい</td>
+          <td>Important Cultural Property</td>
+          <td>国が特に重要だと認めた文化財</td>
+        </tr>
+        <tr>
+          <td>白鷺</td>
+          <td>しらさぎ</td>
+          <td>white heron</td>
+          <td>道後温泉の伝説に登場する白い鳥</td>
+        </tr>
+        <tr>
+          <td>湯上がり</td>
+          <td>ゆあがり</td>
+          <td>after bathing</td>
+          <td>温泉やお風呂から出た後のこと</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="fieldwork">
+      <h2>8. 見学するときのポイント</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>観察ポイント</h3>
+          <ul>
+            <li>道後温泉本館の外観や屋根の形を見る</li>
+            <li>振鷺閣や白鷺のモチーフを探す</li>
+            <li>商店街と温泉施設のつながりを見る</li>
+            <li>日本語と英語の案内表示を比べる</li>
+            <li>入浴マナーがどのように説明されているか確認する</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>見学前に知っておきたいこと</h3>
+          <p>
+            道後温泉は、観光地であると同時に、地域の人々が日常的に使う場所でもあります。
+            見学するときは、建物や歴史だけでなく、利用者のマナーや地域の生活にも注目しましょう。
+          </p>
+        </div>
+      </div>
+
+      <div class="activity">
+        <h3>質問と答え</h3>
+
+        <div class="qa">
+          <p class="question">Q1. なぜ道後温泉は「日本最古の温泉の一つ」といわれるのですか。</p>
+          <p class="answer">
+            A. 道後温泉には約3000年の歴史があるといわれ、古代の文献や伝説にも登場します。
+            白鷺伝説、玉の石の説話、聖徳太子の来浴伝承などがあり、古くから人々に知られていた温泉地だからです。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q2. 道後温泉本館は、なぜ特別な建物なのですか。</p>
+          <p class="answer">
+            A. 道後温泉本館は、歴史的な木造建築であり、現在も公衆浴場として使われています。
+            さらに、1994年に公衆浴場として初めて国の重要文化財に指定されました。
+            「使いながら守る文化財」として特別な価値があります。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q3. 温泉で体を洗ってから湯船に入るのはなぜですか。</p>
+          <p class="answer">
+            A. 湯船は多くの人が使う場所だからです。
+            先に体を洗うことで、お湯を清潔に保ち、他の利用者も気持ちよく入浴できます。
+            これは日本の公衆浴場でとても大切なマナーです。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q4. 道後温泉と文学にはどのような関係がありますか。</p>
+          <p class="answer">
+            A. 夏目漱石は松山に滞在し、道後温泉を気に入っていたとされています。
+            小説『坊っちゃん』に登場する温泉は道後温泉がモデルだといわれ、道後温泉は文学の舞台としても有名になりました。
+          </p>
+        </div>
+
+        <div class="qa">
+          <p class="question">Q5. 道後温泉を学ぶことで、どのような日本文化がわかりますか。</p>
+          <p class="answer">
+            A. 温泉に入る文化、公衆浴場でのマナー、地域の人々の生活、歴史的建築の保存、観光とまちづくりの関係などがわかります。
+            道後温泉は、単なる入浴施設ではなく、日本文化を総合的に学べる場所です。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="enjoy">
+      <h2>9. 道後温泉の楽しみ方チェックリスト</h2>
+
+      <p class="lead">
+        道後温泉では、温泉に入るだけでなく、建物、商店街、文学、伝説、まちの雰囲気を楽しむことができます。
+        見学しながら、できたことにチェックを入れてみましょう。
+      </p>
+
+      <div class="checklist">
+        <label>
+          <input type="checkbox">
+          道後温泉本館の外観を観察する
+        </label>
+
+        <label>
+          <input type="checkbox">
+          白鷺のモチーフや伝説に関係する場所を探す
+        </label>
+
+        <label>
+          <input type="checkbox">
+          道後温泉本館、飛鳥乃湯泉、椿の湯の違いを確認する
+        </label>
+
+        <label>
+          <input type="checkbox">
+          温泉に入る前のマナーを確認する
+        </label>
+
+        <label>
+          <input type="checkbox">
+          商店街を歩き、温泉と観光のつながりを考える
+        </label>
+
+        <label>
+          <input type="checkbox">
+          夏目漱石や『坊っちゃん』との関係を確認する
+        </label>
+
+        <label>
+          <input type="checkbox">
+          写真を撮るときに、建物や商店街、温泉街の雰囲気がどのようにつながっているかを意識する
+        </label>
+
+      </div>
+
+
+    </section>
+
+    <section id="sources">
+      <h2>10. 参考資料</h2>
+      <ul>
+        <li>
+          <a href="https://dogo.jp/about" target="_blank">
+            道後温泉公式サイト「道後温泉の歴史・泉質・風情」
+          </a>
+        </li>
+        <li>
+          <a href="https://dogo.jp/onsen/honkan" target="_blank">
+            道後温泉公式サイト「道後温泉本館」
+          </a>
+        </li>
+        <li>
+          <a href="https://dogo.jp/onsen/asuka" target="_blank">
+            道後温泉公式サイト「道後温泉別館 飛鳥乃湯泉」
+          </a>
+        </li>
+        <li>
+          <a href="https://dogo.jp/onsen/tsubaki" target="_blank">
+            道後温泉公式サイト「道後温泉 椿の湯」
+          </a>
+        </li>
+        <li>
+          <a href="https://www.city.matsuyama.ehime.jp/kanko/kankoguide/kankomeisho/dogoonsen/rekishi/bocchan.html" target="_blank">
+            松山市公式サイト「夏目漱石と『坊っちゃん』」
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>留学生のための道後温泉学習ページ</p>
+    <p class="small">
+      このページは授業・事前学習・見学後の振り返りに利用できます。
+    </p>
+  </footer>
+
+</body>
+</html>
