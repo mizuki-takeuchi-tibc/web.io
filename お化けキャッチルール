@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お化けキャッチの遊び方</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f7f4ee;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: white;
+      padding: 48px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    section {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #243b6b;
+      border-left: 8px solid #4b6cb7;
+      padding-left: 12px;
+    }
+
+    h3 {
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .item {
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      font-weight: bold;
+      background: #f0f3ff;
+      border: 2px solid #d8def7;
+    }
+
+    .rule-box {
+      background: #fff7d6;
+      border: 2px solid #f2d36b;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .example {
+      background: #eef8f1;
+      border-left: 6px solid #58b368;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+    }
+
+    .danger {
+      background: #fff0f0;
+      border-left: 6px solid #e85c5c;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+    }
+
+    ol, ul {
+      padding-left: 1.4em;
+    }
+
+    .summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      background: #243b6b;
+      color: white;
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #4b6cb7;
+      color: white;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 24px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      section {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>お化けキャッチの遊び方</h1>
+    <p>カードを見て、正しいコマを誰よりも早くつかむゲーム！</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>どんなゲーム？</h2>
+      <p>
+        お化けキャッチは、カードに描かれた絵を見て、
+        テーブル中央にあるコマの中から
+        <strong>正しいものを素早く取る</strong>ゲームです。
+      </p>
+
+      <div class="rule-box">
+        <strong>目的：</strong><br>
+        正しいコマを取ってカードを集める。<br>
+        最後に一番カードを多く持っている人の勝ちです。
+      </div>
+    </section>
+
+    <section>
+      <h2>使う5つのコマ</h2>
+      <p>ゲームでは、次の5つのコマを使います。</p>
+
+      <div class="items">
+        <div class="item">白いお化け</div>
+        <div class="item">赤いイス</div>
+        <div class="item">青い本</div>
+        <div class="item">緑のビン</div>
+        <div class="item">灰色のネズミ</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>基本ルール</h2>
+
+      <h3>ルール1：カードと同じものがあれば、それを取る</h3>
+      <p>
+        カードに描かれているものの中に、
+        実物のコマと<strong>色も形も同じ</strong>ものがあれば、
+        そのコマを取ります。
+      </p>
+
+      <div class="example">
+        例：カードに「白いお化け」が描かれている<br>
+        → 実物と同じなので、<strong>白いお化け</strong>を取る。
+      </div>
+
+      <h3>ルール2：同じものがなければ、出ていないものを取る</h3>
+      <p>
+        カードに実物と同じものがない場合は、
+        カードに出ていない<strong>色</strong>と
+        カードに出ていない<strong>形</strong>のコマを取ります。
+      </p>
+
+      <div class="example">
+        例：カードに「赤いお化け」と「緑のネズミ」が描かれている<br><br>
+        出ている形：お化け、ネズミ<br>
+        出ている色：赤、緑<br><br>
+        残るのは「青い本」なので、<strong>青い本</strong>を取る。
+      </div>
+    </section>
+
+    <section>
+      <h2>ゲームの進め方</h2>
+      <ol>
+        <li>5つのコマをテーブルの中央に置く</li>
+        <li>カードをよく混ぜて、裏向きの山札にする</li>
+        <li>山札からカードを1枚めくる</li>
+        <li>全員で正しいコマを素早く取る</li>
+        <li>正解した人が、そのカードをもらう</li>
+        <li>山札がなくなるまで続ける</li>
+        <li>一番カードを多く持っている人の勝ち</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>間違えたとき</h2>
+      <p>
+        間違ったコマを取ってしまった場合は、
+        ペナルティとして、すでに取ったカードを1枚返します。
+      </p>
+
+      <div class="danger">
+        まだカードを1枚も持っていない場合は、返すカードはありません。
+      </div>
+    </section>
+
+    <section>
+      <h2>どっちが取ったか微妙なときのルール</h2>
+      <p>
+        早取りゲームなので、同時に手が伸びて
+        「どっちが早かった？」となることがあります。
+        このページでは、揉めないように次のルールを採用します。
+      </p>
+
+      <h3>1. 「先に触った人」ではなく「先にしっかり取った人」</h3>
+      <p>
+        指先が少し触れただけでは、取ったことにはしません。
+      </p>
+
+      <div class="rule-box">
+        <strong>判定：</strong><br>
+        正しいコマを手でつかんで、
+        <strong>先に持ち上げた人</strong>がカードをもらいます。
+      </div>
+
+      <h3>2. 本当に同時なら、そのカードは無効</h3>
+      <p>
+        どちらが早かったか誰にも判断できない場合は、
+        無理に勝者を決めません。
+      </p>
+
+      <div class="rule-box">
+        <strong>判定：</strong><br>
+        完全に同時で判断できない場合、
+        そのカードは<strong>誰も取らずに捨て札</strong>にします。
+      </div>
+
+      <h3>3. 一度触ったら、そのコマを取った扱い</h3>
+      <p>
+        間違えたと思って手を離しても、
+        一度触った場合はそのコマを取った扱いにします。
+      </p>
+
+      <div class="rule-box">
+        <strong>判定：</strong><br>
+        一度コマに触ったら変更できません。<br>
+        正解ならカードをもらい、間違いならペナルティです。
+      </div>
+
+      <div class="danger">
+        このページのルールでは、同時だった場合でも
+        <strong>じゃんけんでは決めません。</strong>
+      </div>
+    </section>
+
+    <section>
+      <h2>覚え方</h2>
+      <div class="summary">
+        同じものがあれば、それを取る！<br>
+        なければ、絵にも色にも出ていないものを取る！
+      </div>
+    </section>
+
+    <section>
+      <h2>初心者向けのコツ</h2>
+      <ul>
+        <li>まずは「同じものがあるか」を探す</li>
+        <li>同じものがなければ、出ている色と形を消して考える</li>
+        <li>迷ったらすぐに取らず、間違いペナルティに注意する</li>
+        <li>小さい子と遊ぶときは、最初だけゆっくりめくると遊びやすい</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    お化けキャッチ ルール解説ページ
+  </footer>
+
+</body>
+</html>
