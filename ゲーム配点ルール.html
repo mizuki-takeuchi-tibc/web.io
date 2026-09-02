@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>松山チャレンジカップ 配点ルール</title>
+
+  <style>
+    :root {
+      --orange: #ff8a00;
+      --deep-orange: #ff5a1f;
+      --yellow: #ffd166;
+      --navy: #13315c;
+      --blue: #2364aa;
+      --cream: #fff7df;
+      --pink: #ff6f91;
+      --green: #2f9e44;
+      --purple: #845ec2;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+      color: var(--navy);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(255, 209, 102, 0.95) 0 8%, transparent 9%),
+        radial-gradient(circle at 90% 20%, rgba(255, 138, 0, 0.8) 0 7%, transparent 8%),
+        radial-gradient(circle at 20% 85%, rgba(35, 100, 170, 0.2) 0 9%, transparent 10%),
+        linear-gradient(135deg, #fff3c4 0%, #ffd89b 35%, #ffb36b 65%, #ff7a45 100%);
+      overflow-x: hidden;
+    }
+
+    .floating {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .float-item {
+      position: absolute;
+      font-size: 34px;
+      opacity: 0.25;
+      animation: floatUp 12s linear infinite;
+    }
+
+    .float-item:nth-child(1) { left: 6%; animation-delay: 0s; bottom: -50px; }
+    .float-item:nth-child(2) { left: 20%; animation-delay: 2s; bottom: -60px; }
+    .float-item:nth-child(3) { left: 42%; animation-delay: 4s; bottom: -40px; }
+    .float-item:nth-child(4) { left: 66%; animation-delay: 1s; bottom: -70px; }
+    .float-item:nth-child(5) { left: 83%; animation-delay: 5s; bottom: -55px; }
+    .float-item:nth-child(6) { left: 92%; animation-delay: 8s; bottom: -50px; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      12% { opacity: 0.35; }
+      100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1080px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .hero {
+      position: relative;
+      padding: 34px 24px 30px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,247,223,0.92)),
+        radial-gradient(circle at 80% 20%, rgba(255, 138, 0, 0.2), transparent 35%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.75);
+    }
+
+    .hero::before {
+      content: "🏯 ♨️ 🍊 🃏 👻 🎯 🎤 🐺 🎬";
+      position: absolute;
+      right: 20px;
+      top: 16px;
+      font-size: clamp(28px, 5vw, 56px);
+      opacity: 0.18;
+      letter-spacing: 8px;
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, var(--orange), var(--deep-orange));
+      color: white;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(255, 90, 31, 0.28);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 6.5vw, 72px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+      text-shadow: 3px 3px 0 rgba(255, 209, 102, 0.9);
+    }
+
+    .subtitle {
+      margin: 14px 0 0;
+      font-size: clamp(15px, 2.2vw, 21px);
+      font-weight: 800;
+      color: #27476e;
+      line-height: 1.7;
+    }
+
+    .summary-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .summary-card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 22px;
+      padding: 16px;
+      text-align: center;
+      border: 2px solid rgba(19,49,92,0.08);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .summary-number {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--deep-orange);
+      line-height: 1;
+    }
+
+    .summary-label {
+      margin-top: 8px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(19,49,92,0.08);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.14);
+      background: white;
+    }
+
+    .section-title {
+      margin: 34px 0 16px;
+      color: white;
+      font-size: clamp(24px, 4vw, 40px);
+      text-shadow: 2px 2px 0 rgba(19,49,92,0.35);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.94);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.7);
+      margin-bottom: 18px;
+    }
+
+    .panel-header {
+      padding: 18px 20px;
+      color: white;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      font-size: 22px;
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .panel-header .max-point {
+      background: rgba(255,255,255,0.18);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 15px;
+    }
+
+    .panel-body {
+      padding: 18px;
+    }
+
+    .rule-text {
+      font-weight: 800;
+      line-height: 1.8;
+      color: #314961;
+      margin: 0 0 14px;
+    }
+
+    .highlight {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #fff0c2;
+      color: var(--deep-orange);
+      font-weight: 900;
+    }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff7df, #ffffff);
+      border: 2px solid rgba(255,138,0,0.16);
+      padding: 14px;
+    }
+
+    .mini-card-title {
+      font-weight: 900;
+      font-size: 17px;
+      color: var(--deep-orange);
+      margin-bottom: 8px;
+    }
+
+    .formula {
+      background: #102a43;
+      color: #ffffff;
+      padding: 13px 14px;
+      border-radius: 16px;
+      font-weight: 900;
+      overflow-x: auto;
+      line-height: 1.7;
+      margin: 10px 0 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 11px 10px;
+      border-bottom: 1px solid rgba(19,49,92,0.08);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #fff0c2;
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    td:first-child, th:first-child {
+      text-align: left;
+      font-weight: 900;
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(255, 247, 223, 0.55);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .total-table th {
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      color: white;
+    }
+
+    .total-row {
+      background: #fff0c2 !important;
+      font-weight: 900;
+      color: var(--deep-orange);
+      font-size: 16px;
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(35,100,170,0.08);
+      border-left: 6px solid var(--blue);
+      font-weight: 800;
+      line-height: 1.7;
+      color: #314961;
+    }
+
+    .warning {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,90,31,0.09);
+      border-left: 6px solid var(--deep-orange);
+      font-weight: 800;
+      line-height: 1.7;
+      color: #314961;
+    }
+
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: white;
+      font-weight: 900;
+      text-shadow: 1px 1px 0 rgba(19,49,92,0.35);
+      line-height: 1.7;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 5;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--orange), var(--deep-orange));
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      box-shadow: 0 12px 24px rgba(255,90,31,0.35);
+      border: 3px solid rgba(255,255,255,0.8);
+    }
+
+    @media (max-width: 820px) {
+      .summary-box {
+        grid-template-columns: 1fr;
+      }
+
+      .point-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px 18px;
+      }
+
+      .panel-header {
+        font-size: 19px;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 9px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <div class="floating">
+    <div class="float-item">🍊</div>
+    <div class="float-item">🏯</div>
+    <div class="float-item">♨️</div>
+    <div class="float-item">🃏</div>
+    <div class="float-item">🐺</div>
+    <div class="float-item">🎬</div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="badge">🍊 Matsuyama Challenge Cup</div>
+      <h1>配点ルール</h1>
+      <p class="subtitle">
+        松山チャレンジカップは、全9競技で行います。<br>
+        各競技はすべて10点満点。合計90点満点で総合順位を決定します。
+      </p>
+
+      <div class="summary-box">
+        <div class="summary-card">
+          <div class="summary-number">9</div>
+          <div class="summary-label">競技</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-number">10</div>
+          <div class="summary-label">各競技10点満点</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-number">90</div>
+          <div class="summary-label">総合90点満点</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="#summary" class="nav-button">📊 配点一覧</a>
+        <a href="#matsuyama" class="nav-button">🏯 松山城</a>
+        <a href="#dogo" class="nav-button">♨️ 道後温泉</a>
+        <a href="#mikan" class="nav-button">🍊 みかん</a>
+        <a href="#daifugo" class="nav-button">🃏 大富豪</a>
+        <a href="#obake" class="nav-button">👻 オバケキャッチ</a>
+        <a href="#darts" class="nav-button">🎯 ダーツ</a>
+        <a href="#karaoke" class="nav-button">🎤 カラオケ</a>
+        <a href="#jinro" class="nav-button">🐺 人狼</a>
+        <a href="#movie" class="nav-button">🎬 ベスト動画</a>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="summary">📊 全体の配点一覧</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>全競技の満点</span>
+        <span class="max-point">合計90点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <div class="table-wrap">
+          <table class="total-table">
+            <thead>
+              <tr>
+                <th>競技</th>
+                <th>満点</th>
+                <th>主な評価方法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🏯 松山城クイズ</td>
+                <td>10点</td>
+                <td>正解数＋回答スピード</td>
+              </tr>
+              <tr>
+                <td>♨️ 道後温泉クイズ</td>
+                <td>10点</td>
+                <td>正解数＋回答スピード</td>
+              </tr>
+              <tr>
+                <td>🍊 ブランドみかん飲み当て</td>
+                <td>10点</td>
+                <td>正解数</td>
+              </tr>
+              <tr>
+                <td>🃏 大富豪</td>
+                <td>10点</td>
+                <td>2回戦の順位点</td>
+              </tr>
+              <tr>
+                <td>👻 オバケキャッチ</td>
+                <td>10点</td>
+                <td>獲得カード数の順位</td>
+              </tr>
+              <tr>
+                <td>🎯 ダーツ</td>
+                <td>10点</td>
+                <td>合計点の順位</td>
+              </tr>
+              <tr>
+                <td>🎤 カラオケ得点バトル</td>
+                <td>10点</td>
+                <td>採点点数＋盛り上げ点</td>
+              </tr>
+              <tr>
+                <td>🐺 人狼</td>
+                <td>10点</td>
+                <td>勝利陣営＋個人活躍＋MVP</td>
+              </tr>
+              <tr>
+                <td>🎬 旅のベスト動画</td>
+                <td>10点</td>
+                <td>審査＋投票</td>
+              </tr>
+              <tr class="total-row">
+                <td>合計</td>
+                <td>90点</td>
+                <td>総合得点で順位決定</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          同点の場合は、原則として同順位とします。最終順位で同点者が出た場合は、
+          「旅のベスト動画」または「じゃんけん決勝」などで順位を決めてもOKです。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="matsuyama">🏯 松山城クイズ</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>松山城クイズ</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          松山城クイズはGoogleフォームで回答します。問題数は
+          <span class="highlight">12問</span>です。
+          得点は、正解数とフォーム送信の早さで決まります。
+        </p>
+
+        <div class="point-grid">
+          <div class="mini-card">
+            <div class="mini-card-title">正解点</div>
+            <p class="rule-text">
+              正解数に応じて最大7点。
+            </p>
+            <div class="formula">
+              正解点 ＝ 正解数 ÷ 12 × 7
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">回答スピード点</div>
+            <p class="rule-text">
+              Googleフォームを早く送信した順に最大3点。
+            </p>
+            <div class="formula">
+              合計点 ＝ 正解点 ＋ スピード点
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>提出順位</th>
+                <th>スピード点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1位</td><td>3.0点</td></tr>
+              <tr><td>2位</td><td>2.7点</td></tr>
+              <tr><td>3位</td><td>2.4点</td></tr>
+              <tr><td>4位</td><td>2.1点</td></tr>
+              <tr><td>5位</td><td>1.8点</td></tr>
+              <tr><td>6位</td><td>1.5点</td></tr>
+              <tr><td>7位</td><td>1.2点</td></tr>
+              <tr><td>8位</td><td>0.9点</td></tr>
+              <tr><td>9位</td><td>0.6点</td></tr>
+              <tr><td>10位</td><td>0.3点</td></tr>
+              <tr><td>未提出</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          例：12問中10問正解で、提出順位が2位の場合<br>
+          正解点 10 ÷ 12 × 7 ＝ 5.8点、スピード点 2.7点、合計 8.5点。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="dogo">♨️ 道後温泉クイズ</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>道後温泉クイズ</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          道後温泉クイズもGoogleフォームで回答します。問題数は
+          <span class="highlight">16問</span>です。
+          得点は、正解数とフォーム送信の早さで決まります。
+        </p>
+
+        <div class="point-grid">
+          <div class="mini-card">
+            <div class="mini-card-title">正解点</div>
+            <p class="rule-text">
+              正解数に応じて最大7点。
+            </p>
+            <div class="formula">
+              正解点 ＝ 正解数 ÷ 16 × 7
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">回答スピード点</div>
+            <p class="rule-text">
+              Googleフォームを早く送信した順に最大3点。
+            </p>
+            <div class="formula">
+              合計点 ＝ 正解点 ＋ スピード点
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>提出順位</th>
+                <th>スピード点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1位</td><td>3.0点</td></tr>
+              <tr><td>2位</td><td>2.7点</td></tr>
+              <tr><td>3位</td><td>2.4点</td></tr>
+              <tr><td>4位</td><td>2.1点</td></tr>
+              <tr><td>5位</td><td>1.8点</td></tr>
+              <tr><td>6位</td><td>1.5点</td></tr>
+              <tr><td>7位</td><td>1.2点</td></tr>
+              <tr><td>8位</td><td>0.9点</td></tr>
+              <tr><td>9位</td><td>0.6点</td></tr>
+              <tr><td>10位</td><td>0.3点</td></tr>
+              <tr><td>未提出</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          例：16問中14問正解で、提出順位が2位の場合<br>
+          正解点 14 ÷ 16 × 7 ＝ 6.1点、スピード点 2.7点、合計 8.8点。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="mikan">🍊 ブランドみかん飲み当て</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>ブランドみかん飲み当て</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          愛媛のブランドみかんジュースなどを飲み比べて、種類やブランドを当てます。
+          5問形式の場合は、1問正解につき2点です。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>正解数</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>5問正解</td><td>10点</td></tr>
+              <tr><td>4問正解</td><td>8点</td></tr>
+              <tr><td>3問正解</td><td>6点</td></tr>
+              <tr><td>2問正解</td><td>4点</td></tr>
+              <tr><td>1問正解</td><td>2点</td></tr>
+              <tr><td>0問正解</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          もし問題数を変更する場合は、10点満点になるように正解数に応じて換算します。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="daifugo">🃏 大富豪</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>大富豪</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          10人を5人ずつ2テーブルに分けて行います。
+          2回戦行い、それぞれの順位点を合計します。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>1回戦ごとの順位</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1位</td><td>5点</td></tr>
+              <tr><td>2位</td><td>4点</td></tr>
+              <tr><td>3位</td><td>3点</td></tr>
+              <tr><td>4位</td><td>2点</td></tr>
+              <tr><td>5位</td><td>1点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          例：1回戦で2位、2回戦で1位の場合<br>
+          4点 ＋ 5点 ＝ 9点。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="obake">👻 オバケキャッチ</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>オバケキャッチ</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          ゲーム終了時に、獲得したカードの枚数で順位を決めます。
+          獲得カード数が多い人ほど高得点です。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>順位</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1位</td><td>10点</td></tr>
+              <tr><td>2位</td><td>8点</td></tr>
+              <tr><td>3位</td><td>7点</td></tr>
+              <tr><td>4位</td><td>6点</td></tr>
+              <tr><td>5位</td><td>5点</td></tr>
+              <tr><td>6位</td><td>4点</td></tr>
+              <tr><td>7位</td><td>3点</td></tr>
+              <tr><td>8位</td><td>2点</td></tr>
+              <tr><td>9位</td><td>1点</td></tr>
+              <tr><td>10位</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          同点の場合は、同じ得点にします。例：2位が2人いる場合、2人とも8点。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="darts">🎯 ダーツ</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>ダーツ</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          1人ずつ決められた回数を投げ、合計点で順位を決めます。
+          例：1人3投 × 3ラウンド、合計9投。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>順位</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1位</td><td>10点</td></tr>
+              <tr><td>2位</td><td>8点</td></tr>
+              <tr><td>3位</td><td>7点</td></tr>
+              <tr><td>4位</td><td>6点</td></tr>
+              <tr><td>5位</td><td>5点</td></tr>
+              <tr><td>6位</td><td>4点</td></tr>
+              <tr><td>7位</td><td>3点</td></tr>
+              <tr><td>8位</td><td>2点</td></tr>
+              <tr><td>9位</td><td>1点</td></tr>
+              <tr><td>10位</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          合計点が同じ場合は、同順位・同得点にします。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="karaoke">🎤 カラオケ得点バトル</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>カラオケ得点バトル</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          カラオケの機械採点に加えて、場を盛り上げた人にも点数をつけます。
+          歌の上手さだけでなく、みんなで楽しむ姿勢も評価します。
+        </p>
+
+        <div class="point-grid">
+          <div class="mini-card">
+            <div class="mini-card-title">機械採点</div>
+            <p class="rule-text">
+              採点点数の順位で最大8点。
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">盛り上げ点</div>
+            <p class="rule-text">
+              最大2点。歌・リアクション・応援などを評価します。
+            </p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>採点順位</th>
+                <th>機械採点ポイント</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1位</td><td>8点</td></tr>
+              <tr><td>2位</td><td>7点</td></tr>
+              <tr><td>3位</td><td>6点</td></tr>
+              <tr><td>4位</td><td>5点</td></tr>
+              <tr><td>5位</td><td>4点</td></tr>
+              <tr><td>6位</td><td>3点</td></tr>
+              <tr><td>7位</td><td>2点</td></tr>
+              <tr><td>8位</td><td>1点</td></tr>
+              <tr><td>9位以下</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>盛り上げ評価</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>とても盛り上げた</td><td>2点</td></tr>
+              <tr><td>盛り上げた</td><td>1点</td></tr>
+              <tr><td>普通</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          カラオケ得点 ＝ 機械採点ポイント ＋ 盛り上げ点。最大10点です。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="jinro">🐺 人狼</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>人狼</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          人狼は勝敗だけでなく、推理・演技・発言・チームへの貢献も評価します。
+        </p>
+
+        <div class="point-grid">
+          <div class="mini-card">
+            <div class="mini-card-title">勝利陣営点</div>
+            <p class="rule-text">
+              勝った陣営のメンバーに5点。
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">個人活躍点</div>
+            <p class="rule-text">
+              名推理、演技、議論の盛り上げなどで最大3点。
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">MVP投票</div>
+            <p class="rule-text">
+              ゲーム後の投票で最大2点。
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">合計</div>
+            <p class="rule-text">
+              勝利陣営点5点＋個人活躍点3点＋MVP投票2点＝10点。
+            </p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>勝った陣営</td><td>5点</td></tr>
+              <tr><td>負けた陣営</td><td>0点</td></tr>
+              <tr><td>個人活躍点</td><td>最大3点</td></tr>
+              <tr><td>MVP 1位</td><td>2点</td></tr>
+              <tr><td>MVP 2位</td><td>1点</td></tr>
+              <tr><td>MVP 3位以下</td><td>0点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          個人活躍点の例：名推理をした、上手にだました、議論を盛り上げた、役職をうまく使った、冷静に進行を助けた。
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="movie">🎬 旅のベスト動画</h2>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>旅のベスト動画</span>
+        <span class="max-point">10点満点</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          2泊3日の旅の中で撮った「一番心に残った動画」を提出します。
+          旅の思い出感、おもしろさ、見やすさ、投票で評価します。
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>評価項目</th>
+                <th>得点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>旅の思い出感</td><td>3点</td></tr>
+              <tr><td>おもしろさ・エモさ</td><td>3点</td></tr>
+              <tr><td>撮り方・見やすさ</td><td>2点</td></tr>
+              <tr><td>みんなの投票</td><td>2点</td></tr>
+              <tr class="total-row"><td>合計</td><td>10点</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning">
+          動画は、他の人が嫌がる内容や危険な撮影はNGです。
+          みんなが楽しく見られる動画を提出しましょう。
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span>参加者への説明文</span>
+        <span class="max-point">そのまま読み上げOK</span>
+      </div>
+
+      <div class="panel-body">
+        <p class="rule-text">
+          松山チャレンジカップは、全部で9競技あります。各競技は10点満点で、合計90点満点です。
+          松山城クイズと道後温泉クイズは、正解数だけでなくGoogleフォームを送信した早さも得点になります。
+          早く答えることも大切ですが、正解しないと高得点にはなりません。
+          そのほかの競技は、順位や投票、ゲーム中の活躍によって点数が決まります。
+          ルールを守って、みんなで楽しく優勝を目指しましょう！
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      🍊 Matsuyama Challenge Cup ｜ Scoring Rules<br>
+      Friendship, Fun, and Challenge!
+    </div>
+  </main>
+
+  <a href="#top" class="back-top" aria-label="ページ上部へ戻る">↑</a>
+</body>
+</html>
