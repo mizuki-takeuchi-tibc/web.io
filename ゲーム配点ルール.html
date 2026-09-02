@@ -24,6 +24,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
@@ -58,6 +62,9 @@
     .float-item:nth-child(4) { left: 66%; animation-delay: 1s; bottom: -70px; }
     .float-item:nth-child(5) { left: 83%; animation-delay: 5s; bottom: -55px; }
     .float-item:nth-child(6) { left: 92%; animation-delay: 8s; bottom: -50px; }
+    .float-item:nth-child(7) { left: 34%; animation-delay: 6s; bottom: -65px; }
+    .float-item:nth-child(8) { left: 74%; animation-delay: 9s; bottom: -45px; }
+    .float-item:nth-child(9) { left: 53%; animation-delay: 3s; bottom: -75px; }
 
     @keyframes floatUp {
       0% { transform: translateY(0) rotate(0deg); opacity: 0; }
@@ -308,6 +315,7 @@
 
     .table-wrap {
       overflow-x: auto;
+      margin-top: 10px;
     }
 
     .total-table th {
@@ -405,6 +413,9 @@
     <div class="float-item">🏯</div>
     <div class="float-item">♨️</div>
     <div class="float-item">🃏</div>
+    <div class="float-item">👻</div>
+    <div class="float-item">🎯</div>
+    <div class="float-item">🎤</div>
     <div class="float-item">🐺</div>
     <div class="float-item">🎬</div>
   </div>
@@ -412,7 +423,9 @@
   <main class="page">
     <section class="hero">
       <div class="badge">🍊 Matsuyama Challenge Cup</div>
+
       <h1>配点ルール</h1>
+
       <p class="subtitle">
         松山チャレンジカップは、全9競技で行います。<br>
         各競技はすべて10点満点。合計90点満点で総合順位を決定します。
@@ -467,52 +480,62 @@
                 <th>主な評価方法</th>
               </tr>
             </thead>
+
             <tbody>
               <tr>
                 <td>🏯 松山城クイズ</td>
                 <td>10点</td>
                 <td>正解数＋回答スピード</td>
               </tr>
+
               <tr>
                 <td>♨️ 道後温泉クイズ</td>
                 <td>10点</td>
                 <td>正解数＋回答スピード</td>
               </tr>
+
               <tr>
                 <td>🍊 ブランドみかん飲み当て</td>
                 <td>10点</td>
                 <td>正解数</td>
               </tr>
+
               <tr>
                 <td>🃏 大富豪</td>
                 <td>10点</td>
-                <td>2回戦の順位点</td>
+                <td>役職ポイントを蓄積し、5人チーム内の最終順位で得点</td>
               </tr>
+
               <tr>
                 <td>👻 オバケキャッチ</td>
                 <td>10点</td>
-                <td>獲得カード数の順位</td>
+                <td>5人チーム内のカード取得枚数順位</td>
               </tr>
+
               <tr>
                 <td>🎯 ダーツ</td>
                 <td>10点</td>
-                <td>合計点の順位</td>
+                <td>全体順位で得点</td>
               </tr>
+
               <tr>
                 <td>🎤 カラオケ得点バトル</td>
                 <td>10点</td>
-                <td>採点点数＋盛り上げ点</td>
+                <td>カラオケ採点の全体順位で得点</td>
               </tr>
+
               <tr>
                 <td>🐺 人狼</td>
                 <td>10点</td>
-                <td>勝利陣営＋個人活躍＋MVP</td>
+                <td>勝利ポイントを蓄積し、最終順位で得点</td>
               </tr>
+
               <tr>
                 <td>🎬 旅のベスト動画</td>
                 <td>10点</td>
                 <td>審査＋投票</td>
               </tr>
+
               <tr class="total-row">
                 <td>合計</td>
                 <td>90点</td>
@@ -524,7 +547,7 @@
 
         <div class="note">
           同点の場合は、原則として同順位とします。最終順位で同点者が出た場合は、
-          「旅のベスト動画」または「じゃんけん決勝」などで順位を決めてもOKです。
+          「旅のベスト動画」や「じゃんけん決勝」などで順位を決めてもOKです。
         </div>
       </div>
     </section>
@@ -548,8 +571,9 @@
           <div class="mini-card">
             <div class="mini-card-title">正解点</div>
             <p class="rule-text">
-              正解数に応じて最大7点。
+              正解数に応じて最大7点です。
             </p>
+
             <div class="formula">
               正解点 ＝ 正解数 ÷ 12 × 7
             </div>
@@ -558,8 +582,9 @@
           <div class="mini-card">
             <div class="mini-card-title">回答スピード点</div>
             <p class="rule-text">
-              Googleフォームを早く送信した順に最大3点。
+              Googleフォームを早く送信した順に最大3点です。
             </p>
+
             <div class="formula">
               合計点 ＝ 正解点 ＋ スピード点
             </div>
@@ -574,6 +599,7 @@
                 <th>スピード点</th>
               </tr>
             </thead>
+
             <tbody>
               <tr><td>1位</td><td>3.0点</td></tr>
               <tr><td>2位</td><td>2.7点</td></tr>
@@ -616,8 +642,9 @@
           <div class="mini-card">
             <div class="mini-card-title">正解点</div>
             <p class="rule-text">
-              正解数に応じて最大7点。
+              正解数に応じて最大7点です。
             </p>
+
             <div class="formula">
               正解点 ＝ 正解数 ÷ 16 × 7
             </div>
@@ -626,8 +653,9 @@
           <div class="mini-card">
             <div class="mini-card-title">回答スピード点</div>
             <p class="rule-text">
-              Googleフォームを早く送信した順に最大3点。
+              Googleフォームを早く送信した順に最大3点です。
             </p>
+
             <div class="formula">
               合計点 ＝ 正解点 ＋ スピード点
             </div>
@@ -642,6 +670,7 @@
                 <th>スピード点</th>
               </tr>
             </thead>
+
             <tbody>
               <tr><td>1位</td><td>3.0点</td></tr>
               <tr><td>2位</td><td>2.7点</td></tr>
@@ -687,6 +716,7 @@
                 <th>得点</th>
               </tr>
             </thead>
+
             <tbody>
               <tr><td>5問正解</td><td>10点</td></tr>
               <tr><td>4問正解</td><td>8点</td></tr>
@@ -714,31 +744,69 @@
 
       <div class="panel-body">
         <p class="rule-text">
-          10人を5人ずつ2テーブルに分けて行います。
-          2回戦行い、それぞれの順位点を合計します。
+          大富豪は5人チームで行います。何回戦行うかは当日の時間に合わせて決めます。
+          各回の結果に応じて役職ポイントを獲得し、ポイントを蓄積します。
+          最後に、蓄積ポイントの高い順で5人チーム内の順位を決め、チャレンジカップ得点に換算します。
         </p>
+
+        <div class="point-grid">
+          <div class="mini-card">
+            <div class="mini-card-title">各回の役職ポイント</div>
+            <p class="rule-text">
+              1回ごとに、役職に応じてポイントを獲得します。
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-title">最終得点</div>
+            <p class="rule-text">
+              蓄積ポイントの合計で、5人チーム内の順位を決めます。
+            </p>
+          </div>
+        </div>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>1回戦ごとの順位</th>
-                <th>得点</th>
+                <th>役職</th>
+                <th>獲得ポイント</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr><td>1位</td><td>5点</td></tr>
-              <tr><td>2位</td><td>4点</td></tr>
-              <tr><td>3位</td><td>3点</td></tr>
-              <tr><td>4位</td><td>2点</td></tr>
-              <tr><td>5位</td><td>1点</td></tr>
+              <tr><td>大富豪</td><td>5ポイント</td></tr>
+              <tr><td>富豪</td><td>4ポイント</td></tr>
+              <tr><td>平民</td><td>3ポイント</td></tr>
+              <tr><td>貧民</td><td>2ポイント</td></tr>
+              <tr><td>大貧民</td><td>1ポイント</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>5人チーム内の最終順位</th>
+                <th>チャレンジカップ得点</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr><td>1位</td><td>10点</td></tr>
+              <tr><td>2位</td><td>8点</td></tr>
+              <tr><td>3位</td><td>6点</td></tr>
+              <tr><td>4位</td><td>4点</td></tr>
+              <tr><td>5位</td><td>2点</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="note">
-          例：1回戦で2位、2回戦で1位の場合<br>
-          4点 ＋ 5点 ＝ 9点。
+          例：3回プレイして、大富豪・平民・富豪だった場合<br>
+          5ポイント ＋ 3ポイント ＋ 4ポイント ＝ 12ポイント。<br>
+          この蓄積ポイントで5人チーム内の順位を決めます。
         </div>
       </div>
     </section>
@@ -753,35 +821,33 @@
 
       <div class="panel-body">
         <p class="rule-text">
-          ゲーム終了時に、獲得したカードの枚数で順位を決めます。
-          獲得カード数が多い人ほど高得点です。
+          オバケキャッチは5人チームで行います。
+          ゲーム終了時に、獲得したカードの枚数で5人チーム内の順位を決めます。
+          カードを多く取った人ほど高得点です。
         </p>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>順位</th>
-                <th>得点</th>
+                <th>5人チーム内の順位</th>
+                <th>チャレンジカップ得点</th>
               </tr>
             </thead>
+
             <tbody>
               <tr><td>1位</td><td>10点</td></tr>
               <tr><td>2位</td><td>8点</td></tr>
-              <tr><td>3位</td><td>7点</td></tr>
-              <tr><td>4位</td><td>6点</td></tr>
-              <tr><td>5位</td><td>5点</td></tr>
-              <tr><td>6位</td><td>4点</td></tr>
-              <tr><td>7位</td><td>3点</td></tr>
-              <tr><td>8位</td><td>2点</td></tr>
-              <tr><td>9位</td><td>1点</td></tr>
-              <tr><td>10位</td><td>0点</td></tr>
+              <tr><td>3位</td><td>6点</td></tr>
+              <tr><td>4位</td><td>4点</td></tr>
+              <tr><td>5位</td><td>2点</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="note">
-          同点の場合は、同じ得点にします。例：2位が2人いる場合、2人とも8点。
+          同じ枚数の人がいる場合は、同じ得点にします。<br>
+          例：1位が2人いる場合、2人とも10点。
         </div>
       </div>
     </section>
@@ -796,29 +862,30 @@
 
       <div class="panel-body">
         <p class="rule-text">
-          1人ずつ決められた回数を投げ、合計点で順位を決めます。
-          例：1人3投 × 3ラウンド、合計9投。
+          ダーツは、1人ずつ決められた回数を投げ、合計点で全体順位を決めます。
+          1位と2位が10点、そこから2点ずつ下がり、9位と10位は2点です。
         </p>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>順位</th>
-                <th>得点</th>
+                <th>全体順位</th>
+                <th>チャレンジカップ得点</th>
               </tr>
             </thead>
+
             <tbody>
               <tr><td>1位</td><td>10点</td></tr>
-              <tr><td>2位</td><td>8点</td></tr>
-              <tr><td>3位</td><td>7点</td></tr>
-              <tr><td>4位</td><td>6点</td></tr>
-              <tr><td>5位</td><td>5点</td></tr>
-              <tr><td>6位</td><td>4点</td></tr>
-              <tr><td>7位</td><td>3点</td></tr>
-              <tr><td>8位</td><td>2点</td></tr>
-              <tr><td>9位</td><td>1点</td></tr>
-              <tr><td>10位</td><td>0点</td></tr>
+              <tr><td>2位</td><td>10点</td></tr>
+              <tr><td>3位</td><td>8点</td></tr>
+              <tr><td>4位</td><td>8点</td></tr>
+              <tr><td>5位</td><td>6点</td></tr>
+              <tr><td>6位</td><td>6点</td></tr>
+              <tr><td>7位</td><td>4点</td></tr>
+              <tr><td>8位</td><td>4点</td></tr>
+              <tr><td>9位</td><td>2点</td></tr>
+              <tr><td>10位</td><td>2点</td></tr>
             </tbody>
           </table>
         </div>
@@ -839,66 +906,37 @@
 
       <div class="panel-body">
         <p class="rule-text">
-          カラオケの機械採点に加えて、場を盛り上げた人にも点数をつけます。
-          歌の上手さだけでなく、みんなで楽しむ姿勢も評価します。
+          カラオケ得点バトルは、カラオケ機械の採点点数で競います。
+          採点点数の高い順で全体順位を決めます。
+          ダーツと同じく、1位と2位が10点、そこから2点ずつ下がり、9位と10位は2点です。
         </p>
-
-        <div class="point-grid">
-          <div class="mini-card">
-            <div class="mini-card-title">機械採点</div>
-            <p class="rule-text">
-              採点点数の順位で最大8点。
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <div class="mini-card-title">盛り上げ点</div>
-            <p class="rule-text">
-              最大2点。歌・リアクション・応援などを評価します。
-            </p>
-          </div>
-        </div>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th>採点順位</th>
-                <th>機械採点ポイント</th>
+                <th>チャレンジカップ得点</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>1位</td><td>8点</td></tr>
-              <tr><td>2位</td><td>7点</td></tr>
-              <tr><td>3位</td><td>6点</td></tr>
-              <tr><td>4位</td><td>5点</td></tr>
-              <tr><td>5位</td><td>4点</td></tr>
-              <tr><td>6位</td><td>3点</td></tr>
-              <tr><td>7位</td><td>2点</td></tr>
-              <tr><td>8位</td><td>1点</td></tr>
-              <tr><td>9位以下</td><td>0点</td></tr>
-            </tbody>
-          </table>
-        </div>
 
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>盛り上げ評価</th>
-                <th>得点</th>
-              </tr>
-            </thead>
             <tbody>
-              <tr><td>とても盛り上げた</td><td>2点</td></tr>
-              <tr><td>盛り上げた</td><td>1点</td></tr>
-              <tr><td>普通</td><td>0点</td></tr>
+              <tr><td>1位</td><td>10点</td></tr>
+              <tr><td>2位</td><td>10点</td></tr>
+              <tr><td>3位</td><td>8点</td></tr>
+              <tr><td>4位</td><td>8点</td></tr>
+              <tr><td>5位</td><td>6点</td></tr>
+              <tr><td>6位</td><td>6点</td></tr>
+              <tr><td>7位</td><td>4点</td></tr>
+              <tr><td>8位</td><td>4点</td></tr>
+              <tr><td>9位</td><td>2点</td></tr>
+              <tr><td>10位</td><td>2点</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="note">
-          カラオケ得点 ＝ 機械採点ポイント ＋ 盛り上げ点。最大10点です。
+          採点点数が同じ場合は、同順位・同得点にします。
         </div>
       </div>
     </section>
@@ -913,35 +951,23 @@
 
       <div class="panel-body">
         <p class="rule-text">
-          人狼は勝敗だけでなく、推理・演技・発言・チームへの貢献も評価します。
+          人狼は、何回行うかは当日の時間に合わせて決めます。
+          1ゲームごとに、勝利した陣営のメンバーが勝利ポイントを獲得します。
+          最後に、蓄積した勝利ポイント数で全体順位を決め、チャレンジカップ得点に換算します。
         </p>
 
         <div class="point-grid">
           <div class="mini-card">
-            <div class="mini-card-title">勝利陣営点</div>
+            <div class="mini-card-title">勝利ポイント</div>
             <p class="rule-text">
-              勝った陣営のメンバーに5点。
+              1ゲーム勝利するごとに、勝った陣営のメンバーは1ポイントを獲得します。
             </p>
           </div>
 
           <div class="mini-card">
-            <div class="mini-card-title">個人活躍点</div>
+            <div class="mini-card-title">最終得点</div>
             <p class="rule-text">
-              名推理、演技、議論の盛り上げなどで最大3点。
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <div class="mini-card-title">MVP投票</div>
-            <p class="rule-text">
-              ゲーム後の投票で最大2点。
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <div class="mini-card-title">合計</div>
-            <p class="rule-text">
-              勝利陣営点5点＋個人活躍点3点＋MVP投票2点＝10点。
+              最後に、勝利ポイントの多い順で全体順位を決めます。
             </p>
           </div>
         </div>
@@ -950,23 +976,29 @@
           <table>
             <thead>
               <tr>
-                <th>項目</th>
-                <th>得点</th>
+                <th>全体順位</th>
+                <th>チャレンジカップ得点</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr><td>勝った陣営</td><td>5点</td></tr>
-              <tr><td>負けた陣営</td><td>0点</td></tr>
-              <tr><td>個人活躍点</td><td>最大3点</td></tr>
-              <tr><td>MVP 1位</td><td>2点</td></tr>
-              <tr><td>MVP 2位</td><td>1点</td></tr>
-              <tr><td>MVP 3位以下</td><td>0点</td></tr>
+              <tr><td>1位</td><td>10点</td></tr>
+              <tr><td>2位</td><td>10点</td></tr>
+              <tr><td>3位</td><td>8点</td></tr>
+              <tr><td>4位</td><td>8点</td></tr>
+              <tr><td>5位</td><td>6点</td></tr>
+              <tr><td>6位</td><td>6点</td></tr>
+              <tr><td>7位</td><td>4点</td></tr>
+              <tr><td>8位</td><td>4点</td></tr>
+              <tr><td>9位</td><td>2点</td></tr>
+              <tr><td>10位</td><td>2点</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="note">
-          個人活躍点の例：名推理をした、上手にだました、議論を盛り上げた、役職をうまく使った、冷静に進行を助けた。
+          例：3回プレイして2回勝利した場合、勝利ポイントは2ポイントです。<br>
+          全員の勝利ポイントを比べて、最終順位を決めます。
         </div>
       </div>
     </section>
@@ -993,6 +1025,7 @@
                 <th>得点</th>
               </tr>
             </thead>
+
             <tbody>
               <tr><td>旅の思い出感</td><td>3点</td></tr>
               <tr><td>おもしろさ・エモさ</td><td>3点</td></tr>
@@ -1020,8 +1053,10 @@
         <p class="rule-text">
           松山チャレンジカップは、全部で9競技あります。各競技は10点満点で、合計90点満点です。
           松山城クイズと道後温泉クイズは、正解数だけでなくGoogleフォームを送信した早さも得点になります。
-          早く答えることも大切ですが、正解しないと高得点にはなりません。
-          そのほかの競技は、順位や投票、ゲーム中の活躍によって点数が決まります。
+          大富豪と人狼は、ゲームを行うたびにポイントを蓄積し、最後にそのポイント数で順位を決めます。
+          オバケキャッチは5人チーム内でのカード取得枚数、大富豪も5人チーム内での蓄積ポイントによって得点が決まります。
+          ダーツとカラオケは全体順位で、1位・2位が10点、3位・4位が8点、5位・6位が6点、7位・8位が4点、9位・10位が2点です。
+          旅のベスト動画は、旅の思い出感・おもしろさ・見やすさ・みんなの投票で評価します。
           ルールを守って、みんなで楽しく優勝を目指しましょう！
         </p>
       </div>
