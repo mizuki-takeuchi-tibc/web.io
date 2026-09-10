@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Công ty cổ phần Tân Việt Group</title>
+
+  <meta name="description" content="Tân Việt Group chuyên thiết kế, sản xuất và thi công biển hiệu quảng cáo, in ấn, nội thất và mô hình tại Hà Nội và toàn quốc." />
+  <meta name="keywords" content="làm biển hiệu quảng cáo, thi công biển quảng cáo, in ấn, nội thất, mô hình, Hà Nội, Tân Việt Group" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #d71920;
+      --primary-dark: #a90000;
+      --secondary: #111827;
+      --text: #374151;
+      --muted: #6b7280;
+      --light: #f9fafb;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --radius: 18px;
+      --shadow: 0 15px 40px rgba(0,0,0,0.08);
+      --shadow-hover: 0 25px 60px rgba(0,0,0,0.14);
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Roboto", Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: var(--secondary);
+      color: #e5e7eb;
+      font-size: 14px;
+      padding: 10px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .topbar-contact {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-social {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.25s;
+      font-size: 13px;
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Header */
+    .site-header {
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-inner {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+    }
+
+    .logo img {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .logo-text strong {
+      display: block;
+      color: var(--secondary);
+      font-size: 18px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .logo-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav a {
+      padding: 12px 14px;
+      border-radius: 999px;
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.25s;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(215,25,32,0.09);
+      color: var(--primary);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 10px 28px rgba(215,25,32,0.24);
+      transition: 0.25s;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(215,25,32,0.35);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: var(--secondary);
+      color: #fff;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(110deg, rgba(17,24,39,0.92), rgba(17,24,39,0.58)),
+        url("https://www.intanviet.com//img/webroot/upload/image/images/bannerchinh.jpg") center/cover no-repeat;
+      color: #fff;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -160px -10%;
+      height: 260px;
+      background: #fff;
+      transform: rotate(-3deg);
+      transform-origin: left center;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 48px;
+      padding: 80px 0 120px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 66px);
+      line-height: 1.05;
+      letter-spacing: -1.6px;
+      margin-bottom: 24px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: #ffcc00;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #e5e7eb;
+      max-width: 680px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      box-shadow: 0 15px 35px rgba(215,25,32,0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(215,25,32,0.44);
+    }
+
+    .btn-outline {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-outline:hover {
+      background: #fff;
+      color: var(--secondary);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: #d1d5db;
+      font-size: 14px;
+      margin-top: 7px;
+      display: block;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-card img {
+      border-radius: 22px;
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .hero-card-caption {
+      padding: 18px 6px 4px;
+    }
+
+    .hero-card-caption strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-caption span {
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 48px;
+    }
+
+    .section-heading .label {
+      display: inline-block;
+      color: var(--primary);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      color: var(--secondary);
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.16;
+      margin-bottom: 14px;
+      letter-spacing: -0.7px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* Service cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 24px;
+      box-shadow: var(--shadow);
+      transition: 0.28s;
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), #ffcc00);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(215,25,32,0.25);
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(215,25,32,0.09);
+      color: var(--primary);
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      color: var(--secondary);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+
+    .learn-more {
+      color: var(--primary);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      border-radius: 28px;
+      box-shadow: var(--shadow-hover);
+      height: 500px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .about-badge {
+      position: absolute;
+      right: -24px;
+      bottom: 34px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow-hover);
+      max-width: 250px;
+    }
+
+    .about-badge strong {
+      color: var(--primary);
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .about-badge span {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .about-content h2 {
+      color: var(--secondary);
+      font-size: clamp(30px, 3.2vw, 44px);
+      line-height: 1.18;
+      margin-bottom: 20px;
+      letter-spacing: -0.6px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    .check-list {
+      list-style: none;
+      margin: 26px 0 32px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: #fff;
+      background: var(--primary);
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 22px;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    /* News */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: 0.28s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 22px;
+    }
+
+    .news-content h3 {
+      color: var(--secondary);
+      font-size: 18px;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .news-content p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        linear-gradient(110deg, rgba(215,25,32,0.95), rgba(169,0,0,0.94)),
+        url("https://www.intanviet.com//img/webroot/upload/image/images/7.jpg") center/cover no-repeat;
+      color: #fff;
+      border-radius: 32px;
+      padding: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      box-shadow: 0 30px 80px rgba(215,25,32,0.28);
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #fee2e2;
+      max-width: 720px;
+      font-size: 17px;
+    }
+
+    .cta .btn {
+      background: #fff;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .cta .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--secondary);
+      color: #d1d5db;
+      padding: 70px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 1fr;
+      gap: 42px;
+      margin-bottom: 46px;
+    }
+
+    .footer h3 {
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .footer p,
+    .footer li {
+      font-size: 15px;
+      color: #d1d5db;
+      margin-bottom: 9px;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 22px;
+      text-align: center;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    .partner-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .partner-images img {
+      border-radius: 12px;
+      height: 100px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    /* Floating phone */
+    .floating-phone {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1200;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 18px 38px rgba(215,25,32,0.38);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(215,25,32,0.45); }
+      70% { box-shadow: 0 0 0 16px rgba(215,25,32,0); }
+      100% { box-shadow: 0 0 0 0 rgba(215,25,32,0); }
+    }
+
+    .back-top {
+      position: fixed;
+      left: 22px;
+      bottom: 22px;
+      z-index: 1200;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: #fff;
+      cursor: pointer;
+      display: none;
+      font-weight: 900;
+    }
+
+    .back-top.show {
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 1080px) {
+      .header-cta {
+        display: none;
+      }
+
+      .services-grid,
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-inner,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img {
+        height: 360px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .header-inner {
+        height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 86px;
+        background: #fff;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 18px;
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        display: none;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        border-radius: 12px;
+      }
+
+      .logo-text strong {
+        font-size: 15px;
+      }
+
+      .logo-text span {
+        font-size: 12px;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 62px 0 100px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .about-badge {
+        right: 18px;
+      }
+
+      .cta {
+        padding: 36px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+      }
+
+      .topbar-contact {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .logo img {
+        width: 58px;
+        height: 58px;
+      }
+
+      .services-grid,
+      .news-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -0.8px;
+      }
+
+      .hero-card img,
+      .about-image img {
+        height: 300px;
+      }
+
+      .floating-phone {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+
+      .back-top {
+        left: 14px;
+        bottom: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-contact">
+        <span>Email: <a href="mailto:intanviet888@gmail.com">intanviet888@gmail.com</a></span>
+        <span>Hotline: <a href="tel:0983388696">098 33 88 696</a></span>
+      </div>
+
+      <div class="topbar-social">
+        <a class="social-icon" href="https://www.facebook.com/In-T%C3%A2n-Vi%E1%BB%87t-628136727238329/" target="_blank" rel="noopener">f</a>
+        <a class="social-icon" href="#" aria-label="YouTube">▶</a>
+        <a class="social-icon" href="#" aria-label="Twitter">x</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="https://www.intanviet.com/">
+        <img src="https://www.intanviet.com//img/webroot/upload/image/images/logo%20cty.jpg" alt="Tân Việt Group Logo">
+        <div class="logo-text">
+          <strong>Tân Việt Group</strong>
+          <span>Advertising · Printing · Interior</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu">
+        Menu
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a class="active" href="https://www.intanviet.com/">Trang chủ</a>
+        <a href="https://www.intanviet.com/gioi-thieu.html">Giới thiệu</a>
+        <a href="https://www.intanviet.com/dich-vu-2.html">Dịch vụ</a>
+        <a href="https://www.intanviet.com/tin-tuc.html">Tin tức</a>
+        <a href="https://www.intanviet.com/tu-van.html">Tư vấn</a>
+        <a href="https://www.intanviet.com/tuyen-dung.html">Tuyển dụng</a>
+        <a href="https://www.intanviet.com/lien-he.html">Liên hệ</a>
+      </nav>
+
+      <a class="header-cta" href="tel:0983388696">Gọi tư vấn</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">✨ Thiết kế & thi công quảng cáo chuyên nghiệp</div>
+
+          <h1>
+            Tân Việt Group<br>
+            Giải pháp <span>biển hiệu quảng cáo</span> toàn diện
+          </h1>
+
+          <p>
+            Chuyên thiết kế, sản xuất và thi công biển hiệu, bộ chữ tòa nhà,
+            in ấn, nội thất và mô hình cho dự án, công trình, doanh nghiệp tại Hà Nội và toàn quốc.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.intanviet.com/lien-he.html">Nhận báo giá</a>
+            <a class="btn btn-outline" href="https://www.intanviet.com/dich-vu-2.html">Xem dịch vụ</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>10+</strong>
+              <span>Năm kinh nghiệm</span>
+            </div>
+            <div class="stat">
+              <strong>500+</strong>
+              <span>Dự án thi công</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>Tư vấn nhanh</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="https://www.intanviet.com//img/webroot/upload/image/files/9(1).jpg" alt="Thi công biển hiệu quảng cáo">
+          <div class="hero-card-caption">
+            <strong>Thi công biển hiệu trên nóc tòa nhà</strong>
+            <span>Đội ngũ chuyên nghiệp, vật liệu bền đẹp, tiến độ rõ ràng.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <span class="label">Dịch vụ chính</span>
+          <h2>Giải pháp quảng cáo, in ấn và thi công đồng bộ</h2>
+          <p>
+            Tân Việt cung cấp các hạng mục từ thiết kế, sản xuất đến lắp đặt hoàn thiện cho doanh nghiệp và công trình.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <a class="service-card" href="https://www.intanviet.com/bien-hieu-1.html">
+            <div class="service-icon">🏢</div>
+            <h3>Biển hiệu</h3>
+            <p>Thi công biển quảng cáo, biển LED, chữ nổi, biển công ty, biển tòa nhà.</p>
+            <span class="learn-more">Xem thêm →</span>
+          </a>
+
+          <a class="service-card" href="https://www.intanviet.com/in-an.html">
+            <div class="service-icon">🖨️</div>
+            <h3>In ấn</h3>
+            <p>In bao bì, nhãn mác, catalogue, decal, standee và các ấn phẩm thương hiệu.</p>
+            <span class="learn-more">Xem thêm →</span>
+          </a>
+
+          <a class="service-card" href="https://www.intanviet.com/noi-that.html">
+            <div class="service-icon">🪑</div>
+            <h3>Nội thất</h3>
+            <p>Thiết kế và thi công nội thất văn phòng, showroom, quầy kệ thương mại.</p>
+            <span class="learn-more">Xem thêm →</span>
+          </a>
+
+          <a class="service-card" href="https://www.intanviet.com/mo-hinh.html">
+            <div class="service-icon">🏗️</div>
+            <h3>Mô hình</h3>
+            <p>Sản xuất mô hình kiến trúc, mô hình dự án và mô hình trưng bày.</p>
+            <span class="learn-more">Xem thêm →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img src="https://www.intanviet.com//img/webroot/upload/image/images/z3605335932191_70188eddd225a4280efa87074ebd26c3.gif" alt="Dự án Tân Việt Group">
+          <div class="about-badge">
+            <strong>500+</strong>
+            <span>Dự án đã hoàn thiện</span>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <h2>Đồng hành cùng doanh nghiệp trong từng công trình nhận diện thương hiệu</h2>
+
+          <p>
+            Tân Việt Group là đơn vị chuyên thiết kế, sản xuất và thi công biển hiệu quảng cáo,
+            in ấn, nội thất và mô hình cho các dự án xây dựng, tòa nhà, bệnh viện, khách sạn,
+            trường học, siêu thị và nhà hàng.
+          </p>
+
+          <p>
+            Chúng tôi chú trọng tính thẩm mỹ, độ bền vật liệu, tiến độ thi công và sự phù hợp với
+            nhận diện thương hiệu của từng khách hàng.
+          </p>
+
+          <ul class="check-list">
+            <li>Tư vấn giải pháp phù hợp ngân sách và mục tiêu sử dụng</li>
+            <li>Sản xuất trực tiếp, kiểm soát chất lượng chặt chẽ</li>
+            <li>Thi công tại Hà Nội và nhiều tỉnh thành trên toàn quốc</li>
+            <li>Bảo hành, bảo trì rõ ràng sau khi bàn giao</li>
+          </ul>
+
+          <a class="btn btn-primary" href="https://www.intanviet.com/gioi-thieu.html">Về Tân Việt Group</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <span class="label">Tin tức</span>
+          <h2>Cập nhật dự án và kinh nghiệm thi công</h2>
+          <p>
+            Những bài viết nổi bật về thi công biển quảng cáo, bộ chữ tòa nhà và giải pháp nhận diện thương hiệu.
+          </p>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <a href="https://www.intanviet.com/thi-cong-bien-quang-cao-tai-ha-noi-1">
+              <img src="https://www.intanviet.com//img/webroot/upload/image/images/at2.jpg" alt="Thi công biển quảng cáo tại Hà Nội">
+            </a>
+            <div class="news-content">
+              <h3>
+                <a href="https://www.intanviet.com/thi-cong-bien-quang-cao-tai-ha-noi-1">
+                  Thi công biển quảng cáo tại Hà Nội
+                </a>
+              </h3>
+              <p>Tân Việt là đơn vị chuyên thiết kế và thi công biển quảng cáo chuyên nghiệp tại Hà Nội.</p>
+              <a class="learn-more" href="https://www.intanviet.com/thi-cong-bien-quang-cao-tai-ha-noi-1">Đọc tiếp →</a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <a href="https://www.intanviet.com/san-xuat-thi-cong-bo-chu-tren-noc-toa-nha-1">
+              <img src="https://www.intanviet.com//img/webroot/upload/image/images/a9.jpg" alt="Sản xuất thi công bộ chữ trên nóc tòa nhà">
+            </a>
+            <div class="news-content">
+              <h3>
+                <a href="https://www.intanviet.com/san-xuat-thi-cong-bo-chu-tren-noc-toa-nha-1">
+                  Sản xuất thi công bộ chữ trên nóc tòa nhà
+                </a>
+              </h3>
+              <p>Bộ chữ nổi trên nóc tòa nhà giúp doanh nghiệp khẳng định hình ảnh và vị thế thương hiệu.</p>
+              <a class="learn-more" href="https://www.intanviet.com/san-xuat-thi-cong-bo-chu-tren-noc-toa-nha-1">Đọc tiếp →</a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <a href="https://www.intanviet.com/tai-sao-lai-chon-tan-viet-khi-muon-lam-bien-quang-cao-tai-ha-noi">
+              <img src="https://www.intanviet.com//img/webroot/upload/image/images/bien%20hieu%20quang%20cao%20chuyen%20nghiep.jpg" alt="Làm biển quảng cáo tại Hà Nội">
+            </a>
+            <div class="news-content">
+              <h3>
+                <a href="https://www.intanviet.com/tai-sao-lai-chon-tan-viet-khi-muon-lam-bien-quang-cao-tai-ha-noi">
+                  Tại sao nên chọn Tân Việt?
+                </a>
+              </h3>
+              <p>Dịch vụ thi công biển quảng cáo chuyên nghiệp, phù hợp với nhiều dự án và công trình.</p>
+              <a class="learn-more" href="https://www.intanviet.com/tai-sao-lai-chon-tan-viet-khi-muon-lam-bien-quang-cao-tai-ha-noi">Đọc tiếp →</a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <a href="https://www.intanviet.com/lam-bien-hieu-quang-cao-led-gia-re-chuyen-nghiep-tai-ha-noi">
+              <img src="https://www.intanviet.com//img/webroot/upload/image/images/halong2.jpg" alt="Làm biển hiệu quảng cáo LED">
+            </a>
+            <div class="news-content">
+              <h3>
+                <a href="https://www.intanviet.com/lam-bien-hieu-quang-cao-led-gia-re-chuyen-nghiep-tai-ha-noi">
+                  Làm biển hiệu quảng cáo LED chuyên nghiệp
+                </a>
+              </h3>
+              <p>Các loại biển hiệu LED, biển phòng ban, biển chức danh, biển công ty với thiết kế đẹp.</p>
+              <a class="learn-more" href="https://www.intanviet.com/lam-bien-hieu-quang-cao-led-gia-re-chuyen-nghiep-tai-ha-noi">Đọc tiếp →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Cần tư vấn thi công biển hiệu cho dự án của bạn?</h2>
+            <p>
+              Liên hệ Tân Việt Group để được tư vấn phương án, vật liệu, chi phí và tiến độ thi công phù hợp.
+            </p>
+          </div>
+
+          <a class="btn" href="tel:0983388696">Gọi ngay: 098 33 88 696</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Công ty cổ phần Tân Việt Group</h3>
+          <p><strong>Địa chỉ:</strong> 6/569 Nguyễn Hoàng Tôn, Xuân Đỉnh, Hà Nội</p>
+          <p><strong>Xưởng sản xuất:</strong> 573 Nguyễn Hoàng Tôn, P. Xuân Đỉnh, Từ Liêm, Hà Nội</p>
+          <p><strong>Hotline:</strong> <a href="tel:0983388696">098 33 88 696</a> - <a href="tel:0983366369">098 33 66 369</a></p>
+          <p><strong>Email:</strong> <a href="mailto:intanviet888@gmail.com">intanviet888@gmail.com</a></p>
+          <p><strong>Website:</strong> <a href="https://www.intanviet.com/">www.intanviet.com</a></p>
+        </div>
+
+        <div>
+          <h3>Dịch vụ</h3>
+          <ul>
+            <li><a href="https://www.intanviet.com/bien-hieu-1.html">Biển hiệu</a></li>
+            <li><a href="https://www.intanviet.com/in-an.html">In ấn</a></li>
+            <li><a href="https://www.intanviet.com/noi-that.html">Nội thất</a></li>
+            <li><a href="https://www.intanviet.com/mo-hinh.html">Mô hình</a></li>
+            <li><a href="https://www.intanviet.com/thi-cong-bien-hieu-quang-cao.html">Thi công biển hiệu quảng cáo</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Đối tác - khách hàng</h3>
+          <div class="partner-images">
+            <img src="https://www.intanviet.com//img/webroot/upload/image/images/5(1).jpg" alt="Đối tác Tân Việt">
+            <img src="https://www.intanviet.com//img/webroot/upload/image/images/at2.jpg" alt="Khách hàng Tân Việt">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright © 2026 Tân Việt Group. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-phone" href="tel:0983388696">
+    ☎ 098 33 88 696
+  </a>
+
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">
+    ↑
+  </button>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector("#mainNav");
+    const backTop = document.querySelector("#backTop");
+
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        backTop.classList.add("show");
+      } else {
+        backTop.classList.remove("show");
+      }
+    });
+
+    backTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+</body>
+</html>
