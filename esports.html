@@ -822,9 +822,24 @@
         border-bottom: none;
       }
 
+      .flow-order {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+
       .flow-step {
-        min-width: auto;
-        flex: 1 1 130px;
+        width: 100%;
+        min-width: 0;
+        flex: none;
+        min-height: 48px;
+      }
+
+      .flow-arrow {
+        width: 100%;
+        text-align: center;
+        line-height: 1;
+        transform: rotate(90deg);
       }
 
       .seat-grid-table td {
@@ -833,6 +848,7 @@
         height: 44px;
       }
     }
+
   </style>
 </head>
 
@@ -1411,10 +1427,15 @@
       }
     };
 
-    let groupRows = [];
+     let groupRows = [];
     let currentGroupFilter = "ALL";
     let seatSheets = [];
     let currentSeatLabel = "";
+
+    function isMobileView() {
+      return window.matchMedia("(max-width: 760px)").matches;
+    }
+
 
     document.addEventListener("DOMContentLoaded", () => {
       loadGroups();
@@ -1495,8 +1516,13 @@
 
         groupRows = all;
         status.style.display = "none";
+
+        // スマホでは初期表示を非表示、PCでは今まで通り「すべて」を表示
+        currentGroupFilter = isMobileView() ? "NONE" : "ALL";
+
         renderGroupTabs(tabsBox);
         renderGroupData();
+
       } catch (e) {
         console.error(e);
         status.textContent = "ブロック情報を読み込めませんでした。スプレッドシートの共有設定を確認してください。";
@@ -1554,8 +1580,10 @@
       box.innerHTML = "";
 
       const allBtn = document.createElement("button");
-      allBtn.className = "group-tab active";
+      allBtn.className = "group-tab";
+      if (currentGroupFilter === "ALL") allBtn.classList.add("active");
       allBtn.textContent = "すべて";
+
       allBtn.type = "button";
       allBtn.addEventListener("click", () => {
         currentGroupFilter = "ALL";
@@ -1583,16 +1611,37 @@
       document.querySelectorAll(".group-tab").forEach(btn => {
         const isAll = !btn.dataset.label && currentGroupFilter === "ALL";
         const isTarget = btn.dataset.label === currentGroupFilter;
+
+        // currentGroupFilter が "NONE" のときは、どのタブも選択状態にしない
         btn.classList.toggle("active", isAll || isTarget);
       });
     }
+
 
     function renderGroupData() {
       const box = document.getElementById("groupResult");
       const q = normalize(document.getElementById("groupSearch").value);
 
+      // スマホ初期表示では一覧を出さない
+      // ただし、検索した場合は全ブロックから検索する
+      if (currentGroupFilter === "NONE" && !q) {
+        box.innerHTML = `
+          <div class="loading">
+            スマホでは一覧が長くなるため、初期表示を非表示にしています。<br>
+            表示したいブロックを選択するか、名前・カナ・学籍番号で検索してください。
+          </div>
+        `;
+        return;
+      }
+
       const filtered = groupRows.filter(member => {
-        if (currentGroupFilter !== "ALL" && member.blockLabel !== currentGroupFilter) return false;
+        if (
+          currentGroupFilter !== "ALL" &&
+          currentGroupFilter !== "NONE" &&
+          member.blockLabel !== currentGroupFilter
+        ) {
+          return false;
+        }
 
         const text = normalize([
           member.blockLabel,
@@ -1605,6 +1654,7 @@
 
         return !q || text.includes(q);
       });
+
 
       if (!filtered.length) {
         box.innerHTML = `<div class="loading">該当するメンバーが見つかりません。</div>`;
