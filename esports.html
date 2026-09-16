@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>東京国際ビジネスカレッジ e-sports大会2026</title>
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg2: #090d20;
+      --card: rgba(255, 255, 255, 0.06);
+      --line: rgba(247, 211, 106, 0.24);
+      --gold: #f7d36a;
+      --gold2: #d99a2b;
+      --gold3: #fff3b0;
+      --text: #f8fafc;
+      --muted: #b8c0d4;
+      --danger: #ff5c7a;
+      --cyan: #61dafb;
+      --green: #52ffa8;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(247,211,106,.12), transparent 34%),
+        radial-gradient(circle at top right, rgba(97,218,251,.10), transparent 30%),
+        linear-gradient(180deg, #040713 0%, #090d20 45%, #050816 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 520px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(247,211,106,.24);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,8,22,.94), rgba(5,8,22,.62), rgba(5,8,22,.92)),
+        url("https://www.genspark.ai/api/files/s/CJrsFKHh") center / cover no-repeat;
+      transform: scale(1.02);
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(5,8,22,.82) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      padding: 72px 0 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border: 1px solid rgba(247,211,106,.5);
+      border-radius: 999px;
+      background: rgba(0,0,0,.35);
+      color: var(--gold3);
+      font-weight: 800;
+      letter-spacing: .08em;
+      font-size: .88rem;
+      box-shadow: 0 0 30px rgba(247,211,106,.15);
+    }
+
+    h1 {
+      margin: 22px 0 14px;
+      font-size: clamp(2.25rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: .03em;
+      font-weight: 950;
+      text-shadow: 0 12px 34px rgba(0,0,0,.65);
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lead {
+      max-width: 780px;
+      font-size: clamp(1rem, 2.1vw, 1.24rem);
+      color: #e7ecff;
+      margin-bottom: 26px;
+    }
+
+    .hero-meta,
+    .hero-actions,
+    .search-row,
+    .group-tabs,
+    .seat-toolbar,
+    .seat-legend,
+    .flow-order,
+    .member-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-meta {
+      margin-bottom: 28px;
+    }
+
+    .meta-pill {
+      border: 1px solid rgba(247,211,106,.34);
+      background: rgba(8, 12, 30, .72);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid rgba(247,211,106,.5);
+      background: linear-gradient(135deg, rgba(255,243,176,.95), rgba(217,154,43,.95));
+      color: #171103;
+      box-shadow: 0 12px 30px rgba(247,211,106,.18);
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,.08);
+      color: var(--gold3);
+      border-color: rgba(247,211,106,.35);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(5,8,22,.82);
+      border-bottom: 1px solid rgba(247,211,106,.18);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .9rem;
+    }
+
+    .nav a:hover {
+      color: var(--gold3);
+      background: rgba(247,211,106,.08);
+    }
+
+    main {
+      padding: 42px 0 80px;
+    }
+
+    section {
+      margin: 0 0 44px;
+      scroll-margin-top: 82px;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-size: .84rem;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 6px 0 8px;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(247,211,106,.08), transparent 40%);
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .notice {
+      border-color: rgba(255,92,122,.4);
+      background: linear-gradient(180deg, rgba(255,92,122,.12), rgba(255,255,255,.035));
+    }
+
+    .notice strong {
+      color: #ffd1db;
+    }
+
+    .warning-box {
+      border: 1px solid rgba(255,92,122,.45);
+      background: rgba(255,92,122,.10);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: #ffe4ea;
+      font-weight: 800;
+      margin-top: 14px;
+    }
+
+    .gold-box {
+      border: 1px solid rgba(247,211,106,.35);
+      background: rgba(247,211,106,.10);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: var(--gold3);
+      font-weight: 800;
+      margin-top: 14px;
+    }
+
+    table.info {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(247,211,106,.18);
+    }
+
+    table.info th,
+    table.info td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table.info th {
+      width: 32%;
+      background: rgba(247,211,106,.10);
+      color: var(--gold3);
+      font-weight: 900;
+    }
+
+    table.info tr:last-child th,
+    table.info tr:last-child td {
+      border-bottom: none;
+    }
+
+    .flow-order {
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .flow-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 116px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,243,176,.96), rgba(217,154,43,.96));
+      color: #171103;
+      font-weight: 950;
+      box-shadow: 0 12px 26px rgba(247,211,106,.18);
+    }
+
+    .flow-arrow {
+      color: var(--gold3);
+      font-size: 1.4rem;
+      font-weight: 950;
+    }
+
+    .search-row {
+      align-items: center;
+      margin: 14px 0 18px;
+    }
+
+    input[type="search"] {
+      width: min(420px, 100%);
+      padding: 13px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(247,211,106,.35);
+      background: rgba(0,0,0,.28);
+      color: #fff;
+      outline: none;
+      font-weight: 700;
+    }
+
+    input[type="search"]::placeholder {
+      color: rgba(255,255,255,.42);
+    }
+
+    .small-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 12px;
+      border: 1px solid rgba(247,211,106,.28);
+      border-radius: 999px;
+      color: var(--gold3);
+      background: rgba(247,211,106,.07);
+      font-weight: 800;
+      font-size: .88rem;
+    }
+
+    .loading {
+      color: var(--muted);
+      padding: 18px;
+      border: 1px dashed rgba(247,211,106,.22);
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .group-tabs {
+      margin: 14px 0 18px;
+      gap: 10px;
+    }
+
+    .group-tab,
+    .seat-tab {
+      border: 1px solid rgba(247,211,106,.35);
+      background: rgba(255,255,255,.06);
+      color: var(--gold3);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease;
+    }
+
+    .group-tab:hover,
+    .seat-tab:hover {
+      transform: translateY(-1px);
+      background: rgba(247,211,106,.12);
+    }
+
+    .group-tab.active,
+    .seat-tab.active {
+      background: linear-gradient(135deg, var(--gold3), var(--gold2));
+      color: #171103;
+      border-color: transparent;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .member-card {
+      position: relative;
+      border: 1px solid rgba(247,211,106,.20);
+      background:
+        linear-gradient(160deg, rgba(247,211,106,.10), rgba(255,255,255,.055) 42%, rgba(97,218,251,.045));
+      border-radius: 20px;
+      padding: 15px;
+      min-height: 150px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0,0,0,.20);
+    }
+
+    .member-card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      right: -54px;
+      bottom: -62px;
+      background: radial-gradient(circle, rgba(247,211,106,.22), transparent 68%);
+      pointer-events: none;
+    }
+
+    .member-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .member-block {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(247,211,106,.30);
+      background: rgba(247,211,106,.10);
+      color: var(--gold3);
+      font-weight: 950;
+      font-size: .76rem;
+      line-height: 1.2;
+    }
+
+    .member-name {
+      margin-top: 6px;
+      color: #fff;
+      font-size: 1.18rem;
+      font-weight: 950;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .member-kana {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .86rem;
+      min-height: 1.2em;
+      word-break: break-word;
+    }
+
+    .member-chips {
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .member-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      max-width: 100%;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #e9edff;
+      font-size: .76rem;
+      font-weight: 800;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    .member-chip.gold {
+      color: var(--gold3);
+      border-color: rgba(247,211,106,.26);
+      background: rgba(247,211,106,.08);
+    }
+
+    .seat-toolbar {
+      gap: 10px;
+      margin: 10px 0 18px;
+    }
+
+    .seat-note {
+      color: var(--muted);
+      font-size: .95rem;
+      margin: 8px 0 14px;
+    }
+
+    .seat-legend {
+      gap: 10px;
+      margin: 8px 0 16px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.045);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .86rem;
+    }
+
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .legend-color.fixed {
+      background: rgba(247,211,106,.42);
+      border: 1px solid rgba(247,211,106,.8);
+    }
+
+    .legend-color.mobile {
+      background: rgba(82,255,168,.35);
+      border: 1px solid rgba(82,255,168,.85);
+    }
+
+    .legend-color.leader {
+      background: rgba(255,92,122,.35);
+      border: 1px solid rgba(255,92,122,.9);
+    }
+
+    .legend-color.subleader {
+      background: rgba(97,218,251,.32);
+      border: 1px solid rgba(97,218,251,.9);
+    }
+
+    .seat-blocks {
+      display: grid;
+      gap: 18px;
+    }
+
+    .seat-block {
+      border: 1px solid rgba(247,211,106,.16);
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(255,255,255,.035);
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .seat-block-title {
+      margin: 0 0 8px;
+      color: #171103;
+      background: linear-gradient(135deg, #fff3b0, #d99a2b);
+      border-radius: 14px;
+      padding: 9px 12px;
+      text-align: center;
+      font-weight: 950;
+      box-shadow: 0 8px 24px rgba(247,211,106,.2);
+    }
+
+    .seat-grid-table {
+      width: 100%;
+      min-width: 0;
+      table-layout: fixed;
+      border-collapse: separate;
+      border-spacing: 4px;
+    }
+
+    .seat-grid-table td {
+      border: 0;
+      height: 48px;
+      padding: 5px 4px;
+      border-radius: 9px;
+      text-align: center;
+      vertical-align: middle;
+      white-space: pre-line;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      font-size: .76rem;
+      line-height: 1.32;
+      background: rgba(255,255,255,.045);
+      color: #f8fafc;
+    }
+
+    .seat-grid-table td.empty {
+      background: rgba(255,255,255,.022);
+      border: 1px dashed rgba(255,255,255,.10);
+      color: rgba(255,255,255,.24);
+    }
+
+    .seat-grid-table td.seat {
+      border: 1px solid rgba(247,211,106,.22);
+      background: linear-gradient(145deg, rgba(247,211,106,.09), rgba(255,255,255,.04));
+    }
+
+    .seat-grid-table td.monitor {
+      height: 92px;
+      background:
+        linear-gradient(135deg, rgba(97,218,251,.42), rgba(247,211,106,.22)),
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+      color: #fff;
+      font-weight: 950;
+      font-size: 1.22rem;
+      letter-spacing: .08em;
+      border: 1px solid rgba(97,218,251,.65);
+      box-shadow:
+        inset 0 0 24px rgba(97,218,251,.20),
+        0 0 28px rgba(97,218,251,.16);
+    }
+
+    .seat-grid-table td.mobile-seat {
+      border: 1px solid rgba(82,255,168,.5);
+      background: linear-gradient(145deg, rgba(82,255,168,.24), rgba(255,255,255,.045));
+    }
+
+    .seat-grid-table td.fixed-seat {
+      border: 1px solid rgba(247,211,106,.42);
+      background: linear-gradient(145deg, rgba(247,211,106,.2), rgba(255,255,255,.045));
+    }
+
+    .seat-grid-table td.other-seat {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.045);
+    }
+
+    .seat-grid-table td.leader-seat {
+      border: 2px solid rgba(255,92,122,.95) !important;
+      background: linear-gradient(145deg, rgba(255,92,122,.30), rgba(247,211,106,.10)) !important;
+      box-shadow: 0 0 20px rgba(255,92,122,.22);
+    }
+
+    .seat-grid-table td.subleader-seat {
+      border: 2px solid rgba(97,218,251,.90) !important;
+      background: linear-gradient(145deg, rgba(97,218,251,.25), rgba(255,255,255,.04)) !important;
+      box-shadow: 0 0 20px rgba(97,218,251,.18);
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: .66rem;
+      font-weight: 950;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .role-badge.leader {
+      color: #fff;
+      background: rgba(255,92,122,.85);
+    }
+
+    .role-badge.subleader {
+      color: #04111f;
+      background: rgba(97,218,251,.92);
+    }
+
+    .seat-grid-table td.matched {
+      outline: 3px solid rgba(82,255,168,.9);
+      box-shadow: 0 0 26px rgba(82,255,168,.38);
+      background: linear-gradient(135deg, rgba(82,255,168,.36), rgba(247,211,106,.18)) !important;
+      opacity: 1 !important;
+    }
+
+    .seat-grid-table.searching td.seat:not(.matched),
+    .seat-grid-table.searching td.fixed-seat:not(.matched),
+    .seat-grid-table.searching td.mobile-seat:not(.matched),
+    .seat-grid-table.searching td.other-seat:not(.matched),
+    .seat-grid-table.searching td.leader-seat:not(.matched),
+    .seat-grid-table.searching td.subleader-seat:not(.matched) {
+      opacity: .25;
+    }
+
+    .rules-list {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .award-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .award-list li {
+      border: 1px solid rgba(247,211,106,.2);
+      background: rgba(247,211,106,.07);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 850;
+    }
+
+    footer {
+      border-top: 1px solid rgba(247,211,106,.18);
+      padding: 26px 0;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(0,0,0,.22);
+    }
+
+    @media (max-width: 1000px) {
+      .member-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid.two,
+      .member-grid,
+      .award-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 560px;
+      }
+
+      table.info th,
+      table.info td {
+        display: block;
+        width: 100%;
+      }
+
+      table.info th {
+        border-bottom: none;
+      }
+
+      .flow-step {
+        min-width: auto;
+        flex: 1 1 130px;
+      }
+
+      .seat-grid-table td {
+        font-size: .68rem;
+        padding: 4px 3px;
+        height: 44px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="wrap hero-content">
+      <div class="eyebrow">TOKYO INTERNATIONAL BUSINESS COLLEGE</div>
+      <h1>
+        <span class="gold-text">e-sports大会</span><br>
+        2026
+      </h1>
+      <p class="hero-lead">
+        マーケティングサイエンスコース対象。大会当日の集合・移動・ブロック確認・座席表・集計ルールをこのページで確認してください。
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-pill">開催日：2026年9月18日（金）</div>
+        <div class="meta-pill">集合場所：101教室</div>
+        <div class="meta-pill">会場：IPU TOKYO</div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn" href="#groups">ブロック確認</a>
+        <a class="btn secondary" href="#seats">座席表を見る</a>
+        <a class="btn secondary" href="#bus">バス・アクセス</a>
+        <a class="btn secondary" href="#rules">集計ルール</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#important">重要</a>
+      <a href="#overview">概要</a>
+      <a href="#bus">バス</a>
+      <a href="#flow">当日の流れ</a>
+      <a href="#groups">ブロック確認</a>
+      <a href="#seats">座席表</a>
+      <a href="#rules">集計ルール</a>
+      <a href="#awards">賞</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="important">
+      <div class="section-head">
+        <div class="section-kicker">Important</div>
+        <h2>重要なお知らせ</h2>
+        <p class="section-desc">当日の集合・移動・連絡について、必ず確認してください。</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card notice">
+          <h3>集合場所</h3>
+          <p>
+            当日はまず <strong>101教室</strong> に集合してください。受付後、指示に従って大会を進行します。
+          </p>
+          <div class="warning-box">
+            終了予定時間は目安です。ゲームグループへの参加に時間がかかったり、教室間の移動が遅れたりすると、全体の進行がずるずると後ろにずれていきます。<br>
+            受付・移動・パーティ参加は、周囲と協力しててきぱき行動してください。
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>先生への連絡</h3>
+          <p>
+            バスに乗れなかった場合や遅れる場合は、必ず指定の先生へ連絡してください。
+          </p>
+          <table class="info">
+            <tr>
+              <th>1年午前</th>
+              <td>田中先生</td>
+            </tr>
+            <tr>
+              <th>1年午後</th>
+              <td>鈴木先生</td>
+            </tr>
+  <tr>
+    <th>2年</th>
+    <td>沢井先生</td>
+  </tr>
+            <tr>
+              <th>注意</th>
+              <td>当日、平川先生はいません。</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="section-head">
+        <div class="section-kicker">Overview</div>
+        <h2>大会概要</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>午前の部</h3>
+          <table class="info">
+            <tr>
+              <th>対象</th>
+              <td>LJA-A、LJA-B、LSA-A、LSA-B</td>
+            </tr>
+            <tr>
+              <th>受付</th>
+              <td>9:00</td>
+            </tr>
+            <tr>
+              <th>開始</th>
+              <td>9:30</td>
+            </tr>
+            <tr>
+              <th>終了予定</th>
+              <td>12:00ごろ</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>午後の部</h3>
+          <table class="info">
+            <tr>
+              <th>対象</th>
+              <td>LJP-A、LJP-B、LSP</td>
+            </tr>
+            <tr>
+              <th>受付</th>
+              <td>13:00</td>
+            </tr>
+            <tr>
+              <th>開始</th>
+              <td>13:30</td>
+            </tr>
+            <tr>
+              <th>終了予定</th>
+              <td>15:30ごろ</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section id="bus">
+      <div class="section-head">
+        <div class="section-kicker">Bus & Access</div>
+        <h2>バス・アクセス</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>バス出発時刻</h3>
+          <table class="info">
+            <tr>
+              <th>午前 1年</th>
+              <td>8:20 出発：LJA-A、LJA-B</td>
+            </tr>
+            <tr>
+              <th>午前 2年</th>
+              <td>8:50 出発：LSA-A、LSA-B<br>※可能であれば8:20のバス利用可</td>
+            </tr>
+            <tr>
+              <th>午後</th>
+              <td>12:15 出発：LJP-A、LJP-B、LSP</td>
+            </tr>
+          </table>
+
+          <p>
+            <a class="small-link" href="https://maps.app.goo.gl/bvgTjT2dFwDFqH6z7" target="_blank" rel="noopener">
+              バス出発場所をGoogle Mapで開く
+            </a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>会場</h3>
+          <table class="info">
+            <tr>
+              <th>会場名</th>
+              <td>IPU・環太平洋大学 東京キャンパス（IPU TOKYO）</td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td>〒272-0001 千葉県市川市二俣625-1</td>
+            </tr>
+            <tr>
+              <th>徒歩</th>
+              <td>バスに乗れない場合は徒歩約20分、または自己負担でタクシーを利用してください。</td>
+            </tr>
+          </table>
+
+          <div class="warning-box">
+            バスに乗れなかった場合は、必ず指定の先生へ連絡してください。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="section-head">
+        <div class="section-kicker">Flow</div>
+        <h2>当日の流れ</h2>
+        <p class="section-desc">
+          Fall GuysはDXラボで実施します。待機中のブロックは101教室でStumble Guysを行います。
+        </p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Fall Guys 実施順</h3>
+          <p>
+            午前・午後ともに、<strong>後ろのブロックから順番に</strong>DXラボへ移動してFall Guysを実施します。
+            各ブロックのDXラボでのプレイ時間は約20分です。
+          </p>
+
+          <h4>午前の部</h4>
+          <div class="flow-order">
+            <span class="flow-step">第5ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第4ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第3ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第2ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第1ブロック</span>
+          </div>
+
+          <h4>午後の部</h4>
+          <div class="flow-order">
+            <span class="flow-step">第4ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第3ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第2ブロック</span>
+            <span class="flow-arrow">⇒</span>
+            <span class="flow-step">第1ブロック</span>
+          </div>
+
+          <div class="warning-box">
+            呼ばれたブロックはすぐに移動してください。ゲームグループへの参加や移動に時間がかかると、後のブロック全体に影響します。
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>待機中の動き</h3>
+          <ul class="rules-list">
+            <li>Fall Guysを実施していないブロックは101教室でStumble Guysを行います。</li>
+            <li>最低2試合を行います。</li>
+            <li>2試合以上プレイしても、集計対象は2試合分です。</li>
+            <li>スコアは「平均点 × 2」で計算します。</li>
+          </ul>
+
+          <div class="gold-box">
+            101教室の各ブロックにはゲームリーダーとサブリーダーを設定しています。ゲームリーダーがパーティを作成し、リーダーが不在の場合はサブリーダーが代行してください。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="groups">
+      <div class="section-head">
+        <div class="section-kicker">Groups</div>
+        <h2>ブロック確認</h2>
+        <p class="section-desc">
+          自分の所属ブロックを確認できます。名前・カナ・学籍番号で検索、またはブロックボタンから確認してください。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="search-row">
+          <input id="groupSearch" type="search" placeholder="名前・カナ・学籍番号で検索" />
+          <a class="small-link" href="https://docs.google.com/spreadsheets/d/1eeajntHA89Y0Gy7-pgM2XviVV4hxaXsF2rI08rdyhe4/edit" target="_blank" rel="noopener">
+            元のスプレッドシートを開く
+          </a>
+        </div>
+
+        <div id="groupTabs" class="group-tabs"></div>
+        <div id="groupStatus" class="loading">ブロック情報を読み込み中です...</div>
+        <div id="groupResult" class="member-grid"></div>
+      </div>
+    </section>
+
+    <section id="seats">
+      <div class="section-head">
+        <div class="section-kicker">Seats</div>
+        <h2>座席表</h2>
+        <p class="section-desc">
+          101教室とDXラボの座席表です。101教室ではゲームリーダー・サブリーダーを印で表示します。
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="search-row">
+          <input id="seatSearch" type="search" placeholder="名前・座席番号で検索" />
+          <a class="small-link" href="https://docs.google.com/spreadsheets/d/1UoMMeMJiAqq_xo_-W5CM2y22lwF2BIwHIhD6fshh_nA/edit" target="_blank" rel="noopener">
+            元の座席表を開く
+          </a>
+        </div>
+
+        <div class="seat-legend">
+          <span class="legend-item"><span class="legend-color leader"></span>👑 ゲームリーダー：パーティ作成</span>
+          <span class="legend-item"><span class="legend-color subleader"></span>☆ サブリーダー：リーダー不在時に代行</span>
+          <span class="legend-item"><span class="legend-color fixed"></span>DX固定席・デスクトップPC</span>
+          <span class="legend-item"><span class="legend-color mobile"></span>DX移動席・ノートPC</span>
+        </div>
+
+        <div id="seatTabs" class="seat-toolbar"></div>
+        <div id="seatStatus" class="loading">座席情報を読み込み中です...</div>
+        <div id="seatResult"></div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="section-head">
+        <div class="section-kicker">Rules</div>
+        <h2>ポイント集計ルール</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>集計対象</h3>
+          <table class="info">
+            <tr>
+              <th>Stumble Guys</th>
+              <td>最大300点</td>
+            </tr>
+            <tr>
+              <th>Fall Guys</th>
+              <td>最大360点</td>
+            </tr>
+            <tr>
+              <th>IPU Stumble</th>
+              <td>最大400点</td>
+            </tr>
+            <tr>
+              <th>IPU Fall</th>
+              <td>最大360点</td>
+            </tr>
+            <tr>
+              <th>合計</th>
+              <td>最大1420点</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>基本ルール</h3>
+          <ul class="rules-list">
+            <li>Stumble Guysは最低2試合実施します。</li>
+            <li>2試合より多く行った場合、１試合当たりの平均を出し2試合分として集計します。</li>
+            <li>Fall GuysはDXラボでブロック単位で実施します。</li>
+            <li>同点の場合は、指定された優先順位に従って順位を決定します。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="section-head">
+        <div class="section-kicker">Awards</div>
+        <h2>賞・表彰</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>ブロック優勝</h3>
+          <ul class="award-list">
+            <li>AM第1ブロック優勝</li>
+            <li>AM第2ブロック優勝</li>
+            <li>AM第3ブロック優勝</li>
+            <li>AM第4ブロック優勝</li>
+            <li>AM第5ブロック優勝</li>
+            <li>PM第1ブロック優勝</li>
+            <li>PM第2ブロック優勝</li>
+            <li>PM第3ブロック優勝</li>
+            <li>PM第4ブロック優勝</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>クラス優勝</h3>
+          <ul class="award-list">
+            <li>LJA-A優勝</li>
+            <li>LJA-B優勝</li>
+            <li>LSA-A優勝</li>
+            <li>LSA-B優勝</li>
+            <li>LJP-A優勝</li>
+            <li>LJP-B優勝</li>
+            <li>LSP優勝</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-head">
+        <div class="section-kicker">FAQ</div>
+        <h2>よくある質問</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>どこに集合しますか？</h3>
+          <p>まず101教室に集合してください。</p>
+        </div>
+
+        <div class="card">
+          <h3>バスに乗れなかったら？</h3>
+          <p>徒歩または自己負担でタクシーを利用してください。必ず指定の先生へ連絡してください。</p>
+        </div>
+
+        <div class="card">
+          <h3>Fall Guysはどこで行いますか？</h3>
+          <p>DXラボで行います。ブロックごとに呼ばれたらすぐ移動してください。</p>
+        </div>
+
+        <div class="card">
+          <h3>ゲームリーダーは何をしますか？</h3>
+          <p>101教室でStumble Guysのパーティを作成します。リーダーがいない場合はサブリーダーが代行してください。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    東京国際ビジネスカレッジ マーケティングサイエンスコース e-sports大会2026
+  </footer>
+
+  <script>
+    const SHEETS = {
+      groups: {
+        id: "1eeajntHA89Y0Gy7-pgM2XviVV4hxaXsF2rI08rdyhe4",
+        originalUrl: "https://docs.google.com/spreadsheets/d/1eeajntHA89Y0Gy7-pgM2XviVV4hxaXsF2rI08rdyhe4/edit",
+        tabs: [
+          { label: "AM第1ブロック", gid: "0" },
+          { label: "AM第2ブロック", gid: "1525399717" },
+          { label: "AM第3ブロック", gid: "1659322612" },
+          { label: "AM第4ブロック", gid: "901179208" },
+          { label: "AM第5ブロック", gid: "78319241" },
+          { label: "PM第1ブロック", gid: "1000465829" },
+          { label: "PM第2ブロック", gid: "967730981" },
+          { label: "PM第3ブロック", gid: "1393640752" },
+          { label: "PM第4ブロック", gid: "1147855778" }
+        ]
+      },
+      seats: {
+        id: "1UoMMeMJiAqq_xo_-W5CM2y22lwF2BIwHIhD6fshh_nA",
+        originalUrl: "https://docs.google.com/spreadsheets/d/1UoMMeMJiAqq_xo_-W5CM2y22lwF2BIwHIhD6fshh_nA/edit",
+        tabs: [
+          { label: "101教室（AM）", gid: "0", type: "101am" },
+          { label: "DXラボ（AM第1ブロック）", gid: "1933006426", type: "dx" },
+          { label: "DXラボ（AM第2ブロック）", gid: "95106158", type: "dx" },
+          { label: "DXラボ（AM第3ブロック）", gid: "518155514", type: "dx" },
+          { label: "DXラボ（AM第4ブロック）", gid: "1617298623", type: "dx" },
+          { label: "DXラボ（AM第5ブロック）", gid: "1487692742", type: "dx" },
+          { label: "101教室（PM）", gid: "285246910", type: "101pm" },
+          { label: "DXラボ（PM第1ブロック）", gid: "224592807", type: "dx" },
+          { label: "DXラボ（PM第2ブロック）", gid: "1250267440", type: "dx" },
+          { label: "DXラボ（PM第3ブロック）", gid: "151886531", type: "dx" },
+          { label: "DXラボ（PM第4ブロック）", gid: "1887179306", type: "dx" }
+        ]
+      }
+    };
+
+    const SEAT_RANGES = {
+      "101am": [
+        { label: "AM第1ブロック", start: "B", end: "H" },
+        { label: "AM第2ブロック", start: "J", end: "P" },
+        { label: "AM第3ブロック", start: "R", end: "X" },
+        { label: "AM第4ブロック", start: "Z", end: "AF" },
+        { label: "AM第5ブロック", start: "AH", end: "AN" }
+      ],
+      "101pm": [
+        { label: "PM第1ブロック", start: "F", end: "L" },
+        { label: "PM第2ブロック", start: "N", end: "T" },
+        { label: "PM第3ブロック", start: "V", end: "AB" },
+        { label: "PM第4ブロック", start: "AD", end: "AJ" }
+      ]
+    };
+
+    const ROLE_MAP = {
+      "AM第1ブロック": {
+        leader: ["LSAAスビン", "スビン", "THAPA SUBIN", "タパ スビン"],
+        subleader: ["LJABクリシュナ", "クリシュナ", "YONJAN TAMANG KRISHNA", "ヨンジャン タマン クリシュナ"]
+      },
+      "AM第2ブロック": {
+        leader: ["LSAAミンカンゾー", "ミンカンゾー", "ミンカンゾウ"],
+        subleader: ["LJAAナイムル", "ナイムル"]
+      },
+      "AM第3ブロック": {
+        leader: ["LSAAディパック", "ディパック"],
+        subleader: ["LJAAフウ", "フウ"]
+      },
+      "AM第4ブロック": {
+        leader: ["LSABココ", "ココ"],
+        subleader: ["LJABモハシン", "モハシン"]
+      },
+      "AM第5ブロック": {
+        leader: ["LSABジョウガキ", "ジョウガキ"],
+        subleader: ["LJABアンジエル", "アンジエル"]
+      },
+      "PM第1ブロック": {
+        leader: ["グェット", "グエット"],
+        subleader: ["LJPBフウバオ", "フウバオ", "フーバオ"]
+      },
+      "PM第2ブロック": {
+        leader: ["LSPナイムル", "ナイムル"],
+        subleader: ["LJPBニュン", "ニュン"]
+      },
+      "PM第3ブロック": {
+        leader: ["LSPパラス", "パラス"],
+        subleader: ["LJPBカイホウ", "カイホウ"]
+      },
+      "PM第4ブロック": {
+        leader: ["LSPシェロン", "シェロン"],
+        subleader: ["LJPAギア", "ギア"]
+      }
+    };
+
+    let groupRows = [];
+    let currentGroupFilter = "ALL";
+    let seatSheets = [];
+    let currentSeatLabel = "";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadGroups();
+      loadSeats();
+
+      document.getElementById("groupSearch").addEventListener("input", renderGroupData);
+      document.getElementById("seatSearch").addEventListener("input", renderCurrentSeat);
+    });
+
+    function loadSheetByJsonp(sheetId, gid) {
+      return new Promise((resolve, reject) => {
+        const callbackName = "jsonpCallback_" + Math.random().toString(36).slice(2);
+        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?gid=${gid}&tqx=out:json;responseHandler:${callbackName}`;
+        const script = document.createElement("script");
+
+        window[callbackName] = data => {
+          delete window[callbackName];
+          script.remove();
+          resolve(data);
+        };
+
+        script.onerror = () => {
+          delete window[callbackName];
+          script.remove();
+          reject(new Error("Google Sheetの読み込みに失敗しました。"));
+        };
+
+        script.src = url;
+        document.body.appendChild(script);
+      });
+    }
+
+    function tableToHeaders(data) {
+      const cols = data?.table?.cols || [];
+      return cols.map(col => cleanText(col.label || col.id || ""));
+    }
+
+    function tableToMatrix(data) {
+      const cols = data?.table?.cols || [];
+      const colCount = cols.length;
+      const rows = data?.table?.rows || [];
+
+      return rows.map(row => {
+        const cells = row.c || [];
+        const values = [];
+
+        for (let i = 0; i < colCount; i++) {
+          const cell = cells[i];
+          values.push(cell ? cleanText(cell.f ?? cell.v ?? "") : "");
+        }
+
+        return values;
+      });
+    }
+
+    async function loadGroups() {
+      const status = document.getElementById("groupStatus");
+      const tabsBox = document.getElementById("groupTabs");
+
+      try {
+        const all = [];
+
+        for (const tab of SHEETS.groups.tabs) {
+          const data = await loadSheetByJsonp(SHEETS.groups.id, tab.gid);
+          const header = tableToHeaders(data);
+          const matrix = tableToMatrix(data);
+
+          matrix.forEach(row => {
+            if (!row.some(Boolean)) return;
+            if (isBlockSummaryRow(row)) return;
+
+            const member = parseMemberRow(row, header, tab.label);
+            if (!member.name && !member.studentId && !member.kana) return;
+
+            all.push(member);
+          });
+        }
+
+        groupRows = all;
+        status.style.display = "none";
+        renderGroupTabs(tabsBox);
+        renderGroupData();
+      } catch (e) {
+        console.error(e);
+        status.textContent = "ブロック情報を読み込めませんでした。スプレッドシートの共有設定を確認してください。";
+      }
+    }
+
+    function parseMemberRow(row, header, blockLabel) {
+      const getByHeader = patterns => {
+        for (const pattern of patterns) {
+          const index = header.findIndex(h => pattern.test(normalizeHeader(h)));
+          if (index >= 0 && row[index]) return cleanText(row[index]);
+        }
+        return "";
+      };
+
+      let studentId = getByHeader([/学籍番号|studentid|student|id/]);
+      let name = getByHeader([/名前|氏名|学生名|name/]);
+      let kana = getByHeader([/カナ|フリガナ|ふりがな|kana/]);
+      let className = getByHeader([/クラス|class|組/]);
+      let groupName = getByHeader([/グループ|group/]);
+
+      if (!studentId && row[1]) studentId = cleanText(row[1]);
+      if (!name && row[2]) name = cleanText(row[2]);
+      if (!kana && row[3]) kana = cleanText(row[3]);
+
+      const values = row.map(v => cleanText(v)).filter(Boolean);
+
+      if (!className) {
+        className = values.find(v => /^(LJA|LJB|LSA|LSB|LJP|LSP)/i.test(v)) || "";
+      }
+
+      if (!name) {
+        name = values.find(v => {
+          const onlyNum = /^[0-9]+$/.test(v);
+          const compactNum = String(v).replace(/\D/g, "");
+          if (onlyNum) return false;
+          if (compactNum.length >= 8) return false;
+          if (/番号|学籍|名前|カナ|ブロック|グループ|クラス/.test(v)) return false;
+          return true;
+        }) || "";
+      }
+
+      return {
+        blockLabel,
+        className: cleanText(className),
+        studentId: cleanText(studentId),
+        name: cleanText(name),
+        kana: cleanText(kana),
+        groupName: cleanText(groupName),
+        raw: row
+      };
+    }
+
+    function renderGroupTabs(box) {
+      box.innerHTML = "";
+
+      const allBtn = document.createElement("button");
+      allBtn.className = "group-tab active";
+      allBtn.textContent = "すべて";
+      allBtn.type = "button";
+      allBtn.addEventListener("click", () => {
+        currentGroupFilter = "ALL";
+        updateGroupTabActive();
+        renderGroupData();
+      });
+      box.appendChild(allBtn);
+
+      SHEETS.groups.tabs.forEach(tab => {
+        const btn = document.createElement("button");
+        btn.className = "group-tab";
+        btn.textContent = tab.label;
+        btn.type = "button";
+        btn.dataset.label = tab.label;
+        btn.addEventListener("click", () => {
+          currentGroupFilter = tab.label;
+          updateGroupTabActive();
+          renderGroupData();
+        });
+        box.appendChild(btn);
+      });
+    }
+
+    function updateGroupTabActive() {
+      document.querySelectorAll(".group-tab").forEach(btn => {
+        const isAll = !btn.dataset.label && currentGroupFilter === "ALL";
+        const isTarget = btn.dataset.label === currentGroupFilter;
+        btn.classList.toggle("active", isAll || isTarget);
+      });
+    }
+
+    function renderGroupData() {
+      const box = document.getElementById("groupResult");
+      const q = normalize(document.getElementById("groupSearch").value);
+
+      const filtered = groupRows.filter(member => {
+        if (currentGroupFilter !== "ALL" && member.blockLabel !== currentGroupFilter) return false;
+
+        const text = normalize([
+          member.blockLabel,
+          member.className,
+          member.studentId,
+          member.name,
+          member.kana,
+          member.groupName
+        ].join(" "));
+
+        return !q || text.includes(q);
+      });
+
+      if (!filtered.length) {
+        box.innerHTML = `<div class="loading">該当するメンバーが見つかりません。</div>`;
+        return;
+      }
+
+      box.innerHTML = "";
+
+      filtered.forEach(member => {
+        const card = document.createElement("div");
+        card.className = "member-card";
+
+        const chips = [];
+
+        if (member.studentId) {
+          chips.push(`<span class="member-chip gold">学籍番号：${escapeHtml(member.studentId)}</span>`);
+        }
+
+        if (member.className) {
+          chips.push(`<span class="member-chip">クラス：${escapeHtml(member.className)}</span>`);
+        }
+
+        if (member.groupName) {
+          chips.push(`<span class="member-chip">グループ：${escapeHtml(member.groupName)}</span>`);
+        }
+
+        card.innerHTML = `
+          <div class="member-top">
+            <span class="member-block">${escapeHtml(member.blockLabel)}</span>
+          </div>
+          <div class="member-name">${escapeHtml(member.name || "氏名確認中")}</div>
+          ${member.kana ? `<div class="member-kana">${escapeHtml(member.kana)}</div>` : `<div class="member-kana"></div>`}
+          <div class="member-chips">${chips.join("")}</div>
+        `;
+
+        box.appendChild(card);
+      });
+    }
+
+    async function loadSeats() {
+      const status = document.getElementById("seatStatus");
+      const tabsBox = document.getElementById("seatTabs");
+
+      try {
+        const loaded = [];
+
+        for (const tab of SHEETS.seats.tabs) {
+          const data = await loadSheetByJsonp(SHEETS.seats.id, tab.gid);
+          const matrix = tableToMatrix(data);
+          loaded.push({ ...tab, matrix });
+        }
+
+        seatSheets = loaded;
+        currentSeatLabel = seatSheets[0]?.label || "";
+        status.style.display = "none";
+        renderSeatTabs(tabsBox);
+        renderCurrentSeat();
+      } catch (e) {
+        console.error(e);
+        status.textContent = "座席情報を読み込めませんでした。スプレッドシートの共有設定を確認してください。";
+      }
+    }
+
+    function renderSeatTabs(box) {
+      box.innerHTML = "";
+
+      seatSheets.forEach(sheet => {
+        const btn = document.createElement("button");
+        btn.className = "seat-tab";
+        btn.type = "button";
+        btn.textContent = sheet.label;
+        btn.dataset.label = sheet.label;
+
+        if (sheet.label === currentSeatLabel) btn.classList.add("active");
+
+        btn.addEventListener("click", () => {
+          currentSeatLabel = sheet.label;
+          document.querySelectorAll(".seat-tab").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderCurrentSeat();
+        });
+
+        box.appendChild(btn);
+      });
+    }
+
+    function renderCurrentSeat() {
+      const box = document.getElementById("seatResult");
+      const q = normalize(document.getElementById("seatSearch").value);
+      const sheet = seatSheets.find(s => s.label === currentSeatLabel);
+
+      if (!sheet) {
+        box.innerHTML = `<div class="loading">座席表が見つかりません。</div>`;
+        return;
+      }
+
+      if (sheet.type === "101am" || sheet.type === "101pm") {
+        render101SeatGrid(sheet.matrix, q, box, sheet.type);
+      } else {
+        renderDxSeatGrid(sheet.matrix, q, box);
+      }
+    }
+
+    function render101SeatGrid(matrix, q, box, type) {
+      const ranges = SEAT_RANGES[type];
+
+      if (!matrix.length) {
+        box.innerHTML = `<div class="loading">このシートに座席データがありません。</div>`;
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "seat-blocks";
+
+      const note = document.createElement("div");
+      note.className = "seat-note";
+      note.innerHTML = `
+        101教室：各ブロックでは、<strong>👑ゲームリーダー</strong>がパーティを作成します。
+        リーダーが不在の場合は、<strong>☆サブリーダー</strong>が代わりにパーティを作成してください。
+      `;
+      wrapper.appendChild(note);
+
+      ranges.forEach(range => {
+        const startIndex = colToIndex(range.start);
+        const endIndex = colToIndex(range.end);
+        const width = endIndex - startIndex + 1;
+
+        const block = document.createElement("div");
+        block.className = "seat-block";
+
+        const title = document.createElement("div");
+        title.className = "seat-block-title";
+        title.textContent = `${range.label}（${range.start}列〜${range.end}列）`;
+        block.appendChild(title);
+
+        const table = document.createElement("table");
+        table.className = "seat-grid-table" + (q ? " searching" : "");
+
+        const rows = matrix.map(row => {
+          const sliced = [];
+          for (let i = startIndex; i <= endIndex; i++) {
+            sliced.push(cleanText(row[i] || ""));
+          }
+          return sliced;
+        }).filter(row => {
+          if (!row.some(Boolean)) return false;
+          if (isBlockSummaryRow(row)) return false;
+          return true;
+        });
+
+        rows.forEach(row => {
+          const tr = document.createElement("tr");
+
+          for (let i = 0; i < width; i++) {
+            const text = row[i] || "";
+            const td = document.createElement("td");
+
+            if (!text) {
+              td.className = "empty";
+              td.textContent = "";
+            } else {
+              td.className = "seat";
+              const role = getSeatRole(range.label, text);
+
+              if (role === "leader") {
+                td.classList.add("leader-seat");
+                td.innerHTML = `${escapeHtml(text)}<br><span class="role-badge leader">👑リーダー</span>`;
+              } else if (role === "subleader") {
+                td.classList.add("subleader-seat");
+                td.innerHTML = `${escapeHtml(text)}<br><span class="role-badge subleader">☆サブ</span>`;
+              } else {
+                td.textContent = text;
+              }
+
+              if (q && normalize(text).includes(q)) {
+                td.classList.add("matched");
+              }
+            }
+
+            tr.appendChild(td);
+          }
+
+          table.appendChild(tr);
+        });
+
+        block.appendChild(table);
+        wrapper.appendChild(block);
+      });
+
+      box.innerHTML = "";
+      box.appendChild(wrapper);
+    }
+
+    function renderDxSeatGrid(matrix, q, box) {
+      if (!matrix.length) {
+        box.innerHTML = `<div class="loading">このシートに座席データがありません。</div>`;
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "seat-blocks";
+
+      const note = document.createElement("div");
+      note.className = "seat-note";
+      note.innerHTML = `
+        DXラボ：<strong>FG001〜FG020</strong>と<strong>竹内の席</strong>は固定席・デスクトップPC、
+        <strong>FG021〜FG029</strong>は移動席・ノートPCです。
+      `;
+      wrapper.appendChild(note);
+
+      const block = document.createElement("div");
+      block.className = "seat-block";
+
+      const title = document.createElement("div");
+      title.className = "seat-block-title";
+      title.textContent = currentSeatLabel;
+      block.appendChild(title);
+
+      const table = document.createElement("table");
+      table.className = "seat-grid-table" + (q ? " searching" : "");
+
+      const visibleColCount = getDxVisibleColumnCount(matrix);
+
+      matrix.forEach(row => {
+        const cleaned = row.map(v => cleanText(v));
+
+        if (!cleaned.some(Boolean)) return;
+        if (isIgnoredDxRow(cleaned)) return;
+
+        const hasMonitorInRow = cleaned.some(text => hasMonitor(text));
+
+        if (hasMonitorInRow) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.className = "monitor";
+          td.colSpan = visibleColCount;
+          td.textContent = "大型モニター";
+          tr.appendChild(td);
+          table.appendChild(tr);
+          return;
+        }
+
+        const tr = document.createElement("tr");
+        const displayCells = cleaned.filter(text => !isIgnoredDxText(text));
+
+        while (displayCells.length && !displayCells[displayCells.length - 1]) {
+          displayCells.pop();
+        }
+
+        displayCells.forEach(text => {
+          const td = document.createElement("td");
+
+          if (!text) {
+            td.className = "empty";
+            td.textContent = "";
+          } else {
+            td.className = getDxSeatClass(text);
+            td.textContent = text;
+
+            if (q && normalize(text).includes(q)) {
+              td.classList.add("matched");
+            }
+          }
+
+          tr.appendChild(td);
+        });
+
+        if (tr.children.length) {
+          table.appendChild(tr);
+        }
+      });
+
+      block.appendChild(table);
+      wrapper.appendChild(block);
+
+      box.innerHTML = "";
+      box.appendChild(wrapper);
+    }
+
+    function getDxVisibleColumnCount(matrix) {
+      let max = 0;
+
+      matrix.forEach(row => {
+        const cleaned = row.map(v => cleanText(v));
+
+        if (!cleaned.some(Boolean)) return;
+        if (isIgnoredDxRow(cleaned)) return;
+        if (cleaned.some(text => hasMonitor(text))) return;
+
+        const displayCells = cleaned.filter(text => !isIgnoredDxText(text));
+
+        while (displayCells.length && !displayCells[displayCells.length - 1]) {
+          displayCells.pop();
+        }
+
+        if (displayCells.length > max) max = displayCells.length;
+      });
+
+      return Math.max(max, 10);
+    }
+
+    function getSeatRole(blockLabel, text) {
+      const roles = ROLE_MAP[blockLabel];
+      if (!roles) return "";
+
+      const nText = normalize(text);
+
+      const isLeader = roles.leader.some(name => nText.includes(normalize(name)));
+      if (isLeader) return "leader";
+
+      const isSubleader = roles.subleader.some(name => nText.includes(normalize(name)));
+      if (isSubleader) return "subleader";
+
+      return "";
+    }
+
+    function getDxSeatClass(text) {
+      const value = String(text || "");
+
+      if (value.includes("竹内")) return "seat fixed-seat";
+
+      const match = value.match(/FG0?(\d{2,3})/i);
+
+      if (match) {
+        const num = Number(match[1]);
+        if (num >= 1 && num <= 20) return "seat fixed-seat";
+        if (num >= 21 && num <= 29) return "seat mobile-seat";
+      }
+
+      return "seat other-seat";
+    }
+
+    function isIgnoredDxText(text) {
+      const value = String(text || "").trim();
+      if (!value) return false;
+
+      return /出入口|入口|操作室|固定机|移動机|固定席|移動席|デスクトップPC|ノートPC/i.test(value);
+    }
+
+    function isIgnoredDxRow(row) {
+      const joined = row.join("");
+      return /出入口|操作室/.test(joined);
+    }
+
+    function hasMonitor(text) {
+      return /大型モニター|モニター|monitor/i.test(String(text || ""));
+    }
+
+    function isBlockSummaryRow(row) {
+      const values = row.map(v => String(v || "").trim()).filter(Boolean);
+      if (!values.length) return false;
+
+      const joined = values.join("");
+
+      if (/第[0-9０-９一二三四五六七八九]+ブロック.*[0-9０-９]+名/.test(joined)) return true;
+      if (values.length === 1 && /第[0-9０-９一二三四五六七八九]+ブロック/.test(joined)) return true;
+
+      return false;
+    }
+
+    function cleanText(value) {
+      return String(value ?? "")
+        .replace(/ミンカンゾウ/g, "ミンカンゾー")
+        .replace(/ﾐﾝｶﾝｿﾞｳ/g, "ミンカンゾー")
+        .replace(/\r/g, "")
+        .trim();
+    }
+
+    function normalizeHeader(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replace(/[Ａ-Ｚａ-ｚ０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+        .replace(/\s|　/g, "")
+        .trim();
+    }
+
+    function colToIndex(col) {
+      let n = 0;
+      const s = String(col).toUpperCase();
+
+      for (let i = 0; i < s.length; i++) {
+        n = n * 26 + (s.charCodeAt(i) - 64);
+      }
+
+      return n - 1;
+    }
+
+    function normalize(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replace(/[Ａ-Ｚａ-ｚ０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+        .replace(/[\s　\-ー‐‑‒–—―・･.．_/／\\]/g, "")
+        .replace(/ミンカンゾウ/g, "ミンカンゾー")
+        .replace(/ﾐﾝｶﾝｿﾞｳ/g, "ミンカンゾー")
+        .trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
