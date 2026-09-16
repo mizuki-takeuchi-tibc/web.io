@@ -1785,11 +1785,6 @@
         const block = document.createElement("div");
         block.className = "seat-block";
 
-        const title = document.createElement("div");
-        title.className = "seat-block-title";
-        title.textContent = `${range.label}（${range.start}列〜${range.end}列）`;
-        block.appendChild(title);
-
         const table = document.createElement("table");
         table.className = "seat-grid-table" + (q ? " searching" : "");
 
@@ -1804,6 +1799,16 @@
           if (isBlockSummaryRow(row)) return false;
           return true;
         });
+
+        const memberCount = rows.reduce((count, row) => {
+          return count + row.filter(Boolean).length;
+        }, 0);
+
+        const title = document.createElement("div");
+        title.className = "seat-block-title";
+        title.textContent = `${range.label}（${memberCount}名）`;
+        block.appendChild(title);
+
 
         rows.forEach(row => {
           const tr = document.createElement("tr");
