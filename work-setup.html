@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workを使う前の最初の設定</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="label">ChatGPT Work 初期設定</div>
+    <h1>Workを使う前に、<br>最初に設定しておきたいこと。</h1>
+    <p>
+      Google DriveやGmailをつなぐ。
+      PowerPointのテンプレートファイルを渡す。
+      そして、AGENTS.mdでAIへの業務マニュアルを育てていく。
+    </p>
+  </header>
+
+  <main>
+    <section class="hero-card">
+      <h2>今日のポイント</h2>
+      <p>
+        ChatGPT Workは、そのままでも使えます。
+        でも、最初に少しだけ設定しておくと、
+        <strong>「ただのチャット」から「自分の仕事を知っているAIアシスタント」</strong>
+        に近づきます。
+      </p>
+
+      <div class="big-message">
+        Workを使う前にやることは、<br>
+        <span class="marker">つなぐ・渡す・育てる</span> の3つです。
+      </div>
+
+      <p>
+        具体的には、Google DriveやGmailなどのアプリ連携、
+        PowerPointテンプレートファイルの指定、
+        そして作業ルールをまとめた <strong>AGENTS.md</strong> の活用です。
+      </p>
+    </section>
+
+    <section>
+      <h2>Work前の初期設定はこの3つ</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🔌</div>
+          <span class="tag">その1</span>
+          <h3>Google Driveをつなぐ</h3>
+          <p>
+            Driveにある資料、Google Docs、Sheets、Slides、PDFなどを
+            ChatGPTが参照しやすくなります。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📩</div>
+          <span class="tag">その2</span>
+          <h3>Gmailをつなぐ</h3>
+          <p>
+            Gmailをつなぐと、メールを探す、要約する、
+            返信案を作る、といった作業に使える場合があります。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📘</div>
+          <span class="tag">その3</span>
+          <h3>AGENTS.mdを育てる</h3>
+          <p>
+            よく使うルール、言い回し、資料の作り方、注意点を
+            <strong>AGENTS.md</strong> にまとめておくと、
+            AIに毎回説明する手間を減らせます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <h2>1. Google Driveをつなぐ</h2>
+      <p>
+        Google Driveを接続すると、ChatGPTがあなたのGoogleアカウントで
+        アクセスできるファイルを探したり、参照したりできるようになります。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Settingsを開く</h3>
+            <p>
+              ChatGPTの設定画面を開きます。
+              環境によっては <strong>Settings &gt; Plugins</strong>、
+              または <strong>Apps</strong> と表示されます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Google Driveを選ぶ</h3>
+            <p>
+              利用できるアプリ一覧から <strong>Google Drive</strong> を探します。
+              表示されない場合は、プラン・地域・管理者設定の影響がある可能性があります。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Googleアカウントで認証する</h3>
+            <p>
+              使いたいファイルにアクセスできるGoogleアカウントでログインします。
+              複数アカウントを使っている人は、仕事用・学校用を間違えないようにします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>許可内容を確認する</h3>
+            <p>
+              ChatGPTが何を読めるのか、何を操作できるのかを確認してから接続します。
+              組織アカウントの場合、管理者の許可が必要なこともあります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>Driveをつないだら、こう頼める</h2>
+
+      <div class="prompt-box">
+        <code>Google Driveにある「AIセミナー資料」というファイルを探してください。
+その内容をもとに、初心者向けに5分で説明できる要点をまとめてください。
+
+条件：
+・専門用語は少なめ
+・箇条書き中心
+・最後に参加者への一言メッセージを入れる</code>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <h2>2. Gmailをつなぐ</h2>
+      <p>
+        Gmailを接続すると、メールの内容をもとにした作業がしやすくなります。
+        たとえば、過去のやり取りを探す、要点をまとめる、返信文を作る、といった使い方です。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <h3>Gmailでできることの例</h3>
+          <ul class="simple-list">
+            <li>特定の相手とのメールを探す</li>
+            <li>長いメールの要点をまとめる</li>
+            <li>会議日程や依頼事項を整理する</li>
+            <li>返信文の下書きを作る</li>
+            <li>未対応メールの確認を手伝ってもらう</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>最初は読み取り中心がおすすめ</h3>
+          <p>
+            初心者は、いきなりAIにメール送信まで任せるより、
+            まずは <strong>探す・まとめる・返信案を作る</strong>
+            ところから始めるのがおすすめです。
+          </p>
+          <p>
+            送信や変更を伴う操作は、必ず内容を確認してから実行しましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>連携するときの注意点</h2>
+      <ul class="simple-list">
+        <li>ChatGPTは、接続したGoogleアカウントで許可された範囲の情報だけを使います</li>
+        <li>会社や学校のアカウントでは、管理者が連携を制限している場合があります</li>
+        <li>ファイルの作成・更新・共有・削除などは追加の権限や確認が必要な場合があります</li>
+        <li>個人情報・機密情報を扱うときは、組織のルールを確認しましょう</li>
+        <li>AIが作った内容は、必ず人間が確認してから使いましょう</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. PowerPointを作るなら、テンプレートファイルを渡す</h2>
+      <p>
+        Workでスライドを作るときは、
+        ただ「プレゼン資料を作って」と頼むよりも、
+        <strong>既存のPowerPointファイルを添付して、テンプレートとして使ってもらう</strong>
+        のがおすすめです。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="icon">📎</div>
+          <h3>ファイルで指定できる</h3>
+          <p>
+            会社や学校で使っているPowerPointファイル、過去に作った資料、
+            デザインの見本になるスライドを添付して、
+            「このデザインに合わせて」と指示できます。
+          </p>
+          <ul class="simple-list">
+            <li>既存のPowerPointファイル</li>
+            <li>過去に作った良いスライド</li>
+            <li>会社・学校のテンプレート</li>
+            <li>ロゴやカラーが入った資料</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>テンプレートを使うメリット</h3>
+          <ul class="simple-list">
+            <li>色やフォントを合わせやすい</li>
+            <li>会社・学校の雰囲気に寄せやすい</li>
+            <li>毎回同じ構成で資料を作りやすい</li>
+            <li>ゼロからデザインを考えなくてよい</li>
+            <li>あとから人間が直す量を減らせる</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>テンプレートファイル指定のプロンプト例</h2>
+      <p>
+        PowerPointファイルを添付してから、次のように頼みます。
+      </p>
+
+      <div class="prompt-box">
+        <code>添付したPowerPointファイルを、デザインテンプレートとして使ってください。
+
+目的：
+AIセミナーの参加者向けに、ChatGPT Workの使い方を説明する資料を作りたいです。
+
+お願い：
+・添付したPowerPointの色、フォント、余白、見出しデザインにできるだけ合わせる
+・スライドは8枚
+・1枚1メッセージでシンプルにする
+・初心者向けなので専門用語を減らす
+・各スライドに発表者メモも付ける
+・画像が必要な場所は「画像候補：〇〇」と書く
+
+進め方：
+1. まずスライド構成案を出してください
+2. 私が確認したあと、PowerPoint資料を作成してください</code>
+      </div>
+
+      <p class="small">
+        ポイントは、いきなり完成版を作らせず、最初に構成案を確認することです。
+        大きな手戻りを減らせます。
+      </p>
+    </section>
+
+    <section class="warning">
+      <h2>テンプレート指定にも限界はある</h2>
+      <p>
+        既存テンプレートや参考デッキを渡すことで仕上がりは安定しますが、
+        毎回完全に希望通りの見た目になるとは限りません。
+      </p>
+
+      <ul class="simple-list">
+        <li>細かい配置は崩れることがある</li>
+        <li>グラフや図形の高度な編集は苦手な場合がある</li>
+        <li>ロゴ、色、フォント、余白は最後に人間が確認する</li>
+        <li>重要な資料は、元ファイルを複製してから作業する</li>
+      </ul>
+
+      <p>
+        AIには「たたき台」を作ってもらい、
+        最後の仕上げは人間が行う、という考え方が安全です。
+      </p>
+    </section>
+
+    <section>
+      <h2>4. AGENTS.mdを育てる</h2>
+      <p>
+        <strong>AGENTS.md</strong> は、AIに毎回伝えたいルールや前提をまとめておくファイルです。
+        たとえば、資料のトーン、禁止事項、作業の進め方、確認ルールなどを書いておけます。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <h3>AGENTS.mdに書くとよいこと</h3>
+          <ul class="simple-list">
+            <li>誰向けの資料を作るのか</li>
+            <li>文章のトーン</li>
+            <li>専門用語をどこまで使うか</li>
+            <li>資料作成の流れ</li>
+            <li>確認してから進めてほしいこと</li>
+            <li>使ってはいけない表現や注意点</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>大事な考え方</h3>
+          <p>
+            AGENTS.mdは、AIへの業務マニュアルです。
+          </p>
+          <p>
+            実際にWorkやCodexを使いながら、
+            <strong>「次からはこうしてほしい」</strong>
+            と思ったことを追記していくことで育ちます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>AGENTS.mdのサンプル</h2>
+      <p>
+        セミナー資料や学校向け資料を作るなら、たとえばこんな内容から始められます。
+      </p>
+
+      <div class="prompt-box">
+        <code># AGENTS.md
+
+## 基本方針
+- 読者はAI初心者です。
+- 専門用語はできるだけ使わず、使う場合は短く説明してください。
+- 文章はやさしく、少しカジュアルにしてください。
+- 日本語は自然で、セミナーで話しやすい表現にしてください。
+
+## 資料作成ルール
+- 1ページまたは1スライドに、メッセージは1つだけにしてください。
+- 見出しは短く、参加者が一目で意味を理解できるようにしてください。
+- 箇条書きは多くても5つまでにしてください。
+- 最後に「今日持ち帰ってほしいこと」を入れてください。
+
+## 確認ルール
+- 大きな資料を作るときは、いきなり完成版を作らず、先に構成案を出してください。
+- 事実や料金に関する内容は、公式情報を確認してから書いてください。
+- 不確かな情報は、断定せず「変更される場合があります」と書いてください。
+
+## デザインの好み
+- 色は落ち着いたグリーン系を中心にしてください。
+- 初心者向けなので、余白を多めにしてください。
+- 表よりも、カード形式やステップ形式を優先してください。</code>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <h2>使い込むほど、AGENTS.mdは進化する</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>最初は短く作る</h3>
+            <p>
+              最初から完璧なAGENTS.mdを作ろうとしなくて大丈夫です。
+              まずは文章のトーンや資料の作り方だけ書きます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>使って気づく</h3>
+            <p>
+              「もっと短くしてほしい」
+              「表現が硬い」
+              「最初に構成案がほしい」
+              など、使いながら気づいたことをメモします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>ルールを追記する</h3>
+            <p>
+              気づいたことをAGENTS.mdに追加します。
+              すると次回から、AIに同じ説明をしなくて済みます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>自分専用のAIになる</h3>
+            <p>
+              仕事の進め方、文章の好み、資料の型が蓄積され、
+              自分やチームに合ったAIアシスタントに近づいていきます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison">
+      <h2>最初の設定まとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>設定</th>
+            <th>何ができるようになるか</th>
+            <th>初心者へのおすすめ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Google Drive連携</strong></td>
+            <td>Drive内の資料、Docs、Sheets、Slides、PDFなどを参照して作業しやすくなる。</td>
+            <td>まず最初に設定したい。資料作成や要約に便利。</td>
+          </tr>
+
+          <tr>
+            <td><strong>Gmail連携</strong></td>
+            <td>メールを探す、要約する、返信案を作るなどに使える。</td>
+            <td>まずは読み取り・要約・返信案作成から始める。</td>
+          </tr>
+
+          <tr>
+            <td><strong>PowerPointテンプレートファイル</strong></td>
+            <td>既存のPowerPointファイルを参考にして、色・フォント・構成を寄せやすくなる。</td>
+            <td>良い見本ファイルを添付して「このデザインに合わせて」と頼む。</td>
+          </tr>
+
+          <tr>
+            <td><strong>AGENTS.md</strong></td>
+            <td>AIに毎回伝えたい作業ルールや好みをまとめられる。</td>
+            <td>最初は短く作り、使いながら少しずつ追記する。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cta">
+      <h2>Workは、設定してからが本番。</h2>
+      <p>
+        Google DriveやGmailをつなぎ、テンプレートファイルを渡し、
+        AGENTS.mdで自分のルールを育てる。<br>
+        これでChatGPTは、ただ答えるAIから
+        <strong>自分の仕事を一緒に進めるAI</strong>
+        に近づきます。
+      </p>
+    </section>
+
+    <div class="nav-links">
+      <a href="work-desktop.html">← 前のページ：WorkはPC版がおすすめ</a>
+      <a href="#">次のページへ →</a>
+    </div>
+
+    <footer>
+      <p>
+        参考：
+        <a href="https://help.openai.com/en/articles/11487775-connected-apps-in-chatgpt" target="_blank" rel="noopener">OpenAI Help: Connected apps in ChatGPT</a>
+        /
+        <a href="https://help.openai.com/en/articles/10929079-google-drive-app-and-setup-in-chatgpt" target="_blank" rel="noopener">OpenAI Help: Google Drive app and setup</a>
+        /
+        <a href="https://help.openai.com/en/articles/10408842-google-app-data-controls-faq" target="_blank" rel="noopener">OpenAI Help: Google app data controls FAQ</a>
+        /
+        <a href="https://help.openai.com/en/articles/20001242-chatgpt-for-powerpoint" target="_blank" rel="noopener">OpenAI Help: ChatGPT for PowerPoint</a>
+        /
+        <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" target="_blank" rel="noopener">OpenAI Learn: AGENTS.md</a>
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
