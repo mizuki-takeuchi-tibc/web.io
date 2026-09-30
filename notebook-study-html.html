@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notebookで学習用HTMLページを作る</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="label">AIセミナー・教材作成編</div>
+    <h1>Notebookで学習用HTMLページを作る</h1>
+    <p>
+      Gemini NotebookにPDF教材を入れて、
+      学生が自分で勉強しやすいHTMLページを作ってもらう方法を説明します。
+    </p>
+  </header>
+
+  <main>
+    <section class="hero-card">
+      <div class="eyebrow">このページでやること</div>
+      <h2>PDF教材を、見やすい学習ページに変える</h2>
+
+      <p>
+        PDF教材は、印刷して配るには便利です。
+        でも、スマホやパソコンで勉強するときは、少し読みづらいことがあります。
+      </p>
+
+      <p>
+        そこで、Gemini NotebookにPDF教材を入れて、
+        学生が見やすい <strong>学習用HTMLページ</strong> を作ってもらいます。
+      </p>
+
+      <p>
+        HTMLページにすると、見出し、言葉の説明、例文、確認問題をまとめて見せやすくなります。
+      </p>
+
+      <div class="flow">
+        <div class="flow-item">
+          <div class="icon">📚</div>
+          <h3>PDF教材</h3>
+          <p>Notebookに入れる</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-item">
+          <div class="icon">💡</div>
+          <h3>Gemini Notebook</h3>
+          <p>学習ページを作る</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-item">
+          <div class="icon">🌐</div>
+          <h3>HTMLページ</h3>
+          <p>ブラウザで見る</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">大事な考え方</div>
+      <h2>Notebookに「勉強しやすいページ」を作ってもらう</h2>
+
+      <p>
+        Notebookは、入れたPDFの内容をもとに文章を作るのが得意です。
+        そのため、PDFの内容を読んで、学生向けの学習ページにまとめてもらうことができます。
+      </p>
+
+      <p>
+        今回は、Notebookに次のようなページを作ってもらいます。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="icon">📖</div>
+          <h3>読むページ</h3>
+          <p>
+            大切な内容を、学生が読みやすい順番でまとめます。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📝</div>
+          <h3>練習するページ</h3>
+          <p>
+            重要な言葉、例文、確認問題を入れて、復習しやすくします。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">使う資料</div>
+        <h2>今回使う5つのPDF教材</h2>
+      </div>
+
+      <p>
+        今回は、日本語学校の学生向け教材として、次の5つのPDFを使います。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🌏</div>
+          <h3>学習資料1</h3>
+          <p>
+            <strong>災害と防災</strong><br />
+            地震、台風、大雨、避難、防災の準備について学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏥</div>
+          <h3>学習資料2</h3>
+          <p>
+            <strong>病院・薬局の利用</strong><br />
+            病院の受付、症状の伝え方、薬の飲み方について学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>学習資料3</h3>
+          <p>
+            <strong>アルバイトのマナー</strong><br />
+            時間を守ること、連絡、相談、遅刻や欠勤の伝え方を学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🗑️</div>
+          <h3>学習資料4</h3>
+          <p>
+            <strong>ごみ出しと地域ルール</strong><br />
+            ごみの分け方、出す日、出す場所、粗大ごみについて学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎓</div>
+          <h3>学習資料5</h3>
+          <p>
+            <strong>進学・就職面接の基本</strong><br />
+            面接の準備、マナー、よく使う表現について学ぶ資料です。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">全体の流れ</div>
+        <h2>この順番で進めます</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>NotebookにPDFを入れる</h3>
+            <p>
+              5つのPDF教材をGemini Notebookに入れます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>Notebookにお願い文を入れる</h3>
+            <p>
+              「このPDFをもとに、学習用HTMLページを作ってください」とお願いします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>Notebookが作ったHTMLコードをコピーする</h3>
+            <p>
+              Notebookが作ったコードを、最初から最後まで全部コピーします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>HTMLファイルとして保存する</h3>
+            <p>
+              コピーした内容をHTMLファイルに貼り付けて保存します。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div>
+            <h3>ブラウザで開いて確認する</h3>
+            <p>
+              ChromeやEdgeなどのブラウザで開いて、見やすいか確認します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>Notebookに入れるお願い文</h2>
+
+      <p>
+        5つのPDFをNotebookに入れたあと、次の文をコピーしてNotebookに貼り付けます。
+      </p>
+
+      <div class="prompt-box">
+<pre>入れた5つのPDF教材をもとに、日本語学校の学生が自分で勉強しやすいHTMLページを作ってください。
+
+目的：
+学生がスマホやパソコンで復習できる学習ページを作りたいです。
+
+作ってほしいもの：
+1つのHTMLファイルとして保存できる完成コード
+
+対象：
+日本語学校の中級前後の学生
+
+ページの内容：
+1. タイトル
+2. このページで学ぶこと
+3. 5つのテーマの学習内容
+4. 各テーマの大切な言葉
+5. 各テーマのやさしい説明
+6. よく使う表現
+7. 確認問題
+8. 答え
+
+5つのテーマ：
+1. 災害と防災
+2. 病院・薬局の利用
+3. アルバイトのマナー
+4. ごみ出しと地域ルール
+5. 進学・就職面接の基本
+
+作り方の希望：
+1. 学生が読みやすい日本語にしてください。
+2. 難しい言葉には、かんたんな説明を入れてください。
+3. 1つのテーマごとに、見出しをつけてください。
+4. 大切な言葉は表にしてください。
+5. 例文を入れてください。
+6. 各テーマに確認問題を3問ずつ入れてください。
+7. 最後に答えをまとめてください。
+8. スマホでも見やすいデザインにしてください。
+9. 色はやさしい色にしてください。
+10. 文字を詰め込みすぎないでください。
+
+コードについて：
+1. HTML、CSS、JavaScriptを1つのHTMLファイルの中に入れてください。
+2. 外部ファイルは使わないでください。
+3. 画像は使わないでください。
+4. コードは途中で省略しないでください。
+5. 「以下同様」などは使わないでください。
+6. 最初から最後まで、そのまま保存して動く完成コードを書いてください。
+7. 説明文は不要です。完成したHTMLコードだけを出してください。</pre>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">ポイント</div>
+      <h2>完成コードを全部コピーする</h2>
+
+      <p>
+        NotebookがHTMLコードを作ったら、途中だけではなく、
+        <strong>最初から最後まで全部コピー</strong>します。
+      </p>
+
+      <p>
+        コードの一部だけを直したり、必要なところだけを探したりする必要はありません。
+        初心者向けには、全部コピーして全部貼る方が簡単です。
+      </p>
+
+      <div class="note">
+        <h3>覚えることは3つだけ</h3>
+        <ol>
+          <li>Notebookが作ったコードを全部コピーする</li>
+          <li>HTMLファイルに全部貼る</li>
+          <li>ブラウザで開く</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順1</div>
+        <h2>NotebookにPDFを入れる</h2>
+      </div>
+
+      <p>
+        まず、Gemini Notebookを開き、新しいノートブックを作ります。
+        次に、5つのPDF教材を入れます。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Gemini Notebookを開く</h3>
+            <p>
+              Notebookを開いて、新しいノートブックを作ります。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>名前をつける</h3>
+            <p>
+              あとで見てもわかる名前にします。
+            </p>
+
+            <div class="prompt-box">
+<pre>生活日本語_学習ページ作成</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>PDFを入れる</h3>
+            <p>
+              5つのPDF教材をNotebookに入れます。
+            </p>
+
+            <ul>
+              <li>学習資料1：災害と防災.pdf</li>
+              <li>学習資料2：病院・薬局の利用.pdf</li>
+              <li>学習資料3：アルバイトのマナー.pdf</li>
+              <li>学習資料4：ごみ出しと地域ルール.pdf</li>
+              <li>学習資料5：進学・就職面接の基本.pdf</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順2</div>
+        <h2>NotebookにHTMLページを作ってもらう</h2>
+      </div>
+
+      <p>
+        PDFを入れたら、上のお願い文をNotebookに貼り付けます。
+        Notebookが、学習用HTMLページのコードを作ります。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>お願いするときのポイント</h3>
+          <ul>
+            <li>学生向けにする</li>
+            <li>やさしい日本語にする</li>
+            <li>5つのテーマを入れる</li>
+            <li>大切な言葉を入れる</li>
+            <li>確認問題と答えを入れる</li>
+            <li>省略しないで最後まで書いてもらう</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚠️</div>
+          <h3>注意すること</h3>
+          <ul>
+            <li>コードの途中だけをコピーしない</li>
+            <li>説明文ではなく、HTMLコードをコピーする</li>
+            <li>作った内容は最後に先生が確認する</li>
+            <li>学生に見せる前に、ブラウザで開いて確認する</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順3</div>
+        <h2>HTMLファイルとして保存する</h2>
+      </div>
+
+      <p>
+        Notebookが作ったHTMLコードを全部コピーしたら、HTMLファイルとして保存します。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>メモ帳やエディタを開く</h3>
+            <p>
+              Windowsならメモ帳、Macならテキストエディット、またはVS Codeなどを使います。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>コードを全部貼る</h3>
+            <p>
+              Notebookが作ったHTMLコードを、最初から最後まで全部貼り付けます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>名前をつけて保存する</h3>
+            <p>
+              ファイル名の最後を <strong>.html</strong> にして保存します。
+            </p>
+
+            <div class="prompt-box">
+<pre>study.html</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>ブラウザで開く</h3>
+            <p>
+              保存したHTMLファイルをダブルクリックすると、ブラウザで開けます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="highlight">
+  <div class="eyebrow">完成サンプル</div>
+  <h2>学習用HTMLのサンプルを見る</h2>
+
+  <p>
+    Gemini NotebookにPDFを読み込ませて作った、学習用HTMLのサンプルです。
+    どのようなページができるか、先に見ておくと作業のイメージがしやすくなります。
+  </p>
+
+  <p>
+    このサンプルでは、PDFの内容をもとに、見出し・説明・表・確認問題などを入れた
+    Web学習ページにしています。
+  </p>
+
+  <div class="center">
+    <a class="button" href="日本語学校コンテンツWeb学習用.html">
+      サンプルを見る
+    </a>
+  </div>
+</section>
+
+
+    <section class="warning">
+      <h2>学生に見せる前に先生が確認すること</h2>
+
+      <p>
+        AIが作った学習ページは便利ですが、そのまま学生に見せる前に必ず確認します。
+      </p>
+
+      <ul>
+        <li>PDF教材の内容と合っているか</li>
+        <li>間違った説明がないか</li>
+        <li>学生にとって難しすぎないか</li>
+        <li>大切な言葉が正しく説明されているか</li>
+        <li>確認問題の答えが間違っていないか</li>
+        <li>スマホで見ても読みにくくないか</li>
+      </ul>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">もっとよくしたいとき</div>
+      <h2>追加でNotebookにお願いできること</h2>
+
+      <p>
+        作ったHTMLページを見て、もう少し直したいときは、Notebookに追加でお願いできます。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <h3>もっとやさしい日本語にしたい</h3>
+          <div class="prompt-box">
+<pre>学生にとって少し難しいので、もっとやさしい日本語にしてください。
+文を短くして、難しい言葉には説明を入れてください。</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>確認問題を増やしたい</h3>
+          <div class="prompt-box">
+<pre>各テーマの確認問題を5問ずつに増やしてください。
+答えも最後にまとめてください。</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>スマホで見やすくしたい</h3>
+          <div class="prompt-box">
+<pre>スマホで見やすいように、文字を大きめにして、余白を広くしてください。
+表が横に広がりすぎないようにしてください。</pre>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>授業で使いやすくしたい</h3>
+          <div class="prompt-box">
+<pre>先生が授業で説明しやすいように、各テーマの最後に話し合いの質問を2つずつ追加してください。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison">
+      <h2>今回のまとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>順番</th>
+            <th>やること</th>
+            <th>使うもの</th>
+            <th>ポイント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>PDFを入れる</td>
+            <td>Gemini Notebook</td>
+            <td>5つの教材を入れる</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>学習ページを作る</td>
+            <td>Gemini Notebook</td>
+            <td>お願い文を貼る</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>HTMLコードをコピーする</td>
+            <td>Gemini Notebook</td>
+            <td>最初から最後まで全部コピーする</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>HTMLファイルにする</td>
+            <td>メモ帳やエディタ</td>
+            <td>.htmlで保存する</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>ブラウザで確認する</td>
+            <td>Chrome / Edge など</td>
+            <td>学生に見せる前に内容を確認する</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cta">
+      <h2>PDF教材を、学生が自分で学べるページに変える</h2>
+
+      <p>
+        NotebookにPDFを読ませると、教材の内容をもとに学習ページを作れます。
+        問題だけでなく、復習用のWebページとして使うこともできます。
+      </p>
+
+      <a class="button" href="google-form-quiz.html">前のページ：Googleフォームを自動作成</a>
+    </section>
+
+    <div class="nav-links">
+      <a href="google-form-quiz.html">← 前のページ：Googleフォームを自動作成</a>
+      <a href="index.html">最初のページへ戻る →</a>
+    </div>
+
+    <footer>
+      参考：
+      <a href="https://support.google.com/gemininotebook/" target="_blank" rel="noopener">Gemini Notebook Help</a> /
+      <a href="https://notebooklm.google.com/" target="_blank" rel="noopener">NotebookLM</a>
+    </footer>
+  </main>
+</body>
+</html>
