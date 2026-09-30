@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Googleフォームの小テストを自動で作る</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="label">AIセミナー・教材作成編</div>
+    <h1>Googleフォームの小テストを自動で作る</h1>
+    <p>
+      Gemini Notebookで作った60問の問題をChatGPTに渡し、
+      Googleフォームの小テストを自動で作る方法を説明します。
+    </p>
+  </header>
+
+  <main>
+    <section class="hero-card">
+      <div class="eyebrow">このページでやること</div>
+      <h2>60問の問題を、Googleフォームにする</h2>
+
+      <p>
+        Gemini Notebookで作った60問の問題を、Googleフォームの小テストにします。
+      </p>
+
+      <p>
+        60問を1問ずつ手でGoogleフォームに入力するのは大変です。
+        そこで、ChatGPTにGoogle Apps Script用の完成コードを作ってもらい、
+        それを貼り付けてフォームを自動で作ります。
+      </p>
+
+      <div class="flow">
+        <div class="flow-item">
+          <div class="icon">💡</div>
+          <h3>Gemini Notebook</h3>
+          <p>問題を作る</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-item">
+          <div class="icon">🤖</div>
+          <h3>ChatGPT</h3>
+          <p>完成コードを作る</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-item">
+          <div class="icon">📝</div>
+          <h3>Googleフォーム</h3>
+          <p>小テスト完成</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">大事な考え方</div>
+      <h2>コードは直さない。全部コピーして、全部貼る。</h2>
+
+      <p>
+        今回は、コードの一部だけを直す作業はしません。
+      </p>
+
+      <p>
+        ChatGPTに
+        <strong>「Google Apps Scriptにそのまま貼れる完成コードを全部作ってください」</strong>
+        と頼みます。
+      </p>
+
+      <p>
+        そして、ChatGPTが出したコードを
+        <strong>最初から最後まで全部コピー</strong>して、
+        Google Apps Scriptに<strong>全部貼り付け</strong>ます。
+      </p>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>やらないこと</th>
+              <th>今回やること</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>コードの一部だけを探して直す</td>
+              <td>ChatGPTに完成コードを全部作ってもらう</td>
+            </tr>
+            <tr>
+              <td>どこを書き換えるか考える</td>
+              <td>出てきたコードを全部コピーする</td>
+            </tr>
+            <tr>
+              <td>コードの意味を全部理解しようとする</td>
+              <td>まずは貼って動かしてみる</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>おすすめは4択問題と○×問題</h2>
+
+      <p>
+        Googleフォームで自動採点をするなら、
+        <strong>4択問題</strong> と <strong>○×問題</strong> が使いやすいです。
+      </p>
+
+      <p>
+        短く答える問題や、文章で答える問題も作れますが、
+        学生の答え方が少し違うだけで、自動採点がうまくいかないことがあります。
+      </p>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>問題の種類</th>
+              <th>おすすめ度</th>
+              <th>理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>4択問題</td>
+              <td>とてもおすすめ</td>
+              <td>正解を設定しやすく、自動採点しやすいです。</td>
+            </tr>
+            <tr>
+              <td>○×問題</td>
+              <td>おすすめ</td>
+              <td>選択肢が少ないので作りやすいです。</td>
+            </tr>
+            <tr>
+              <td>短く答える問題</td>
+              <td>慣れてから</td>
+              <td>同じ意味でも、学生によって書き方が変わることがあります。</td>
+            </tr>
+            <tr>
+              <td>長く書く問題</td>
+              <td>先生が確認する場合</td>
+              <td>自動採点には向いていません。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">全体の流れ</div>
+        <h2>この順番で進めます</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Gemini Notebookで60問の問題を作る</h3>
+            <p>
+              教材PDFを読み込ませて、60問の確認問題を作ります。
+              できれば、4択問題と○×問題を中心にします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>Notebookの問題をコピーする</h3>
+            <p>
+              Notebookが作った問題を、正解や解説も含めてコピーします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>ChatGPTに貼り付ける</h3>
+            <p>
+              ChatGPTに問題を貼り付けて、
+              Google Apps Script用の完成コードを作ってもらいます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>Google Apps Scriptを開く</h3>
+            <p>
+              Google DriveからGoogle Apps Scriptを開きます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div>
+            <h3>コードを全部貼る</h3>
+            <p>
+              ChatGPTが出したコードを、最初から最後まで全部貼り付けます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">6</div>
+          <div>
+            <h3>実行する</h3>
+            <p>
+              実行ボタンを押すと、Googleフォームの小テストが自動で作られます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>ChatGPTに入れるお願い文</h2>
+
+      <p>
+        Notebookで作った問題をコピーしたら、ChatGPTに次の文を入れます。
+        その下に、Notebookの問題を貼り付けます。
+      </p>
+
+      <div class="prompt-box">
+<pre>以下は、Gemini Notebookで作った確認問題です。
+
+この問題を使って、Google Apps Scriptにそのまま全コピー・全貼り付けできる完成コードを作ってください。
+
+目的：
+Googleフォームの小テストを自動で作りたいです。
+
+作ってほしいもの：
+Google Apps Scriptに貼り付けて、実行できる完成コード
+
+条件：
+1. フォームのタイトルは「生活日本語 確認問題」にしてください。
+2. Googleフォームを小テスト形式にしてください。
+3. 最初に、クラス、番号、名前を入力する欄を作ってください。
+4. 問題は、できるだけ4択問題か○×問題にしてください。
+5. 各問題に正解を設定してください。
+6. 各問題は1点にしてください。
+7. 解説がある場合は、フィードバックとして入れてください。
+8. 問題はテーマごとに見出しを入れてください。
+9. 最後に、編集用URLと回答用URLが実行ログに出るようにしてください。
+10. コードの説明文は不要です。
+11. Google Apps Scriptに貼り付ける完成コードだけを出してください。
+12. 私がコードの一部を書き換えなくても、そのまま貼って動く形にしてください。
+13. 途中を省略しないでください。
+14. 「以下同様」などを使わず、必要なコードを最後まで全部書いてください。
+15. 60問すべてを入れた完成コードにしてください。
+
+これから問題を貼ります。</pre>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順1</div>
+        <h2>Notebookの問題をChatGPTに貼る</h2>
+      </div>
+
+      <p>
+        Gemini Notebookで作った60問の問題をコピーして、ChatGPTに貼り付けます。
+        問題だけでなく、正解や解説も一緒に貼ると、Googleフォームの小テストにしやすくなります。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>貼り付けるもの</h3>
+          <ul>
+            <li>問題文</li>
+            <li>選択肢</li>
+            <li>正解</li>
+            <li>解説</li>
+            <li>テーマ名</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">💡</div>
+          <h3>貼り付けるときの注意</h3>
+          <p>
+            途中で切れないように、Notebookの出力をできるだけまとめてコピーします。
+            もし長い場合でも、ChatGPTに「続きがあります」と伝えて続けて貼れば大丈夫です。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">ChatGPTの出力</div>
+      <h2>ChatGPTが出したコードを全部コピーする</h2>
+
+      <p>
+        ChatGPTがGoogle Apps Script用のコードを出したら、
+        そのコードを最初から最後まで全部コピーします。
+      </p>
+
+      <p>
+        途中だけコピーしたり、自分で一部だけ直したりしません。
+        今回のポイントは、<strong>全コピー・全貼り付け</strong>です。
+      </p>
+
+      <div class="note">
+        <h3>ここでやること</h3>
+        <ol>
+          <li>ChatGPTが出したコードを全部選択する</li>
+          <li>コピーする</li>
+          <li>Google Apps Scriptに貼り付ける</li>
+          <li>保存する</li>
+          <li>実行する</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順2</div>
+        <h2>Google Apps Scriptを開く</h2>
+      </div>
+
+      <p>
+        次に、Google Apps Scriptを開きます。
+        ここに、ChatGPTが作った完成コードを貼り付けます。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Google Driveを開く</h3>
+            <p>
+              いつも使っているGoogle Driveを開きます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>Google Apps Scriptを開く</h3>
+            <p>
+              Google Driveで「新規」→「その他」→「Google Apps Script」を選びます。
+            </p>
+            <p>
+              表示されない場合は、「その他」や「アプリを追加」から探します。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>名前をつける</h3>
+            <p>
+              プロジェクト名をつけます。
+              たとえば、次のような名前にします。
+            </p>
+
+            <div class="prompt-box">
+<pre>生活日本語_確認問題フォーム作成</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>最初から入っている文字を全部消す</h3>
+            <p>
+              Apps Scriptの画面には、最初から短いコードが入っていることがあります。
+              それを全部消します。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div>
+            <h3>ChatGPTのコードを全部貼る</h3>
+            <p>
+              ChatGPTが作った完成コードを、最初から最後まで全部貼り付けます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>覚えることは3つだけ</h2>
+
+      <p>
+        コードの中身を読めなくても大丈夫です。
+        まずは次の3つだけ覚えてください。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">①</div>
+          <h3>全部消す</h3>
+          <p>
+            Apps Scriptに最初から入っている文字は全部消します。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">②</div>
+          <h3>全部貼る</h3>
+          <p>
+            ChatGPTが作った完成コードを全部貼ります。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">③</div>
+          <h3>実行する</h3>
+          <p>
+            保存してから実行します。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順3</div>
+        <h2>Apps Scriptを実行する</h2>
+      </div>
+
+      <p>
+        コードを貼り付けたら、Googleフォームを作るために実行します。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>保存する</h3>
+            <p>
+              まず、Apps Scriptの画面で保存します。
+              保存ボタン、またはキーボードの Ctrl + S、Macの場合は Command + S を使います。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>実行する名前を選ぶ</h3>
+            <p>
+              画面上部に、実行する名前を選ぶ場所があります。
+              ChatGPTのコードに書かれている実行用の名前を選びます。
+            </p>
+            <p>
+              多くの場合は <strong>createQuizForm</strong> という名前です。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>実行ボタンを押す</h3>
+            <p>
+              「実行」を押します。
+              初めて実行するときは、Googleの確認画面が出ます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>許可する</h3>
+            <p>
+              このコードはGoogleフォームを作るため、Googleアカウントの許可が必要です。
+              内容を確認して、問題なければ許可します。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div>
+            <h3>URLを確認する</h3>
+            <p>
+              実行が終わると、実行ログにGoogleフォームのURLが表示されます。
+              そこから作成されたフォームを開きます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>実行ログに出るURL</h2>
+
+      <p>
+        実行が成功すると、次のようなURLが表示されます。
+      </p>
+
+      <div class="prompt-box">
+<pre>編集用URL: https://docs.google.com/forms/d/xxxxxxxxxxxxxxxx/edit
+回答用URL: https://docs.google.com/forms/d/e/xxxxxxxxxxxxxxxx/viewform</pre>
+      </div>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>URL</th>
+              <th>使う人</th>
+              <th>説明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>編集用URL</td>
+              <td>先生</td>
+              <td>問題を直したり、設定を確認したりするためのURLです。</td>
+            </tr>
+            <tr>
+              <td>回答用URL</td>
+              <td>学生</td>
+              <td>学生が小テストに答えるためのURLです。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        学生に送るのは、基本的に <strong>回答用URL</strong> です。
+        編集用URLを学生に送らないように注意してください。
+      </p>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順4</div>
+        <h2>作られたGoogleフォームを確認する</h2>
+      </div>
+
+      <p>
+        Googleフォームが自動で作られても、そのまま学生に送るのは危険です。
+        必ず先生が確認します。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>確認すること</h3>
+          <ul>
+            <li>60問すべて入っているか</li>
+            <li>問題番号が順番どおりか</li>
+            <li>問題文が自然か</li>
+            <li>選択肢が正しく表示されているか</li>
+            <li>正解が正しく設定されているか</li>
+            <li>点数が入っているか</li>
+            <li>学生情報の入力欄があるか</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚠️</div>
+          <h3>特に注意すること</h3>
+          <ul>
+            <li>正解が間違っていないか</li>
+            <li>学生に見せたくない解説がないか</li>
+            <li>回答用URLと編集用URLを間違えていないか</li>
+            <li>学校のルールに合っているか</li>
+            <li>回答を受け付ける設定になっているか</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">最後の設定</div>
+      <h2>Googleフォーム側で確認する設定</h2>
+
+      <p>
+        Apps Scriptでフォームを作ったあと、Googleフォームの画面でも設定を確認します。
+      </p>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>設定</th>
+              <th>おすすめ</th>
+              <th>理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>メールアドレスを集める</td>
+              <td>必要に応じて設定</td>
+              <td>誰が回答したか確認したい場合に使います。</td>
+            </tr>
+            <tr>
+              <td>回答を1回に制限する</td>
+              <td>小テストならONも検討</td>
+              <td>同じ学生が何度も回答するのを防げます。</td>
+            </tr>
+            <tr>
+              <td>点数をいつ見せるか</td>
+              <td>授業の目的に合わせる</td>
+              <td>すぐ見せるか、あとで見せるかを選べます。</td>
+            </tr>
+            <tr>
+              <td>正解を見せるか</td>
+              <td>復習用なら見せてもよい</td>
+              <td>テストとして使う場合は、あとで見せる設定にすることもあります。</td>
+            </tr>
+            <tr>
+              <td>回答を受け付ける</td>
+              <td>配布前に確認</td>
+              <td>受付停止になっていると学生が答えられません。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>うまく動かないとき</h2>
+
+      <p>
+        エラーが出たときは、あわてなくて大丈夫です。
+        エラー文とコードをChatGPTに貼り付けて、
+        <strong>修正版の完成コードを全部出してもらう</strong>
+        ようにします。
+      </p>
+
+      <div class="note inner-note">
+        <h3>エラーが出たときにChatGPTへ入れる文</h3>
+
+        <div class="prompt-box">
+<pre>Google Apps ScriptでGoogleフォームを作ろうとしたら、エラーが出ました。
+
+エラー文：
+【ここにエラー文を貼る】
+
+使っているコード：
+【ここにコードを全部貼る】
+
+お願い：
+1. 初心者にもわかるように、原因を短く説明してください。
+2. 修正版の完成コードを全部出してください。
+3. 私がコードの一部を書き換えなくても、そのまま全コピー・全貼り付けで動く形にしてください。
+4. 問題文や選択肢の内容は、できるだけ変えないでください。
+5. 途中を省略しないで、最後まで全部書いてください。</pre>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>よくある原因</th>
+              <th>起きること</th>
+              <th>対処法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>コードを途中までしかコピーしていない</td>
+              <td>動かない</td>
+              <td>ChatGPTのコードを最初から最後まで全部コピーする</td>
+            </tr>
+            <tr>
+              <td>余計な説明文まで貼っている</td>
+              <td>エラーになる</td>
+              <td>ChatGPTが出したコード部分だけを貼る</td>
+            </tr>
+            <tr>
+              <td>正解と選択肢の文字が少し違う</td>
+              <td>正解が設定されないことがある</td>
+              <td>ChatGPTに修正版の完成コードを出してもらう</td>
+            </tr>
+            <tr>
+              <td>実行する名前を選べていない</td>
+              <td>フォームが作られない</td>
+              <td>画面上部で実行する名前を選び、もう一度実行する</td>
+            </tr>
+            <tr>
+              <td>Googleの許可をしていない</td>
+              <td>実行できない</td>
+              <td>確認画面で内容を見て許可する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="comparison">
+      <h2>今回のまとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>順番</th>
+            <th>やること</th>
+            <th>使うもの</th>
+            <th>ポイント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>問題を作る</td>
+            <td>Gemini Notebook</td>
+            <td>教材PDFをもとに60問作る</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>完成コードを作る</td>
+            <td>ChatGPT</td>
+            <td>Google Apps Scriptに全部貼れる形にしてもらう</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>コードを全部貼る</td>
+            <td>Google Apps Script</td>
+            <td>一部だけ直さない。全部貼る。</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>フォームを作る</td>
+            <td>Googleフォーム</td>
+            <td>実行すると小テストができる</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>確認する</td>
+            <td>先生</td>
+            <td>正解、点数、公開設定を確認する</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cta">
+      <h2>ポイントは、全コピー・全貼り付け</h2>
+      <p>
+        コードの一部だけを直そうとすると難しくなります。
+        ChatGPTに完成コードを全部作ってもらい、Google Apps Scriptに全部貼り付ける。
+        この形なら、初心者でも試しやすくなります。
+      </p>
+      <a class="button" href="notebook-quiz-word.html">前のページに戻る</a>
+    </section>
+
+    <div class="nav-links">
+      <a href="notebook-quiz-word.html">← 前のページ：Notebookで問題作成</a>
+      <a href="index.html">最初のページへ戻る →</a>
+    </div>
+
+    <footer>
+      参考：
+      <a href="https://developers.google.com/apps-script/reference/forms/form-app" target="_blank" rel="noopener">Google Apps Script: FormApp</a> /
+      <a href="https://developers.google.com/apps-script/reference/forms/form" target="_blank" rel="noopener">Google Apps Script: Form</a> /
+      <a href="https://developers.google.com/apps-script/reference/forms/multiple-choice-item" target="_blank" rel="noopener">Google Apps Script: MultipleChoiceItem</a>
+    </footer>
+  </main>
+</body>
+</html>
