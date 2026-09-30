@@ -3,125 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatGPT Workで出席情報を確認してメール文面を作る</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Excelの出席情報からメール文面を作る</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
   <header>
-    <div class="label">ChatGPT Work 実践例</div>
-    <h1>ChatGPT Workで、<br>出席率が低い学生への連絡文を作る。</h1>
+    <div class="label">AIセミナー・Work実践編</div>
+    <h1>Excelの出席情報から、メール文面を作る</h1>
     <p>
-      無料プランでも研修で実践しやすいように、
-      Excelの出席データをWorkに読ませて、対象者を抽出し、
-      Gmailにコピーできるメール文面を作ります。
+      ChatGPT WorkにExcelの出席データを読ませて、
+      出席率が80%未満の学生を見つけ、連絡メールの文面を作る流れを説明します。
     </p>
   </header>
 
   <main>
     <section class="hero-card">
-      <h2>今回やること</h2>
+      <div class="eyebrow">このページでやること</div>
+      <h2>Excelを読む → 対象者を探す → メール文面を作る</h2>
       <p>
-        ここでは、日本語学校や教育機関でよくある
-        <strong>「出席率が低い学生への連絡」</strong>
-        を例に、ChatGPT Workの使い方を体験します。
-      </p>
-
-      <div class="big-message">
-        Excelを渡す。<br>
-        対象者を確認する。<br>
-        <span class="marker">メール文面を作る。</span>
-      </div>
-
-      <p>
-        無料プランではGmail連携が使えない場合があるため、
-        今回は <strong>Gmailに直接送るのではなく、メール文面を作って手動でコピーする</strong>
-        流れにします。
-      </p>
-
-      <p class="small">
-        ※ 学生名、出席率、メールアドレスは個人情報です。
-        実際に使う場合は、学校・会社のルールに従い、送信前には必ず人間が確認してください。
-      </p>
-    </section>
-
-    <section class="warning">
-      <h2>研修での前提：Gmail連携は使わない</h2>
-      <p>
-        ChatGPTにはGoogle DriveやGmailなどの外部アプリ連携がありますが、
-        無料プランでは使えない、または表示されない場合があります。
-      </p>
-
-      <p>
-        そのため、この研修では次の形で進めます。
+        Gmailと直接つなげなくても、ChatGPT Workを使って
+        <strong>メール文面を作るところまで</strong>はできます。
+        無料プランなどでGmail連携が使えない場合は、作成された文章を自分でGmailにコピーして送信します。
       </p>
 
       <div class="flow">
-        <div class="flow-box">
-          <div class="num">1</div>
-          <h3>Excelを読む</h3>
-          <p>PCに保存したExcelをWorkに渡す。</p>
+        <div class="flow-item">
+          <div class="icon">📊</div>
+          <h3>Excel</h3>
+          <p>出席データを用意</p>
         </div>
-
         <div class="arrow">→</div>
-
-        <div class="flow-box">
-          <div class="num">2</div>
-          <h3>文面を作る</h3>
-          <p>対象者ごとのメール文面を作る。</p>
+        <div class="flow-item">
+          <div class="icon">🧑‍💻</div>
+          <h3>Work</h3>
+          <p>80%未満を抽出</p>
         </div>
-
         <div class="arrow">→</div>
-
-        <div class="flow-box">
-          <div class="num">3</div>
-          <h3>手動で送る</h3>
-          <p>人間がGmailにコピーして送信する。</p>
+        <div class="flow-item">
+          <div class="icon">✉️</div>
+          <h3>Gmail</h3>
+          <p>確認して送信</p>
         </div>
       </div>
     </section>
 
-    <section class="highlight">
-      <h2>事前準備</h2>
+    <section class="warning">
+      <h2>先に確認：Gmail連携は無料プランでは使えない場合があります</h2>
+      <p>
+        Google DriveやGmailとの連携は、ChatGPTの契約プラン、地域、組織の管理者設定、
+        Google側の権限によって使えるかどうかが変わります。
+      </p>
+      <p>
+        そのため、このページでは次の2つの方法に分けて説明します。
+      </p>
 
-      <div class="grid">
+      <div class="grid-two">
         <div class="card">
-          <div class="icon">💻</div>
-          <h3>ChatGPTデスクトップアプリ</h3>
+          <h3>方法A：Gmail連携なし</h3>
           <p>
-            ChatGPTデスクトップアプリでWorkを開きます。
-            PC内のファイルを扱う研修では、Web版よりも説明しやすいです。
+            ExcelをChatGPT Workに読ませて、メール文面を作ります。
+            できあがった文章を自分でGmailにコピーして送ります。
           </p>
+          <span class="tag">無料プランでも試しやすい</span>
         </div>
 
         <div class="card">
-          <div class="icon">📊</div>
-          <h3>出席情報のExcel</h3>
+          <h3>方法B：Gmail連携あり</h3>
           <p>
-            学生名、メールアドレス、出席率などが入ったExcelファイルを用意します。
-            研修ではダミーデータを使うのがおすすめです。
+            Gmail連携が使える場合は、ChatGPT Workにメールの下書き作成まで頼める場合があります。
+            ただし、送信前には必ず人間が確認します。
           </p>
-        </div>
-
-        <div class="card">
-          <div class="icon">✉️</div>
-          <h3>Gmailは手動で使う</h3>
-          <p>
-            Workにはメール文面を作ってもらい、
-            最後に人間がGmailへコピーして送ります。
-            これならGmail連携がなくても研修できます。
-          </p>
+          <span class="tag">使える人だけ</span>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Excelファイルの例</h2>
+      <div class="section-title">
+        <div class="eyebrow">準備</div>
+        <h2>Excelファイルを用意する</h2>
+      </div>
+
       <p>
-        Workに読ませる出席データは、できるだけシンプルな表にしておくと扱いやすくなります。
+        まず、出席情報が入ったExcelファイルを用意します。
+        ファイル名はわかりやすくしておくと便利です。
       </p>
 
+      <div class="note">
+        <h3>ファイル名の例</h3>
+        <div class="prompt-box">
+          <p><strong>出席データ_2026年9月.xlsx</strong></p>
+        </div>
+      </div>
+
       <div class="comparison">
+        <h3>Excelに入れておきたい列</h3>
         <table>
           <thead>
             <tr>
@@ -132,82 +108,101 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>学生ID</strong></td>
+              <td>学生ID</td>
               <td>学生を識別する番号</td>
-              <td>JP2026-001</td>
+              <td>JP001</td>
             </tr>
             <tr>
-              <td><strong>氏名</strong></td>
+              <td>氏名</td>
               <td>学生の名前</td>
-              <td>Nguyen Van A</td>
+              <td>山田 太郎</td>
             </tr>
             <tr>
-              <td><strong>メールアドレス</strong></td>
+              <td>メールアドレス</td>
               <td>連絡先</td>
-              <td>student@example.com</td>
+              <td>taro@example.com</td>
             </tr>
             <tr>
-              <td><strong>クラス</strong></td>
-              <td>所属クラス</td>
-              <td>N3午前クラス</td>
-            </tr>
-            <tr>
-              <td><strong>出席率</strong></td>
+              <td>出席率</td>
               <td>現在の出席率</td>
               <td>78%</td>
             </tr>
             <tr>
-              <td><strong>欠席回数</strong></td>
+              <td>欠席回数</td>
               <td>欠席した回数</td>
               <td>6</td>
             </tr>
             <tr>
-              <td><strong>備考</strong></td>
-              <td>先生のメモ</td>
-              <td>最近遅刻が多い</td>
+              <td>クラス</td>
+              <td>所属クラス</td>
+              <td>初級A</td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <p class="small">
-        ※ 列名は「氏名」「メールアドレス」「出席率」のように、できるだけわかりやすくしておきます。
-      </p>
     </section>
 
-    <section class="highlight">
-      <h2>ステップ1：ChatGPT Workを開く</h2>
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">方法A</div>
+        <h2>Gmail連携なしで行う流れ</h2>
+      </div>
+
       <p>
-        まず、ChatGPTデスクトップアプリを開きます。
-        通常のChatではなく、作業用の <strong>Work</strong> を選びます。
+        無料プランなどでGmail連携が使えない場合は、この方法がわかりやすいです。
+        ChatGPT Workでメール文面を作り、自分でGmailにコピーして送信します。
       </p>
 
       <div class="steps">
         <div class="step">
+          <div class="step-number">1</div>
           <div>
-            <h3>ChatGPTデスクトップアプリを開く</h3>
+            <h3>ExcelファイルをChatGPT Workに渡す</h3>
             <p>
-              MacまたはWindowsのChatGPTアプリを起動します。
+              PCに保存した出席データのExcelファイルをChatGPT Workに添付します。
             </p>
           </div>
         </div>
 
         <div class="step">
+          <div class="step-number">2</div>
           <div>
-            <h3>Workを選ぶ</h3>
+            <h3>出席率が80%未満の学生を探してもらう</h3>
             <p>
-              通常のChatではなく、Workを選びます。
-              Workは複数ステップの作業や成果物作成に向いています。
+              条件を明確に伝えます。
+              ここでは「出席率が80%未満」の学生を対象にします。
             </p>
           </div>
         </div>
 
         <div class="step">
+          <div class="step-number">3</div>
           <div>
-            <h3>Excelファイルを渡す</h3>
+            <h3>対象者リストを確認する</h3>
             <p>
-              出席情報が入ったExcelファイルを添付します。
-              うまく読めない場合に備えて、CSV版も用意しておくと安心です。
+              ChatGPTが抽出した学生名、出席率、メールアドレスを確認します。
+              間違いがないか必ず人間が確認します。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>メール文面を作ってもらう</h3>
+            <p>
+              学生を責めない、やさしい日本語の文面を作ってもらいます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div>
+            <h3>Gmailにコピーして送る</h3>
+            <p>
+              ChatGPTが作った文面を確認し、Gmailにコピーして送信します。
+              送信前の最終確認は必ず人間が行います。
             </p>
           </div>
         </div>
@@ -215,395 +210,258 @@
     </section>
 
     <section class="note">
-      <h2>ステップ2：まずExcelの中身を確認してもらう</h2>
-      <p>
-        いきなりメール文面を作らせるのではなく、
-        まずWorkにExcelの構造を確認してもらいます。
-      </p>
-
+      <h2>ChatGPT Workに入力するプロンプト例</h2>
       <div class="prompt-box">
-        <code>添付したExcelファイルは、学生の出席情報です。
-
-まず、以下を確認してください。
-
-1. どのシートに出席情報が入っているか
-2. 学生名の列はどれか
-3. メールアドレスの列はどれか
-4. 出席率の列はどれか
-5. 出席率が80%未満の学生が何人いるか
-
-まだメール文面は作成しないでください。
-まず対象者の確認だけお願いします。</code>
-      </div>
-    </section>
-
-    <section class="highlight">
-      <h2>ステップ3：出席率が低い学生を抽出する</h2>
-      <p>
-        Excelの中身を確認できたら、次に対象者を抽出してもらいます。
-        ここでは例として、出席率が <strong>80%未満</strong> の学生を対象にします。
-      </p>
-
-      <div class="prompt-box">
-        <code>出席率が80%未満の学生だけを抽出してください。
-
-出力は表にしてください。
-
-表に入れる項目：
-・学生ID
-・氏名
-・クラス
-・メールアドレス
-・出席率
-・欠席回数
-・備考
-
-また、対象者の人数も教えてください。
-まだメール文面は作成しないでください。</code>
+        <p>
+          添付したExcelファイルは、日本語学校の学生の出席データです。
+        </p>
+        <p>
+          出席率が80%未満の学生を抽出してください。
+          抽出結果は、学生ID、氏名、メールアドレス、出席率、欠席回数、クラスの表にしてください。
+        </p>
+        <p>
+          そのあと、各学生に送るメール文面を作ってください。
+          学生を責める表現は使わず、やさしく丁寧な日本語にしてください。
+          件名もつけてください。
+        </p>
+        <p>
+          メールはすぐに送信せず、私が確認できるように下書き文面として表示してください。
+        </p>
       </div>
     </section>
 
     <section>
-      <h2>ステップ4：対象者一覧を人間が確認する</h2>
-      <p>
-        Workが対象者一覧を出したら、そのまま次に進まず、必ず確認します。
-      </p>
-
-      <div class="grid-two">
-        <div class="card">
-          <h3>確認するポイント</h3>
-          <ul class="simple-list">
-            <li>学生名が正しいか</li>
-            <li>メールアドレスが正しいか</li>
-            <li>出席率の読み取りが正しいか</li>
-            <li>休学・退学・特別対応中の学生が入っていないか</li>
-            <li>本当に連絡してよい学生か</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>ここで止めるのが大事</h3>
-          <p>
-            AIが作った一覧は便利ですが、間違いがないとは限りません。
-            特にメール送信前の対象者確認は、必ず人間が行います。
-          </p>
-          <p>
-            対象者が違う場合は、Workに修正条件を伝えて再抽出します。
-          </p>
-        </div>
+      <div class="section-title">
+        <div class="eyebrow">出力例</div>
+        <h2>ChatGPT Workに作ってもらう表の例</h2>
       </div>
-    </section>
 
-    <section class="note">
-      <h2>ステップ5：学生ごとのメール文面を作る</h2>
-      <p>
-        対象者が正しいことを確認したら、次にメール文面を作ってもらいます。
-        Gmailには直接送らず、コピーしやすい形で出力してもらいます。
-      </p>
-
-      <div class="prompt-box">
-        <code>確認した対象者に送るメール文面を作ってください。
-
-条件：
-・出席率が80%未満の学生だけを対象にする
-・1人につき1通のメールにする
-・件名と本文を作る
-・学生の名前と出席率を本文に入れる
-・日本語学習者にもわかりやすい、やさしい日本語にする
-・責める言い方にしない
-・学校に相談してほしいことを伝える
-・Gmailには直接送信しない
-・コピーしやすい形で出力する</code>
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>学生ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>出席率</th>
+              <th>欠席回数</th>
+              <th>クラス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JP001</td>
+              <td>山田 太郎</td>
+              <td>taro@example.com</td>
+              <td>78%</td>
+              <td>6</td>
+              <td>初級A</td>
+            </tr>
+            <tr>
+              <td>JP014</td>
+              <td>佐藤 花子</td>
+              <td>hanako@example.com</td>
+              <td>72%</td>
+              <td>8</td>
+              <td>初級A</td>
+            </tr>
+            <tr>
+              <td>JP026</td>
+              <td>鈴木 健</td>
+              <td>ken@example.com</td>
+              <td>65%</td>
+              <td>10</td>
+              <td>初級B</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
     <section>
-      <h2>メール文面の例</h2>
-      <p>
-        Workには、次のようなやさしい文面を作ってもらうと使いやすいです。
-      </p>
+      <div class="section-title">
+        <div class="eyebrow">メール文面例</div>
+        <h2>学生に送るメールの例</h2>
+      </div>
 
-      <div class="card">
-        <h3>件名</h3>
+      <div class="prompt-box mail-sample">
+        <p><strong>件名：</strong>出席についての確認</p>
+
+        <p>山田 太郎さん</p>
+
         <p>
-          出席についてのご連絡
+          こんにちは。日本語学校の〇〇です。
         </p>
 
-        <h3>本文</h3>
         <p>
-          〇〇さん
+          最近の出席状況を確認したところ、現在の出席率が78%になっています。
+          授業の内容をしっかり理解するためにも、できるだけ続けて出席することが大切です。
         </p>
+
         <p>
-          こんにちは。〇〇学校です。
+          体調や生活のことで困っていることがあれば、学校に相談してください。
+          必要であれば、一緒に今後の出席について考えましょう。
         </p>
+
         <p>
-          現在、〇〇さんの出席率は <strong>78%</strong> です。
-          出席率が少し低くなっています。
+          よろしくお願いします。
         </p>
+
         <p>
-          勉強を続けるために、出席はとても大切です。
-          困っていることや、学校に相談したいことがあれば、先生に連絡してください。
-        </p>
-        <p>
-          次の授業で会えるのを待っています。
-        </p>
-        <p>
-          〇〇学校
+          〇〇日本語学校<br />
+          担当：〇〇
         </p>
       </div>
     </section>
 
     <section class="highlight">
-      <h2>ステップ6：Gmailに手動でコピーする</h2>
+      <div class="eyebrow">方法B</div>
+      <h2>Gmail連携が使える場合の流れ</h2>
       <p>
-        無料プランではGmail連携が使えない場合があるため、
-        Workが作った文面を人間がGmailにコピーします。
+        Gmail連携が使える場合は、ChatGPT WorkにGmailの下書き作成まで頼める場合があります。
+        ただし、メールは個人情報を含むため、必ず送信前に人間が確認してください。
       </p>
 
       <div class="steps">
         <div class="step">
+          <div class="step-number">1</div>
           <div>
-            <h3>宛先を確認する</h3>
+            <h3>Excelを読ませる</h3>
             <p>
-              Excelのメールアドレスと、Gmailに入力する宛先が一致しているか確認します。
+              出席データをChatGPT Workに渡します。
             </p>
           </div>
         </div>
 
         <div class="step">
+          <div class="step-number">2</div>
           <div>
-            <h3>件名をコピーする</h3>
+            <h3>80%未満の学生を抽出する</h3>
             <p>
-              Workが作った件名をGmailの件名欄にコピーします。
+              対象者の表を作ってもらいます。
             </p>
           </div>
         </div>
 
         <div class="step">
+          <div class="step-number">3</div>
           <div>
-            <h3>本文をコピーする</h3>
+            <h3>文面を確認する</h3>
             <p>
-              学生名や出席率が正しく入っているか確認してから、本文をコピーします。
+              送る前に、文章が適切か、宛先が正しいかを確認します。
             </p>
           </div>
         </div>
 
         <div class="step">
+          <div class="step-number">4</div>
           <div>
-            <h3>人間が送信する</h3>
+            <h3>Gmailの下書きを作る</h3>
             <p>
-              最後は担当者が内容を確認し、問題なければ送信します。
+              Gmail連携が利用できる場合、下書き作成を依頼できる場合があります。
+              最終送信は必ず自分で確認してから行います。
             </p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="warning">
-      <h2>重要：自動送信しない</h2>
-      <p>
-        出席情報やメールアドレスは個人情報です。
-        研修では、AIに送信まで任せるのではなく、
-        <strong>文面作成まで</strong>
-        にするのが安全です。
-      </p>
-
-      <ul class="simple-list">
-        <li>宛先が正しいか確認する</li>
-        <li>学生名が正しいか確認する</li>
-        <li>出席率が正しく反映されているか確認する</li>
-        <li>文面が強すぎないか確認する</li>
-        <li>学校の方針に合っているか確認する</li>
-        <li>送ってはいけない学生が含まれていないか確認する</li>
-      </ul>
-    </section>
-
-    <section class="note">
-      <h2>コピーしやすい形で出してもらうプロンプト</h2>
-      <p>
-        Gmailに手動で貼り付けるなら、次のように頼むと便利です。
-      </p>
-
-      <div class="prompt-box">
-        <code>Gmailにコピーしやすい形で、送信用一覧を作ってください。
-
-1人ずつ、次の形式で出してください。
-
-宛先：
-件名：
-本文：
-
-条件：
-・学生の名前を入れる
-・出席率を入れる
-・やさしい日本語にする
-・責める表現にしない
-・学校に相談してほしいことを入れる
-・送信はしない</code>
-      </div>
-    </section>
-
-    <section class="comparison">
-      <h2>Workに任せること・人間が確認すること</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>作業</th>
-            <th>Workに任せやすいこと</th>
-            <th>人間が確認すべきこと</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Excel確認</strong></td>
-            <td>
-              シート構造の確認、列名の特定、出席率データの読み取り。
-            </td>
-            <td>
-              最新のファイルかどうか、列の意味が正しいか。
-            </td>
-          </tr>
-
-          <tr>
-            <td><strong>対象者抽出</strong></td>
-            <td>
-              出席率80%未満など、条件に合う学生の一覧化。
-            </td>
-            <td>
-              休学・退学・特別対応中の学生が含まれていないか。
-            </td>
-          </tr>
-
-          <tr>
-            <td><strong>メール文面作成</strong></td>
-            <td>
-              件名、本文、やさしい日本語、学生ごとの文面作成。
-            </td>
-            <td>
-              表現が適切か、学校の方針に合っているか。
-            </td>
-          </tr>
-
-          <tr>
-            <td><strong>Gmail送信</strong></td>
-            <td>
-              無料プラン研修では任せない。
-            </td>
-            <td>
-              宛先・本文を確認し、人間が送信する。
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="highlight">
-      <h2>実演用のまとめプロンプト</h2>
-      <p>
-        セミナーで実演するなら、次のプロンプトを使えます。
-      </p>
-
-      <div class="prompt-box">
-        <code>添付したExcelファイルは、学生の出席情報です。
-ChatGPT Workで、このファイルを使って出席率が低い学生への連絡準備をしたいです。
-
-やってほしいこと：
-1. Excelのシート構造を確認する
-2. 学生名、メールアドレス、出席率の列を特定する
-3. 出席率が80%未満の学生を抽出する
-4. 対象者一覧を表で出す
-5. 私が確認したあと、学生ごとのメール文面を作る
-6. Gmailにコピーしやすい形で出力する
-
-注意：
-・Gmailには直接送信しない
-・個人情報なので、対象者一覧を出したら一度止まる
-・日本語学習者向けのやさしい文面にする
-・責める表現は使わない</code>
       </div>
     </section>
 
     <section class="note">
-      <h2>発展編：Gmail連携が使える場合</h2>
-      <p>
-        有料プランや対応環境でGmail連携が使える場合は、
-        WorkにGmailの下書き作成まで依頼できる場合があります。
-      </p>
-
-      <p>
-        ただし、その場合でも最初は
-        <strong>「下書き作成まで。送信はしない」</strong>
-        と明確に指示するのがおすすめです。
-      </p>
-
+      <h2>Gmail連携が使える場合のプロンプト例</h2>
       <div class="prompt-box">
-        <code>Gmail連携が使える場合のみ実行してください。
-
-先ほど確認した対象者について、Gmailの下書きを作成してください。
-
-条件：
-・1人につき1通のメールにする
-・宛先はExcelのメールアドレスを使う
-・件名は「出席についてのご連絡」
-・本文は、先ほど作成したやさしい日本語の文面を使う
-・送信はしない
-・下書きを作成する前に、宛先、氏名、出席率、件名を一覧で再確認してください</code>
+        <p>
+          抽出した学生ごとに、Gmailの下書きを作ってください。
+        </p>
+        <p>
+          件名は「出席についての確認」にしてください。
+          本文は、学生を責めない表現で、やさしく丁寧な日本語にしてください。
+        </p>
+        <p>
+          下書きを作る前に、宛先、件名、本文の一覧を表示して、
+          私の確認を求めてください。
+        </p>
+        <p>
+          私が確認するまで、送信はしないでください。
+        </p>
       </div>
-
-      <p class="small">
-        ※ Gmail連携は、プラン・地域・Workspace設定・管理者設定によって使えない場合があります。
-      </p>
     </section>
 
     <section class="warning">
       <h2>個人情報を扱うときの注意</h2>
       <p>
-        出席情報、学生名、メールアドレスは個人情報です。
-        AIを使うと作業は速くなりますが、情報管理の責任がなくなるわけではありません。
+        出席情報、成績、メールアドレスは個人情報です。
+        ChatGPTにファイルを渡す前に、学校や会社のルールを確認してください。
       </p>
 
-      <ul class="simple-list">
-        <li>本番前に、サンプルデータやコピーしたファイルで試す</li>
-        <li>不要な列は削除してからAIに渡す</li>
-        <li>共有してはいけない情報を含めない</li>
-        <li>学校・会社の情報管理ルールを確認する</li>
-        <li>送信前に必ず人間が最終確認する</li>
+      <ul>
+        <li>不要な個人情報は入れない</li>
+        <li>送信前に宛先を必ず確認する</li>
+        <li>学生を責める表現にしない</li>
+        <li>出席率や欠席回数が正しいか確認する</li>
+        <li>メールの自動送信は避け、最後は人間が確認する</li>
       </ul>
     </section>
 
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">まとめ</div>
+        <h2>無料プランでも使いやすい流れ</h2>
+      </div>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>作業</th>
+              <th>ChatGPT Workでできること</th>
+              <th>人間が確認すること</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Excelを読む</td>
+              <td>出席率や欠席回数を確認する</td>
+              <td>元データが正しいか確認する</td>
+            </tr>
+            <tr>
+              <td>対象者を探す</td>
+              <td>80%未満の学生を抽出する</td>
+              <td>抽出結果に間違いがないか確認する</td>
+            </tr>
+            <tr>
+              <td>メール文面を作る</td>
+              <td>やさしい日本語で下書きを作る</td>
+              <td>内容が適切か確認する</td>
+            </tr>
+            <tr>
+              <td>Gmailで送る</td>
+              <td>連携があれば下書き作成できる場合がある</td>
+              <td>必ず人間が確認して送信する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <section class="cta">
-      <h2>無料プランでも、Workの価値は体験できる。</h2>
+      <h2>この流れを覚えると、ほかの業務にも応用できます</h2>
       <p>
-        Excelを見る、対象者を探す、メール文面を作る。<br>
-        Gmail連携がなくても、日常業務をかなり効率化できます。
+        出席データだけでなく、アンケート、成績、申込者リスト、面談記録などにも応用できます。
+        ポイントは、Excelを読ませて、条件に合う人を探し、必要な文章を作ることです。
       </p>
+      <a class="button" href="work-setup.html">前のページに戻る</a>
     </section>
 
     <div class="nav-links">
       <a href="work-setup.html">← 前のページ：Workを使う前の準備</a>
-      <a href="#">次のページへ →</a>
+      <a href="index.html">最初のページへ戻る →</a>
     </div>
 
     <footer>
-      <p>
-        参考：
-        <a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex" target="_blank" rel="noopener">
-          OpenAI Help: ChatGPT Work and Codex
-        </a>
-        /
-        <a href="https://help.openai.com/en/articles/11487775-connected-apps-in-chatgpt" target="_blank" rel="noopener">
-          OpenAI Help: Connected apps in ChatGPT
-        </a>
-        /
-        <a href="https://help.openai.com/en/articles/10408842-google-app-data-controls-faq" target="_blank" rel="noopener">
-          OpenAI Help: Google app data controls FAQ
-        </a>
-      </p>
-      <p>
-        このページは、教育機関での業務例をもとにしたデモ用ページです。
-        実際に学生情報を扱う場合は、所属組織の個人情報保護・情報セキュリティのルールに従ってください。
-      </p>
+      参考：
+      <a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex" target="_blank" rel="noopener">ChatGPT Work and Codex</a> /
+      <a href="https://help.openai.com/en/articles/11487775-connected-apps-in-chatgpt" target="_blank" rel="noopener">Connected apps in ChatGPT</a> /
+      <a href="https://help.openai.com/en/articles/10408842-google-app-data-controls-faq" target="_blank" rel="noopener">Google app data controls FAQ</a>
     </footer>
   </main>
 </body>
