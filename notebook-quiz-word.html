@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Notebookで問題を作り、ChatGPTでWord用に整える</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="label">AIセミナー・教材作成編</div>
+    <h1>Gemini Notebookで問題を作り、ChatGPTでWord用に整える</h1>
+    <p>
+      PDF教材をGemini Notebookに読み込ませて60問の問題を作り、
+      その内容をChatGPTでWordに貼り付けやすい形に整える流れを学びます。
+    </p>
+  </header>
+
+  <main>
+    <section class="hero-card">
+      <div class="eyebrow">このページでやること</div>
+      <h2>AIを2つに分けて使う</h2>
+      <p>
+        今回は、Gemini NotebookとChatGPTを役割分担して使います。
+        Gemini Notebookは、読み込ませた資料をもとに問題を作るのが得意です。
+        一方で、Wordにそのまま貼り付けやすいレイアウトに整える作業は、
+        ChatGPTに任せると扱いやすくなります。
+      </p>
+
+      <div class="flow">
+        <div class="flow-item">
+          <div class="icon">📚</div>
+          <h3>PDF教材</h3>
+          <p>5つの学習資料を用意</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-item">
+          <div class="icon">💡</div>
+          <h3>Gemini Notebook</h3>
+          <p>資料を読ませて60問作成</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-item">
+          <div class="icon">📝</div>
+          <h3>ChatGPT</h3>
+          <p>Word用レイアウトに整える</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">使う資料</div>
+        <h2>今回読み込ませる5つのPDF</h2>
+      </div>
+
+      <p>
+        今回は、日本語学校の学生向け教材として、次の5つのPDFを使います。
+        それぞれの資料から問題を作り、合計60問の確認問題にします。
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🌏</div>
+          <h3>学習資料1</h3>
+          <p>
+            <strong>災害と防災</strong><br />
+            地震、台風、大雨、避難、防災用品などについて学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🏥</div>
+          <h3>学習資料2</h3>
+          <p>
+            <strong>病院・薬局の利用</strong><br />
+            病院の受付、症状の伝え方、薬局での注意点を学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>学習資料3</h3>
+          <p>
+            <strong>アルバイトのマナー</strong><br />
+            時間を守ること、報告・連絡・相談、欠勤や遅刻の連絡を学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🗑️</div>
+          <h3>学習資料4</h3>
+          <p>
+            <strong>ごみ出しと地域ルール</strong><br />
+            ごみの分別、収集日、資源ごみ、粗大ごみの出し方を学ぶ資料です。
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎓</div>
+          <h3>学習資料5</h3>
+          <p>
+            <strong>進学・就職面接の基本</strong><br />
+            面接前の準備、入退室のマナー、志望理由、自己PRを学ぶ資料です。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">全体の考え方</div>
+      <h2>Notebookで「中身」を作り、ChatGPTで「配布しやすい形」にする</h2>
+      <p>
+        Gemini Notebookは、読み込ませた資料の内容をもとに問題を作るのに便利です。
+        ただし、Wordにそのまま貼り付けて使うプリントのようなレイアウト調整は、
+        少し苦手な場合があります。
+      </p>
+      <p>
+        そこで今回は、次のように分けて使います。
+      </p>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>作業</th>
+              <th>使うAI</th>
+              <th>理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PDF教材を読む</td>
+              <td>Gemini Notebook</td>
+              <td>読み込ませた資料をもとに回答しやすいから</td>
+            </tr>
+            <tr>
+              <td>60問の問題を作る</td>
+              <td>Gemini Notebook</td>
+              <td>資料に基づいた問題を作りやすいから</td>
+            </tr>
+            <tr>
+              <td>問題を整理する</td>
+              <td>ChatGPT</td>
+              <td>見出し、番号、表、解答欄などを整えやすいから</td>
+            </tr>
+            <tr>
+              <td>Wordに貼り付ける形にする</td>
+              <td>ChatGPT</td>
+              <td>配布プリント風のレイアウトにしやすいから</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順1</div>
+        <h2>Gemini Notebookに教材PDFを入れる</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Gemini Notebookを開く</h3>
+            <p>
+              Gemini Notebookを開き、新しいノートブックを作ります。
+              ノートブック名は、あとで見てもわかる名前にします。
+            </p>
+            <div class="prompt-box">
+              <p><strong>ノートブック名の例</strong></p>
+              <p>日本語学校教材_生活と進路_確認問題作成</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>5つのPDFをアップロードする</h3>
+            <p>
+              次の5つのPDFをソースとして追加します。
+            </p>
+            <ul>
+              <li>学習資料1：災害と防災.pdf</li>
+              <li>学習資料2：病院・薬局の利用.pdf</li>
+              <li>学習資料3：アルバイトのマナー.pdf</li>
+              <li>学習資料4：ごみ出しと地域ルール.pdf</li>
+              <li>学習資料5：進学・就職面接の基本.pdf</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>資料の内容を確認する</h3>
+            <p>
+              アップロード後、Notebookが資料を読み込めているか確認します。
+              まずは簡単に「この5つの資料の内容を要約してください」と聞くと、
+              読み込めているか確認しやすいです。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>最初にNotebookへ入れる確認プロンプト</h2>
+      <p>
+        まず、資料が正しく読み込まれているか確認します。
+      </p>
+
+      <div class="prompt-box">
+        <p>
+          アップロードした5つのPDF資料を確認してください。
+        </p>
+        <p>
+          それぞれの資料について、タイトル、主な内容、重要語彙を簡単にまとめてください。
+        </p>
+        <p>
+          まだ問題は作らなくてよいです。
+          まず、5つの資料を正しく読み取れているか確認したいです。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順2</div>
+        <h2>Gemini Notebookで60問の問題を作る</h2>
+      </div>
+
+      <p>
+        次に、5つの資料から合計60問の問題を作ります。
+        今回は、各資料から12問ずつ作るとバランスがよくなります。
+      </p>
+
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>資料</th>
+              <th>テーマ</th>
+              <th>問題数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>学習資料1</td>
+              <td>災害と防災</td>
+              <td>12問</td>
+            </tr>
+            <tr>
+              <td>学習資料2</td>
+              <td>病院・薬局の利用</td>
+              <td>12問</td>
+            </tr>
+            <tr>
+              <td>学習資料3</td>
+              <td>アルバイトのマナー</td>
+              <td>12問</td>
+            </tr>
+            <tr>
+              <td>学習資料4</td>
+              <td>ごみ出しと地域ルール</td>
+              <td>12問</td>
+            </tr>
+            <tr>
+              <td>学習資料5</td>
+              <td>進学・就職面接の基本</td>
+              <td>12問</td>
+            </tr>
+            <tr>
+              <td><strong>合計</strong></td>
+              <td><strong>5テーマ</strong></td>
+              <td><strong>60問</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <h3>問題の種類</h3>
+        <p>
+          問題は、1種類だけにすると単調になります。
+          語彙、内容理解、場面判断、表現確認を混ぜると、授業や復習で使いやすくなります。
+        </p>
+
+        <ul>
+          <li>語彙問題</li>
+          <li>内容理解問題</li>
+          <li>正しい行動を選ぶ問題</li>
+          <li>日本語表現を確認する問題</li>
+          <li>短く答える問題</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>Gemini Notebookに入れるプロンプト</h2>
+      <p>
+        以下をコピーして、Gemini Notebookに貼り付けます。
+      </p>
+
+      <div class="prompt-box">
+        <p>
+          アップロードした5つのPDF教材をもとに、日本語学校の学生向け確認問題を作ってください。
+        </p>
+
+        <p>
+          合計60問にしてください。
+          各資料から12問ずつ作ってください。
+        </p>
+
+        <p>
+          対象は、日本語学校の中級前後の学生です。
+          日本で生活するために必要な語彙や行動が確認できる問題にしてください。
+        </p>
+
+        <p>
+          問題の内訳は、次のようにしてください。
+        </p>
+
+        <ul>
+          <li>語彙問題</li>
+          <li>内容理解問題</li>
+          <li>正しい行動を選ぶ問題</li>
+          <li>場面に合う表現を選ぶ問題</li>
+          <li>短く答える問題</li>
+        </ul>
+
+        <p>
+          問題形式は、選択問題、○×問題、短答問題を混ぜてください。
+        </p>
+
+        <p>
+          出力形式は、次の順番にしてください。
+        </p>
+
+        <ol>
+          <li>問題番号</li>
+          <li>問題文</li>
+          <li>選択肢がある場合は A〜D</li>
+          <li>正解</li>
+          <li>簡単な解説</li>
+          <li>どの資料をもとにした問題か</li>
+        </ol>
+
+        <p>
+          注意点：
+        </p>
+
+        <ul>
+          <li>PDFに書かれていない内容で問題を作らないでください。</li>
+          <li>ひっかけ問題にしすぎないでください。</li>
+          <li>学生を責めるような表現は使わないでください。</li>
+          <li>日本語はわかりやすくしてください。</li>
+          <li>最後に、60問すべての解答一覧もつけてください。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>Notebookで作った問題は、必ず確認する</h2>
+      <p>
+        AIが作った問題は便利ですが、必ず人間が確認します。
+        特に、正解、解説、資料との対応は確認が必要です。
+      </p>
+
+      <ul>
+        <li>問題がPDFの内容に合っているか</li>
+        <li>正解が間違っていないか</li>
+        <li>学生にとって難しすぎないか</li>
+        <li>日本語が自然か</li>
+        <li>同じような問題が多すぎないか</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順3</div>
+        <h2>Notebookが作った問題をChatGPTに貼り付ける</h2>
+      </div>
+
+      <p>
+        Gemini Notebookで60問ができたら、その出力をコピーします。
+        次に、ChatGPTに貼り付けて、Wordに貼り付けやすいレイアウトへ整えてもらいます。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>Notebookの出力をコピーする</h3>
+            <p>
+              60問の問題、正解、解説をまとめてコピーします。
+              長い場合は、資料ごとに分けてコピーしてもかまいません。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>ChatGPTに貼り付ける</h3>
+            <p>
+              ChatGPTに「Wordに貼り付けやすい形に整えてください」と依頼します。
+              問題用紙と解答用紙を分けるように指定すると使いやすいです。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>Wordにコピーする</h3>
+            <p>
+              ChatGPTが整えた内容をコピーして、Wordに貼り付けます。
+              最後に、ページ区切り、余白、文字サイズをWord側で調整します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>ChatGPTに入れるプロンプト</h2>
+      <p>
+        Notebookが作った60問をChatGPTに貼り付けたあと、次の指示を入れます。
+      </p>
+
+      <div class="prompt-box">
+        <p>
+          以下は、Gemini Notebookで作成した日本語学校の学生向け確認問題60問です。
+        </p>
+
+        <p>
+          この内容を、Microsoft Wordにそのまま貼り付けて使いやすい形に整えてください。
+        </p>
+
+        <p>
+          次の条件でレイアウトしてください。
+        </p>
+
+        <ol>
+          <li>最初にタイトルを入れる。</li>
+          <li>タイトルは「生活日本語 確認問題」とする。</li>
+          <li>タイトルの下に、クラス、番号、名前、日付を書く欄を作る。</li>
+          <li>問題用紙と解答・解説を分ける。</li>
+          <li>問題用紙には正解を載せない。</li>
+          <li>問題はテーマごとに分ける。</li>
+          <li>各テーマの見出しを入れる。</li>
+          <li>選択問題はA〜Dの選択肢を見やすく並べる。</li>
+          <li>短答問題には解答欄を作る。</li>
+          <li>Wordで崩れにくいように、複雑な表は使いすぎない。</li>
+          <li>最後に「解答・解説」ページを作る。</li>
+        </ol>
+
+        <p>
+          出力は、次の順番にしてください。
+        </p>
+
+        <ol>
+          <li>問題用紙</li>
+          <li>ページ区切りの目印</li>
+          <li>解答・解説</li>
+        </ol>
+
+        <p>
+          ページ区切りを入れたい場所には、次の文字を入れてください。
+        </p>
+
+        <p>
+          【ここでページ区切り】
+        </p>
+
+        <p>
+          これから問題データを貼り付けます。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">Word用レイアウト</div>
+        <h2>ChatGPTに整えてもらう完成イメージ</h2>
+      </div>
+
+      <p>
+        ChatGPTには、次のような形に整えてもらいます。
+        この形式なら、Wordにコピーしてから少し調整するだけで配布プリントにしやすくなります。
+      </p>
+
+      <div class="prompt-box mail-sample">
+        <p><strong>生活日本語 確認問題</strong></p>
+
+        <p>
+          クラス：＿＿＿＿＿＿＿＿　番号：＿＿＿＿＿＿＿＿　名前：＿＿＿＿＿＿＿＿
+        </p>
+
+        <p>
+          日付：＿＿＿＿年＿＿＿＿月＿＿＿＿日
+        </p>
+
+        <p><strong>第1部　災害と防災</strong></p>
+
+        <p>
+          1. 「避難」の意味として正しいものを選びなさい。
+        </p>
+
+        <p>
+          A. 家族や友人が無事か確認すること<br />
+          B. 危険な場所から安全な場所へ逃げること<br />
+          C. 災害に備えて食べ物を買うこと<br />
+          D. ごみを種類ごとに分けること
+        </p>
+
+        <p>
+          2. 地震が起きたとき、最初にすることは何ですか。
+        </p>
+
+        <p>
+          答え：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+        </p>
+
+        <p>
+          【ここでページ区切り】
+        </p>
+
+        <p><strong>解答・解説</strong></p>
+
+        <p>
+          1. 正解：B<br />
+          解説：「避難」は、危険な場所から安全な場所へ逃げることです。
+        </p>
+
+        <p>
+          2. 正解例：頭を守る。<br />
+          解説：地震が起きたら、まず机の下に入るなどして頭を守ります。
+        </p>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">さらに便利な指示</div>
+      <h2>Wordで使いやすくするための追加指示</h2>
+      <p>
+        ChatGPTに整えてもらうときは、次のような指示を追加すると、
+        Wordに貼り付けたあとに修正しやすくなります。
+      </p>
+
+      <div class="grid-two">
+        <div class="card">
+          <h3>問題用紙を見やすくしたいとき</h3>
+          <div class="prompt-box">
+            <p>
+              問題と問題の間を少し空けてください。
+              選択肢は1行ずつ表示してください。
+              短答問題には、長めの解答欄を入れてください。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>解答を別ページにしたいとき</h3>
+          <div class="prompt-box">
+            <p>
+              問題用紙のあとに【ここでページ区切り】を入れて、
+              その後に解答・解説をまとめてください。
+              問題用紙には正解を書かないでください。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>学生向けにやさしくしたいとき</h3>
+          <div class="prompt-box">
+            <p>
+              問題文の日本語を、外国人学生にもわかりやすい表現にしてください。
+              難しい言葉には、必要に応じてふりがなをつけてください。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>先生用に解説を厚くしたいとき</h3>
+          <div class="prompt-box">
+            <p>
+              解答・解説では、なぜその答えになるのかを短く説明してください。
+              授業で補足しやすいように、注意点も一言入れてください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow">手順4</div>
+        <h2>Wordに貼り付けて仕上げる</h2>
+      </div>
+
+      <p>
+        ChatGPTで整えた内容をコピーし、Wordに貼り付けます。
+        最後の調整はWordで行うと、印刷用プリントとして使いやすくなります。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>ChatGPTの出力をコピーする</h3>
+            <p>
+              問題用紙と解答・解説をまとめてコピーします。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>Wordに貼り付ける</h3>
+            <p>
+              Wordを開き、コピーした内容を貼り付けます。
+              文字の大きさや余白は、Word側で調整します。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>ページ区切りを入れる</h3>
+            <p>
+              ChatGPTが入れた「【ここでページ区切り】」の場所で、
+              Wordのページ区切りを入れます。
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3>印刷前に確認する</h3>
+            <p>
+              問題番号、解答欄、正解、解説、ページ数を確認します。
+              特に、解答が問題用紙側に入っていないか確認します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="warning">
+      <h2>配布前のチェックポイント</h2>
+      <p>
+        AIが作った教材は、最後に必ず人間が確認します。
+        そのまま配布せず、次の点を確認してください。
+      </p>
+
+      <ul>
+        <li>60問すべてそろっているか</li>
+        <li>問題番号が重複していないか</li>
+        <li>正解が間違っていないか</li>
+        <li>問題文が学生にとってわかりやすいか</li>
+        <li>PDF教材にない内容を聞いていないか</li>
+        <li>問題用紙に答えが入っていないか</li>
+        <li>Wordに貼り付けたあと、レイアウトが大きく崩れていないか</li>
+      </ul>
+    </section>
+
+    <section class="comparison">
+      <h2>今回の作業まとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>順番</th>
+            <th>作業</th>
+            <th>使うツール</th>
+            <th>ポイント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>PDF教材を読み込ませる</td>
+            <td>Gemini Notebook</td>
+            <td>5つのPDFをソースとして追加する</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>60問の問題を作る</td>
+            <td>Gemini Notebook</td>
+            <td>各資料から12問ずつ作る</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>問題をコピーする</td>
+            <td>Gemini Notebook</td>
+            <td>正解・解説も一緒にコピーする</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Word用に整える</td>
+            <td>ChatGPT</td>
+            <td>問題用紙と解答・解説を分ける</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Wordに貼り付ける</td>
+            <td>Microsoft Word</td>
+            <td>ページ区切り、余白、文字サイズを調整する</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="cta">
+      <h2>ポイントは、AIを1つだけで完結させようとしないこと</h2>
+      <p>
+        Gemini Notebookは資料を読んで問題を作る係。
+        ChatGPTはWordに貼り付けやすく整える係。
+        それぞれの得意なところを分けて使うと、教材作成がスムーズになります。
+      </p>
+      <a class="button" href="index.html">最初のページへ戻る</a>
+    </section>
+
+    <div class="nav-links">
+      <a href="attendance-gmail.html">← 前のページ：Excelとメール文面作成</a>
+      <a href="index.html">最初のページへ戻る →</a>
+    </div>
+
+    <footer>
+      参考：
+      <a href="https://support.google.com/gemininotebook/answer/16215270" target="_blank" rel="noopener">Gemini Notebook: Add or discover new sources</a> /
+      <a href="https://support.google.com/gemininotebook/answer/16958963" target="_blank" rel="noopener">Gemini Notebook: Generate Flashcards or Quizzes</a> /
+      <a href="https://notebooklm.google.com/" target="_blank" rel="noopener">NotebookLM</a>
+    </footer>
+  </main>
+</body>
+</html>
