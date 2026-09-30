@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語学校 生活マナー・社会実用 完全攻略マスター</title>
+    <style>
+        :root {
+            --primary: #1a2a3a;
+            --accent: #2980b9;
+            --success: #27ae60;
+            --danger: #c0392b;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        header p {
+            margin: 8px 0 0 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* モード切り替えタブ */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #dcdde1;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #718093;
+            cursor: pointer;
+            border-bottom: 4px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* カテゴリフィルター */
+        .category-filter {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #dcdde1;
+            background: #f8f9fa;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 全語彙・表現辞書 */
+        .dictionary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .dict-card {
+            background: white;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--accent);
+        }
+
+        .dict-cat {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .dict-word {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .dict-reading {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+        }
+
+        .dict-meaning {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        /* 単語カード（フラッシュカード） */
+        .flashcard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .flashcard {
+            background: white;
+            border-radius: 10px;
+            padding: 30px 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 2px solid #e1e8ed;
+            transition: transform 0.2s;
+            user-select: none;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flashcard:hover {
+            transform: translateY(-3px);
+        }
+
+        .flashcard .word {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .flashcard .reading {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-top: 4px;
+        }
+
+        .flashcard .meaning {
+            display: none;
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: bold;
+            border-top: 1px dashed #ccc;
+            padding-top: 10px;
+            width: 100%;
+        }
+
+        .flashcard.flipped .meaning {
+            display: block;
+        }
+
+        .flashcard .hint {
+            font-size: 0.75rem;
+            color: #b2bec3;
+            margin-top: 10px;
+        }
+
+        /* クイズ画面 */
+        .quiz-config {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-config h2 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .config-group {
+            margin: 15px 0;
+        }
+
+        .config-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--accent);
+            background: white;
+            color: var(--accent);
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .config-btn.selected, .config-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .start-quiz-btn {
+            padding: 12px 35px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+        }
+
+        .quiz-container {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f1f2f6;
+            padding-bottom: 10px;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            padding: 14px 18px;
+            border: 2px solid #e1e8ed;
+            background: white;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent);
+            background: #f0f7fc;
+        }
+
+        .option-btn.correct {
+            background: #d4edda !important;
+            border-color: var(--success) !important;
+            color: #155724 !important;
+            font-weight: bold;
+        }
+
+        .option-btn.wrong {
+            background: #f8d7da !important;
+            border-color: var(--danger) !important;
+            color: #721c24 !important;
+        }
+
+        .quiz-feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+            font-size: 1.05rem;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>日本語学校 社会生活ルール・全語彙完全攻略</h1>
+    <p>学習資料1〜5の全語彙（39語）・全表現（27句）・150問超のクイズデータベース</p>
+</header>
+
+<div class="container">
+
+    <!-- モード切り替えタブ -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('dictionary')">📖 全語彙・表現辞書</button>
+        <button class="tab-btn" onclick="switchTab('flashcards')">📇 暗記カード</button>
+        <button class="tab-btn" onclick="switchTab('quiz')">✏️ 大規模確認クイズ</button>
+    </div>
+
+    <!-- カテゴリフィルター -->
+    <div class="category-filter" id="categoryFilter">
+        <button class="filter-btn active" onclick="filterCategory('all')">すべて表示</button>
+        <button class="filter-btn" onclick="filterCategory('防災')">1. 災害と防災</button>
+        <button class="filter-btn" onclick="filterCategory('病院')">2. 病院・薬局</button>
+        <button class="filter-btn" onclick="filterCategory('バイト')">3. アルバイト</button>
+        <button class="filter-btn" onclick="filterCategory('ごみ')">4. ごみ出し</button>
+        <button class="filter-btn" onclick="filterCategory('面接')">5. 面接マナー</button>
+    </div>
+
+    <!-- 1. 全語彙・表現辞書タブ -->
+    <div id="dictionary" class="tab-content active">
+        <div class="dictionary-grid" id="dictGrid"></div>
+    </div>
+
+    <!-- 2. 暗記カードタブ -->
+    <div id="flashcards" class="tab-content">
+        <p style="font-size:0.9rem; color:#666;">※カードをクリックすると読み・意味が表示されます。</p>
+        <div class="flashcard-grid" id="flashcardGrid"></div>
+    </div>
+
+    <!-- 3. 大規模クイズタブ -->
+    <div id="quiz" class="tab-content">
+        <!-- クイズ設定画面 -->
+        <div class="quiz-config" id="quizConfig">
+            <h2>テスト設定</h2>
+            <p>資料1〜5の内容からランダムに問題を出題します。</p>
+            <div class="config-group">
+                <p><strong>出題数を選択してください：</strong></p>
+                <button class="config-btn" onclick="selectQuestionCount(10)">10問</button>
+                <button class="config-btn selected" onclick="selectQuestionCount(30)">30問</button>
+                <button class="config-btn" onclick="selectQuestionCount(50)">50问</button>
+                <button class="config-btn" onclick="selectQuestionCount(100)">100問</button>
+                <button class="config-btn" onclick="selectQuestionCount(150)">全問挑戦 (150問超)</button>
+            </div>
+            <button class="start-quiz-btn" onclick="startQuiz()">テストを開始する 🚀</button>
+        </div>
+
+        <!-- クイズ出題画面 -->
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-header">
+                <span id="quizCategory">【カテゴリ】</span>
+                <span id="quizProgress">第 1 / 30 問</span>
+            </div>
+            <div class="quiz-question" id="quizQuestion">問題文</div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">次の問題へ ➔</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // 資料1〜5の全39重要語彙データ
+    const masterVocabulary = [
+        { cat: '防災', word: '災害', reading: 'さいがい', meaning: '地震、台風、大雨、火事などによって起こる大きな被害' },
+        { cat: '防災', word: '防災', reading: 'ぼうさい', meaning: '災害に備えて、被害を小さくするための準備や行動' },
+        { cat: '防災', word: '避難', reading: 'ひなん', meaning: '危険な場所から安全な場所へ逃げること' },
+        { cat: '防災', word: '避難所', reading: 'ひなんじょ', meaning: '災害のときに一時的に生活できる場所（学校や体育館など）' },
+        { cat: '防災', word: '非常食', reading: 'ひじょうしょく', meaning: '災害のときのために準備しておく食べ物（缶詰、レトルト、乾パン等）' },
+        { cat: '防災', word: '安否確認', reading: 'あんぴかくにん', meaning: '家族や友人が無事かどうかを確認すること' },
+        { cat: '防災', word: '飲み水（備蓄）', reading: 'のみみず', meaning: '災害備蓄用として、1人1日3リットルを目安に準備する水' },
+
+        { cat: '病院', word: '診察', reading: 'しんさつ', meaning: '医者が患者の体の状態を調べること' },
+        { cat: '病院', word: '受付', reading: 'うけつけ', meaning: '病院や会社などで、最初に手続きをする場所' },
+        { cat: '病院', word: '保険証', reading: 'ほけんしょう', meaning: '健康保険に入っていることを証明するカード' },
+        { cat: '病院', word: '症状', reading: 'しょうじょう', meaning: '熱、せき、頭痛、腹痛など、体に出る悪い状態' },
+        { cat: '病院', word: '処方せん', reading: 'しょほうせん', meaning: '医者が治療に必要な薬の種類や量を書いた紙' },
+        { cat: '病院', word: '薬局', reading: 'やっきょく', meaning: '処方せんを出して薬を受け取る場所（調剤薬局）' },
+        { cat: '病院', word: '問診票', reading: 'もんしんひょう', meaning: '初めて行く病院で、名前・住所・症状・アレルギー等を記入する用紙' },
+        { cat: '病院', word: '食前', reading: 'しょくぜん', meaning: '食事を食べる前の時間（約30分前）' },
+        { cat: '病院', word: '食後', reading: 'しょくご', meaning: '食事を食べ終わった後の時間（約30分以内）' },
+        { cat: '病院', word: '寝る前', reading: 'ねるまえ', meaning: '夜寝る少し前の時間' },
+
+        { cat: 'バイト', word: '勤務', reading: 'きんむ', meaning: '職場で仕事をすること' },
+        { cat: 'バイト', word: '遅刻', reading: 'ちこく', meaning: '決められた時間に遅れること' },
+        { cat: 'バイト', word: '欠勤', reading: 'けっきん', meaning: '決められた仕事の日に仕事を休むこと' },
+        { cat: 'バイト', word: 'シフト', reading: 'しふと', meaning: '働く日や時間の予定表' },
+        { cat: 'バイト', word: '報告', reading: 'ほうこく', meaning: '終わった仕事や問題があったことを上司に伝えること' },
+        { cat: 'バイト', word: '連絡', reading: 'れんらく', meaning: '予定や変更を必要な人に伝えること' },
+        { cat: 'バイト', word: '相談', reading: 'そうだん', meaning: 'わからないことや困ったことを話して、意見や助けをもらうこと' },
+        { cat: 'バイト', word: 'ほう・れん・そう', reading: 'ほうれんそう', meaning: '報告・連絡・相談の略。日本の職場で最も大切な基本マナー' },
+        { cat: 'バイト', word: '無断欠勤', reading: 'むだんけっきん', meaning: '連絡しないで仕事を休むこと（信頼を大きく失う重大な違反）' },
+
+        { cat: 'ごみ', word: '可燃ごみ', reading: 'かねんごみ', meaning: '燃やすことができるごみ（生ごみ、紙くずなど）' },
+        { cat: 'ごみ', word: '不燃ごみ', reading: 'ふねんごみ', meaning: '燃やせないごみ（金属、ガラス、陶器など）' },
+        { cat: 'ごみ', word: '資源ごみ', reading: 'しげんごみ', meaning: 'リサイクルできるごみ（びん、缶、ペットボトル、古紙など）' },
+        { cat: 'ごみ', word: '粗大ごみ', reading: 'そだいごみ', meaning: '家具や大きな家電など、普通のごみ袋に入らない大きなごみ' },
+        { cat: 'ごみ', word: '分別', reading: 'ぶんべつ', meaning: 'ごみを種類ごとに分けて捨てること' },
+        { cat: 'ごみ', word: '収集日', reading: 'しゅうしゅうび', meaning: 'ごみを集めに来る決められた曜日' },
+        { cat: 'ごみ', word: '不法投棄', reading: 'ふほうとうき', meaning: '家具やごみを勝手に外や道ばたに捨てる犯罪行為' },
+
+        { cat: '面接', word: '面接', reading: 'めんせつ', meaning: '学校や会社の人と直接話して、自分について説明する場' },
+        { cat: '面接', word: '志望理由', reading: 'しぼうりゆう', meaning: 'その学校や会社を選んだ理由' },
+        { cat: '面接', word: '自己PR', reading: 'じこぴーあーる', meaning: '自分の長所や経験を相手に伝えること' },
+        { cat: '面接', word: '長所', reading: 'ちょうしょ', meaning: '自分のよいところ、得意なところ' },
+        { cat: '面接', word: '短所', reading: 'たんしょ', meaning: '自分の弱いところ、改善したいところ' },
+        { cat: '面接', word: '将来の目標', reading: 'しょうらいのもくひょう', meaning: 'これから実現したいこと' }
+    ];
+
+    // 固定のルール・マナー問題（60問）
+    const fixedScenarioQuestions = [
+        { cat: '防災', q: '地震で揺れているとき、まず最優先で行うべき行動は何ですか。', opts: ['非常食を持ち出す', '頭を守る（机の下に入る）', '火をつけて料理する', '外へ走って逃げる'], ans: 1 },
+        { cat: '防災', q: '地震の揺れが収まった直後に行うべき大切な行動は何ですか。', opts: ['火の確認をする', '川の様子を見に行く', 'エレベーターで避難する', '友達にSNSをする'], ans: 0 },
+        { cat: '防災', q: '台風や大雨のとき、近づくと非常に危険な場所はどこですか。', opts: ['指定避難所', '増水した川や海の近く', '高台の学校', '頑丈な建物の2階'], ans: 1 },
+        { cat: '防災', q: '台風や大雨のとき、浸水被害の危険が高い注意すべき場所はどこですか。', opts: ['地下や低い場所', '体育館の2階', '丘の上', '避難所の3階'], ans: 0 },
+        { cat: '防災', q: '災害に備えて準備する飲み水は、1人1日あたりどのくらいが目安ですか。', opts: ['約 500ml', '約 1L', '約 3L', '約 10L'], ans: 2 },
+        { cat: '防災', q: '災害用として適した「非常食」の例として正しい組み合わせはどれですか。', opts: ['生の肉や魚', '缶詰・レトルト食品・乾パン', '生野菜とアイスクリーム', '賞味期限の切れたお弁当'], ans: 1 },
+        { cat: '防災', q: '家族や友人が無事かどうかを確認する行動を何といいますか。', opts: ['安否確認', '不法投棄', '自己PR', '無断欠勤'], ans: 0 },
+        { cat: '防災', q: '危険な場所から安全な場所へ逃げることを意味する言葉は何ですか。', opts: ['分別', '避難', '診察', '勤務'], ans: 1 },
+        { cat: '防災', q: '災害のときに一時的に生活できる場所（学校の体育館など）を何といいますか。', opts: ['避難所', '薬局', '面接室', '待合室'], ans: 0 },
+        { cat: '防災', q: '防災リュックに準備しておくと良いアイテムの組み合わせはどれですか。', opts: ['懐中電灯・モバイルバッテリー・薬・身分証コピー', '大型テレビ・大きな家具・布団', 'ごみ袋・ペットボトルのラベル', '志望理由書・問診票'], ans: 0 },
+        { cat: '防災', q: '防災で重要な心構えとして【誤っている】考え方はどれですか。', opts: ['早めに準備すること', '正しい情報を確認すること', '一人で判断しすぎないこと', '避難勧告が出ても家に一人で我慢し続けること'], ans: 3 },
+        { cat: '防災', q: '災害情報の収集において最も大切なことは何ですか。', opts: ['SNSの噂話をすべて信じる', 'テレビや行政の公式発表など「正しい情報」を確認する', '何も調べずに放置する', '外国にいる友達に聞く'], ans: 1 },
+
+        { cat: '病院', q: '日本の病院で受付をするとき、必ず提示するカードは何ですか。', opts: ['処方せん', '健康保険証', '問診票', 'ごみ出しカレンダー'], ans: 1 },
+        { cat: '病院', q: '初めて行く病院で、名前・住所・症状・アレルギー等を記入する用紙は何ですか。', opts: ['問診票', '志望理由書', '処方せん', 'シフト表'], ans: 0 },
+        { cat: '病院', q: '医師が患者に必要な薬について書き、薬局へ出す書類は何ですか。', opts: ['保険証', '処方せん', '身分証明書', '領収書'], ans: 1 },
+        { cat: '病院', q: '病院で処方せんをもらったあと、薬を受け取るために行く場所はどこですか。', opts: ['交番', '調剤薬局', '市役所', '避難所'], ans: 1 },
+        { cat: '病院', q: '熱、頭痛、せき、腹痛など、体に出る悪い状態のことを何といいますか。', opts: ['症状', '長所', '短所', '防災'], ans: 0 },
+        { cat: '病院', q: '診察室で医師に症状を説明するとき、最も分かりやすい伝え方はどれですか。', opts: ['「いつから」「どこが」「どのくらい」痛むかを伝える', '好きな食べ物と嫌いな食べ物を伝える', 'アルバイトの時給を伝える', '引越した日を伝える'], ans: 0 },
+        { cat: '病院', q: '薬の服用タイミングで「食前」とはどういう意味ですか。', opts: ['食事のすぐ後', '食事の約30分前', '寝る直前', '食事中'], ans: 1 },
+        { cat: '病院', q: '薬の服用タイミングで「寝る前」とはどういう意味ですか。', opts: ['朝起きてすぐ', '昼ごはんの後', '夜寝る少し前', 'お風呂に入る前'], ans: 2 },
+        { cat: '病院', q: '薬を飲んだあとに気分が悪くなったり発疹が出た場合、どうすべきですか。', opts: ['我慢して飲み続ける', 'すぐに医師や薬剤師に相談する', '友達に薬をあげる', '自分の判断で薬の量を2倍にする'], ans: 1 },
+        { cat: '病院', q: '服薬マナーとして【絶対にやってはいけない】行動はどれですか。', opts: ['飲む時間や量を守る', '自分の判断で薬の量を減らしたり増やしたりする', '薬剤師の説明をよく聞く', '副作用を医師に相談する'], ans: 1 },
+        { cat: '病院', q: '医者が患者の体の状態を調べることを何といいますか。', opts: ['勤務', '分別', '診察', '避難'], ans: 2 },
+        { cat: '病院', q: '病院で受付をした後の正しい流れはどれですか。', opts: ['待合室で待ち、名前を呼ばれたら診察室に入る', '受けてすぐ勝手に診察室に入る', '会計をしてから診察を受ける', '薬剤師を診察室へ呼ぶ'], ans: 0 },
+
+        { cat: 'バイト', q: '17時勤務開始の場合、出勤マナーとして最も正しい行動はどれですか。', opts: ['17時ぴったりに店のドアに着く', '10〜15分前に着いて着替えや準備をし、17時に業務を開始できる状態にする', '17時10分に着いてから着替える', '17時半から業務を始める'], ans: 1 },
+        { cat: 'バイト', q: '日本の職場で基本とされる「ほう・れん・そう」とは何のことですか。', opts: ['掃除・洗濯・料理', '報告・連絡・相談', '訪問・練習・送信', '返事・連絡・送信'], ans: 1 },
+        { cat: 'バイト', q: '「報告」の正しい説明はどれですか。', opts: ['終わった仕事や問題があったことを上司に伝えること', '自分の好きなことを喋ること', '休みを勝手に決めること', '遅刻の理由をごまかすこと'], ans: 0 },
+        { cat: 'バイト', q: '仕事中に自信がないことや分からないことがあったとき、どうすべきですか。', opts: ['勝手な自分自身の判断でそのまま進める', '何もしないで放置する', '早めに先輩や上司に確認・相談する', '友達に代わりにやってもらう'], ans: 2 },
+        { cat: 'バイト', q: '病気や電車の遅延でアルバイトに遅刻・欠勤するときの正しい連絡方法はどれですか。', opts: ['友達に代わりに伝えてもらう', '自分でできるだけ早く電話で連絡する', '連絡しないで翌日謝る', 'SNSに書き込んで終わりにする'], ans: 1 },
+        { cat: 'バイト', q: '職場の信頼を最も大きく失ってしまう、絶対にやってはいけない行動はどれですか。', opts: ['事前に相談する', '理由や連絡なしに休む「無断欠勤」をする', '少し早めに到着する', '報告・連絡・相談をする'], ans: 1 },
+        { cat: 'バイト', q: '電車が遅れてバイトに遅刻しそうなとき、電話で伝える表現として最も適切なものはどれですか。', opts: ['「電車が遅れているため10分ほど遅れます。申し訳ありません。」', '「電車が悪いので遅れます。気にしないでください。」', '「今日は行くのをやめます。」', '「友達も遅れると言っています。」'], ans: 0 },
+        { cat: 'バイト', q: '職場で仕事をすることを意味する言葉は何ですか。', opts: ['欠勤', '勤務', '避難', '分別'], ans: 1 },
+        { cat: 'バイト', q: '働く日や時間の予定表のことを何といいますか。', opts: ['処方せん', 'シフト', '問診票', '非常食'], ans: 1 },
+        { cat: 'バイト', q: '仕事で判断に迷ったとき、上司や先輩に話して指導をもらうことを何といいますか。', opts: ['相談', '遅刻', '不法投棄', '自己PR'], ans: 0 },
+        { cat: 'バイト', q: '決められた時間に遅れることを何といいますか。', opts: ['遅刻', '勤務', '報告', '避難'], ans: 0 },
+        { cat: 'バイト', q: '仕事を休むことを何といいますか。', opts: ['シフト', '欠勤', '診察', '面接'], ans: 1 },
+
+        { cat: 'ごみ', q: '生ごみや紙くずなど、燃やすことができるごみを何といいますか。', opts: ['不燃ごみ', '可燃ごみ（燃えるごみ）', '粗大ごみ', '資源ごみ'], ans: 1 },
+        { cat: 'ごみ', q: '金属製品、ガラス、陶器など、燃やせないごみを何といいますか。', opts: ['可燃ごみ', '不燃ごみ（燃えないごみ）', '古紙', '非常食'], ans: 1 },
+        { cat: 'ごみ', q: 'びん、缶、ペットボトル、古紙など、リサイクルできるごみを何といいますか。', opts: ['粗大ごみ', '資源ごみ', '可燃ごみ', '不燃ごみ'], ans: 1 },
+        { cat: 'ごみ', q: '家具や大きな家電など、普通のごみ袋に入らない大きなごみを何といいますか。', opts: ['可燃ごみ', '資源ごみ', '粗大ごみ', '不燃ごみ'], ans: 2 },
+        { cat: 'ごみ', q: 'ごみを種類ごとに分けて捨てることを何といいますか。', opts: ['分別', '診察', '避難', '面接'], ans: 0 },
+        { cat: 'ごみ', q: '引っ越したとき、ごみの正しい出し方を知るために確認するものは何ですか。', opts: ['地域の「ごみ出しカレンダー」', '避難所マップ', 'アルバイトのシフト表', '病院の問診票'], ans: 0 },
+        { cat: 'ごみ', q: 'ごみ出しの基本ルールとして正しいものはどれですか。', opts: ['好きな曜日にいつでも出してよい', '決められた『曜日・時間・場所』を守って出す', '前の日の夜に出しておく', '隣の家の玄関前に置いておく'], ans: 1 },
+        { cat: 'ごみ', q: 'ごみを回収前日の夜など早く出しすぎてはいけない理由は何ですか。', opts: ['ごみが重くなるから', 'カラスや猫がごみを散らかすから', 'ごみ袋の色が変わるから', '収集車が来なくなるから'], ans: 1 },
+        { cat: 'ごみ', q: 'ペットボトルをごみに出すときの正しいマナーはどれですか。', opts: ['ジュースが入ったまま出す', '中を軽く洗い、ラベルとキャップを外して出す', '潰さずに燃えないごみに入れる', '可燃ごみに隠して出す'], ans: 1 },
+        { cat: 'ごみ', q: '新聞、雑誌、段ボールなどの「古紙」を出すときの正しい方法はどれですか。', opts: ['細かく破いて水に浸す', '種類ごとに分けてひもでしばる', '燃えないごみ袋に混ぜる', '公園に置いておく'], ans: 1 },
+        { cat: 'ごみ', q: '不要になった家具や自転車などの「粗大ごみ」を捨てるときの正解はどれですか。', opts: ['普通のごみの日に出しておく', '市区町村に申し込み、手数料を払って指定された日に出す', '夜のうちにごみ集積所に置いて逃げる', '細かく切って生ごみに出す'], ans: 1 },
+        { cat: 'ごみ', q: '使わなくなった家具や家電をごみ集積所や空き地に勝手に捨てる違反行為を何といいますか。', opts: ['リサイクル協力', '不法投棄', 'ボランティア', '応急手当'], ans: 1 },
+
+        { cat: '面接', q: '学校や会社の人と直接話して自分について説明する場を何といいますか。', opts: ['避難', '面接', '分別', '勤務'], ans: 1 },
+        { cat: '面接', q: 'その学校や会社を選んだ理由のことを何といいますか。', opts: ['志望理由', '非常食', '処方せん', '粗大ごみ'], ans: 0 },
+        { cat: '面接', q: '自分の長所や経験を相手にアピールすることを何といいますか。', opts: ['自己PR', '安否確認', '不法投棄', '無断欠勤'], ans: 0 },
+        { cat: '面接', q: '自分のよいところ、得意なところを意味する言葉は何ですか。', opts: ['短所', '長所', '症状', '災害'], ans: 1 },
+        { cat: '面接', q: '自分の弱いところ、改善したいところを意味する言葉は何ですか。', opts: ['長所', '短所', '志望理由', '避難所'], ans: 1 },
+        { cat: '面接', q: '面接室に入るときの正しい作法（マナー）はどれですか。', opts: ['ノックしないで黙って入る', 'ドアを3回ノックし「失礼いたします」と言って入る', 'ドアを開けたまま大声で歌う', '面接官が入ってくるまで外で座り続ける'], ans: 1 },
+        { cat: '面接', q: '面接室で椅子に座る正しいタイミングはいつですか。', opts: ['部屋に入ったらすぐ勝手に座る', '椅子の横に立ち、面接官から「どうぞ」と言われてから座る', '荷物を椅子の上に置いて自分は床に座る', '面接が終わるまで絶対に座らない'], ans: 1 },
+        { cat: '面接', q: '面接で質問に答えるとき、伝えやすくするための話す順番のコツはどれですか。', opts: ['理由からダラダラ長く話す', 'まず結論（一番伝えたい答え）を最初に言う', '床を見ながらボソボソ話す', '何も話さずに微笑む'], ans: 1 },
+        { cat: '面接', q: '面接で質問が聞き取れなかったとき、最も適切な対応はどれですか。', opts: ['聞こえたフリをして嘘を話す', '黙って下を向く', '「もう一度質問をお願いしてもよろしいでしょうか」と丁寧に聞き直す', '「わかりません」と言って怒る'], ans: 2 },
+        { cat: '面接', q: '面接前の準備として正しい行動はどれですか。', opts: ['学校や会社の特徴、学科内容、仕事内容などを詳しく調べる', '何も調べずに面接に行く', '「家から近いから」という理由だけ準備する', '友達の志望理由を丸暗記して話す'], ans: 0 },
+        { cat: '面接', q: '面接において、完璧な日本語以上に大切だとされる考え方はどれですか。', opts: ['完璧な日本語だけが全てである', '「準備」「礼儀」「わかりやすい説明」「前向きな態度」が大切である', '面接官の質問を途中で遮って話す', '服装や態度には気を遣わなくてよい'], ans: 1 },
+        { cat: '面接', q: '自分の長所をアピールするとき、説得力を高める方法はどれですか。', opts: ['具体的な体験やエピソードを合わせて話す', '自慢話だけを長く続ける', '長所はないと言う', '言葉だけで具体例は話さない'], ans: 0 }
+    ];
+
+    let currentFilter = 'all';
+    let quizQuestionPool = [];
+    let currentQuizIdx = 0;
+    let selectedCount = 30;
+    let score = 0;
+
+    // クイズ生成ロジック（単一の短い選択肢を3つ正確に抽出する修正済みコード）
+    function buildFullQuestionBank() {
+        let pool = [...fixedScenarioQuestions];
+
+        masterVocabulary.forEach(vocab => {
+            const getDummyOpts = (correctText, key) => {
+                let otherValues = [...new Set(masterVocabulary.map(v => v[key]).filter(val => val !== correctText))];
+                otherValues.sort(() => 0.5 - Math.random());
+                // 他の単一選択肢を正確に3つ選出
+                let selected = [correctText, otherValues[0], otherValues[1], otherValues[2]];
+                selected.sort(() => 0.5 - Math.random());
+                return {
+                    opts: selected,
+                    ans: selected.indexOf(correctText)
+                };
+            };
+
+            // 1. 意味選択問題
+            let meaningQ = getDummyOpts(vocab.meaning, 'meaning');
+            pool.push({
+                cat: vocab.cat,
+                q: `「${vocab.word}（${vocab.reading}）」の意味として最も適切なものはどれですか。`,
+                opts: meaningQ.opts,
+                ans: meaningQ.ans
+            });
+
+            // 2. 語彙選択問題
+            let wordQ = getDummyOpts(vocab.word, 'word');
+            pool.push({
+                cat: vocab.cat,
+                q: `「${vocab.meaning}」を意味する適切な言葉を選びなさい。`,
+                opts: wordQ.opts,
+                ans: wordQ.ans
+            });
+
+            // 3. 読み選択問題
+            let readingQ = getDummyOpts(vocab.reading, 'reading');
+            pool.push({
+                cat: vocab.cat,
+                q: `言葉「${vocab.word}」の正しい読み方はどれですか。`,
+                opts: readingQ.opts,
+                ans: readingQ.ans
+            });
+        });
+
+        return pool;
+    }
+
+    const fullQuestionBank = buildFullQuestionBank();
+
+    function init() {
+        renderDictionary();
+        renderFlashcards();
+    }
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+
+        document.getElementById('categoryFilter').style.display = (tabId === 'quiz') ? 'none' : 'flex';
+    }
+
+    function filterCategory(cat) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        renderDictionary();
+        renderFlashcards();
+    }
+
+    function renderDictionary() {
+        const grid = document.getElementById('dictGrid');
+        grid.innerHTML = '';
+        const filtered = currentFilter === 'all' ? masterVocabulary : masterVocabulary.filter(d => d.cat === currentFilter);
+        
+        filtered.forEach(item => {
+            grid.innerHTML += `
+                <div class="dict-card">
+                    <div class="dict-cat">【${item.cat}】</div>
+                    <div class="dict-word">${item.word}</div>
+                    <div class="dict-reading">よみ：${item.reading}</div>
+                    <div class="dict-meaning">${item.meaning}</div>
+                </div>
+            `;
+        });
+    }
+
+    function renderFlashcards() {
+        const grid = document.getElementById('flashcardGrid');
+        grid.innerHTML = '';
+        const filtered = currentFilter === 'all' ? masterVocabulary : masterVocabulary.filter(d => d.cat === currentFilter);
+
+        filtered.forEach(item => {
+            grid.innerHTML += `
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="word">${item.word}</div>
+                    <div class="meaning">
+                        <div class="reading">よみ：${item.reading}</div>
+                        <div style="margin-top:6px; font-weight:normal; color:#333;">${item.meaning}</div>
+                    </div>
+                    <div class="hint">タップして意味を表示</div>
+                </div>
+            `;
+        });
+    }
+
+    function selectQuestionCount(count) {
+        selectedCount = count;
+        document.querySelectorAll('.config-btn').forEach(btn => btn.classList.remove('selected'));
+        event.target.classList.add('selected');
+    }
+
+    function startQuiz() {
+        let shuffled = [...fullQuestionBank].sort(() => 0.5 - Math.random());
+        quizQuestionPool = shuffled.slice(0, Math.min(selectedCount, shuffled.length));
+        
+        currentQuizIdx = 0;
+        score = 0;
+
+        document.getElementById('quizConfig').style.display = 'none';
+        document.getElementById('quizContainer').style.display = 'block';
+
+        renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+        if (currentQuizIdx >= quizQuestionPool.length) {
+            document.getElementById('quizContainer').innerHTML = `
+                <div style="text-align:center; padding: 20px;">
+                    <h2>🎉 テスト終了！お疲れ様でした！</h2>
+                    <p style="font-size:1.3rem; margin:20px 0;">あなたの得点： <strong>${score} / ${quizQuestionPool.length} 問 正解</strong> （正解率: ${Math.round((score/quizQuestionPool.length)*100)}%）</p>
+                    <button class="start-quiz-btn" onclick="location.reload()">もう一度テストを受ける 🔄</button>
+                </div>
+            `;
+            return;
+        }
+
+        const q = quizQuestionPool[currentQuizIdx];
+        document.getElementById('quizCategory').innerText = `【カテゴリ：${q.cat}】`;
+        document.getElementById('quizProgress').innerText = `第 ${currentQuizIdx + 1} / ${quizQuestionPool.length} 問`;
+        document.getElementById('quizQuestion').innerText = q.q;
+
+        const optsDiv = document.getElementById('quizOptions');
+        optsDiv.innerHTML = '';
+        q.opts.forEach((opt, idx) => {
+            optsDiv.innerHTML += `
+                <button class="option-btn" onclick="checkAnswer(${idx})">${idx + 1}. ${opt}</button>
+            `;
+        });
+
+        document.getElementById('quizFeedback').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+    }
+
+    function checkAnswer(selectedIdx) {
+        const q = quizQuestionPool[currentQuizIdx];
+        const buttons = document.querySelectorAll('.option-btn');
+        const feedback = document.getElementById('quizFeedback');
+
+        buttons.forEach((btn, idx) => {
+            btn.disabled = true;
+            if (idx === q.ans) {
+                btn.classList.add('correct');
+            } else if (idx === selectedIdx) {
+                btn.classList.add('wrong');
+            }
+        });
+
+        if (selectedIdx === q.ans) {
+            score++;
+            feedback.style.background = '#d4edda';
+            feedback.style.color = '#155724';
+            feedback.innerText = '⭕ 正解です！';
+        } else {
+            feedback.style.background = '#f8d7da';
+            feedback.style.color = '#721c24';
+            feedback.innerText = `❌ 残念！ 正解は 「${q.ans + 1}. ${q.opts[q.ans]}」 です。`;
+        }
+
+        feedback.style.display = 'block';
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+
+    function nextQuestion() {
+        currentQuizIdx++;
+        renderQuizQuestion();
+    }
+
+    init();
+</script>
+
+</body>
+</html>
