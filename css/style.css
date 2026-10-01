@@ -578,3 +578,58 @@ img {
     text-align: center;
   }
 }
+
+.step-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.step-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  padding: 22px 18px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  text-align: center;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: #0f766e;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.step-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.step-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .step-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .step-flow {
+    grid-template-columns: 1fr;
+  }
+}
+
