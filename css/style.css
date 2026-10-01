@@ -633,3 +633,7 @@ img {
   }
 }
 
+.nav-links-next-only {
+  justify-content: flex-end;
+}
+
