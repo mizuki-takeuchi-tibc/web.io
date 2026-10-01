@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHubでHTMLをインターネット公開する</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="eyebrow">HTMLを公開する</div>
+      <h1>GitHubで学習用HTMLをインターネット公開する</h1>
+      <p>
+        作成したHTMLファイルをGitHubに入れて、インターネットで見られるようにします。
+        ここでは、はじめて使う人向けに、できるだけ簡単な言葉で説明します。
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="highlight">
+      <div class="eyebrow">このページでやること</div>
+      <h2>作ったHTMLを、学生が見られるページにする</h2>
+
+      <p>
+        前のページでは、Notebookで学習用HTMLを作りました。
+        このページでは、そのHTMLファイルをGitHubに入れて、インターネットで開けるようにします。
+      </p>
+
+      <p>
+        GitHubを使うと、HTMLファイルを無料で公開できます。
+        公開すると、学生にURLを送って見てもらうことができます。
+      </p>
+
+      <div class="flow">
+        <div class="flow-item">HTMLファイル</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">GitHubに入れる</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">公開設定</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">URLで見られる</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>最初に知っておく言葉</h2>
+
+      <p>
+        GitHubには少しむずかしい言葉があります。
+        このページでは、次のように考えれば大丈夫です。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>言葉</th>
+            <th>かんたんな意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GitHub</td>
+            <td>HTMLファイルなどを保存して、公開できるサービス</td>
+          </tr>
+          <tr>
+            <td>アカウント</td>
+            <td>GitHubを使うための自分の名前とログイン情報</td>
+          </tr>
+          <tr>
+            <td>リポジトリ</td>
+            <td>ファイルを入れておく箱</td>
+          </tr>
+          <tr>
+            <td>GitHub Pages</td>
+            <td>GitHubに入れたHTMLをWebページとして公開する機能</td>
+          </tr>
+          <tr>
+            <td>公開URL</td>
+            <td>学生に送るWebページのアドレス</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>作業の流れ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>順番</th>
+            <th>やること</th>
+            <th>使うもの</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>GitHubアカウントを作る</td>
+            <td>GitHub</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>HTMLを入れる箱を作る</td>
+            <td>GitHubのリポジトリ</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>HTMLファイルを入れる</td>
+            <td>Upload files</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>GitHub Pagesをオンにする</td>
+            <td>Settings</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>公開URLを開いて確認する</td>
+            <td>ブラウザ</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>1. GitHubアカウントを作る</h2>
+
+      <p>
+        まず、GitHubのアカウントを作ります。
+      </p>
+
+      <ol>
+        <li>ブラウザで <strong>GitHub</strong> を開きます。</li>
+        <li><strong>Sign up</strong> をクリックします。</li>
+        <li>メールアドレスを入力します。</li>
+        <li>パスワードを決めます。</li>
+        <li>ユーザー名を決めます。</li>
+        <li>画面の指示にしたがって登録します。</li>
+      </ol>
+
+      <div class="note">
+        <h3>ユーザー名はURLに使われます</h3>
+        <p>
+          GitHubのユーザー名は、あとで公開URLに入ります。
+        </p>
+
+        <p>
+          たとえば、ユーザー名が
+          <strong>nihongo-teacher</strong>
+          の場合、公開URLは次のような形になります。
+        </p>
+
+        <pre><code>https://nihongo-teacher.github.io/サイト名/</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. HTMLを入れる箱を作る</h2>
+
+      <p>
+        GitHubでは、ファイルを入れる場所のことを
+        <strong>リポジトリ</strong>
+        と言います。
+      </p>
+
+      <p>
+        ここでは、HTMLファイルを入れるための新しいリポジトリを作ります。
+      </p>
+
+      <ol>
+        <li>GitHubにログインします。</li>
+        <li>画面右上の <strong>＋</strong> をクリックします。</li>
+        <li><strong>New repository</strong> をクリックします。</li>
+        <li>
+          Repository name に
+          <strong>nihongo-study-site</strong>
+          と入力します。
+        </li>
+        <li>
+          <strong>Public</strong> を選びます。
+        </li>
+        <li>
+          <strong>Create repository</strong> をクリックします。
+        </li>
+      </ol>
+
+      <div class="warning">
+        <h3>Publicを選ぶ理由</h3>
+        <p>
+          インターネットで公開するページなので、
+          ここでは <strong>Public</strong> を選びます。
+        </p>
+
+        <p>
+          個人情報、学生の名前、メールアドレス、成績などは入れないでください。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. HTMLファイルを入れる</h2>
+
+      <p>
+        作ったリポジトリに、HTMLファイルを入れます。
+      </p>
+
+      <p>
+        ここでは、パソコンに保存してあるHTMLファイルを、GitHubの画面から入れます。
+      </p>
+
+      <ol>
+        <li>作ったリポジトリを開きます。</li>
+        <li><strong>Add file</strong> をクリックします。</li>
+        <li><strong>Upload files</strong> をクリックします。</li>
+        <li>公開したいHTMLファイルを選びます。</li>
+        <li>必要なCSSファイルや画像ファイルも一緒に入れます。</li>
+        <li>画面の下にある <strong>Commit changes</strong> をクリックします。</li>
+      </ol>
+
+      <div class="note">
+        <h3>入れるファイルの例</h3>
+
+        <p>
+          学習用HTMLだけを公開する場合は、たとえば次のように入れます。
+        </p>
+
+        <pre><code>nihongo-study-site/
+├── index.html
+├── study.html
+├── css/
+│   └── style.css
+└── images/
+    └── 使っている画像ファイル</code></pre>
+
+        <p>
+          トップページとして最初に開きたいHTMLは、
+          <strong>index.html</strong>
+          という名前にしておくとわかりやすいです。
+        </p>
+      </div>
+
+      <div class="warning">
+        <h3>ここを間違えやすいです</h3>
+
+        <p>
+          HTMLファイルだけを入れても、CSSや画像を使っている場合は、
+          見た目がくずれたり、画像が出なかったりします。
+        </p>
+
+        <p>
+          HTMLで使っている
+          <strong>css</strong>
+          フォルダや
+          <strong>images</strong>
+          フォルダも、必要なら一緒に入れてください。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. GitHub Pagesをオンにする</h2>
+
+      <p>
+        ファイルを入れただけでは、まだWebページとして公開されていない場合があります。
+      </p>
+
+      <p>
+        GitHub Pagesをオンにして、インターネットで見られるようにします。
+      </p>
+
+      <ol>
+        <li>リポジトリの画面を開きます。</li>
+        <li>上のメニューから <strong>Settings</strong> をクリックします。</li>
+        <li>左側のメニューから <strong>Pages</strong> をクリックします。</li>
+        <li>
+          <strong>Build and deployment</strong> のところを見ます。
+        </li>
+        <li>
+          <strong>Source</strong> がある場合は、
+          <strong>Deploy from a branch</strong>
+          を選びます。
+        </li>
+        <li>
+          <strong>Branch</strong> で
+          <strong>main</strong>
+          を選びます。
+        </li>
+        <li>
+          フォルダは
+          <strong>/root</strong>
+          を選びます。
+        </li>
+        <li>
+          <strong>Save</strong> をクリックします。
+        </li>
+      </ol>
+
+      <div class="note">
+        <h3>公開には少し時間がかかります</h3>
+
+        <p>
+          設定してすぐには表示されないことがあります。
+          1〜2分待ってから、もう一度開いてください。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. 公開URLを開いて確認する</h2>
+
+      <p>
+        GitHub Pagesの設定ができると、公開URLが表示されます。
+      </p>
+
+      <p>
+        URLは、だいたい次のような形になります。
+      </p>
+
+      <pre><code>https://ユーザー名.github.io/nihongo-study-site/</code></pre>
+
+      <p>
+        たとえば、ユーザー名が
+        <strong>nihongo-teacher</strong>
+        の場合は、次のようになります。
+      </p>
+
+      <pre><code>https://nihongo-teacher.github.io/nihongo-study-site/</code></pre>
+
+      <ol>
+        <li>GitHub Pagesの画面に出たURLをコピーします。</li>
+        <li>ブラウザの別のタブで開きます。</li>
+        <li>HTMLページが表示されるか確認します。</li>
+        <li>表示できたら、そのURLを学生に共有できます。</li>
+      </ol>
+
+      <div class="warning">
+        <h3>公開前に必ず確認すること</h3>
+
+        <p>
+          学生にURLを送る前に、次の内容を確認してください。
+        </p>
+
+        <ul>
+          <li>学生の名前やメールアドレスが入っていないか</li>
+          <li>成績や出席情報などの個人情報が入っていないか</li>
+          <li>リンクを開いたときに、正しいページが出るか</li>
+          <li>スマホでも見やすいか</li>
+          <li>問題の答えが間違っていないか</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>GitHubの英語ボタンの意味</h2>
+
+      <p>
+        GitHubの画面は英語で表示されることがあります。
+        よく使うボタンだけ覚えておくと作業しやすいです。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>英語</th>
+            <th>意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sign up</td>
+            <td>新しく登録する</td>
+          </tr>
+          <tr>
+            <td>Sign in</td>
+            <td>ログインする</td>
+          </tr>
+          <tr>
+            <td>New repository</td>
+            <td>新しいファイル置き場を作る</td>
+          </tr>
+          <tr>
+            <td>Add file</td>
+            <td>ファイルを追加する</td>
+          </tr>
+          <tr>
+            <td>Upload files</td>
+            <td>パソコンのファイルを入れる</td>
+          </tr>
+          <tr>
+            <td>Commit changes</td>
+            <td>入れたファイルを保存する</td>
+          </tr>
+          <tr>
+            <td>Settings</td>
+            <td>設定</td>
+          </tr>
+          <tr>
+            <td>Pages</td>
+            <td>Webページとして公開する設定</td>
+          </tr>
+          <tr>
+            <td>Save</td>
+            <td>保存</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>うまく表示されないとき</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>起きていること</th>
+            <th>よくある原因</th>
+            <th>確認すること</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>404と表示される</td>
+            <td>公開設定がまだ終わっていない、またはURLが違う</td>
+            <td>Settings → Pages のURLをもう一度確認する</td>
+          </tr>
+          <tr>
+            <td>トップページが出ない</td>
+            <td>index.html がない</td>
+            <td>最初に開きたいHTMLを index.html にする</td>
+          </tr>
+          <tr>
+            <td>見た目がくずれる</td>
+            <td>CSSファイルが入っていない</td>
+            <td>css フォルダもGitHubに入れる</td>
+          </tr>
+          <tr>
+            <td>画像が出ない</td>
+            <td>画像ファイルが入っていない、または場所が違う</td>
+            <td>images フォルダもGitHubに入れる</td>
+          </tr>
+          <tr>
+            <td>直したのに古いページが出る</td>
+            <td>反映に少し時間がかかっている</td>
+            <td>少し待ってから更新する</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">大事な注意</div>
+      <h2>公開してよい内容だけを入れる</h2>
+
+      <p>
+        GitHub Pagesで公開したページは、URLを知っている人が見ることができます。
+      </p>
+
+      <p>
+        次のような情報は、公開ページに入れないでください。
+      </p>
+
+      <ul>
+        <li>学生の名前</li>
+        <li>学生のメールアドレス</li>
+        <li>出席率</li>
+        <li>成績</li>
+        <li>住所や電話番号</li>
+        <li>学校内部だけで使う資料</li>
+      </ul>
+
+      <div class="warning">
+        <p>
+          学習用ページには、公開しても問題ない教材内容だけを入れます。
+          個人情報が入っていないか、公開前に必ず確認してください。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>作業のまとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>作業</th>
+            <th>大事なこと</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GitHubアカウントを作る</td>
+            <td>ユーザー名は公開URLに入る</td>
+          </tr>
+          <tr>
+            <td>リポジトリを作る</td>
+            <td>ファイルを入れる箱を作る</td>
+          </tr>
+          <tr>
+            <td>HTMLを入れる</td>
+            <td>CSSや画像も必要なら一緒に入れる</td>
+          </tr>
+          <tr>
+            <td>GitHub Pagesをオンにする</td>
+            <td>Settings → Pages で設定する</td>
+          </tr>
+          <tr>
+            <td>URLを確認する</td>
+            <td>学生に送る前に自分で開いて確認する</td>
+          </tr>
+          <tr>
+            <td>公開内容を確認する</td>
+            <td>個人情報を入れない</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="nav-links">
+      <a href="notebook-study-html.html">← 前のページ：学習用HTMLを作る</a>
+      <a href="index.html">トップページへ戻る</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>参考リンク</p>
+      <ul>
+        <li>
+          <a href="https://github.com/signup" target="_blank" rel="noopener">
+            GitHub アカウント作成
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github" target="_blank" rel="noopener">
+            GitHub Docs：アカウントを作成する
+          </a>
+        </li>
+        <li>
+          <a href="https://pages.github.com/" target="_blank" rel="noopener">
+            GitHub Pages
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.github.com/pages/quickstart" target="_blank" rel="noopener">
+            GitHub Docs：GitHub Pages Quickstart
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
