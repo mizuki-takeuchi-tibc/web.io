@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pythonで席替えアプリを作る</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="eyebrow">もっとやりたい人向け</div>
+      <h1>Pythonで席替えアプリを作る</h1>
+      <p>
+        時間に余裕がある場合は、ChatGPTにPythonコードを書かせて、
+        学生名簿からランダムに席替えをするアプリを作ります。
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="highlight">
+      <div class="eyebrow">このページでやること</div>
+      <h2>学生名簿から、席替え表を作るアプリを作る</h2>
+
+      <p>
+        このページでは、Pythonを使って、画面付きの席替えアプリを作ります。
+      </p>
+
+      <p>
+        学生名簿を読み込み、机の配置を
+        <strong>何列 × 何行</strong>
+        にするか選ぶと、その形に合わせて学生をランダムに配置します。
+      </p>
+
+      <p>
+        さらに、名簿の
+        <strong>front</strong>
+        の列に
+        <strong>1</strong>
+        が入っている学生は、前の列に入りやすくする版も作ります。
+      </p>
+
+      <div class="step-flow">
+        <div class="step-card">
+          <span class="step-number">1</span>
+          <strong>名簿を用意</strong>
+          <p>学生名簿を使います。</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">2</span>
+          <strong>ChatGPTに依頼</strong>
+          <p>Pythonコードを書いてもらいます。</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">3</span>
+          <strong>Pythonで実行</strong>
+          <p>コードを貼り付けて動かします。</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">4</span>
+          <strong>席替え表を作成</strong>
+          <p>画面で席の配置を確認します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>今回使う学生名簿</h2>
+
+      <p>
+        今回は、次のGoogleスプレッドシートの学生名簿を使います。
+      </p>
+
+      <div class="center">
+        <a
+          class="button"
+          href="https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RDdFI/edit?gid=0#gid=0"
+          target="_blank"
+          rel="noopener"
+        >
+          学生名簿を開く
+        </a>
+      </div>
+
+      <p>
+        名簿には、次の列があります。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>列名</th>
+            <th>意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>name</td>
+            <td>学生の名前</td>
+          </tr>
+          <tr>
+            <td>front</td>
+            <td>前列希望の学生に 1 が入っています。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <h3>front の意味</h3>
+        <p>
+          <strong>front</strong>
+          の列に
+          <strong>1</strong>
+          が入っている学生は、前の方の席に配置したい学生です。
+        </p>
+        <p>
+          空欄の学生は、普通にランダムで配置します。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Pythonの準備について</h2>
+
+      <p>
+        Pythonを自分のパソコンで使う場合は、本来はPythonのダウンロードとインストールが必要です。
+      </p>
+
+      <p>
+        ただし、今回の研修用PCにはPythonがすでに入っているため、
+        <strong>この研修ではインストール作業はしません。</strong>
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>作業</th>
+            <th>今回やるか</th>
+            <th>理由</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pythonのダウンロード</td>
+            <td>やりません</td>
+            <td>研修用PCに入っているため</td>
+          </tr>
+          <tr>
+            <td>Pythonのインストール</td>
+            <td>やりません</td>
+            <td>研修用PCに入っているため</td>
+          </tr>
+          <tr>
+            <td>Pythonコードの実行</td>
+            <td>やります</td>
+            <td>席替えアプリを動かすため</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <h3>自分のPCであとから試す場合</h3>
+        <p>
+          自分のPCでPythonが入っていない場合は、Python公式サイトからインストールできます。
+          ただし、今日の研修ではインストール作業は扱いません。
+        </p>
+
+        <p>
+          公式サイト：
+          <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">
+            https://www.python.org/downloads/
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>作るアプリの完成イメージ</h2>
+
+      <p>
+        今回作るアプリは、画面で操作できるものにします。
+      </p>
+
+      <ul>
+        <li>学生名簿を読み込む</li>
+        <li>机の列数を選ぶ</li>
+        <li>机の行数を選ぶ</li>
+        <li>ランダムに席替えする</li>
+        <li>前列希望の学生を前の方に配置する</li>
+        <li>結果を画面に表示する</li>
+      </ul>
+
+      <div class="note">
+        <h3>画面付きアプリにする理由</h3>
+        <p>
+          最終的には、Pythonを知らない人でも使えるように、
+          exeファイルに変換することを考えています。
+        </p>
+        <p>
+          そのため、今回は最初から
+          <strong>画面付きのアプリ</strong>
+          として作ります。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>まずはシンプル版を作る</h2>
+
+      <p>
+        最初は、学生を完全にランダムに配置するシンプル版を作ります。
+      </p>
+
+      <p>
+        ChatGPTに、次のお願い文を貼り付けてください。
+      </p>
+
+      <pre><code>Pythonで、学生の席替えアプリを作ってください。
+
+目的：
+学生名簿を読み込んで、ランダムに席替え表を作る画面付きアプリを作りたいです。
+
+使うデータ：
+次のGoogleスプレッドシートを使います。
+https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RDdFI/edit?gid=0#gid=0
+
+名簿の列：
+・name：学生の名前
+・front：前列希望。今回はまだ使わなくてよいです。
+
+作りたい機能：
+・画面付きのアプリにしてください。
+・Python標準の tkinter を使ってください。
+・机の列数を入力できるようにしてください。
+・机の行数を入力できるようにしてください。
+・ボタンを押すと、学生をランダムに配置してください。
+・配置結果を画面に表示してください。
+・学生数より席数が多い場合は、空席と表示してください。
+・学生数より席数が少ない場合は、入りきらない学生がいることを表示してください。
+
+コードの条件：
+・Python初心者でも実行しやすいコードにしてください。
+・できるだけ外部ライブラリを使わないでください。
+・1つのPythonファイルで動くようにしてください。
+・説明ではなく、完成したPythonコードを出してください。</code></pre>
+
+      <div class="warning">
+        <h3>ここではまだ front は使いません</h3>
+        <p>
+          まずは、全員をランダムに配置するだけのシンプル版を作ります。
+          うまく動いたら、次に前列希望を使う版に進みます。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>ChatGPTが作ったコードをPythonで動かす</h2>
+
+      <p>
+        ChatGPTがPythonコードを作ったら、そのコードを全部コピーします。
+      </p>
+
+      <ol>
+        <li>ChatGPTが作ったPythonコードを全部コピーします。</li>
+        <li>Pythonを開きます。</li>
+        <li>新しいファイルを作ります。</li>
+        <li>コピーしたコードを全部貼り付けます。</li>
+        <li>ファイル名を <strong>seat_app.py</strong> にして保存します。</li>
+        <li>実行します。</li>
+        <li>席替えアプリの画面が出れば成功です。</li>
+      </ol>
+
+      <div class="note">
+        <h3>今日の目標</h3>
+        <p>
+          まずは、Pythonの画面が出るところまでできればOKです。
+          コードの中身を全部理解できなくても大丈夫です。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>次に、前列希望あり版を作る</h2>
+
+      <p>
+        シンプル版が動いたら、次に
+        <strong>front</strong>
+        の列を使う版を作ります。
+      </p>
+
+      <p>
+        front に
+        <strong>1</strong>
+        が入っている学生は、前列にランダムに配置します。
+        それ以外の学生は、残りの席にランダムに配置します。
+      </p>
+
+      <p>
+        ChatGPTに、次のお願い文を貼り付けてください。
+      </p>
+
+      <pre><code>先ほどの席替えアプリを改良してください。
+
+追加したい機能：
+Googleスプレッドシートの front 列を使います。
+
+ルール：
+・front に 1 が入っている学生は、前列にランダムに配置してください。
+・front が空欄の学生は、残りの席にランダムに配置してください。
+・前列の席数より front が 1 の学生が多い場合は、入りきらなかった学生を残りの席にランダムに配置してください。
+・前列希望の学生同士の席順もランダムにしてください。
+・それ以外の学生の席順もランダムにしてください。
+
+画面の機能：
+・机の列数を入力できるようにしてください。
+・机の行数を入力できるようにしてください。
+・ボタンを押すと席替え表を作ってください。
+・結果を画面に見やすく表示してください。
+・前列希望の学生がどこに入ったか、わかりやすく表示してください。
+
+コードの条件：
+・Python標準の tkinter を使ってください。
+・できるだけ外部ライブラリを使わないでください。
+・1つのPythonファイルで動くようにしてください。
+・説明ではなく、完成したPythonコードを最初から最後まで出してください。</code></pre>
+    </section>
+
+    <section>
+      <h2>うまくいった状態</h2>
+
+      <p>
+        次のような状態になれば成功です。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>確認すること</th>
+            <th>成功の状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pythonを実行した</td>
+            <td>アプリの画面が出る</td>
+          </tr>
+          <tr>
+            <td>列数と行数を入力した</td>
+            <td>指定した形の席表が出る</td>
+          </tr>
+          <tr>
+            <td>ランダムボタンを押した</td>
+            <td>学生の名前がランダムに並ぶ</td>
+          </tr>
+          <tr>
+            <td>front が 1 の学生がいる</td>
+            <td>前の列に優先して入る</td>
+          </tr>
+          <tr>
+            <td>席が余った</td>
+            <td>空席として表示される</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>よくあるつまずき</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>起きていること</th>
+            <th>よくある原因</th>
+            <th>確認すること</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>アプリ画面が出ない</td>
+            <td>コードを全部コピーしていない</td>
+            <td>最初から最後までコピーする</td>
+          </tr>
+          <tr>
+            <td>名簿が読み込めない</td>
+            <td>スプレッドシートの共有設定やURLの問題</td>
+            <td>名簿を開けるか確認する</td>
+          </tr>
+          <tr>
+            <td>名前が出ない</td>
+            <td>列名が違う</td>
+            <td>name という列があるか確認する</td>
+          </tr>
+          <tr>
+            <td>前列希望が反映されない</td>
+            <td>front 列の値が違う</td>
+            <td>前列希望者に 1 が入っているか確認する</td>
+          </tr>
+          <tr>
+            <td>文字が読みにくい</td>
+            <td>画面の表示サイズが合っていない</td>
+            <td>ChatGPTに「文字を大きくしてください」と依頼する</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">追加でできること</div>
+      <h2>さらに便利にする案</h2>
+
+      <p>
+        時間があれば、ChatGPTに次のような改良も依頼できます。
+      </p>
+
+      <ul>
+        <li>席替え結果をCSVで保存する</li>
+        <li>席替え結果を画像として保存する</li>
+        <li>前回と同じ席にならないようにする</li>
+        <li>男女をなるべく交互にする</li>
+        <li>特定の学生同士を近くにしない</li>
+        <li>ボタンや文字を大きくして使いやすくする</li>
+      </ul>
+
+      <div class="note">
+        <h3>今日はここまででOKです</h3>
+        <p>
+          このページは、時間が余った場合の追加内容です。
+          まずは、画面付きの席替えアプリが動くところまでできれば十分です。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>作業のまとめ</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>作業</th>
+            <th>大事なこと</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pythonの準備</td>
+            <td>今回は研修用PCに入っているのでインストールしない</td>
+          </tr>
+          <tr>
+            <td>ChatGPTに依頼</td>
+            <td>席替えアプリのコードを書いてもらう</td>
+          </tr>
+          <tr>
+            <td>コードをコピー</td>
+            <td>Pythonコードを全部コピーする</td>
+          </tr>
+          <tr>
+            <td>Pythonで実行</td>
+            <td>画面付きアプリが出るか確認する</td>
+          </tr>
+          <tr>
+            <td>名簿を使う</td>
+            <td>name と front の列を使う</td>
+          </tr>
+          <tr>
+            <td>席替え表を作る</td>
+            <td>列数と行数を選んで配置する</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="nav-links">
+      <a href="github-upload-html.html">← 前のページ：HTMLをインターネット公開する</a>
+      <a
+        href="https://docs.google.com/forms/d/1x6rLDLwp5bGGby4_z40Wn_WtCsuxByqyMKhhr-1SxbM/edit"
+        target="_blank"
+        rel="noopener"
+      >
+        アンケートへ →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>参考リンク</p>
+      <ul>
+        <li>
+          <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">
+            Python公式ダウンロードページ
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.python.org/ja/3/library/tkinter.html" target="_blank" rel="noopener">
+            Python公式：tkinter
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RDdFI/edit?gid=0#gid=0" target="_blank" rel="noopener">
+            今回使う学生名簿
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
