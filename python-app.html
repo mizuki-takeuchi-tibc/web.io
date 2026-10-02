@@ -220,11 +220,11 @@
       </p>
 
       <p>
-        このお願い文では、Pythonの
-        <strong>&gt;&gt;&gt;</strong>
-        が出ている画面にそのまま貼り付けて実行できるように、
-        <strong>exec(""" ... """)</strong>
-        の形でコードを作ってもらいます。
+        このお願い文では、最初から
+        <strong>スプレッドシートのURLを貼り付けられる画面</strong>
+        と、
+        <strong>前列希望の学生を前の方に配置する機能</strong>
+        を入れてもらいます。
       </p>
 
       <div class="note">
@@ -314,8 +314,7 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
 ・Python初心者でも実行しやすいコードにしてください。
 ・Python標準の tkinter を使ってください。
 ・外部ライブラリはできるだけ使わないでください。
-・Pythonの &gt;&gt;&gt; が出ている画面にそのまま貼り付けて、Enterで実行できる形にしてください。
-・全体を exec(""" から始まり """) で終わる形にしてください。
+・1つのPythonコードとして、そのまま実行できる形にしてください。
 ・説明ではなく、実行できるPythonコードだけを出してください。
 ・コードは省略しないでください。</code></pre>
 
@@ -351,32 +350,25 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
           <strong>&gt;&gt;&gt;</strong>
           が出ている画面を開きます。
         </li>
-        <li>コピーしたコードをそのまま貼り付けます。</li>
+        <li>コピーしたコードを貼り付けます。</li>
         <li><strong>Enter</strong> を押します。</li>
         <li>席替えアプリの画面が出れば成功です。</li>
       </ol>
-
-      <div class="warning">
-        <h3>ここが大事です</h3>
-
-        <p>
-          ChatGPTには、Pythonの
-          <strong>&gt;&gt;&gt;</strong>
-          画面に貼り付けて実行できる形でコードを出してもらいます。
-        </p>
-
-        <p>
-          そのため、お願い文の中に
-          <strong>exec(""" で始まる形にしてください</strong>
-          と書いてあります。
-        </p>
-      </div>
 
       <div class="note">
         <h3>今日の目標</h3>
         <p>
           まずは、Pythonの画面付きアプリが出るところまでできればOKです。
-          ファイルとして保存する作業は、今回はしなくても大丈夫です。
+          この段階では、ファイルとして保存する作業はしません。
+        </p>
+      </div>
+
+      <div class="warning">
+        <h3>うまく動かないとき</h3>
+        <p>
+          コードを貼り付けたあとにエラーが出た場合は、
+          エラー文をコピーしてChatGPTに貼り付け、
+          「このエラーを直してください」と聞きます。
         </p>
       </div>
     </section>
@@ -475,12 +467,12 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
           <tr>
             <td>アプリ画面が出ない</td>
             <td>コードを全部コピーしていない</td>
-            <td>最初から最後までコピーする</td>
+            <td>ChatGPTが出したコードを最初から最後までコピーする</td>
           </tr>
           <tr>
             <td>貼り付けても動かない</td>
-            <td>exec(""" で始まる形になっていない</td>
-            <td>ChatGPTに、exec(""" で始まる形で出し直してもらう</td>
+            <td>コピーしたコードの途中が抜けている</td>
+            <td>コード全体をもう一度コピーして貼り付ける</td>
           </tr>
           <tr>
             <td>名簿が読み込めない</td>
