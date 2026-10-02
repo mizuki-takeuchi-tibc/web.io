@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pythonアプリをexeファイルにする</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="eyebrow">もっとやりたい人向け</div>
+      <h1>Pythonアプリをexeファイルにする</h1>
+      <p>
+        作成したPythonアプリを、ダブルクリックで開ける
+        <strong>.exeファイル</strong> に変換します。
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section>
+      <h2>このページでやること</h2>
+      <p>
+        前のページで作った席替えアプリのPythonコードを
+        <strong>seat_app.py</strong> というファイル名で保存し、
+        PyInstallerを使って <strong>seat_app.exe</strong> を作ります。
+      </p>
+
+      <div class="step-flow">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <strong>Pythonコードを保存</strong>
+          <p>ChatGPTが作ったコードを seat_app.py として保存します。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <strong>PyInstallerを入れる</strong>
+          <p>exeファイルを作るための道具をインストールします。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <strong>exeファイルを作る</strong>
+          <p>コマンドを実行してアプリを変換します。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <strong>ダブルクリックで確認</strong>
+          <p>できあがったexeファイルを開いて確認します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>最初に確認すること</h2>
+
+      <div class="note">
+        <h3>今回は研修用PCで作業します</h3>
+        <p>
+          研修用PCには、Pythonがすでに入っている前提で進めます。
+          そのため、Pythonのダウンロードやインストールは基本的に行いません。
+        </p>
+        <p>
+          自分のPCで同じ作業をする場合は、Pythonが入っていない可能性があります。
+          その場合は、先にPythonのインストールが必要です。
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>確認するもの</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Python</td>
+            <td>Pythonコードを動かすために必要です。</td>
+          </tr>
+          <tr>
+            <td>seat_app.py</td>
+            <td>前のページで作った席替えアプリのPythonファイルです。</td>
+          </tr>
+          <tr>
+            <td>PyInstaller</td>
+            <td>Pythonファイルをexeファイルに変換するための道具です。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>STEP 1：Pythonコードを .py ファイルとして保存する</h2>
+
+      <p>
+        まず、ChatGPTが作ったPythonコードを
+        <strong>seat_app.py</strong> という名前で保存します。
+      </p>
+
+      <ol>
+        <li>Pythonを開きます。</li>
+        <li><strong>File → New File</strong> をクリックします。</li>
+        <li>新しい編集画面が開きます。</li>
+        <li>ChatGPTが作ったPythonコードを、最初から最後まで全部貼り付けます。</li>
+        <li><strong>File → Save As</strong> をクリックします。</li>
+        <li>保存場所として <strong>ドキュメント</strong> を選びます。</li>
+        <li>ファイル名を <strong>seat_app.py</strong> にします。</li>
+        <li><strong>保存</strong> をクリックします。</li>
+      </ol>
+
+      <div class="warning">
+        <h3>ファイル名に注意</h3>
+        <p>
+          ファイル名は <strong>seat_app.py</strong> にします。
+          最後が <code>.py</code> になっていることを確認してください。
+        </p>
+        <p>
+          <code>seat_app.py.txt</code> のようになると、
+          Pythonファイルとして正しく扱えないことがあります。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>STEP 2：保存したファイルを一度実行して確認する</h2>
+
+      <p>
+        exeファイルにする前に、まず
+        <strong>seat_app.py</strong> が正しく動くか確認します。
+      </p>
+
+      <ol>
+        <li>Pythonの編集画面で <strong>seat_app.py</strong> を開きます。</li>
+        <li><strong>Run → Run Module</strong> をクリックします。</li>
+        <li>席替えアプリの画面が表示されるか確認します。</li>
+      </ol>
+
+      <div class="note">
+        <h3>ここで動かない場合</h3>
+        <p>
+          この時点でエラーが出る場合は、まだexeファイルにはしません。
+          先にPythonコードが正しく動く状態に直します。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>STEP 3：コマンドプロンプトを開く</h2>
+
+      <p>
+        PyInstallerは、コマンドを入力して使います。
+        ここではWindowsのコマンドプロンプトを使います。
+      </p>
+
+      <ol>
+        <li>Windowsの検索欄をクリックします。</li>
+        <li><strong>cmd</strong> と入力します。</li>
+        <li><strong>コマンドプロンプト</strong> を開きます。</li>
+      </ol>
+
+      <p>
+        黒い画面、または文字だけの画面が開けばOKです。
+      </p>
+    </section>
+
+    <section>
+      <h2>STEP 4：ドキュメントフォルダに移動する</h2>
+
+      <p>
+        先ほど <strong>seat_app.py</strong> をドキュメントに保存したので、
+        コマンドプロンプトでもドキュメントフォルダに移動します。
+      </p>
+
+      <p>以下のコマンドを入力して、Enterキーを押します。</p>
+
+      <pre><code>cd %USERPROFILE%\Documents</code></pre>
+
+      <div class="note">
+        <h3>意味</h3>
+        <p>
+          <code>cd</code> は「フォルダを移動する」という意味です。
+          このコマンドで、自分のドキュメントフォルダに移動します。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>STEP 5：PyInstallerをインストールする</h2>
+
+      <p>
+        次に、Pythonファイルをexeファイルに変換するための
+        <strong>PyInstaller</strong> をインストールします。
+      </p>
+
+      <p>以下のコマンドを入力して、Enterキーを押します。</p>
+
+      <pre><code>python -m pip install pyinstaller</code></pre>
+
+      <p>
+        もしこのコマンドでうまくいかない場合は、次のコマンドを試します。
+      </p>
+
+      <pre><code>py -m pip install pyinstaller</code></pre>
+
+      <div class="note">
+        <h3>少し時間がかかることがあります</h3>
+        <p>
+          インストールには少し時間がかかる場合があります。
+          画面にたくさん文字が出ても、あわてずに終わるまで待ちます。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>STEP 6：exeファイルを作る</h2>
+
+      <p>
+        PyInstallerを使って、<strong>seat_app.py</strong> から
+        <strong>seat_app.exe</strong> を作ります。
+      </p>
+
+      <p>以下のコマンドを入力して、Enterキーを押します。</p>
+
+      <pre><code>python -m PyInstaller --onefile --windowed seat_app.py</code></pre>
+
+      <p>
+        もしこのコマンドでうまくいかない場合は、次のコマンドを試します。
+      </p>
+
+      <pre><code>py -m PyInstaller --onefile --windowed seat_app.py</code></pre>
+
+      <table>
+        <thead>
+          <tr>
+            <th>部分</th>
+            <th>意味</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>PyInstaller</code></td>
+            <td>Pythonファイルをexeファイルに変換する道具です。</td>
+          </tr>
+          <tr>
+            <td><code>--onefile</code></td>
+            <td>1つのexeファイルにまとめます。</td>
+          </tr>
+          <tr>
+            <td><code>--windowed</code></td>
+            <td>アプリ起動時に黒いコマンド画面を出さないようにします。</td>
+          </tr>
+          <tr>
+            <td><code>seat_app.py</code></td>
+            <td>変換したいPythonファイル名です。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warning">
+        <h3>完了まで待ちます</h3>
+        <p>
+          exeファイルの作成には少し時間がかかります。
+          途中で画面を閉じないでください。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>STEP 7：できあがったexeファイルを確認する</h2>
+
+      <p>
+        変換が終わると、ドキュメントフォルダの中に
+        いくつか新しいフォルダやファイルができます。
+      </p>
+
+      <p>主に見る場所は、次のフォルダです。</p>
+
+      <pre><code>dist</code></pre>
+
+      <p>
+        <strong>dist</strong> フォルダの中に、
+        <strong>seat_app.exe</strong> ができています。
+      </p>
+
+      <ol>
+        <li>ドキュメントフォルダを開きます。</li>
+        <li><strong>dist</strong> フォルダを開きます。</li>
+        <li><strong>seat_app.exe</strong> をダブルクリックします。</li>
+        <li>席替えアプリの画面が表示されれば成功です。</li>
+      </ol>
+
+      <div class="note">
+        <h3>配布するとき</h3>
+        <p>
+          <code>--onefile</code> を使っているので、
+          基本的には <strong>dist</strong> フォルダの中にある
+          <strong>seat_app.exe</strong> を渡せば使えます。
+        </p>
+        <p>
+          ただし、今回のアプリはGoogleスプレッドシートを読み込むため、
+          使うPCがインターネットにつながっている必要があります。
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>作成後にできるファイル</h2>
+
+      <p>
+        PyInstallerを実行すると、次のようなファイルやフォルダができます。
+      </p>
+
+      <pre><code>Documents
+├─ seat_app.py
+├─ seat_app.spec
+├─ build
+└─ dist
+   └─ seat_app.exe</code></pre>
+
+      <table>
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>seat_app.py</code></td>
+            <td>元のPythonコードです。</td>
+          </tr>
+          <tr>
+            <td><code>seat_app.spec</code></td>
+            <td>PyInstallerが作る設定ファイルです。</td>
+          </tr>
+          <tr>
+            <td><code>build</code></td>
+            <td>exe作成の途中で使われる作業用フォルダです。</td>
+          </tr>
+          <tr>
+            <td><code>dist</code></td>
+            <td>完成したexeファイルが入るフォルダです。</td>
+          </tr>
+          <tr>
+            <td><code>seat_app.exe</code></td>
+            <td>完成したアプリです。これをダブルクリックして使います。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>よくあるつまずき</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>困ったこと</th>
+            <th>原因</th>
+            <th>対処</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>python</code> が認識されない</td>
+            <td>Pythonのコマンド名が違う場合があります。</td>
+            <td><code>py</code> を使って実行してみます。</td>
+          </tr>
+          <tr>
+            <td><code>No module named PyInstaller</code> と出る</td>
+            <td>PyInstallerがまだ入っていません。</td>
+            <td><code>python -m pip install pyinstaller</code> を実行します。</td>
+          </tr>
+          <tr>
+            <td><code>seat_app.py</code> が見つからない</td>
+            <td>コマンドプロンプトの場所が違います。</td>
+            <td><code>cd %USERPROFILE%\Documents</code> でドキュメントに移動します。</td>
+          </tr>
+          <tr>
+            <td>exeを開いてもすぐ閉じる</td>
+            <td>元のPythonコードにエラーがある可能性があります。</td>
+            <td>先にPythonで <code>seat_app.py</code> を実行して確認します。</td>
+          </tr>
+          <tr>
+            <td>Windowsが警告を出す</td>
+            <td>自作exeファイルなので、Windowsが確認を求めることがあります。</td>
+            <td>自分で作ったファイルであることを確認して実行します。</td>
+          </tr>
+          <tr>
+            <td>exeファイルが大きい</td>
+            <td>Python本体や必要な部品も一緒に入るためです。</td>
+            <td>異常ではありません。数十MB以上になることがあります。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="highlight">
+      <div class="eyebrow">完成</div>
+      <h2>できあがり</h2>
+      <p>
+        これで、Pythonを直接開かなくても、
+        <strong>seat_app.exe</strong> をダブルクリックして
+        席替えアプリを起動できるようになります。
+      </p>
+      <p>
+        研修では、ここまでできれば十分です。
+        最後にアンケートへの回答をお願いします。
+      </p>
+
+      <div class="center">
+        <a class="button" href="https://docs.google.com/forms/d/1x6rLDLwp5bGGby4_z40Wn_WtCsuxByqyMKhhr-1SxbM/edit" target="_blank" rel="noopener">
+          アンケートに進む
+        </a>
+      </div>
+    </section>
+
+    <div class="nav-links">
+      <a href="python-app.html">← 前のページ：Pythonで席替えアプリを作る</a>
+      <a href="https://docs.google.com/forms/d/1x6rLDLwp5bGGby4_z40Wn_WtCsuxByqyMKhhr-1SxbM/edit" target="_blank" rel="noopener">アンケートに進む →</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>参考リンク</p>
+      <ul>
+        <li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Python公式ダウンロードページ</a></li>
+        <li><a href="https://pyinstaller.org/" target="_blank" rel="noopener">PyInstaller公式サイト</a></li>
+        <li><a href="https://pyinstaller.org/en/stable/usage.html" target="_blank" rel="noopener">PyInstaller公式ドキュメント：使い方</a></li>
+        <li><a href="https://docs.google.com/forms/d/1x6rLDLwp5bGGby4_z40Wn_WtCsuxByqyMKhhr-1SxbM/edit" target="_blank" rel="noopener">研修アンケート</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
