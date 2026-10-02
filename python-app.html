@@ -58,14 +58,14 @@
 
         <div class="step-card">
           <span class="step-number">3</span>
-          <strong>Pythonで実行</strong>
-          <p>コードを貼り付けて動かします。</p>
+          <strong>Pythonに貼る</strong>
+          <p>&gt;&gt;&gt; の画面に貼り付けます。</p>
         </div>
 
         <div class="step-card">
           <span class="step-number">4</span>
-          <strong>席替え表を作成</strong>
-          <p>画面で席の配置を確認します。</p>
+          <strong>アプリを表示</strong>
+          <p>Enterを押して画面を出します。</p>
         </div>
       </div>
     </section>
@@ -220,11 +220,11 @@
       </p>
 
       <p>
-        このお願い文では、最初から
-        <strong>スプレッドシートのURLを貼り付けられる画面</strong>
-        と、
-        <strong>前列希望の学生を前の方に配置する機能</strong>
-        を入れてもらいます。
+        このお願い文では、Pythonの
+        <strong>&gt;&gt;&gt;</strong>
+        が出ている画面にそのまま貼り付けて実行できるように、
+        <strong>exec(""" ... """)</strong>
+        の形でコードを作ってもらいます。
       </p>
 
       <div class="note">
@@ -312,9 +312,11 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
 
 コードの条件：
 ・Python初心者でも実行しやすいコードにしてください。
-・1つのPythonファイルで動くようにしてください。
 ・Python標準の tkinter を使ってください。
-・説明ではなく、完成したPythonコードを最初から最後まで出してください。
+・外部ライブラリはできるだけ使わないでください。
+・Pythonの &gt;&gt;&gt; が出ている画面にそのまま貼り付けて、Enterで実行できる形にしてください。
+・全体を exec(""" から始まり """) で終わる形にしてください。
+・説明ではなく、実行できるPythonコードだけを出してください。
 ・コードは省略しないでください。</code></pre>
 
       <div class="warning">
@@ -333,25 +335,48 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
         ChatGPTがPythonコードを作ったら、そのコードを全部コピーします。
       </p>
 
+      <p>
+        今回は、ファイルとして保存しなくても大丈夫です。
+        Pythonの
+        <strong>&gt;&gt;&gt;</strong>
+        が出ている画面に貼り付けて、
+        <strong>Enter</strong>
+        を押します。
+      </p>
+
       <ol>
         <li>ChatGPTが作ったPythonコードを全部コピーします。</li>
         <li>Pythonを開きます。</li>
-        <li>新しいファイルを作ります。</li>
-        <li>コピーしたコードを全部貼り付けます。</li>
         <li>
-          ファイル名を
-          <strong>seat_app.py</strong>
-          にして保存します。
+          <strong>&gt;&gt;&gt;</strong>
+          が出ている画面を開きます。
         </li>
-        <li>実行します。</li>
+        <li>コピーしたコードをそのまま貼り付けます。</li>
+        <li><strong>Enter</strong> を押します。</li>
         <li>席替えアプリの画面が出れば成功です。</li>
       </ol>
+
+      <div class="warning">
+        <h3>ここが大事です</h3>
+
+        <p>
+          ChatGPTには、Pythonの
+          <strong>&gt;&gt;&gt;</strong>
+          画面に貼り付けて実行できる形でコードを出してもらいます。
+        </p>
+
+        <p>
+          そのため、お願い文の中に
+          <strong>exec(""" で始まる形にしてください</strong>
+          と書いてあります。
+        </p>
+      </div>
 
       <div class="note">
         <h3>今日の目標</h3>
         <p>
-          まずは、Pythonの画面が出るところまでできればOKです。
-          コードの中身を全部理解できなくても大丈夫です。
+          まずは、Pythonの画面付きアプリが出るところまでできればOKです。
+          ファイルとして保存する作業は、今回はしなくても大丈夫です。
         </p>
       </div>
     </section>
@@ -453,6 +478,11 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
             <td>最初から最後までコピーする</td>
           </tr>
           <tr>
+            <td>貼り付けても動かない</td>
+            <td>exec(""" で始まる形になっていない</td>
+            <td>ChatGPTに、exec(""" で始まる形で出し直してもらう</td>
+          </tr>
+          <tr>
             <td>名簿が読み込めない</td>
             <td>スプレッドシートの共有設定やURLの問題</td>
             <td>名簿を開けるか確認する</td>
@@ -527,8 +557,8 @@ https://docs.google.com/spreadsheets/d/1UdaVAVHzrF2i0XIOrq6LiC7sv2FuYo9XtlHIO8RD
             <td>Pythonコードを全部コピーする</td>
           </tr>
           <tr>
-            <td>Pythonで実行</td>
-            <td>画面付きアプリが出るか確認する</td>
+            <td>Pythonに貼り付ける</td>
+            <td>&gt;&gt;&gt; の画面に貼って Enter を押す</td>
           </tr>
           <tr>
             <td>名簿を使う</td>
