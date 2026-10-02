@@ -24,75 +24,89 @@
     <section>
       <h2>このページでやること</h2>
       <p>
-        前のページで作った席替えアプリのPythonコードを
-        <strong>seat_app.py</strong> というファイル名で保存し、
-        PyInstallerを使って <strong>seat_app.exe</strong> を作ります。
+        前のページで作った席替えアプリのPythonコードを、
+        メモ帳などのテキストエディタに貼り付けて
+        <strong>seat_app.py</strong> というファイル名で保存します。
+      </p>
+      <p>
+        そのあと、PyInstallerを使って、
+        ダブルクリックで起動できる
+        <strong>seat_app.exe</strong> を作ります。
       </p>
 
       <div class="step-flow">
         <div class="step-card">
           <div class="step-number">1</div>
-          <strong>Pythonコードを保存</strong>
+          <strong>コードを保存</strong>
           <p>ChatGPTが作ったコードを seat_app.py として保存します。</p>
         </div>
 
         <div class="step-card">
           <div class="step-number">2</div>
+          <strong>cmdを開く</strong>
+          <p>ドキュメントフォルダでコマンドプロンプトを開きます。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
           <strong>PyInstallerを入れる</strong>
           <p>exeファイルを作るための道具をインストールします。</p>
         </div>
 
         <div class="step-card">
-          <div class="step-number">3</div>
-          <strong>exeファイルを作る</strong>
-          <p>コマンドを実行してアプリを変換します。</p>
-        </div>
-
-        <div class="step-card">
           <div class="step-number">4</div>
-          <strong>ダブルクリックで確認</strong>
-          <p>できあがったexeファイルを開いて確認します。</p>
+          <strong>exeを作る</strong>
+          <p>コマンドを実行してPythonファイルをexeに変換します。</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>最初に確認すること</h2>
+      <h2>最初に知っておくこと</h2>
 
-      <div class="note">
-        <h3>今回は研修用PCで作業します</h3>
-        <p>
-          研修用PCには、Pythonがすでに入っている前提で進めます。
-          そのため、Pythonのダウンロードやインストールは基本的に行いません。
-        </p>
-        <p>
-          自分のPCで同じ作業をする場合は、Pythonが入っていない可能性があります。
-          その場合は、先にPythonのインストールが必要です。
-        </p>
-      </div>
+      <p>
+        Pythonで作ったアプリは、通常はPythonが入っているPCで実行します。
+        しかし、<strong>.exeファイル</strong> にすると、
+        ダブルクリックで起動できるアプリの形にできます。
+      </p>
 
       <table>
         <thead>
           <tr>
-            <th>確認するもの</th>
-            <th>内容</th>
+            <th>言葉</th>
+            <th>意味</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Python</td>
-            <td>Pythonコードを動かすために必要です。</td>
+            <td><code>.py</code></td>
+            <td>Pythonのコードを書いたファイルです。例：<code>seat_app.py</code></td>
           </tr>
           <tr>
-            <td>seat_app.py</td>
-            <td>前のページで作った席替えアプリのPythonファイルです。</td>
+            <td><code>.exe</code></td>
+            <td>Windowsでダブルクリックして起動できる実行ファイルです。</td>
           </tr>
           <tr>
             <td>PyInstaller</td>
             <td>Pythonファイルをexeファイルに変換するための道具です。</td>
           </tr>
+          <tr>
+            <td>コマンドプロンプト</td>
+            <td>文字で命令を入力して、PCに作業させる画面です。</td>
+          </tr>
         </tbody>
       </table>
+
+      <div class="note">
+        <h3>今回は研修用PCで作業します</h3>
+        <p>
+          研修用PCには、Pythonがすでに入っている前提で進めます。
+          そのため、このページではPythonのダウンロードやインストールは扱いません。
+        </p>
+        <p>
+          自分のPCで同じ作業をする場合は、先にPythonのインストールが必要になることがあります。
+        </p>
+      </div>
     </section>
 
     <section>
@@ -103,107 +117,111 @@
         <strong>seat_app.py</strong> という名前で保存します。
       </p>
 
+      <p>
+        <code>.py</code> ファイルは、特別なソフトで作る必要はありません。
+        中身はテキストなので、メモ帳などのテキストエディタに貼り付けて保存できます。
+      </p>
+
       <ol>
-        <li>Pythonを開きます。</li>
-        <li><strong>File → New File</strong> をクリックします。</li>
-        <li>新しい編集画面が開きます。</li>
-        <li>ChatGPTが作ったPythonコードを、最初から最後まで全部貼り付けます。</li>
-        <li><strong>File → Save As</strong> をクリックします。</li>
+        <li>ChatGPTが作ったPythonコードを、最初から最後まで全部コピーします。</li>
+        <li>メモ帳などのテキストエディタを開きます。</li>
+        <li>コピーしたコードを全部貼り付けます。</li>
+        <li><strong>ファイル → 名前を付けて保存</strong> をクリックします。</li>
         <li>保存場所として <strong>ドキュメント</strong> を選びます。</li>
         <li>ファイル名を <strong>seat_app.py</strong> にします。</li>
-        <li><strong>保存</strong> をクリックします。</li>
+        <li>保存します。</li>
       </ol>
+
+      <div class="note">
+        <h3>.pyファイルはテキストファイルです</h3>
+        <p>
+          Pythonのコードは、見た目は普通の文章のようなテキストです。
+          そのため、メモ帳などに貼り付けて保存できます。
+        </p>
+        <p>
+          ただし、ファイル名の最後は <code>.py</code> にします。
+          これにより、Pythonのプログラムファイルとして扱えるようになります。
+        </p>
+      </div>
 
       <div class="warning">
-        <h3>ファイル名に注意</h3>
+        <h3>メモ帳で保存するときの注意</h3>
         <p>
           ファイル名は <strong>seat_app.py</strong> にします。
-          最後が <code>.py</code> になっていることを確認してください。
         </p>
         <p>
-          <code>seat_app.py.txt</code> のようになると、
-          Pythonファイルとして正しく扱えないことがあります。
+          ただし、Windowsの設定によっては、実際には
+          <code>seat_app.py.txt</code> のように保存されてしまうことがあります。
+          その場合は、Pythonファイルとして正しく扱えません。
+        </p>
+        <p>
+          メモ帳で保存するときに「ファイルの種類」を選べる場合は、
+          <strong>すべてのファイル</strong> を選んでから
+          <strong>seat_app.py</strong> として保存してください。
         </p>
       </div>
     </section>
 
     <section>
-      <h2>STEP 2：保存したファイルを一度実行して確認する</h2>
+      <h2>STEP 2：ドキュメントフォルダでコマンドプロンプトを開く</h2>
 
       <p>
-        exeファイルにする前に、まず
-        <strong>seat_app.py</strong> が正しく動くか確認します。
+        次に、<strong>seat_app.py</strong> を保存した
+        ドキュメントフォルダでコマンドプロンプトを開きます。
       </p>
 
       <ol>
-        <li>Pythonの編集画面で <strong>seat_app.py</strong> を開きます。</li>
-        <li><strong>Run → Run Module</strong> をクリックします。</li>
-        <li>席替えアプリの画面が表示されるか確認します。</li>
+        <li>エクスプローラーで <strong>ドキュメント</strong> フォルダを開きます。</li>
+        <li><strong>seat_app.py</strong> があることを確認します。</li>
+        <li>画面上部のアドレスバーをクリックします。</li>
+        <li>そこに <strong>cmd</strong> と入力します。</li>
+        <li>Enterキーを押します。</li>
       </ol>
 
+      <p>
+        すると、ドキュメントフォルダの場所で
+        コマンドプロンプトが開きます。
+      </p>
+
       <div class="note">
-        <h3>ここで動かない場合</h3>
+        <h3>この方法が簡単です</h3>
         <p>
-          この時点でエラーが出る場合は、まだexeファイルにはしません。
-          先にPythonコードが正しく動く状態に直します。
+          コマンドでフォルダを移動する必要がありません。
+          <strong>seat_app.py</strong> があるフォルダで
+          そのままコマンドプロンプトを開けます。
+        </p>
+      </div>
+
+      <div class="warning">
+        <h3>場所が違うとエラーになります</h3>
+        <p>
+          コマンドプロンプトを開いた場所に
+          <strong>seat_app.py</strong> がないと、
+          PyInstallerがファイルを見つけられません。
+        </p>
+        <p>
+          その場合は、もう一度ドキュメントフォルダを開き、
+          アドレスバーに <strong>cmd</strong> と入力して開き直してください。
         </p>
       </div>
     </section>
 
     <section>
-      <h2>STEP 3：コマンドプロンプトを開く</h2>
+      <h2>STEP 3：PyInstallerをインストールする</h2>
 
       <p>
-        PyInstallerは、コマンドを入力して使います。
-        ここではWindowsのコマンドプロンプトを使います。
-      </p>
-
-      <ol>
-        <li>Windowsの検索欄をクリックします。</li>
-        <li><strong>cmd</strong> と入力します。</li>
-        <li><strong>コマンドプロンプト</strong> を開きます。</li>
-      </ol>
-
-      <p>
-        黒い画面、または文字だけの画面が開けばOKです。
-      </p>
-    </section>
-
-    <section>
-      <h2>STEP 4：ドキュメントフォルダに移動する</h2>
-
-      <p>
-        先ほど <strong>seat_app.py</strong> をドキュメントに保存したので、
-        コマンドプロンプトでもドキュメントフォルダに移動します。
-      </p>
-
-      <p>以下のコマンドを入力して、Enterキーを押します。</p>
-
-      <pre><code>cd %USERPROFILE%\Documents</code></pre>
-
-      <div class="note">
-        <h3>意味</h3>
-        <p>
-          <code>cd</code> は「フォルダを移動する」という意味です。
-          このコマンドで、自分のドキュメントフォルダに移動します。
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <h2>STEP 5：PyInstallerをインストールする</h2>
-
-      <p>
-        次に、Pythonファイルをexeファイルに変換するための
+        Pythonファイルをexeファイルに変換するために、
         <strong>PyInstaller</strong> をインストールします。
       </p>
 
-      <p>以下のコマンドを入力して、Enterキーを押します。</p>
+      <p>
+        コマンドプロンプトに、次のコマンドを入力してEnterキーを押します。
+      </p>
 
       <pre><code>python -m pip install pyinstaller</code></pre>
 
       <p>
-        もしこのコマンドでうまくいかない場合は、次のコマンドを試します。
+        もし上のコマンドでうまくいかない場合は、次のコマンドを試します。
       </p>
 
       <pre><code>py -m pip install pyinstaller</code></pre>
@@ -218,19 +236,21 @@
     </section>
 
     <section>
-      <h2>STEP 6：exeファイルを作る</h2>
+      <h2>STEP 4：exeファイルを作る</h2>
 
       <p>
         PyInstallerを使って、<strong>seat_app.py</strong> から
         <strong>seat_app.exe</strong> を作ります。
       </p>
 
-      <p>以下のコマンドを入力して、Enterキーを押します。</p>
+      <p>
+        コマンドプロンプトに、次のコマンドを入力してEnterキーを押します。
+      </p>
 
       <pre><code>python -m PyInstaller --onefile --windowed seat_app.py</code></pre>
 
       <p>
-        もしこのコマンドでうまくいかない場合は、次のコマンドを試します。
+        もし上のコマンドでうまくいかない場合は、次のコマンドを試します。
       </p>
 
       <pre><code>py -m PyInstaller --onefile --windowed seat_app.py</code></pre>
@@ -272,14 +292,16 @@
     </section>
 
     <section>
-      <h2>STEP 7：できあがったexeファイルを確認する</h2>
+      <h2>STEP 5：できあがったexeファイルを確認する</h2>
 
       <p>
         変換が終わると、ドキュメントフォルダの中に
         いくつか新しいフォルダやファイルができます。
       </p>
 
-      <p>主に見る場所は、次のフォルダです。</p>
+      <p>
+        完成したexeファイルは、次のフォルダの中にあります。
+      </p>
 
       <pre><code>dist</code></pre>
 
@@ -313,7 +335,8 @@
       <h2>作成後にできるファイル</h2>
 
       <p>
-        PyInstallerを実行すると、次のようなファイルやフォルダができます。
+        PyInstallerを実行すると、ドキュメントフォルダの中に
+        次のようなファイルやフォルダができます。
       </p>
 
       <pre><code>Documents
@@ -353,6 +376,19 @@
           </tr>
         </tbody>
       </table>
+
+      <div class="note">
+        <h3>buildフォルダなどは何？</h3>
+        <p>
+          <strong>build</strong> フォルダや
+          <strong>seat_app.spec</strong> は、exeファイルを作る途中で作成されるものです。
+        </p>
+        <p>
+          実際に使う完成品は、基本的には
+          <strong>dist</strong> フォルダの中の
+          <strong>seat_app.exe</strong> です。
+        </p>
+      </div>
     </section>
 
     <section>
@@ -375,27 +411,58 @@
           <tr>
             <td><code>No module named PyInstaller</code> と出る</td>
             <td>PyInstallerがまだ入っていません。</td>
-            <td><code>python -m pip install pyinstaller</code> を実行します。</td>
+            <td><code>python -m pip install pyinstaller</code> または <code>py -m pip install pyinstaller</code> を実行します。</td>
           </tr>
           <tr>
             <td><code>seat_app.py</code> が見つからない</td>
-            <td>コマンドプロンプトの場所が違います。</td>
-            <td><code>cd %USERPROFILE%\Documents</code> でドキュメントに移動します。</td>
+            <td>
+              コマンドプロンプトを開いた場所に
+              <code>seat_app.py</code> がありません。
+            </td>
+            <td>
+              ドキュメントフォルダを開き、アドレスバーに
+              <code>cmd</code> と入力して、そこでコマンドプロンプトを開き直します。
+              また、ファイル名が <code>seat_app.py.txt</code> になっていないか確認します。
+            </td>
+          </tr>
+          <tr>
+            <td><code>seat_app.py.txt</code> になっている</td>
+            <td>
+              メモ帳で保存するときに、テキスト文書として保存されている可能性があります。
+            </td>
+            <td>
+              保存するときに「ファイルの種類」を
+              <strong>すべてのファイル</strong> にして、
+              <code>seat_app.py</code> という名前で保存し直します。
+            </td>
           </tr>
           <tr>
             <td>exeを開いてもすぐ閉じる</td>
-            <td>元のPythonコードにエラーがある可能性があります。</td>
-            <td>先にPythonで <code>seat_app.py</code> を実行して確認します。</td>
+            <td>
+              元のPythonコードにエラーがある、または必要な情報が読み込めていない可能性があります。
+            </td>
+            <td>
+              前のページで作ったPythonコードを見直します。
+              コードを途中までしかコピーしていない場合もあるので、最初から最後まで貼り付けたか確認します。
+            </td>
           </tr>
           <tr>
             <td>Windowsが警告を出す</td>
-            <td>自作exeファイルなので、Windowsが確認を求めることがあります。</td>
-            <td>自分で作ったファイルであることを確認して実行します。</td>
+            <td>
+              自作exeファイルなので、Windowsが確認を求めることがあります。
+            </td>
+            <td>
+              自分で作ったファイルであることを確認して実行します。
+            </td>
           </tr>
           <tr>
             <td>exeファイルが大きい</td>
-            <td>Python本体や必要な部品も一緒に入るためです。</td>
-            <td>異常ではありません。数十MB以上になることがあります。</td>
+            <td>
+              Python本体や必要な部品も一緒に入るためです。
+            </td>
+            <td>
+              異常ではありません。数十MB以上になることがあります。
+            </td>
           </tr>
         </tbody>
       </table>
