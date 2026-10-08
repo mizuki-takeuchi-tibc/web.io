@@ -5,120 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>留学生育成シミュレーション</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
 </head>
 <body>
-
   <div class="bg-overlay"></div>
 
-  <header class="game-header">
-    <div class="header-inner">
-      <p class="sub-title">International Student Support Simulation</p>
-      <h1>伝説の先生に、俺はなる！</h1>
-      <p class="lead">
-        担任として学生と向き合い、出席率を守りながら卒業・進路決定へ導きましょう。
-      </p>
-    </div>
-  </header>
-
-  <main class="game-container">
-
-    <section class="top-status">
-      <div class="status-box">
-        <span>現在の週</span>
-        <strong><span id="weekText">1</span> / 12</strong>
+  <main class="app">
+    <header class="game-header">
+      <div>
+        <p class="eyebrow">International Student Support Simulation</p>
+        <h1>伝説の先生に、俺はなる！</h1>
       </div>
-
-      <div class="status-box">
-        <span>行動ポイント</span>
-        <strong><span id="apText">4</span></strong>
+      <div class="header-note">
+        出席率99%を守りながら、12週間で進路実現を目指そう
       </div>
+    </header>
 
-      <div class="status-box">
-        <span>学校評価</span>
-        <strong><span id="schoolRepText">50</span></strong>
-      </div>
+    <section class="top-status" id="topStatus"></section>
 
-      <div class="status-box">
-        <span>選択中</span>
-        <strong id="selectedText">なし</strong>
-      </div>
-    </section>
-
-    <section class="game-layout">
-
-      <section class="students-section">
+    <section class="main-layout">
+      <section class="students-area">
         <div class="section-title-row">
-          <div>
-            <h2>学生一覧</h2>
-            <p>学生を選択して、今週の支援内容を決めてください。</p>
-          </div>
+          <h2>学生たち</h2>
+          <p>学生を選んで、右の育成メニューから行動を選択してください。</p>
         </div>
 
-        <div id="studentsArea" class="students-grid"></div>
-
-        <section id="resultScreen" class="result-screen">
-          <h2>卒業判定</h2>
-          <div id="finalResult"></div>
-          <button class="main-btn dark" onclick="restartGame()">もう一度プレイ</button>
-        </section>
+        <div class="students-grid" id="studentsGrid"></div>
       </section>
 
       <aside class="side-panel">
-
-        <section class="panel-card">
+        <div class="panel-card actions-panel">
           <h2>育成メニュー</h2>
-          <p class="hint">
-            効果の正確な数値は表示されません。学生の状態、友好度、疲労、メンタルによって結果が変わります。
+          <p class="panel-desc">
+            行動の効果は毎回少し変化します。友好度が高いほど成長しやすくなります。
           </p>
 
-          <div id="actionsArea" class="actions-list"></div>
+          <div class="action-buttons" id="actionButtons"></div>
 
-          <div class="control-buttons">
-            <button class="main-btn next" onclick="nextWeek()">週を進める</button>
-            <button class="main-btn dark" onclick="restartGame()">リスタート</button>
-          </div>
-        </section>
+          <button class="next-week-btn" id="nextWeekBtn">
+            次の週へ進む
+          </button>
 
-        <section class="panel-card">
+          <p class="hint">
+            ※ 出席率は基本的に回復しません。疲労・メンタル・生活・友好度を管理して、欠席を防ぎましょう。
+          </p>
+        </div>
+
+        <div class="panel-card log-panel">
           <h2>記録</h2>
-          <div id="logArea" class="log-area"></div>
-        </section>
-
+          <div class="log-area" id="logArea"></div>
+        </div>
       </aside>
-
     </section>
   </main>
 
   <!-- 行動演出モーダル -->
-  <div id="actionModal" class="modal hidden">
-    <div class="modal-bg"></div>
+  <div class="action-modal hidden" id="actionModal">
+    <div class="modal-backdrop"></div>
 
     <div class="modal-content">
-      <button id="skipButton" class="skip-btn">スキップ</button>
-
-      <div class="modal-title-row">
-        <p id="modalStudent" class="modal-student">学生名</p>
-        <h2 id="modalActionTitle">行動名</h2>
+      <div class="modal-header">
+        <div>
+          <p class="modal-kicker">Action Scene</p>
+          <h2 id="modalTitle">行動中</h2>
+        </div>
+        <button class="skip-btn" id="skipAnimationBtn">スキップ</button>
       </div>
 
-      <div class="action-scene">
-        <img id="actionSceneImage" src="" alt="行動シーン" />
+      <div class="modal-image-wrap">
+        <img id="modalActionImage" src="" alt="行動シーン" />
       </div>
 
-      <p id="modalActionText" class="modal-text">
-        対応しています...
-      </p>
-
-      <div class="loading-dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <p class="modal-text" id="modalText"></p>
     </div>
   </div>
 
-  <div id="toast" class="toast"></div>
+  <!-- トースト -->
+  <div class="toast hidden" id="toast"></div>
 
+  <!-- 結果画面 -->
+  <section class="result-screen hidden" id="resultScreen"></section>
+
+  <script src="script.js"></script>
 </body>
 </html>
