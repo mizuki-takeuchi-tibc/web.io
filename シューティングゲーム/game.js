@@ -23,7 +23,8 @@ const ASSETS = {
   mboss: "assets/mboss.png",
   lboss: "assets/lboss.png",
   bg: "assets/haikei.jpg",
-  title: "assets/title.png",
+  title: "assets/title.png",        // PC・横画面用
+  titleSp: "assets/title_sp.png",   // スマホ・縦画面用
 };
 
 // 追加：BGM
@@ -1113,7 +1114,18 @@ function drawUI() {
 }
 
 function drawTitle() {
-  const titleImg = images.title;
+  // 縦長画面ならスマホ用タイトルを使う
+  const isPortrait = H > W;
+
+  let titleImg = isPortrait ? images.titleSp : images.title;
+
+  // もしスマホ用画像が読み込めなかったら通常タイトルに戻す
+  if (
+    isPortrait &&
+    (!titleImg || titleImg.failed || !titleImg.complete || titleImg.naturalWidth <= 0)
+  ) {
+    titleImg = images.title;
+  }
 
   // タイトル画像を画面いっぱいに表示
   if (titleImg && !titleImg.failed && titleImg.complete && titleImg.naturalWidth > 0) {
@@ -1124,8 +1136,8 @@ function drawTitle() {
     ctx.fillRect(0, 0, W, H);
   }
 
-  // 少し暗いフィルターを重ねて文字を読みやすくする
-  ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+  // 文字を読みやすくするための薄い暗幕
+  ctx.fillStyle = "rgba(0, 0, 0, 0.12)";
   ctx.fillRect(0, 0, W, H);
 
   ctx.save();
@@ -1133,27 +1145,43 @@ function drawTitle() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // 画像内にも PRESS START があるけど、操作説明として追加表示
+  // 縦画面・横画面で文字位置を少し変える
+  const startY = isPortrait ? H * 0.78 : H * 0.82;
+  const creditY = isPortrait ? H * 0.87 : H * 0.9;
+  const controlY = isPortrait ? H * 0.94 : H * 0.95;
+
+  // スタート案内
   ctx.fillStyle = "rgba(180, 255, 255, 0.95)";
-  ctx.font = `bold ${Math.min(28, W * 0.045)}px sans-serif`;
+  ctx.font = `bold ${Math.min(28, W * 0.06)}px sans-serif`;
   ctx.shadowColor = "rgba(80, 255, 255, 0.9)";
   ctx.shadowBlur = 12;
-  ctx.fillText("PRESS ENTER / SPACE / CLICK", W / 2, H * 0.82);
+
+  if (isPortrait) {
+    ctx.fillText("TAP TO START", W / 2, startY);
+  } else {
+    ctx.fillText("PRESS ENTER / SPACE / CLICK", W / 2, startY);
+  }
 
   // 制作者表記
   ctx.shadowBlur = 8;
-  ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-  ctx.font = `${Math.min(18, W * 0.032)}px sans-serif`;
-  ctx.fillText("制作：竹内先生", W / 2, H * 0.9);
+  ctx.fillStyle = "rgba(255, 255, 255, 0.92)";
+  ctx.font = `${Math.min(18, W * 0.04)}px sans-serif`;
+  ctx.fillText("制作：竹内先生", W / 2, creditY);
 
   // 操作説明
   ctx.shadowBlur = 0;
-  ctx.fillStyle = "rgba(255, 255, 255, 0.75)";
-  ctx.font = `${Math.min(15, W * 0.028)}px sans-serif`;
-  ctx.fillText("WASD / 矢印キー：移動　スマホ：ドラッグ移動", W / 2, H * 0.95);
+  ctx.fillStyle = "rgba(255, 255, 255, 0.78)";
+  ctx.font = `${Math.min(15, W * 0.035)}px sans-serif`;
+
+  if (isPortrait) {
+    ctx.fillText("ドラッグで移動", W / 2, controlY);
+  } else {
+    ctx.fillText("WASD / 矢印キー：移動　スマホ：ドラッグ移動", W / 2, controlY);
+  }
 
   ctx.restore();
 }
+
 
 
 function drawGameOver() {
