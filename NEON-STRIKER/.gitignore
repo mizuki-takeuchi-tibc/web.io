@@ -1,0 +1,5 @@
+.build-cache/
+dist/
+electron-cache/
+cache/
+__pycache__/
