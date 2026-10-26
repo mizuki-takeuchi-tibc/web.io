@@ -7,7 +7,7 @@
 <section id="home"><div class="hero"><div><div class="eyebrow">TWO PHONES. ONE PROMPT.</div><h1>うまくても、<br>へたでも、勝負だ。</h1><p class="muted">同じお題を、ふたりのスマホで。<br>描いたら見せ合って、せーので投票。<br>ちょっと笑える、おえかき対戦。</p></div><div class="art"><svg viewBox="0 0 340 280" fill="none" aria-label="手描きの猫と鉛筆"><rect x="45" y="25" width="230" height="230" rx="10" fill="#fffdf8" transform="rotate(8 160 140)"/><path d="M100 150 L97 80 137 105 Q163 90 193 106 L224 80 226 153 Q225 212 165 213 Q105 212 100 150Z" stroke="#31553c" stroke-width="5" stroke-linejoin="round"/><path d="M132 145v7m60-7v7m-40 18 13 8 12-8m-12 8v12m-46-26-40-8m42 21-38 6m119-18 40-8m-40 22 40 7" stroke="#31553c" stroke-width="5" stroke-linecap="round"/><circle cx="131" cy="166" r="12" fill="#f3bd9a"/><circle cx="197" cy="166" r="12" fill="#f3bd9a"/><path d="m254 217 34-115 17 5-34 115-15 18Z" fill="#f2b254" stroke="#31553c" stroke-width="3"/><path d="m55 38 5-16m-21 26-16-3m45 16 14-5" stroke="#31553c" stroke-width="4" stroke-linecap="round"/></svg></div></div>
 <label for="name">あなたの名前</label><input id="name" maxlength="16" placeholder="例：みずき" autocomplete="nickname">
 <div class="grid" style="margin-top:20px"><div class="card green"><span class="eyebrow">01 / HOST</span><h3>ルームをつくる</h3><p class="muted">コードを友だちに伝えて、対戦スタート。</p><label for="duration">おえかき時間</label><select id="duration"><option value="60">60秒 — ひらめき勝負</option><option value="120" selected>120秒 — じっくり描こう</option><option value="180">180秒 — 本気の作品</option></select><button class="wide" id="create">ルームをつくる →</button></div><div class="card"><span class="eyebrow">02 / GUEST</span><h3>ルームに参加</h3><p class="muted">友だちから届いた6桁のコードを入力。</p><label for="joincode">ルームコード</label><input id="joincode" placeholder="例：482915" inputmode="numeric" maxlength="6" pattern="[0-9]{6}"><button class="wide secondary" id="join">ルームに参加 →</button></div></div><div class="steps"><span>① コードで集合</span><span>② 同じお題で描く</span><span>③ ふたりで投票</span></div><p class="muted">2人専用・AI判定なし・有料API不要。2人が同じ作品を選べばその人の勝ち。票が分かれたら引き分けです。</p></section>
-<section id="lobby" class="hidden card"><span class="eyebrow">WAITING ROOM</span><h2>ふたりがそろったら、はじめよう。</h2><p class="muted">ルームコード</p><div id="code" class="code"></div><div class="row"><button id="share" class="secondary">招待リンクをコピー</button><button id="cancel" class="secondary">退出</button></div><p id="players" class="muted"></p><button id="start" class="wide orange" disabled>お題を決めてスタート →</button><p class="muted">ホストはこの画面を開いたままにしてください。</p></section>
+<section id="lobby" class="hidden card"><span class="eyebrow">WAITING ROOM</span><h2 id="lobbytitle">ふたりがそろったら、はじめよう。</h2><p class="muted">ルームコード</p><div id="code" class="code"></div><div class="row"><button id="share" class="secondary">招待リンクをコピー</button><button id="cancel" class="secondary">退出</button><button id="retry" class="secondary hidden">もう一度接続する</button></div><p id="players" class="muted"></p><button id="start" class="wide orange" disabled>お題を決めてスタート →</button><p class="muted">ホストはこの画面を開いたままにしてください。</p></section>
 <section id="game" class="hidden"><div class="row between"><span class="pill" id="round"></span><span class="timer" id="timer"></span></div><div class="prompt" id="prompt"></div><p id="drawstatus" class="muted">お題に沿って自由に描こう。</p><canvas id="canvas" width="720" height="720" aria-label="おえかきキャンバス"></canvas><div class="toolbar" id="tools"><div class="row" id="palette"></div><label style="margin:0">太さ <input id="size" type="range" min="2" max="35" value="7"></label><button id="eraser" class="small secondary" aria-pressed="false">消しゴム</button><button id="undo" class="small secondary">ひとつ戻す</button><button id="clear" class="small secondary">全消し</button></div><button id="submit" class="wide">できた！ 提出する →</button><button id="leavegame" class="wide secondary">対戦を終了する</button></section>
 <section id="judge" class="hidden"><span class="eyebrow">THE GALLERY</span><h2 id="judgetitle">どちらの絵に、1票？</h2><p id="judgeprompt" class="muted"></p><div class="grid" id="gallery"></div><div id="voteinfo" class="muted" role="status"></div><div id="result" class="result"></div><button id="again" class="wide orange hidden">次のお題で、もう一戦 →</button><button id="exit" class="wide secondary">対戦を終了する</button></section>
 <details style="margin-top:28px"><summary class="muted">接続について・遊び方</summary><p class="muted">2台とも同じページをSafariやChromeで開き、名前を入力。片方がルームを作り、もう片方がコードで参加します。描いている間はアプリを閉じないでください。無料のPeerJS接続サービスとWebRTCを使用します。ネット接続が必要です。学校・会社・一部の携帯回線では接続できない場合があります。別のWi-Fiなどでお試しください。接続が切れたら新しいルームを作成してください。絵は接続相手に送信し、サーバーには保存しません。</p></details>
@@ -58,11 +58,135 @@ function send(m){if(conn?.open)conn.send(m)}
 function nick(){return $('name').value.trim().slice(0,16)||'ななしの画伯'}
 function status(s){$('status').textContent=s}
 function busy(v){$('create').disabled=$('join').disabled=v}
-function cleanup(){clearTimeout(netTimer);connected=false;const oldConn=conn,oldPeer=peer;conn=peer=null;game=null;painting=false;activePointer=null;oldConn?.close();oldPeer?.destroy();busy(false);status('● まだ接続していません')}
+const CONNECT_TIMEOUT_MS=120000,RETRY_DELAY_MS=5000;
+let retryTimer,attemptTimer,connectionDeadline=0;
+function clearConnectionTimers(){clearTimeout(netTimer);clearTimeout(retryTimer);clearTimeout(attemptTimer)}
+function closeConnection(){const old=conn;conn=null;old?.close()}
+function cleanup(){clearConnectionTimers();connected=false;const oldPeer=peer;peer=null;closeConnection();game=null;painting=false;activePointer=null;oldPeer?.destroy();busy(false);status('● まだ接続していません')}
 function leave(){cleanup();screen('home');notice('対戦を終了しました。新しいルームでまた遊べます。')}
-function failed(s){cleanup();screen('home');notice(s)}
-function connect(isHost){if(typeof Peer==='undefined'){notice('通信ライブラリを読み込めませんでした。ネット接続を確認してページを再読み込みしてください。');return}host=isHost;role=host?0:1;code=host?String(100000+crypto.getRandomValues(new Uint32Array(1))[0]%900000):$('joincode').value.trim();if(!/^\d{6}$/.test(code)){notice('6桁のルームコードを入力してください。');return}busy(true);notice('接続を準備しています…');peer=new Peer(host?'oekaki-duel-v1-'+code:undefined);netTimer=setTimeout(()=>failed('接続がタイムアウトしました。コード・ネット接続を確認し、別のWi-Fiでも試してください。'),25000);const sessionPeer=peer;peer.on('error',e=>{if(peer!==sessionPeer)return;failed(e.type==='unavailable-id'?'コードが使用中です。もう一度ルームを作ってください。':'接続できませんでした。ルームコードや回線を確認してください。')});peer.on('open',()=>{if(peer!==sessionPeer)return;if(host){clearTimeout(netTimer);names=[nick()];$('code').textContent=code;$('players').textContent=names[0]+'：入室済み ／ 友だちを待っています';$('start').disabled=true;$('start').classList.remove('hidden');screen('lobby');status('● 友だちを待っています');notice('');}else bind(peer.connect('oekaki-duel-v1-'+code,{reliable:true}));});peer.on('connection',c=>{if(peer!==sessionPeer){c.close();return}if(!host||conn){c.on('open',()=>{c.send({type:'full'});setTimeout(()=>c.close(),500)});return}bind(c)});}
-function bind(c){conn=c;c.on('open',()=>{if(conn!==c)return;clearTimeout(netTimer);netTimer=setTimeout(()=>{if(conn===c&&!connected)failed('入室確認がタイムアウトしました。ルームを作り直してください。')},15000);if(!host)send({type:'hello',name:nick()});status('● 接続しました')});c.on('data',m=>{if(conn!==c)return;if(!m||typeof m!=='object')return;if(m.type==='full'){failed('このルームは満員です。');return}if(host){if(m.type==='hello'&&!connected){clearTimeout(netTimer);connected=true;names[1]=String(m.name||'ゲスト').slice(0,16);send({type:'welcome',names,code});$('players').textContent=names.join(' ＆ ')+'：準備OK';$('start').disabled=false;notice('友だちが参加しました！');}if(m.type==='submit')accept(1,m);if(m.type==='vote')vote(1,m);return}if(m.type==='welcome'){clearTimeout(netTimer);connected=true;names=m.names;code=m.code;$('code').textContent=code;$('players').textContent=names.join(' ＆ ')+'：準備OK';$('start').classList.add('hidden');screen('lobby');notice('ホストがスタートするのを待っています。')}if(m.type==='round'){game=m.game;begin()}if(m.type==='gallery'){game=m.game;gallery()}if(m.type==='result'){game=m.game;result()}});c.on('close',()=>{if(conn===c)failed('相手との接続が切れました。2人でもう一度ルームを作ってください。')});c.on('error',()=>{if(conn===c)failed('通信エラーが発生しました。ルームを作り直してください。')});}
+function showWaiting(message){
+  $('retry').textContent=host?'ルームを作り直す':'もう一度接続する';
+  screen('lobby');$('code').textContent=code;
+  $('lobbytitle').textContent=host?'友だちが来るまで、このまま待てます。':'ホストへの接続を待っています。';
+  $('start').classList.toggle('hidden',!host);$('start').disabled=!connected;
+  $('players').textContent=host?nick()+'：入室済み ／ 友だちを待っています':'ルーム '+code+' に接続中。最大2分間、自動で再試行します。';
+  status(host?'● 友だちを待っています':'● 接続待ち');
+  if(message)notice(message);
+}
+function stopWaiting(message){
+  clearConnectionTimers();closeConnection();connected=false;game=null;painting=false;
+  showWaiting(message);$('retry').classList.remove('hidden');
+  if(!host)$('players').textContent='接続待ちをいったん停止しました。再試行するか、退出できます。';
+}
+function hostWait(message){
+  clearTimeout(attemptTimer);clearTimeout(netTimer);closeConnection();
+  connected=false;game=null;painting=false;names=[nick()];
+  showWaiting(message);$('retry').classList.toggle('hidden',!!peer&&!peer.destroyed&&!peer.disconnected);
+}
+function guestRetry(message){
+  if(host)return;
+  clearTimeout(attemptTimer);clearTimeout(retryTimer);closeConnection();
+  connected=false;game=null;painting=false;showWaiting(message);
+  if(Date.now()>=connectionDeadline){stopWaiting('2分間待ちましたが、まだ接続できません。「もう一度接続する」で続けて試せます。');return}
+  $('retry').classList.remove('hidden');
+  retryTimer=setTimeout(()=>{if(peer&&!peer.destroyed&&!peer.disconnected)attemptJoin()},RETRY_DELAY_MS);
+}
+function attemptJoin(){
+  if(host||connected||conn||!peer||peer.destroyed||peer.disconnected)return;
+  if(Date.now()>=connectionDeadline){stopWaiting('接続待ちを停止しました。「もう一度接続する」で再試行できます。');return}
+  clearTimeout(retryTimer);
+  bind(peer.connect('oekaki-duel-v1-'+code,{reliable:true}));
+}
+function connect(isHost){
+  if(typeof Peer==='undefined'){notice('通信ライブラリを読み込めませんでした。ページを再読み込みしてください。');return}
+  const nextCode=isHost?String(100000+crypto.getRandomValues(new Uint32Array(1))[0]%900000):$('joincode').value.trim();
+  if(!/^\d{6}$/.test(nextCode)){notice('6桁のルームコードを入力してください。');return}
+  cleanup();host=isHost;role=host?0:1;code=nextCode;names=host?[nick()]:[];busy(true);
+  connectionDeadline=Date.now()+CONNECT_TIMEOUT_MS;$('retry').classList.add('hidden');
+  showWaiting(host?'ルームを準備しています。接続が遅い場合もこの画面で待てます。':'ホストに接続しています。画面を閉じずにお待ちください。');
+  if(host)$('players').textContent='ルームを準備中です…';
+  const sessionPeer=peer=new Peer(host?'oekaki-duel-v1-'+code:undefined);
+  let opened=false;
+  netTimer=setTimeout(()=>{if(peer===sessionPeer&&!connected)stopWaiting('接続に時間がかかっています。ルームコードはこの画面に残しています。「もう一度接続する」で再試行できます。')},CONNECT_TIMEOUT_MS);
+  peer.on('error',e=>{
+    if(peer!==sessionPeer)return;
+    if(e.type==='peer-unavailable'){if(!host)guestRetry('ホストがまだ見つかりません。ルームを開いたままにしてください。5秒ごとに再試行します。');return}
+    if(['network','socket-error','socket-closed','server-error','disconnected'].includes(e.type)){
+      notice('通信が不安定です。この画面のまま再接続を待っています。');$('retry').classList.remove('hidden');return;
+    }
+    if(e.type==='webrtc'||e.type==='negotiation-failed'){
+      if(host)hostWait('参加者との接続を再調整しています。ルームは開いたままです。');
+      else guestRetry('接続に時間がかかっています。この画面のまま再試行します。');
+      return;
+    }
+    stopWaiting(e.type==='unavailable-id'?'このコードは使用中です。「ルームを作り直す」で新しいコードを作成してください。':'接続できませんでした。この画面で再試行するか、別のWi-Fiなどでお試しください。');
+  });
+  peer.on('open',()=>{
+    if(peer!==sessionPeer)return;
+    if(opened){status(connected?'● 接続しました':'● 接続待ち');if(!host&&!connected&&!conn)attemptJoin();return}
+    opened=true;
+    if(host){clearTimeout(netTimer);showWaiting('ルームを作成しました。友だちが参加するまで時間制限なく待てます。');}
+    else attemptJoin();
+  });
+  peer.on('disconnected',()=>{
+    if(peer!==sessionPeer)return;
+    notice('通信サーバーに再接続しています。ルームを閉じずにお待ちください。');$('retry').classList.remove('hidden');
+    clearTimeout(retryTimer);retryTimer=setTimeout(()=>{if(peer===sessionPeer&&!sessionPeer.destroyed&&sessionPeer.disconnected){try{sessionPeer.reconnect()}catch{notice('再接続できませんでした。「もう一度接続する」でお試しください。')}}},RETRY_DELAY_MS);
+  });
+  peer.on('connection',c=>{
+    if(peer!==sessionPeer){c.close();return}
+    if(!host||conn){c.on('open',()=>{c.send({type:'full'});setTimeout(()=>c.close(),500)});return}
+    bind(c);
+  });
+}
+function bind(c){
+  conn=c;
+  clearTimeout(attemptTimer);
+  attemptTimer=setTimeout(()=>{
+    if(conn!==c||connected)return;
+    if(host)hostWait('参加者の接続が完了しませんでした。ルームは閉じずに次の参加を待っています。');
+    else guestRetry('接続に時間がかかっています。この画面で再試行します。');
+  },CONNECT_TIMEOUT_MS);
+  c.on('open',()=>{
+    if(conn!==c)return;
+    if(!host)send({type:'hello',name:nick()});
+    status('● 入室確認中');
+  });
+  c.on('data',m=>{
+    if(conn!==c||!m||typeof m!=='object')return;
+    if(m.type==='full'){stopWaiting('このルームは満員です。コードを確認するか、空いてから再試行してください。');return}
+    if(host){
+      if(m.type==='hello'&&!connected){
+        clearConnectionTimers();connected=true;names[1]=String(m.name||'ゲスト').slice(0,16);
+        send({type:'welcome',names,code});$('players').textContent=names.join(' ＆ ')+'：準備OK';
+        $('start').disabled=false;$('retry').classList.add('hidden');status('● 接続しました');notice('友だちが参加しました！');
+      }
+      if(m.type==='submit')accept(1,m);
+      if(m.type==='vote')vote(1,m);
+      return;
+    }
+    if(m.type==='welcome'){
+      clearConnectionTimers();connected=true;names=m.names;code=m.code;$('code').textContent=code;
+      $('players').textContent=names.join(' ＆ ')+'：準備OK';$('start').classList.add('hidden');$('retry').classList.add('hidden');
+      $('lobbytitle').textContent='入室しました。ホストのスタートを待とう。';screen('lobby');status('● 接続しました');notice('ホストがスタートするのを待っています。');
+    }
+    if(m.type==='round'){game=m.game;begin()}
+    if(m.type==='gallery'){game=m.game;gallery()}
+    if(m.type==='result'){game=m.game;result()}
+  });
+  c.on('close',()=>{
+    if(conn!==c)return;
+    const wasConnected=connected;
+    if(host)hostWait('参加者との接続が切れました。ルームは開いたままなので、同じコードで参加し直せます。');
+    else{if(wasConnected)connectionDeadline=Date.now()+CONNECT_TIMEOUT_MS;guestRetry('接続が切れました。同じルームに再接続しています。')}
+  });
+  c.on('error',()=>{
+    if(conn!==c)return;
+    const wasConnected=connected;
+    if(host)hostWait('参加者との通信が不安定です。同じルームで再入室を待っています。');
+    else{if(wasConnected)connectionDeadline=Date.now()+CONNECT_TIMEOUT_MS;guestRetry('通信が不安定です。同じ画面で再試行しています。')}
+  });
+}
 function newRound(){if(!host||!connected||(game&&game.phase!=='result'))return;let n=(game?.round||0)+1;game={round:n,prompt:topics[crypto.getRandomValues(new Uint32Array(1))[0]%topics.length],end:Date.now()+Number($('duration').value)*1000,images:[null,null],votes:[null,null],phase:'draw'};send({type:'round',game:{...game,images:undefined,votes:undefined,remaining:Number($('duration').value)*1000}});begin()}
 function begin(){if(!host)game.end=Date.now()+game.remaining;submitted=false;waiting=false;history=[];painting=false;activePointer=null;ctx.fillStyle='#fff';ctx.fillRect(0,0,720,720);$('round').textContent='ROUND '+game.round;$('prompt').textContent=game.prompt;$('submit').disabled=false;$('submit').textContent='できた！ 提出する →';$('drawstatus').textContent='お題に沿って自由に描こう。';$('tools').classList.remove('hidden');notice('');screen('game')}
 function submit(){if(submitted||!game||game.phase!=='draw')return;submitted=true;painting=false;$('submit').disabled=true;$('submit').textContent='提出済み — 相手を待っています';$('tools').classList.add('hidden');const m={round:game.round,image:cv.toDataURL('image/png')};if(host)accept(0,m);else send({type:'submit',...m})}
@@ -75,5 +199,5 @@ function point(e){const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*7
 let last,activePointer=null;cv.addEventListener('pointerdown',e=>{if(submitted||game?.phase!=='draw'||activePointer!==null)return;e.preventDefault();activePointer=e.pointerId;cv.setPointerCapture(e.pointerId);history.push(ctx.getImageData(0,0,720,720));if(history.length>20)history.shift();painting=true;last=point(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=erase?'#fff':color;ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=Number($('size').value);ctx.beginPath();ctx.arc(...last,ctx.lineWidth/2,0,Math.PI*2);ctx.fill()});cv.addEventListener('pointermove',e=>{if(!painting||submitted||e.pointerId!==activePointer)return;e.preventDefault();const p=point(e);ctx.beginPath();ctx.moveTo(...last);ctx.lineTo(...p);ctx.stroke();last=p});for(const k of ['pointerup','pointercancel','lostpointercapture'])cv.addEventListener(k,e=>{if(e.pointerId===activePointer){painting=false;activePointer=null}});
 for(const c of ['#263c30','#e56b5d','#f3b544','#5a91c3','#7b64a9','#75a778']){const b=document.createElement('button');b.className='swatch';b.style.background=c;b.setAttribute('aria-label',{'#263c30':'黒','#e56b5d':'赤','#f3b544':'黄','#5a91c3':'青','#7b64a9':'紫','#75a778':'緑'}[c]);b.onclick=()=>{color=c;erase=false;$('eraser').setAttribute('aria-pressed','false');$('eraser').textContent='消しゴム';for(const x of $('palette').children)x.classList.toggle('active',x===b)};$('palette').append(b)}$('palette').firstChild.classList.add('active');
 $('eraser').onclick=()=>{erase=!erase;$('eraser').setAttribute('aria-pressed',String(erase));$('eraser').textContent=erase?'消しゴム ON':'消しゴム'};$('undo').onclick=()=>{if(!submitted&&history.length)ctx.putImageData(history.pop(),0,0)};$('clear').onclick=()=>{if(submitted||!confirm('描いた絵をすべて消しますか？'))return;history.push(ctx.getImageData(0,0,720,720));if(history.length>20)history.shift();ctx.fillStyle='white';ctx.fillRect(0,0,720,720)};
-$('create').onclick=()=>connect(true);$('join').onclick=()=>connect(false);$('start').onclick=$('again').onclick=newRound;$('submit').onclick=submit;for(const id of ['cancel','exit','leavegame'])$(id).onclick=()=>{if(confirm('ルームから退出しますか？'))leave()};$('share').onclick=async()=>{const u=new URL(location.href);u.searchParams.set('room',code);try{await navigator.clipboard.writeText(u.href);notice('招待リンクをコピーしました。友だちに送ってください。')}catch{notice('招待リンク：'+u.href)}};const room=new URLSearchParams(location.search).get('room');if(/^\d{6}$/.test(room||'')){$('joincode').value=room;notice('招待されたルーム：'+room+'。名前を入力して「ルームに参加」を押してください。')}
+$('retry').onclick=()=>connect(host);$('create').onclick=()=>connect(true);$('join').onclick=()=>connect(false);$('start').onclick=$('again').onclick=newRound;$('submit').onclick=submit;for(const id of ['cancel','exit','leavegame'])$(id).onclick=()=>{if(confirm('ルームから退出しますか？'))leave()};$('share').onclick=async()=>{const u=new URL(location.href);u.searchParams.set('room',code);try{await navigator.clipboard.writeText(u.href);notice('招待リンクをコピーしました。友だちに送ってください。')}catch{notice('招待リンク：'+u.href)}};const room=new URLSearchParams(location.search).get('room');if(/^\d{6}$/.test(room||'')){$('joincode').value=room;notice('招待されたルーム：'+room+'。名前を入力して「ルームに参加」を押してください。')}
 </script></html>
