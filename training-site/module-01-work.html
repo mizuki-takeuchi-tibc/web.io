@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第1章 ChatGPT Workで調査・提案書作成・メール送信 | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <meta name="description" content="ChatGPT Workを使って、生成AI研修の必要性を調査し、会社向け提案書を作成し、完成資料を自分宛てにメール送信する一連の流れを体験する研修ページです。" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>第1章 ChatGPT Workで調査・提案書作成・メール送信</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Hands-on 01</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="ページ内目次">
+        <p class="side-nav__title">この章の目次</p>
+        <a href="#overview">この章でやること</a>
+        <a href="#modes">Chat / Work / Codex</a>
+        <a href="#open-work">Workを開く</a>
+        <a href="#connect-google">Google連携の準備</a>
+        <a href="#goal">この章のゴール</a>
+        <a href="#scenario">演習シナリオ</a>
+        <a href="#preparation">事前準備</a>
+        <a href="#prompt-builder">一括実行プロンプト</a>
+        <a href="#workflow">実施手順</a>
+        <a href="#checklist">チェックリスト</a>
+        <a href="#review">確認ポイント</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section id="overview" class="section hero-section">
+        <div class="hero-card">
+          <p class="eyebrow">Chapter Overview</p>
+          <h2>この章でやること</h2>
+
+          <p class="lead">
+            この章では、ChatGPTの <strong>Work</strong> を使って、
+            会社に対して「生成AIを学ぶ必要性」を説明するための情報を調査し、
+            その内容をもとに <strong>生成AI研修会の実施提案書</strong> を作成します。
+          </p>
+
+          <p>
+            さらに、完成した提案書をGoogle Driveに保存し、
+            Gmailを使って <strong>自分自身のメールアドレス宛てに、完成した旨と資料を送信する</strong>
+            ところまでを一連の業務としてAIに実行させます。
+          </p>
+
+<figure class="figure-card">
+  <img
+    src="assets/images/work-flow-overview.png"
+    alt="ChatGPT Workで調査、整理、提案書作成、Drive保存、Gmail送信までを自動化する流れ"
+    class="training-image"
+  />
+  <figcaption class="caption">
+    この章では、生成AI研修の必要性を調査し、提案書を作成し、Driveに保存して、Gmailで自分宛てに送信するまでの一連の流れを体験します。
+  </figcaption>
+</figure>
+
+
+        
+          <div class="note note--important">
+            <strong>今回のポイント：</strong>
+            単に文章を作らせるだけではなく、
+            「調査 → 資料作成 → 保存 → メール送信」までを
+            ひとつの仕事としてAIに依頼する体験をします。
+            これが <strong>Work機能の醍醐味</strong> です。
+          </div>
+
+          <div class="note note--danger">
+            <strong>誤送信防止：</strong>
+            この演習では、メールの送信先は必ず
+            <strong>自分自身のメールアドレス</strong> にしてください。
+            実在の上司、同僚、取引先、顧客には送信しないでください。
+          </div>
+        </div>
+      </section>
+
+      <section id="modes" class="section">
+        <p class="eyebrow">Before Hands-on</p>
+        <h2>まずは Chat / Work / Codex / Dots の違いを理解する</h2>
+
+        <p>
+          ChatGPTには、通常の会話だけでなく、目的に応じた複数の使い方があります。
+          今回のハンズオンでは、その中でも <strong>Work</strong> を使います。
+        </p>
+
+        <figure class="figure-card">
+          <img
+            src="assets/images/chat-work-codex-dots.png"
+            alt="Chat、Work、Codex、Dotsの違いを説明する図"
+            class="training-image"
+          />
+          <figcaption class="caption">
+            Chatは日常的な相談、Workは一連の業務、Codexは開発作業、Dotsは進捗管理や長期タスクの整理に向いています。
+          </figcaption>
+        </figure>
+
+        <div class="grid-4 mode-grid">
+          <article class="mode-card chat-card">
+            <h3>Chat</h3>
+            <p>
+              質問、要約、文章作成、アイデア出しなど、
+              通常の対話に向いています。
+            </p>
+            <ul>
+              <li>メール文の作成</li>
+              <li>文章の要約</li>
+              <li>調べ物の相談</li>
+              <li>考えの整理</li>
+            </ul>
+          </article>
+
+          <article class="mode-card work-card">
+            <h3>Work</h3>
+            <p>
+              調査、資料作成、ファイル保存、メール作成など、
+              複数の作業をまとめて進める用途に向いています。
+            </p>
+            <ul>
+              <li>調査レポート作成</li>
+              <li>提案書作成</li>
+              <li>資料の保存</li>
+              <li>メール送信</li>
+            </ul>
+          </article>
+
+          <article class="mode-card codex-card">
+            <h3>Codex</h3>
+            <p>
+              Webサイトやアプリケーションの作成、コード修正、
+              テストや検証などの開発作業に向いています。
+            </p>
+            <ul>
+              <li>HTML/CSS/JS作成</li>
+              <li>アプリ開発</li>
+              <li>バグ修正</li>
+              <li>テスト作成</li>
+            </ul>
+          </article>
+
+          <article class="mode-card dots-card">
+            <h3>Dots</h3>
+            <p>
+              長めの作業、タスク管理、進捗整理など、
+              継続的な仕事の管理に向いています。
+            </p>
+            <ul>
+              <li>タスク整理</li>
+              <li>進捗管理</li>
+              <li>作業分解</li>
+              <li>長期プロジェクト管理</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="note">
+          <strong>今回使うのは Work です。</strong>
+          理由は、生成AIの必要性を調査し、提案書を作り、Google Driveに保存し、
+          Gmailで自分宛てに送るという一連の業務をまとめて体験するためです。
+        </div>
+      </section>
+
+      <section id="open-work" class="section">
+        <p class="eyebrow">How to Start</p>
+        <h2>ChatGPTで Work を開く</h2>
+
+        <p>
+          まずはChatGPTを開き、Workを選択します。
+          Workが表示されている場合は、そこから今回の一括実行プロンプトを入力します。
+        </p>
+
+        <figure class="figure-card">
+          <img
+            src="assets/images/work-screen.png"
+            alt="ChatGPTでWorkモードを選択する画面"
+            class="training-image"
+          />
+          <figcaption class="caption">
+            ChatGPTの画面からWorkを選択し、業務単位の依頼を行います。
+          </figcaption>
+        </figure>
+
+        <div class="steps">
+          <article class="step-card">
+            <p class="step-label">STEP 1</p>
+            <h3>ChatGPTを開く</h3>
+            <p>
+              ブラウザでChatGPTを開き、ログインします。
+              研修用に使うアカウントでログインしているか確認してください。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-label">STEP 2</p>
+            <h3>Workを選択する</h3>
+            <p>
+              画面上のメニューから <strong>Work</strong> を選択します。
+              表示位置や名称は、プランや提供時期によって変わる場合があります。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-label">STEP 3</p>
+            <h3>一括実行プロンプトを入力する</h3>
+            <p>
+              このページで作成するプロンプトを貼り付けます。
+              最初の指示で、調査からメール送信まで一気通貫で依頼します。
+            </p>
+          </article>
+        </div>
+
+        <div class="note note--warning">
+          <strong>補足：</strong>
+          Workが表示されない場合は、プラン、アカウント種別、提供状況によって利用できない可能性があります。
+          ただしこの章では、Workで一連の作業をまとめて依頼する流れを前提に進めます。
+        </div>
+      </section>
+
+      <section id="connect-google" class="section">
+        <p class="eyebrow">Preparation</p>
+        <h2>Google Drive と Gmail をChatGPTに連携する</h2>
+
+        <p>
+          今回の演習では、ChatGPT Workに
+          <strong>提案書をGoogle Driveに保存</strong> し、
+          <strong>Gmailで自分宛てに完成連絡を送信</strong> させます。
+        </p>
+
+        <p>
+          そのため、事前にChatGPT側でGoogle DriveとGmailを使えるように設定しておく必要があります。
+          単に「Googleアカウントでログインしている」だけでは不十分です。
+          ChatGPTの設定画面から、Google DriveとGmailの連携を有効にしてください。
+        </p>
+
+        <div class="note note--warning">
+          <strong>会社アカウントを使う場合の注意：</strong>
+          会社や組織のGoogle Workspaceアカウントでは、管理者の設定により外部アプリ連携が禁止されている場合があります。
+          連携できない場合は、研修用アカウントを使うか、管理者に確認してください。
+        </div>
+
+        <div class="grid-2">
+          <article class="info-card">
+            <h3>Google Drive連携でできること</h3>
+            <ul class="check-list">
+              <li>提案書をGoogleドキュメントとして保存する</li>
+              <li>保存先フォルダを指定する</li>
+              <li>作成した資料のリンクを取得する</li>
+              <li>既存資料を参照して資料を作成する</li>
+            </ul>
+          </article>
+
+          <article class="info-card">
+            <h3>Gmail連携でできること</h3>
+            <ul class="check-list">
+              <li>完成報告メールを作成する</li>
+              <li>作成した資料を添付またはリンクとして共有する</li>
+              <li>自分宛てに確認メールを送る</li>
+              <li>送信前に内容を確認する</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3>連携手順</h3>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+              <h3>ChatGPTの設定を開く</h3>
+              <p>
+                ChatGPTの画面左下にあるユーザー名、プロフィール画像、またはアカウントメニューをクリックします。
+                表示されたメニューから <strong>設定</strong> を開きます。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+              <h3>プラグイン、コネクター、接続済みアプリを開く</h3>
+              <p>
+                設定画面の中から、
+                <strong>プラグイン</strong>、
+                <strong>コネクター</strong>、
+                <strong>接続済みアプリ</strong>、
+                またはそれに近い名称のメニューを探して開きます。
+              </p>
+              <p>
+                画面表示は利用しているプランや時期によって変わる場合があります。
+                「Google Drive」「Gmail」「Google Workspace」などの項目を探してください。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+              <h3>Google Driveを接続する</h3>
+              <p>
+                一覧から <strong>Google Drive</strong> を選び、接続を開始します。
+                Googleアカウントの選択画面が表示されたら、今回の研修で使うアカウントを選択します。
+              </p>
+              <p>
+                権限確認画面が表示されたら、内容を確認して許可します。
+                個人アカウントと会社アカウントを間違えないように注意してください。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <h3>Gmailを接続する</h3>
+              <p>
+                同じ画面で <strong>Gmail</strong> を探し、接続します。
+                Google Driveと同じアカウントで接続しておくと、資料作成から送信までの流れがスムーズです。
+              </p>
+              <p>
+                今回の研修では、自分自身のメールアドレス宛てにのみ送信します。
+                実在の上司、同僚、取引先、顧客には送信しないでください。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">5</div>
+            <div class="timeline-content">
+              <h3>Workで利用できるか確認する</h3>
+              <p>
+                Workを開き、Google DriveとGmailを使える状態になっているか確認します。
+                必要に応じて、下の確認用プロンプトを使ってください。
+              </p>
+
+              <div class="prompt-box">
+                <div class="prompt-box__header">
+                  <span>連携確認用プロンプト</span>
+                  <button class="copy-button" data-copy-target="connectionCheckPrompt">コピー</button>
+                </div>
+                <pre id="connectionCheckPrompt"><code>Google DriveとGmailがこのWorkで利用できるか確認してください。
+
+確認したいこと：
+1. Google Drive上に新しいGoogleドキュメントを作成できますか？
+2. 作成したドキュメントを指定フォルダに保存できますか？
+3. Gmailで自分宛てのメールを作成できますか？
+4. 作成したGoogleドキュメントを添付、またはDriveリンクとしてメール本文に入れられますか？
+
+注意：
+- 実際にメールを送る前には、必ず内容確認をしてください。
+- 送信先は自分自身のメールアドレスだけにしてください。
+- 連携や権限が不足している場合は、何が不足しているかを分かりやすく教えてください。</code></pre>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="note note--important">
+          <strong>連携が終わったら：</strong>
+          次の「一括実行プロンプトを作成」でプロンプトを作り、
+          Workに貼り付けます。
+          最初の指示で、調査からメール送信までまとめて依頼します。
+        </div>
+      </section>
+
+      <section id="goal" class="section">
+        <p class="eyebrow">Goal</p>
+        <h2>この章のゴール</h2>
+
+        <div class="grid-3">
+          <article class="goal-card">
+            <span class="goal-number">01</span>
+            <h3>生成AI研修の必要性を調査する</h3>
+            <p>
+              企業における生成AI活用の重要性、学習しない場合のリスク、
+              社員教育の必要性を整理します。
+            </p>
+          </article>
+
+          <article class="goal-card">
+            <span class="goal-number">02</span>
+            <h3>会社向け提案書を作る</h3>
+            <p>
+              経営者や管理職に説明しやすい形で、
+              生成AI研修会の実施提案書を作成します。
+            </p>
+          </article>
+
+          <article class="goal-card">
+            <span class="goal-number">03</span>
+            <h3>完成資料を自分宛てに送る</h3>
+            <p>
+              提案書をGoogle Driveに保存し、
+              Gmailで完成報告と資料を自分自身に送信します。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="scenario" class="section">
+        <p class="eyebrow">Scenario</p>
+        <h2>演習シナリオ</h2>
+
+        <div class="scenario-card">
+          <h3>あなたは社内のDX推進担当者です</h3>
+          <p>
+            社内ではChatGPTやGeminiなどの生成AIが話題になっています。
+            しかし、社員の多くは「聞いたことはあるけれど、業務でどう使えばよいか分からない」
+            という状態です。
+          </p>
+
+          <p>
+            そこであなたは、会社に対して
+            <strong>生成AIを正しく学ぶ必要性</strong> を説明し、
+            他の社員も教育するための
+            <strong>生成AI研修会の実施</strong> を提案することになりました。
+          </p>
+
+          <p>
+            今回は、そのための調査、提案書作成、Google Drive保存、
+            自分宛ての完成報告メール送信までをChatGPT Workに実行させます。
+          </p>
+
+
+
+          <div class="note note--danger">
+            <strong>重要：</strong>
+            メール送信先には、必ず自分自身のメールアドレスを指定してください。
+            実在の顧客情報、社内機密情報、個人情報は入力しないでください。
+          </div>
+        </div>
+      </section>
+
+      <section id="preparation" class="section">
+        <p class="eyebrow">Before You Start</p>
+        <h2>事前準備</h2>
+
+        <div class="steps">
+          <article class="step-card">
+            <p class="step-label">STEP 1</p>
+            <h3>ChatGPTでWorkを開く</h3>
+            <p>
+              ChatGPTにログインし、Workを選択します。
+              Workが見つからない場合は、講師に確認してください。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-label">STEP 2</p>
+            <h3>Google Driveを連携する</h3>
+            <p>
+              設定画面からプラグイン、コネクター、接続済みアプリを開き、
+              Google Driveを接続します。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-label">STEP 3</p>
+            <h3>Gmailを連携する</h3>
+            <p>
+              同じ設定画面からGmailを接続します。
+              研修では必ず自分宛てに送信します。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-label">STEP 4</p>
+            <h3>自分のメールアドレスを用意する</h3>
+            <p>
+              送信先として使う自分のメールアドレスを確認しておきます。
+              誤送信を避けるため、コピーペーストで入力することをおすすめします。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="prompt-builder" class="section">
+        <p class="eyebrow">Prompt Builder</p>
+        <h2>一括実行プロンプトを作成する</h2>
+
+        <p>
+          下の項目を入力すると、今回の演習用プロンプトが自動で作成されます。
+          作成されたプロンプトをコピーして、ChatGPT Workに貼り付けてください。
+        </p>
+
+        <div class="note note--important">
+          <strong>ポイント：</strong>
+          このプロンプトでは、最初の指示で
+          <strong>調査、提案書作成、Google Drive保存、Gmailで自分宛てに送信</strong>
+          までを一気通貫で依頼します。
+        </div>
+
+        <div class="form-card">
+          <div class="form-grid">
+            <label>
+              会社名
+              <input type="text" id="companyName" placeholder="例：株式会社サンプル" />
+            </label>
+
+            <label>
+              自分の役割
+              <input type="text" id="userRole" placeholder="例：DX推進担当者" />
+            </label>
+
+            <label>
+              自分のメールアドレス
+              <input type="email" id="emailAddress" placeholder="例：your-name@example.com" />
+            </label>
+
+            <label>
+              提案先
+              <input type="text" id="proposalTarget" placeholder="例：経営者・管理職" />
+            </label>
+
+            <label>
+              Google Drive保存先
+              <input type="text" id="driveFolder" placeholder="例：マイドライブ/研修資料 または フォルダURL" />
+            </label>
+
+            <label class="form-grid__wide">
+              会社の課題・背景
+              <textarea id="companyIssue" rows="5" placeholder="例：生成AIに関心はあるが、社員ごとに理解度が異なり、業務活用が進んでいない。"></textarea>
+            </label>
+          </div>
+
+          <div class="button-row">
+            <button class="primary-button" id="generatePromptButton" type="button">プロンプトを生成</button>
+            <button class="secondary-button" id="resetPromptButton" type="button">入力をリセット</button>
+          </div>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>生成されたプロンプト</span>
+            <button class="copy-button" data-copy-target="generatedPrompt">コピー</button>
+          </div>
+          <pre id="generatedPrompt"><code></code></pre>
+        </div>
+
+        <details class="details-box">
+          <summary>講師用：標準プロンプトを見る</summary>
+          <div class="prompt-box prompt-box--inside">
+            <div class="prompt-box__header">
+              <span>講師用標準プロンプト</span>
+              <button class="copy-button" data-copy-target="standardPrompt">コピー</button>
+            </div>
+            <pre id="standardPrompt"><code>あなたは企業向け生成AI活用研修の企画担当者であり、DX推進を支援するコンサルタントです。
+
+これから、会社に対して生成AI研修会の実施を提案するために、以下の作業を一気通貫で実行してください。
+
+目的：
+生成AIの必要性を調査し、会社に対して「社員向け生成AI研修会を実施すべき理由」を説明する提案書を作成し、完成した資料をGoogle Driveに保存したうえで、Gmailを使って自分宛てに完成報告メールを送信してください。
+
+会社名：
+株式会社サンプル
+
+自分の役割：
+DX推進担当者
+
+提案先：
+経営者・管理職
+
+会社の課題：
+生成AIに関心はあるが、社員ごとに理解度が異なり、業務活用が進んでいない。
+
+Google Drive保存先：
+マイドライブ/研修資料
+
+メール送信先：
+自分自身のメールアドレス
+
+実行してほしい作業：
+1. 企業が生成AIを学ぶ必要性を調査してください。
+2. 生成AIを学ばない場合のリスクを整理してください。
+3. 生成AI研修を実施するメリットを、経営層・管理職・一般社員の視点で整理してください。
+4. 会社向けの「生成AI研修会 実施提案書」を作成してください。
+5. 提案書はGoogleドキュメントとして作成し、Google Driveの指定フォルダに保存してください。
+6. 保存した資料のタイトルと保存先を教えてください。
+7. Gmailで、自分宛てに完成報告メールを作成してください。
+8. メールには、完成した提案書を添付、またはGoogle Driveのリンクとして本文に記載してください。
+9. 可能であれば、そのメールを自分宛てに送信してください。
+10. 送信前に確認が必要な場合は、確認画面を表示し、私がOKしたら送信してください。
+
+提案書に含める内容：
+- タイトル
+- 提案の背景
+- 生成AIを学ぶ必要性
+- 現在の課題
+- 研修の目的
+- 研修対象者
+- 研修内容案
+- 期待できる効果
+- 実施スケジュール案
+- リスクと対策
+- まとめ
+- 次のアクション
+
+メールに含める内容：
+- 件名
+- 宛名
+- 完成した資料の概要
+- 提案書の確認依頼
+- Google Driveリンクまたは添付資料
+- 確認してほしいポイント
+- 締めの文章
+
+条件：
+- 専門用語はできるだけ分かりやすく説明してください。
+- 経営者や管理職が読んでも分かりやすい文章にしてください。
+- 箇条書きや表を使って見やすくしてください。
+- 実在の顧客情報、個人情報、社内機密情報は使わないでください。
+- メール送信先は自分自身のメールアドレスだけにしてください。
+- 送信前に確認が求められる場合は、確認を求めてください。
+- 途中で権限や連携が不足している場合は、何が不足しているかを分かりやすく教えてください。</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <section id="workflow" class="section">
+        <p class="eyebrow">Hands-on Workflow</p>
+        <h2>実施手順</h2>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+              <h3>プロンプトをWorkに貼り付ける</h3>
+              <p>
+                作成した一括実行プロンプトをコピーし、ChatGPT Workに貼り付けます。
+                最初の指示で、調査からメール送信までまとめて依頼します。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+              <h3>生成AI研修の必要性を調査させる</h3>
+              <p>
+                企業が生成AIを学ぶ必要性、活用しない場合のリスク、
+                研修実施のメリットを整理させます。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+              <h3>会社向け提案書を作成させる</h3>
+              <p>
+                調査結果をもとに、経営者や管理職に説明しやすい提案書を作らせます。
+                提案書の内容に不足があれば、その場で追加指示を出します。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <h3>Google Driveに保存させる</h3>
+              <p>
+                完成した提案書をGoogleドキュメントとしてGoogle Driveに保存させます。
+                保存先、ファイル名、リンクを確認します。
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-marker">5</div>
+            <div class="timeline-content">
+              <h3>Gmailで自分宛てに送信させる</h3>
+              <p>
+                完成した旨を知らせるメールを作成させ、
+                提案書を添付またはDriveリンクとして付けたうえで、
+                自分自身のメールアドレス宛てに送信します。
+              </p>
+              <div class="note note--danger">
+                送信先が自分自身になっているか、必ず確認してください。
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="checklist" class="section">
+        <p class="eyebrow">Checklist</p>
+        <h2>演習チェックリスト</h2>
+
+        <p>
+          作業が終わったら、できた項目にチェックを入れてください。
+          チェック状態はこのブラウザに保存されます。
+        </p>
+
+        <div class="checklist-card">
+          <label><input type="checkbox" data-id="m01-01" /> ChatGPTでWorkを開いた</label>
+          <label><input type="checkbox" data-id="m01-02" /> Google Driveを連携した</label>
+          <label><input type="checkbox" data-id="m01-02a" /> Gmailを連携した</label>
+          <label><input type="checkbox" data-id="m01-02b" /> 自分のメールアドレスを確認した</label>
+          <label><input type="checkbox" data-id="m01-03" /> 一括実行プロンプトを作成した</label>
+          <label><input type="checkbox" data-id="m01-04" /> Workにプロンプトを貼り付けた</label>
+          <label><input type="checkbox" data-id="m01-05" /> 生成AI研修の必要性を調査させた</label>
+          <label><input type="checkbox" data-id="m01-06" /> 会社向け提案書を作成させた</label>
+          <label><input type="checkbox" data-id="m01-07" /> 提案書をGoogle Driveに保存させた</label>
+          <label><input type="checkbox" data-id="m01-08" /> 自分宛てメールを作成・送信させた</label>
+          <label><input type="checkbox" data-id="m01-09" /> 届いたメールと資料を確認した</label>
+        </div>
+
+        <button class="secondary-button" id="clearChecklistButton" type="button">
+          チェックをリセット
+        </button>
+      </section>
+
+      <section id="review" class="section">
+        <p class="eyebrow">Review</p>
+        <h2>確認ポイント</h2>
+
+        <div class="grid-2">
+          <article class="info-card">
+            <h3>提案書の確認ポイント</h3>
+            <ul>
+              <li>生成AIを学ぶ必要性が分かりやすく説明されているか</li>
+              <li>会社の課題と研修の目的がつながっているか</li>
+              <li>経営者や管理職が読んでも納得しやすいか</li>
+              <li>期待効果が具体的に書かれているか</li>
+              <li>リスクや注意点も書かれているか</li>
+            </ul>
+          </article>
+
+          <article class="info-card">
+            <h3>メールの確認ポイント</h3>
+            <ul>
+              <li>送信先が自分自身のメールアドレスになっているか</li>
+              <li>件名が分かりやすいか</li>
+              <li>完成した資料の概要が書かれているか</li>
+              <li>Google Driveリンクまたは添付資料が含まれているか</li>
+              <li>誤って第三者に送信していないか</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="note note--important">
+          <strong>AIに任せきりにしない：</strong>
+          AIが作成した提案書やメールは、そのまま使うのではなく、
+          必ず人間が内容を確認してください。
+          特に事実関係、金額、日程、宛先、権限設定は確認が必要です。
+        </div>
+      </section>
+
+      <section id="faq" class="section">
+        <p class="eyebrow">FAQ</p>
+        <h2>よくある質問</h2>
+
+        <details class="details-box">
+          <summary>会社の実名を入力してもよいですか？</summary>
+          <p>
+            研修では、原則として架空の会社名を使ってください。
+            例として「株式会社サンプル」「秋田ものづくり株式会社」などを使うと安全です。
+            実在の顧客情報、社内機密情報、個人情報は入力しないでください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>Google DriveやGmailが連携できない場合はどうすればよいですか？</summary>
+          <p>
+            会社アカウントの場合、管理者の設定により外部アプリ連携が禁止されている場合があります。
+            その場合は、研修用アカウントを使うか、講師に相談してください。
+            連携できない場合でも、提案書本文とメール本文の作成までは体験できます。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>AIが作った提案書はそのまま使えますか？</summary>
+          <p>
+            そのまま使うのではなく、必ず人間が確認してください。
+            特に、会社の実情に合っているか、事実関係に誤りがないか、
+            提案内容が現実的かを確認する必要があります。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>送信先を上司や同僚にしてもよいですか？</summary>
+          <p>
+            この研修では、誤送信防止のため送信先は必ず自分自身にしてください。
+            実務で使う場合も、送信前に宛先、本文、添付資料、共有権限を必ず確認してください。
+          </p>
+        </details>
+      </section>
+
+      <section class="section next-section">
+        <p class="eyebrow">Next</p>
+        <h2>次の章へ</h2>
+        <p>
+          次の章では、AIにGoogleフォームを自動生成させるハンズオンを行います。
+          申込フォームやアンケートフォームを、プロンプトから作成する流れを体験します。
+        </p>
+        <a class="primary-link" href="module-02-google-form.html">第2章 Googleフォーム自動生成へ進む</a>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

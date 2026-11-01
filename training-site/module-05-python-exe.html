@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第5章 Pythonアプリをexe化する | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>第5章 Pythonアプリをexe化する</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Hands-on 05</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="第5章の目次">
+        <p class="side-nav__title">第5章 目次</p>
+        <a href="#overview">この章でやること</a>
+        <a href="#connection">前章とのつながり</a>
+        <a href="#preparation">事前準備</a>
+        <a href="#install">PyInstallerをインストールする</a>
+        <a href="#check">インストール確認</a>
+        <a href="#folder">作業フォルダを確認する</a>
+        <a href="#build">exeファイルを作成する</a>
+        <a href="#run-exe">exeファイルを実行する</a>
+        <a href="#fix">うまくいかない場合</a>
+        <a href="#checklist">チェックリスト</a>
+        <a href="#review">確認ポイント</a>
+        <a href="#trouble">トラブル対応</a>
+        <a href="#next">前後の章へ</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section id="overview" class="section hero-section">
+        <p class="eyebrow">Hands-on 05</p>
+        <h2>Pythonアプリをexeファイルに変換する</h2>
+        <p class="lead">
+          この章では、第4章で作成した
+          <strong>「生成AI研修 参加日別リスト作成ツール」</strong>
+          を、Windowsで実行できる <strong>exeファイル</strong> に変換します。
+        </p>
+
+        <p>
+          Pythonファイルのままだと、実行するPCにPython環境が必要です。
+          exeファイルに変換すると、アプリの形に近づき、ダブルクリックで起動できるようになります。
+        </p>
+
+        <div class="process-flow" aria-label="第5章の作業の流れ">
+          <div class="process-flow__item">
+            <span>1</span>
+            <strong>PyInstallerを準備</strong>
+            <p>Pythonアプリをexe化するためのツールをインストールします。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>2</span>
+            <strong>app.pyを確認</strong>
+            <p>第4章で作ったPythonファイルが動く状態か確認します。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>3</span>
+            <strong>exe化コマンド実行</strong>
+            <p>PyInstallerでexeファイルを作成します。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>4</span>
+            <strong>exeを起動確認</strong>
+            <p>完成したexeファイルをダブルクリックして動作を確認します。</p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章のポイント：</strong>
+          第5章ではコードを書きません。
+          第4章で作った <code>app.py</code> を、配布しやすいexeファイルに変換する流れを体験します。
+        </div>
+      </section>
+
+      <section id="connection" class="section">
+        <p class="eyebrow">Connection</p>
+        <h2>第4章とのつながり</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>第4章で作ったもの</h3>
+            <p>
+              ChatGPTにPythonコードを書いてもらい、
+              Googleフォームの回答CSVから参加日別のメンバーリストを作成する
+              <code>app.py</code> を作成しました。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第5章で作るもの</h3>
+            <p>
+              第4章の <code>app.py</code> をもとに、
+              ダブルクリックで起動できる <code>app.exe</code> を作成します。
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            今回は、Pythonアプリをexe化する代表的なツールである
+            <strong>PyInstaller</strong>
+            を使います。
+          </p>
+          <p>
+            研修では、まず自分のPC上でexeファイルが作成できることを確認します。
+          </p>
+        </div>
+      </section>
+
+      <section id="preparation" class="section">
+        <p class="eyebrow">Preparation</p>
+        <h2>事前準備</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>1. Python 3.13</h3>
+            <p>
+              Pythonがインストールされていることを確認します。
+            </p>
+
+            <div class="prompt-box">
+              <div class="prompt-box__header">
+                <span>Python確認コマンド</span>
+                <button class="copy-button" type="button" data-copy-target="pythonVersionCommand">
+                  コピー
+                </button>
+              </div>
+              <pre id="pythonVersionCommand"><code>python --version</code></pre>
+            </div>
+
+            <p>
+              上記で確認できない場合は、以下も試します。
+            </p>
+
+            <div class="prompt-box">
+              <div class="prompt-box__header">
+                <span>別の確認コマンド</span>
+                <button class="copy-button" type="button" data-copy-target="pyVersionCommand">
+                  コピー
+                </button>
+              </div>
+              <pre id="pyVersionCommand"><code>py --version</code></pre>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>2. 第4章で作成した app.py</h3>
+            <p>
+              第4章で作成した <code>app.py</code> を使います。
+            </p>
+            <p>
+              exe化する前に、以下のコマンドでアプリが起動することを確認しておきます。
+            </p>
+
+            <div class="prompt-box">
+              <div class="prompt-box__header">
+                <span>app.py 実行確認</span>
+                <button class="copy-button" type="button" data-copy-target="appRunCheckCommand">
+                  コピー
+                </button>
+              </div>
+              <pre id="appRunCheckCommand"><code>python app.py</code></pre>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>3. サンプルCSV</h3>
+            <p>
+              第4章で使用したサンプルCSVも用意しておきます。
+            </p>
+            <p>
+              exe化後のアプリでも、CSVを読み込めるか確認します。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>4. コマンドプロンプト</h3>
+            <p>
+              PyInstallerのインストールとexe化は、コマンドプロンプトで行います。
+            </p>
+            <p>
+              <code>app.py</code> を保存したフォルダを開き、アドレスバーに
+              <code>cmd</code> と入力してEnterを押すと、その場所でコマンドプロンプトを開けます。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>注意：</strong>
+          exe化する前に、必ず <code>app.py</code> が正常に動くことを確認してください。
+          Pythonファイルの時点でエラーが出ている場合、exe化しても正常には動きません。
+        </div>
+      </section>
+
+      <section id="install" class="section">
+        <p class="eyebrow">Install</p>
+        <h2>PyInstallerをインストールする</h2>
+
+        <p>
+          まず、Pythonアプリをexeファイルに変換するためのツール
+          <strong>PyInstaller</strong>
+          をインストールします。
+        </p>
+
+        <ol class="number-list">
+          <li><code>app.py</code> を保存したフォルダを開きます。</li>
+          <li>フォルダのアドレスバーに <code>cmd</code> と入力してEnterを押します。</li>
+          <li>コマンドプロンプトが開いたら、以下のコマンドを実行します。</li>
+        </ol>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>PyInstallerインストールコマンド</span>
+            <button class="copy-button" type="button" data-copy-target="installPyinstallerCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="installPyinstallerCommand"><code>python -m pip install pyinstaller</code></pre>
+        </div>
+
+        <p>
+          環境によっては、以下のコマンドを使います。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>py コマンドを使う場合</span>
+            <button class="copy-button" type="button" data-copy-target="installPyinstallerPyCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="installPyinstallerPyCommand"><code>py -m pip install pyinstaller</code></pre>
+        </div>
+
+        <div class="note">
+          <p>
+            しばらく待って、最後に
+            <code>Successfully installed</code>
+            のような表示が出ればインストール完了です。
+          </p>
+        </div>
+
+        <h3>権限エラーが出た場合</h3>
+        <p>
+          会社PCなどでは、通常のインストールで権限エラーが出る場合があります。
+          その場合は、以下のコマンドを試します。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>ユーザー領域にインストールするコマンド</span>
+            <button class="copy-button" type="button" data-copy-target="installUserCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="installUserCommand"><code>python -m pip install --user pyinstaller</code></pre>
+        </div>
+
+        <div class="note note--warning">
+          <strong>会社PCの場合：</strong>
+          セキュリティ設定により、Pythonパッケージのインストールやexeファイルの作成が制限されていることがあります。
+          その場合は、無理に設定を変更せず、社内のIT担当者に確認してください。
+        </div>
+      </section>
+
+      <section id="check" class="section">
+        <p class="eyebrow">Check</p>
+        <h2>PyInstallerが入ったか確認する</h2>
+
+        <p>
+          インストールが終わったら、PyInstallerが使える状態になっているか確認します。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>PyInstaller確認コマンド</span>
+            <button class="copy-button" type="button" data-copy-target="pyinstallerVersionCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="pyinstallerVersionCommand"><code>python -m PyInstaller --version</code></pre>
+        </div>
+
+        <p>
+          バージョン番号が表示されればOKです。
+        </p>
+
+        <p>
+          上記でうまくいかない場合は、以下も試します。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>py コマンドで確認</span>
+            <button class="copy-button" type="button" data-copy-target="pyinstallerVersionPyCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="pyinstallerVersionPyCommand"><code>py -m PyInstaller --version</code></pre>
+        </div>
+
+        <div class="note note--important">
+          <strong>確認ポイント：</strong>
+          この章では <code>pyinstaller</code> コマンドを直接使うよりも、
+          <code>python -m PyInstaller</code> の形で実行する方が環境差に強いです。
+        </div>
+      </section>
+
+      <section id="folder" class="section">
+        <p class="eyebrow">Folder</p>
+        <h2>作業フォルダを確認する</h2>
+
+        <p>
+          exe化する前に、作業フォルダの中身を確認します。
+          最低限、以下のようになっていればOKです。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>作業フォルダ例</span>
+            <button class="copy-button" type="button" data-copy-target="folderExample">
+              コピー
+            </button>
+          </div>
+          <pre id="folderExample"><code>ai-training-app/
+  app.py
+  ai-training-application-sample.csv</code></pre>
+        </div>
+
+        <p>
+          コマンドプロンプトで現在のフォルダに <code>app.py</code> があるか確認するには、
+          以下のコマンドを使います。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>フォルダ内のファイル確認</span>
+            <button class="copy-button" type="button" data-copy-target="dirCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="dirCommand"><code>dir</code></pre>
+        </div>
+
+        <div class="note note--warning">
+          <strong>重要：</strong>
+          <code>app.py</code> があるフォルダでexe化コマンドを実行してください。
+          別のフォルダで実行すると、<code>app.py</code> が見つからないというエラーになります。
+        </div>
+      </section>
+
+      <section id="build" class="section">
+        <p class="eyebrow">Build</p>
+        <h2>exeファイルを作成する</h2>
+
+        <p>
+          いよいよ <code>app.py</code> をexeファイルに変換します。
+          以下のコマンドを実行してください。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>exe化コマンド</span>
+            <button class="copy-button" type="button" data-copy-target="buildExeCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="buildExeCommand"><code>python -m PyInstaller --onefile --windowed app.py</code></pre>
+        </div>
+
+        <p>
+          <code>py</code> コマンドを使う環境では、以下を使います。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>py コマンドでexe化</span>
+            <button class="copy-button" type="button" data-copy-target="buildExePyCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="buildExePyCommand"><code>py -m PyInstaller --onefile --windowed app.py</code></pre>
+        </div>
+
+        <h3>コマンドの意味</h3>
+
+        <div class="grid-3">
+          <div class="info-card">
+            <h3><code>python -m PyInstaller</code></h3>
+            <p>
+              PythonからPyInstallerを実行する、という意味です。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3><code>--onefile</code></h3>
+            <p>
+              できるだけ1つのexeファイルにまとめる指定です。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3><code>--windowed</code></h3>
+            <p>
+              アプリ起動時に黒いコマンド画面を表示しない指定です。
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            実行すると、しばらく文字が流れます。
+            最後にエラーが出ずに終了すれば、exeファイルの作成は完了です。
+          </p>
+        </div>
+
+        <h3>exe化後に作成されるフォルダ</h3>
+        <p>
+          コマンド実行後、作業フォルダ内に以下のようなファイルやフォルダが作成されます。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>exe化後のフォルダ例</span>
+            <button class="copy-button" type="button" data-copy-target="buildFolderExample">
+              コピー
+            </button>
+          </div>
+          <pre id="buildFolderExample"><code>ai-training-app/
+  app.py
+  app.spec
+  build/
+  dist/
+    app.exe</code></pre>
+        </div>
+
+        <div class="note note--important">
+          <strong>完成したexeファイルはここ：</strong>
+          <code>dist</code> フォルダの中にある <code>app.exe</code> が完成品です。
+        </div>
+      </section>
+
+      <section id="run-exe" class="section">
+        <p class="eyebrow">Run EXE</p>
+        <h2>完成したexeファイルを実行する</h2>
+
+        <ol class="number-list">
+          <li>作業フォルダの中にある <code>dist</code> フォルダを開きます。</li>
+          <li><code>app.exe</code> をダブルクリックします。</li>
+          <li>アプリ画面が表示されることを確認します。</li>
+          <li>「CSVを選択」ボタンからサンプルCSVを読み込みます。</li>
+          <li>第1回・第2回・第3回の参加者リストが表示されることを確認します。</li>
+          <li>参加者リストをテキストファイルとして保存できるか確認します。</li>
+        </ol>
+
+        <div class="note note--warning">
+          <strong>最初の起動は少し時間がかかる場合があります。</strong>
+          特に <code>--onefile</code> で作成したexeは、起動時に内部ファイルを展開するため、
+          通常のPython実行より少し待つことがあります。
+        </div>
+
+        <h3>ファイル名を分かりやすくする</h3>
+        <p>
+          完成した <code>app.exe</code> は、必要に応じて名前を変更できます。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>ファイル名変更例</span>
+            <button class="copy-button" type="button" data-copy-target="exeNameExample">
+              コピー
+            </button>
+          </div>
+          <pre id="exeNameExample"><code>app.exe
+↓
+生成AI研修_参加日別リスト作成ツール.exe</code></pre>
+        </div>
+
+        <div class="note note--important">
+          <strong>研修での完成目標：</strong>
+          <code>生成AI研修_参加日別リスト作成ツール.exe</code>
+          をダブルクリックして起動し、CSVを読み込んで参加日別リストを表示できる状態にします。
+        </div>
+      </section>
+
+      <section id="fix" class="section">
+        <p class="eyebrow">Fix</p>
+        <h2>うまくいかない場合はChatGPTに相談する</h2>
+
+        <p>
+          exe化の途中でエラーが出た場合は、エラー文をコピーしてChatGPTに相談します。
+          以下のプロンプトを使ってください。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>PyInstallerエラー修正依頼</span>
+            <button class="copy-button" type="button" data-copy-target="pyinstallerErrorPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="pyinstallerErrorPrompt"><code>PythonアプリをPyInstallerでexe化しようとしたところ、以下のエラーが出ました。
+原因を初心者にも分かるように説明し、解決手順を教えてください。
+
+# 実行したコマンド
+python -m PyInstaller --onefile --windowed app.py
+
+# エラー内容
+ここにエラー文を貼り付けます。
+
+# 補足
+- Windows PCで作業しています。
+- Python 3.13 を使っています。
+- app.py は第4章で作成した、CSVを読み込んで参加日別リストを作成するtkinterアプリです。
+- できるだけ分かりやすい手順で教えてください。</code></pre>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>exe起動時のエラー相談</span>
+            <button class="copy-button" type="button" data-copy-target="exeRunErrorPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="exeRunErrorPrompt"><code>PyInstallerでexeファイルは作成できましたが、app.exeを起動すると正常に動きません。
+原因と修正方法を教えてください。
+
+# 状況
+- python app.py では動きます。
+- distフォルダ内の app.exe を起動すると問題が出ます。
+
+# 起きている問題
+ここに状況やエラーメッセージを貼り付けます。
+
+# 実行したexe化コマンド
+python -m PyInstaller --onefile --windowed app.py
+
+# 補足
+- Windows PCで作業しています。
+- tkinterを使ったアプリです。
+- CSVを選択して読み込むアプリです。</code></pre>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>別パターンのexe化を相談する</span>
+            <button class="copy-button" type="button" data-copy-target="alternativeBuildPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="alternativeBuildPrompt"><code>PyInstallerで --onefile --windowed を使ってexe化しましたが、うまく動きません。
+初心者向けに、別のexe化方法を提案してください。
+
+# 現在のコマンド
+python -m PyInstaller --onefile --windowed app.py
+
+# 希望
+- まずは動作確認しやすい形でexe化したいです。
+- 必要であれば --windowed を外す、--onefile を外すなどの方法も教えてください。
+- それぞれのコマンドの違いも簡単に説明してください。</code></pre>
+        </div>
+
+        <div class="note">
+          <p>
+            exe化で失敗した場合は、まず <code>python app.py</code> で元のPythonファイルが動くか確認します。
+            元のアプリが動かない場合は、第4章に戻って <code>app.py</code> を修正してください。
+          </p>
+        </div>
+      </section>
+
+      <section id="checklist" class="section">
+        <p class="eyebrow">Checklist</p>
+        <h2>作業チェックリスト</h2>
+
+        <div class="checklist-card">
+          <label>
+            <input type="checkbox" data-id="m05-01" />
+            第4章で作成した app.py を用意した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-02" />
+            python app.py または py app.py でアプリが起動することを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-03" />
+            コマンドプロンプトを app.py のあるフォルダで開いた
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-04" />
+            PyInstallerをインストールした
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-05" />
+            python -m PyInstaller --version でインストール確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-06" />
+            exe化コマンドを実行した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-07" />
+            dist フォルダが作成された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-08" />
+            dist フォルダ内に app.exe が作成された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-09" />
+            app.exe をダブルクリックして起動した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-10" />
+            exe版アプリでサンプルCSVを読み込んだ
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-11" />
+            第1回・第2回・第3回の参加者リストが表示された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m05-12" />
+            完成したexeファイルの名前を分かりやすく変更した
+          </label>
+
+          <button id="clearChecklistButton" class="secondary-button" type="button">
+            チェックをリセット
+          </button>
+        </div>
+      </section>
+
+      <section id="review" class="section">
+        <p class="eyebrow">Review</p>
+        <h2>確認ポイント</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>できるようになったこと</h3>
+            <ul class="check-list">
+              <li>Pythonアプリをexeファイルに変換できる</li>
+              <li>PyInstallerをインストールできる</li>
+              <li>コマンドでexe化を実行できる</li>
+              <li>distフォルダ内のexeを確認できる</li>
+              <li>作ったアプリをダブルクリックで起動できる</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>実務で注意すること</h3>
+            <ul class="check-list">
+              <li>exeファイルを配布する前に必ず動作確認する</li>
+              <li>個人情報を含むCSVの取り扱いに注意する</li>
+              <li>会社PCではexe実行が制限される場合がある</li>
+              <li>社内に配布する場合はIT担当者へ確認する</li>
+              <li>AIが作ったアプリをそのまま重要業務に使わない</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>重要：</strong>
+          exeファイルは便利ですが、社内PCではセキュリティの観点から実行や配布が制限される場合があります。
+          実務で使う場合は、必ず社内ルールに従ってください。
+        </div>
+      </section>
+
+      <section id="trouble" class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>よくあるトラブル</h2>
+
+        <details class="details-box">
+          <summary>pip install pyinstaller が失敗します</summary>
+          <p>
+            まずインターネット接続を確認してください。
+            会社PCの場合、外部パッケージのインストールが制限されている可能性があります。
+            <code>python -m pip install --user pyinstaller</code>
+            も試してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>python コマンドが認識されません</summary>
+          <p>
+            <code>py --version</code> を試してください。
+            <code>py</code> でPythonのバージョンが表示される場合は、
+            <code>py -m pip install pyinstaller</code>
+            や
+            <code>py -m PyInstaller --onefile --windowed app.py</code>
+            を使います。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>No module named PyInstaller と表示されます</summary>
+          <p>
+            PyInstallerが正しくインストールされていない可能性があります。
+            もう一度
+            <code>python -m pip install pyinstaller</code>
+            を実行してください。
+            <code>py</code> を使っている環境では
+            <code>py -m pip install pyinstaller</code>
+            を試してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>app.py が見つからないと表示されます</summary>
+          <p>
+            コマンドプロンプトを開いている場所が違う可能性があります。
+            <code>dir</code> を実行し、一覧に <code>app.py</code> があるか確認してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>dist フォルダが見つかりません</summary>
+          <p>
+            exe化コマンドが途中でエラー終了している可能性があります。
+            コマンドプロンプトに表示されたエラーを確認してください。
+            分からない場合は、このページの「PyInstallerエラー修正依頼」プロンプトを使ってChatGPTに相談します。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>app.exe を起動しても何も起きません</summary>
+          <p>
+            まず <code>--windowed</code> を外してexe化し、エラー内容を確認する方法があります。
+            以下のコマンドを試してください。
+          </p>
+
+          <div class="prompt-box">
+            <div class="prompt-box__header">
+              <span>エラー確認用のexe化コマンド</span>
+              <button class="copy-button" type="button" data-copy-target="buildConsoleCommand">
+                コピー
+              </button>
+            </div>
+            <pre id="buildConsoleCommand"><code>python -m PyInstaller --onefile app.py</code></pre>
+          </div>
+
+          <p>
+            この場合、exe実行時に黒い画面が表示され、エラー内容を確認しやすくなります。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>ウイルス対策ソフトに警告されます</summary>
+          <p>
+            自作のexeファイルは、環境によって警告が出る場合があります。
+            会社PCでは無理に実行せず、IT担当者に確認してください。
+            研修では、自分で作成したファイルのみを実行し、出所不明のexeファイルは実行しないでください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>exeファイルを他のPCで実行できません</summary>
+          <p>
+            他のPCのセキュリティ設定やWindowsのバージョン、権限によって実行できない場合があります。
+            社内配布を目的とする場合は、IT担当者に確認してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>exe化するとファイルサイズが大きくなります</summary>
+          <p>
+            PyInstallerはPython実行に必要なものをまとめるため、ファイルサイズが大きくなることがあります。
+            これは一般的な挙動です。
+          </p>
+        </details>
+      </section>
+
+      <section id="next" class="section next-section">
+        <p class="eyebrow">Navigation</p>
+        <h2>前後の章へ</h2>
+        <p>
+          第5章では、第4章で作成したPythonアプリをPyInstallerでexeファイルに変換しました。
+        </p>
+        <p>
+          次の章では、有料機能を使わずに、ChatGPTにHTMLを書かせてWebページを作る方法を扱います。
+        </p>
+
+        <div class="grid-2">
+<a class="primary-link" href="module-04-attendee-list-app.html">
+  ← 第4章 ChatGPTで参加日別リスト作成アプリを作成・実行
+</a>
+
+          <a class="primary-link" href="module-06-html-web.html">
+            第6章 HTMLとして保存してWebページを作る →
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

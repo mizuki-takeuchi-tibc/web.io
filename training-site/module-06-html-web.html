@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第6章 ChatGPTでHTMLを書いて無料でWebページを公開 | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>第6章 ChatGPTでHTMLを書いて無料でWebページを公開</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Hands-on 06</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="第6章の目次">
+        <p class="side-nav__title">第6章 目次</p>
+        <a href="#overview">この章でやること</a>
+        <a href="#connection">前章とのつながり</a>
+        <a href="#goal">この章のゴール</a>
+        <a href="#theme">作成するWebページ</a>
+        <a href="#preparation">事前準備</a>
+        <a href="#prompt">ChatGPTへの依頼</a>
+        <a href="#save-files">ファイルを保存する</a>
+        <a href="#preview">ローカルで確認する</a>
+        <a href="#github">GitHubにアップロードする</a>
+        <a href="#pages">GitHub Pagesで公開する</a>
+        <a href="#fix">修正したい場合</a>
+        <a href="#checklist">チェックリスト</a>
+        <a href="#review">確認ポイント</a>
+        <a href="#trouble">トラブル対応</a>
+        <a href="#next">前後の章へ</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section id="overview" class="section hero-section">
+        <p class="eyebrow">Hands-on 06</p>
+        <h2>ChatGPTにコードを書かせて、無料でWebページを公開する</h2>
+        <p class="lead">
+          この章では、ChatGPTにHTML・CSS・JavaScriptのコードを書いてもらい、
+          自分でGitHubにアップロードして、無料でWebページとして公開する方法を体験します。
+        </p>
+
+        <p>
+          第3章ではCodexを使ってWebページを作成しました。
+          第6章では、Codexのような開発支援機能を使わずに、
+          <strong>ChatGPTにコードを書かせて、自分でファイルを保存し、GitHubにアップロードする</strong>
+          という流れを扱います。
+        </p>
+
+        <div class="process-flow" aria-label="第6章の作業の流れ">
+          <div class="process-flow__item">
+            <span>1</span>
+            <strong>ChatGPTに依頼</strong>
+            <p>HTML/CSS/JavaScriptのコードを書いてもらいます。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>2</span>
+            <strong>ファイル保存</strong>
+            <p>index.html、style.css、script.jsとして保存します。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>3</span>
+            <strong>GitHubへアップロード</strong>
+            <p>作成したファイルをGitHubのリポジトリにアップロードします。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>4</span>
+            <strong>Web公開</strong>
+            <p>GitHub Pagesを使って無料でWebページとして公開します。</p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章のポイント：</strong>
+          有料のWeb制作ツールやサーバーを使わなくても、
+          ChatGPTとGitHubを使えば、シンプルなWebページを無料で公開できます。
+        </div>
+      </section>
+
+      <section id="connection" class="section">
+        <p class="eyebrow">Connection</p>
+        <h2>ここまでの流れとのつながり</h2>
+
+        <div class="grid-3">
+          <div class="info-card">
+            <h3>第3章</h3>
+            <p>
+              Codexを使って、社内向け生成AIセミナー告知ページを作成しました。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第4章・第5章</h3>
+            <p>
+              ChatGPTにPythonコードを書かせ、PCアプリを作成し、exe化しました。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第6章</h3>
+            <p>
+              今度はChatGPTにHTML関連ファイルを書かせて、Webページとして公開します。
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            この章は「AIにコードを書いてもらえば、専門的な開発ツールがなくてもWebページを作れる」
+            という体験を目的にしています。
+          </p>
+          <p>
+            完成度の高いWeb制作というより、
+            <strong>ChatGPTでコードを作る → 自分でファイル化する → GitHubで公開する</strong>
+            という基本の流れを理解することが重要です。
+          </p>
+        </div>
+      </section>
+
+      <section id="goal" class="section">
+        <p class="eyebrow">Goal</p>
+        <h2>この章のゴール</h2>
+
+        <div class="grid-2">
+          <div class="goal-card">
+            <h3>完成させるもの</h3>
+            <ul class="check-list">
+              <li>HTML/CSS/JavaScriptで作ったWebページ</li>
+              <li>ローカルPCで開ける <code>index.html</code></li>
+              <li>GitHubにアップロードしたWebページ一式</li>
+              <li>GitHub Pagesで公開されたURL</li>
+            </ul>
+          </div>
+
+          <div class="goal-card">
+            <h3>できるようになること</h3>
+            <ul class="check-list">
+              <li>ChatGPTにWebページのコードを書かせる</li>
+              <li>HTML/CSS/JavaScriptを別ファイルとして保存する</li>
+              <li>ブラウザでHTMLファイルを確認する</li>
+              <li>GitHubにファイルをアップロードする</li>
+              <li>GitHub Pagesで無料公開する</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="theme" class="section">
+        <p class="eyebrow">Theme</p>
+        <h2>作成するWebページ</h2>
+        <p>
+          今回は、研修内容とつながる題材として、
+          <strong>「生成AI活用ミニガイド」</strong>
+          というWebページを作成します。
+        </p>
+
+        <div class="info-card">
+          <h3>作成するページの内容</h3>
+          <ul class="check-list">
+            <li>生成AIとは何か</li>
+            <li>業務で使える場面</li>
+            <li>使うときの注意点</li>
+            <li>おすすめの使い方</li>
+            <li>簡単なFAQ</li>
+            <li>お問い合わせ風のボタン</li>
+          </ul>
+        </div>
+
+        <div class="note">
+          <p>
+            企業サイトとして本格公開するものではなく、
+            練習用のミニページとして作成します。
+          </p>
+          <p>
+            実在する会社名、顧客名、個人情報、社内機密情報は入れないでください。
+          </p>
+        </div>
+
+        <h3>完成ファイルの構成</h3>
+        <p>
+          ChatGPTには、以下の3ファイルを作ってもらいます。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>ファイル構成</span>
+            <button class="copy-button" type="button" data-copy-target="webFileStructure">
+              コピー
+            </button>
+          </div>
+          <pre id="webFileStructure"><code>ai-mini-guide/
+  index.html
+  assets/
+    css/
+      style.css
+    js/
+      script.js</code></pre>
+        </div>
+
+        <div class="note note--important">
+          <strong>重要：</strong>
+          Webページとして公開する場合、トップページのファイル名は
+          <code>index.html</code>
+          にします。
+        </div>
+      </section>
+
+      <section id="preparation" class="section">
+        <p class="eyebrow">Preparation</p>
+        <h2>事前準備</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>1. ChatGPT</h3>
+            <p>
+              WebページのHTML/CSS/JavaScriptコードを作成してもらいます。
+            </p>
+            <p>
+              コードは1ファイルではなく、3ファイルに分けて出してもらいます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>2. メモ帳またはVS Code</h3>
+            <p>
+              ChatGPTが出力したコードをファイルとして保存するために使います。
+            </p>
+            <p>
+              VS Codeがなくても、メモ帳で作成できます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>3. GitHubアカウント</h3>
+            <p>
+              作成したHTML関連ファイルをアップロードするために使います。
+            </p>
+            <p>
+              すでに第3章でGitHubにログインしていれば、そのアカウントを使えます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>4. ブラウザ</h3>
+            <p>
+              ローカルでHTMLを確認したり、GitHub Pagesで公開されたURLを確認したりします。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>注意：</strong>
+          GitHubにアップロードした内容は、公開設定によっては外部から見える状態になります。
+          練習用ページには機密情報や個人情報を絶対に入れないでください。
+        </div>
+      </section>
+
+      <section id="prompt" class="section">
+        <p class="eyebrow">Prompt</p>
+        <h2>ChatGPTにHTML関連ファイルを書いてもらう</h2>
+        <p>
+          次のプロンプトをChatGPTに入力します。
+          ChatGPTには、HTML・CSS・JavaScriptを別ファイルとして作ってもらいます。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>ChatGPTに送るプロンプト</span>
+            <button class="copy-button" type="button" data-copy-target="htmlWebPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="htmlWebPrompt"><code>あなたは初心者向けにWeb制作を教える講師です。
+HTML、CSS、JavaScriptを使って、シンプルで見やすいWebページを作成してください。
+
+# 作りたいページ
+「生成AI活用ミニガイド」というWebページを作りたいです。
+
+# ページの目的
+生成AIをこれから使い始める人に向けて、
+生成AIの基本、業務で使える場面、注意点、おすすめの使い方を分かりやすく紹介するページにしたいです。
+
+# 対象者
+- 生成AIをまだあまり使ったことがない会社員
+- 業務でChatGPTなどを使ってみたい人
+- 情報漏えいや誤情報が不安な人
+
+# ページに入れたい内容
+1. ヒーローエリア
+   - タイトル：「生成AI活用ミニガイド」
+   - 説明文：仕事で生成AIを安全に使うための基本を学べるページ
+   - ボタン：「使い方を見る」「注意点を見る」
+
+2. 生成AIとは
+   - 初心者にも分かる短い説明
+
+3. 業務で使える場面
+   - メール作成
+   - 文書作成
+   - 議事録要約
+   - アイデア出し
+   - 表計算の補助
+   - プログラム作成の補助
+
+4. 使うときの注意点
+   - 個人情報を入力しない
+   - 社内機密を入力しない
+   - AIの回答を必ず確認する
+   - 出典や根拠を確認する
+   - 会社のルールに従う
+
+5. おすすめの使い方
+   - 役割を指定する
+   - 目的を伝える
+   - 条件を具体的に書く
+   - 出力形式を指定する
+   - 最後に人間が確認する
+
+6. FAQ
+   - 生成AIに何を入力してよいですか？
+   - AIの回答はそのまま使ってよいですか？
+   - 仕事で使うときに一番注意することは何ですか？
+
+7. お問い合わせ風エリア
+   - 「社内研修で学んだ内容を、まずは日常業務で試してみましょう」というメッセージ
+   - ボタン：「トップへ戻る」
+
+# デザイン条件
+- 企業向け研修資料として使える、落ち着いたデザイン
+- 色は青系を中心にする
+- 余白をしっかり取る
+- スマートフォンでも見やすいレスポンシブ対応
+- カード型のレイアウトを使う
+- FAQはクリックで開閉できるようにする
+- トップへ戻るボタンをJavaScriptで動かす
+- 画像は使わない
+
+# ファイル構成
+以下の3ファイルに分けてください。
+
+index.html
+assets/css/style.css
+assets/js/script.js
+
+# 出力形式
+以下の順番で、各ファイルの全文を出してください。
+
+1. index.html
+2. assets/css/style.css
+3. assets/js/script.js
+
+# 注意点
+- index.html から CSS は assets/css/style.css を読み込んでください。
+- index.html から JavaScript は assets/js/script.js を読み込んでください。
+- HTML、CSS、JavaScriptの各コードは省略せず全文で出してください。
+- 実在の会社名、個人情報、社内機密情報は入れないでください。</code></pre>
+        </div>
+
+        <div class="note">
+          <p>
+            ChatGPTの回答が長くなり途中で止まった場合は、
+            「続きから出してください」と入力してください。
+          </p>
+        </div>
+      </section>
+
+      <section id="save-files" class="section">
+        <p class="eyebrow">Save Files</p>
+        <h2>ChatGPTが作ったコードをファイルとして保存する</h2>
+
+        <p>
+          ChatGPTが出力したコードを、指定されたファイル名で保存します。
+        </p>
+
+        <ol class="number-list">
+          <li>デスクトップなどに <code>ai-mini-guide</code> というフォルダを作ります。</li>
+          <li>その中に <code>index.html</code> を作成します。</li>
+          <li><code>assets</code> フォルダを作成します。</li>
+          <li><code>assets</code> の中に <code>css</code> フォルダと <code>js</code> フォルダを作成します。</li>
+          <li><code>assets/css/style.css</code> を作成します。</li>
+          <li><code>assets/js/script.js</code> を作成します。</li>
+          <li>ChatGPTが出力した各コードを、それぞれのファイルに貼り付けて保存します。</li>
+        </ol>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>保存後の構成</span>
+            <button class="copy-button" type="button" data-copy-target="savedFileStructure">
+              コピー
+            </button>
+          </div>
+          <pre id="savedFileStructure"><code>ai-mini-guide/
+  index.html
+  assets/
+    css/
+      style.css
+    js/
+      script.js</code></pre>
+        </div>
+
+        <div class="note note--warning">
+          <strong>保存時の注意：</strong>
+          メモ帳で保存する場合、<code>index.html.txt</code> や
+          <code>style.css.txt</code> にならないように注意してください。
+          拡張子は必ず <code>.html</code>、<code>.css</code>、<code>.js</code> にします。
+        </div>
+      </section>
+
+      <section id="preview" class="section">
+        <p class="eyebrow">Preview</p>
+        <h2>ローカルでWebページを確認する</h2>
+
+        <p>
+          GitHubにアップロードする前に、まず自分のPC上で表示を確認します。
+        </p>
+
+        <ol class="number-list">
+          <li><code>ai-mini-guide</code> フォルダを開きます。</li>
+          <li><code>index.html</code> をダブルクリックします。</li>
+          <li>ブラウザでWebページが表示されることを確認します。</li>
+          <li>デザインが崩れていないか確認します。</li>
+          <li>FAQが開閉できるか確認します。</li>
+          <li>トップへ戻るボタンが動くか確認します。</li>
+        </ol>
+
+        <div class="note note--important">
+          <strong>確認ポイント：</strong>
+          ローカルで表示できないものは、GitHubにアップロードしても正しく表示されない可能性があります。
+          まずはPC上で確認しましょう。
+        </div>
+
+        <h3>よくある確認ポイント</h3>
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>CSSが反映されない</h3>
+            <p>
+              <code>index.html</code> のCSS読み込みパスが
+              <code>assets/css/style.css</code>
+              になっているか確認します。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>JavaScriptが動かない</h3>
+            <p>
+              <code>index.html</code> のJavaScript読み込みパスが
+              <code>assets/js/script.js</code>
+              になっているか確認します。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="github" class="section">
+        <p class="eyebrow">GitHub</p>
+        <h2>GitHubにファイルをアップロードする</h2>
+
+        <p>
+          ローカルで表示確認ができたら、GitHubにファイルをアップロードします。
+        </p>
+
+        <h3>1. 新しいリポジトリを作成する</h3>
+        <ol class="number-list">
+          <li>GitHubにログインします。</li>
+          <li>画面右上の「＋」から「New repository」を選択します。</li>
+          <li>Repository name に <code>ai-mini-guide</code> と入力します。</li>
+          <li>公開用の練習ページなので、<code>Public</code> を選択します。</li>
+          <li>「Create repository」をクリックします。</li>
+        </ol>
+
+        <div class="note note--warning">
+          <strong>Publicにする場合の注意：</strong>
+          Publicリポジトリは外部から見える可能性があります。
+          個人情報、社内資料、顧客情報、機密情報は絶対に入れないでください。
+        </div>
+
+        <h3>2. ファイルをアップロードする</h3>
+        <ol class="number-list">
+          <li>作成したリポジトリを開きます。</li>
+          <li>「Add file」をクリックします。</li>
+          <li>「Upload files」を選択します。</li>
+          <li>ローカルの <code>ai-mini-guide</code> フォルダ内のファイルをアップロードします。</li>
+          <li><code>index.html</code>、<code>assets/css/style.css</code>、<code>assets/js/script.js</code> が入るようにします。</li>
+          <li>画面下部の「Commit changes」をクリックします。</li>
+        </ol>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>GitHub上の構成</span>
+            <button class="copy-button" type="button" data-copy-target="githubStructure">
+              コピー
+            </button>
+          </div>
+          <pre id="githubStructure"><code>ai-mini-guide/
+  index.html
+  assets/
+    css/
+      style.css
+    js/
+      script.js</code></pre>
+        </div>
+
+        <div class="note note--important">
+          <strong>重要：</strong>
+          <code>index.html</code> はリポジトリの一番上の階層に置きます。
+          フォルダの中に入れすぎると、GitHub Pagesでトップページとして表示されない場合があります。
+        </div>
+      </section>
+
+      <section id="pages" class="section">
+        <p class="eyebrow">GitHub Pages</p>
+        <h2>GitHub Pagesで無料公開する</h2>
+
+        <p>
+          GitHubにファイルをアップロードしたら、GitHub Pagesを有効にしてWebページとして公開します。
+        </p>
+
+        <h3>公開手順</h3>
+        <ol class="number-list">
+          <li>GitHubのリポジトリ画面を開きます。</li>
+          <li>上部メニューの「Settings」をクリックします。</li>
+          <li>左側メニューの「Pages」をクリックします。</li>
+          <li>Build and deployment の Source で「Deploy from a branch」を選択します。</li>
+          <li>Branch で <code>main</code> を選択します。</li>
+          <li>フォルダは <code>/root</code> を選択します。</li>
+          <li>「Save」をクリックします。</li>
+          <li>少し待ってから、表示されたURLを開きます。</li>
+        </ol>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>公開URLの例</span>
+            <button class="copy-button" type="button" data-copy-target="githubPagesUrlExample">
+              コピー
+            </button>
+          </div>
+          <pre id="githubPagesUrlExample"><code>https://ユーザー名.github.io/ai-mini-guide/</code></pre>
+        </div>
+
+        <div class="note note--warning">
+          <strong>反映には少し時間がかかる場合があります。</strong>
+          設定直後に開いても404エラーになることがあります。
+          その場合は、数分待ってから再読み込みしてください。
+        </div>
+
+        <h3>公開できたら確認すること</h3>
+        <ul class="check-list">
+          <li>ページが表示されるか</li>
+          <li>CSSが反映されているか</li>
+          <li>FAQの開閉などJavaScriptが動くか</li>
+          <li>スマートフォン幅でも見やすいか</li>
+          <li>機密情報や個人情報が入っていないか</li>
+        </ul>
+      </section>
+
+      <section id="fix" class="section">
+        <p class="eyebrow">Fix</p>
+        <h2>修正したい場合はChatGPTに相談する</h2>
+
+        <p>
+          表示が崩れたり、思ったデザインにならなかった場合は、
+          現在のコードや状況をChatGPTに伝えて修正してもらいます。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>デザイン修正依頼プロンプト</span>
+            <button class="copy-button" type="button" data-copy-target="designFixPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="designFixPrompt"><code>作成してもらったWebページのデザインを修正したいです。
+以下の希望に合わせて、修正後の index.html、assets/css/style.css、assets/js/script.js の全文を出してください。
+
+# 修正したい内容
+ここに修正したい内容を書きます。
+例：
+- 文字をもう少し大きくしたい
+- 余白を広くしたい
+- ボタンの色を青系に統一したい
+- スマートフォンで見たときにカードが縦に並ぶようにしたい
+
+# 注意
+- ファイルは3つに分けたままにしてください。
+- CSSの読み込みパスは assets/css/style.css のままにしてください。
+- JavaScriptの読み込みパスは assets/js/script.js のままにしてください。
+- 各ファイルは省略せず全文で出してください。</code></pre>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>GitHub Pagesで表示されない場合の相談</span>
+            <button class="copy-button" type="button" data-copy-target="githubPagesFixPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="githubPagesFixPrompt"><code>GitHub PagesでWebページを公開しようとしましたが、うまく表示されません。
+原因と確認手順を初心者にも分かるように教えてください。
+
+# 状況
+- GitHubに index.html、assets/css/style.css、assets/js/script.js をアップロードしました。
+- GitHub Pagesで main ブランチの /root を指定しました。
+- 公開URLを開くと、以下の問題が起きます。
+
+# 起きている問題
+ここに状況を書きます。
+例：
+- 404エラーになる
+- HTMLは表示されるがCSSが反映されない
+- JavaScriptが動かない
+- 画像やファイルが読み込まれない
+
+# リポジトリ内のファイル構成
+ここにGitHub上のファイル構成を書きます。</code></pre>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>CSSが反映されない場合の相談</span>
+            <button class="copy-button" type="button" data-copy-target="cssFixPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="cssFixPrompt"><code>GitHub Pagesで公開したWebページでCSSが反映されません。
+以下のファイル構成に合わせて、index.html のCSS読み込みパスが正しいか確認し、必要なら修正してください。
+
+# ファイル構成
+index.html
+assets/css/style.css
+assets/js/script.js
+
+# 現在のindex.html
+ここにindex.htmlの全文を貼り付けます。</code></pre>
+        </div>
+
+        <div class="note">
+          <p>
+            修正したコードをGitHubに反映する場合は、
+            変更したファイルを再度アップロードし、
+            「Commit changes」を行います。
+          </p>
+        </div>
+      </section>
+
+      <section id="checklist" class="section">
+        <p class="eyebrow">Checklist</p>
+        <h2>作業チェックリスト</h2>
+
+        <div class="checklist-card">
+          <label>
+            <input type="checkbox" data-id="m06-01" />
+            ChatGPTにWebページ作成を依頼した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-02" />
+            index.html のコードを保存した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-03" />
+            assets/css/style.css のコードを保存した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-04" />
+            assets/js/script.js のコードを保存した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-05" />
+            ローカルPCで index.html を開いて表示確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-06" />
+            FAQやボタンなどJavaScriptの動作を確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-07" />
+            GitHubで新しいリポジトリを作成した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-08" />
+            index.html、style.css、script.js をGitHubにアップロードした
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-09" />
+            GitHub Pagesで main / root を指定した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-10" />
+            公開URLを開いてWebページを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-11" />
+            公開ページに個人情報や機密情報が入っていないことを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m06-12" />
+            必要に応じてChatGPTに修正を依頼した
+          </label>
+
+          <button id="clearChecklistButton" class="secondary-button" type="button">
+            チェックをリセット
+          </button>
+        </div>
+      </section>
+
+      <section id="review" class="section">
+        <p class="eyebrow">Review</p>
+        <h2>確認ポイント</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>できるようになったこと</h3>
+            <ul class="check-list">
+              <li>ChatGPTにWebページのコードを書かせる</li>
+              <li>HTML/CSS/JavaScriptを別ファイルで保存する</li>
+              <li>ローカルPCでWebページを確認する</li>
+              <li>GitHubにファイルをアップロードする</li>
+              <li>GitHub Pagesで無料公開する</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>実務で注意すること</h3>
+            <ul class="check-list">
+              <li>公開ページに機密情報を入れない</li>
+              <li>会社名やロゴを使う場合は許可を取る</li>
+              <li>AIが作ったコードは内容を確認する</li>
+              <li>外部公開してよい情報か確認する</li>
+              <li>正式な会社サイトとして使う場合は管理者に確認する</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>重要：</strong>
+          GitHub Pagesは手軽に公開できる一方で、公開した内容は外部から見える可能性があります。
+          練習では架空の内容だけを使い、実在する個人情報・顧客情報・社内資料は使わないでください。
+        </div>
+      </section>
+
+      <section id="trouble" class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>よくあるトラブル</h2>
+
+        <details class="details-box">
+          <summary>index.html.txt になってしまいます</summary>
+          <p>
+            メモ帳で保存する場合、ファイル名の最後に <code>.txt</code> が付くことがあります。
+            保存時にファイルの種類を「すべてのファイル」にし、
+            ファイル名を <code>index.html</code> にしてください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>CSSが反映されません</summary>
+          <p>
+            <code>index.html</code> からCSSを読み込むパスが間違っている可能性があります。
+            今回の構成では、CSSの読み込みパスは
+            <code>assets/css/style.css</code>
+            です。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>JavaScriptが動きません</summary>
+          <p>
+            JavaScriptの読み込みパスが間違っている可能性があります。
+            今回の構成では、JavaScriptの読み込みパスは
+            <code>assets/js/script.js</code>
+            です。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>GitHubにフォルダごとアップロードできません</summary>
+          <p>
+            GitHubの画面からアップロードする場合、環境によってはフォルダ構成が崩れることがあります。
+            その場合は、<code>assets</code> フォルダ内の構成が正しいか確認してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>GitHub PagesのURLが404になります</summary>
+          <p>
+            公開設定の反映に時間がかかっている可能性があります。
+            数分待ってから再読み込みしてください。
+            また、<code>index.html</code> がリポジトリの一番上にあるか確認してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>Publicリポジトリにしてよいか不安です</summary>
+          <p>
+            練習用ページであっても、公開してよい内容だけを入れてください。
+            会社情報や業務情報が含まれる場合は、公開せず、社内ルールに従ってください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>公開後に修正したいです</summary>
+          <p>
+            修正したファイルをGitHubに再アップロードし、Commit changesを行います。
+            しばらく待つとGitHub Pagesにも反映されます。
+          </p>
+        </details>
+      </section>
+
+      <section id="next" class="section next-section">
+        <p class="eyebrow">Navigation</p>
+        <h2>前後の章へ</h2>
+        <p>
+          第6章では、ChatGPTにHTML/CSS/JavaScriptを書かせて、
+          GitHub Pagesで無料公開する流れを体験しました。
+        </p>
+        <p>
+          次の第7章では、有名な生成AIサービスを比較し、
+          今回体験した作業がどのAIでできるのかを整理します。
+        </p>
+
+        <div class="grid-2">
+          <a class="primary-link" href="module-05-python-exe.html">
+            ← 第5章 Pythonアプリをexe化する
+          </a>
+
+          <a class="primary-link" href="module-07-ai-comparison.html">
+            第7章 有名AI比較 →
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>特別編 DotsとMuseで見る次世代AIエージェント | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>特別編 DotsとMuseで見る次世代AIエージェント</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Bonus</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="特別編の目次">
+        <p class="side-nav__title">特別編 目次</p>
+        <a href="#overview">この章の位置づけ</a>
+        <a href="#agent-shift">AIエージェントとは</a>
+        <a href="#dots">Dotsとは</a>
+        <a href="#muse">Museとは</a>
+        <a href="#comparison">DotsとMuseの比較</a>
+        <a href="#why-muse">最後にMuseを勧める理由</a>
+        <a href="#try-muse">Museで試してみること</a>
+        <a href="#caution">利用時の注意点</a>
+        <a href="#message">最後のメッセージ</a>
+        <a href="#references">参考リンク</a>
+        <a href="#next">前の章へ戻る</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section id="overview" class="section hero-section">
+        <p class="eyebrow">Bonus</p>
+        <h2>ここから先は、少し未来のAI活用の話</h2>
+        <p class="lead">
+          ここまでの章では、ChatGPTを中心に、
+          調査、提案書作成、Googleフォーム作成、Webページ作成、Pythonアプリ作成、exe化、GitHub Pages公開までを体験しました。
+        </p>
+
+        <p>
+          この特別編では、これまでの流れとは少し切り離して、
+          <strong>「AIエージェント」</strong>
+          という新しい使い方について紹介します。
+        </p>
+
+        <p>
+          具体的には、OpenAIの <strong>Dots</strong> と、Metaの <strong>Muse</strong> を取り上げます。
+          最後に、現在試しやすい選択肢として <strong>Muse</strong> を紹介して終わります。
+        </p>
+
+        <div class="process-flow" aria-label="特別編の流れ">
+          <div class="process-flow__item">
+            <span>1</span>
+            <strong>これまでのAI</strong>
+            <p>質問に答える、文章を書く、コードを書くAI。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>2</span>
+            <strong>AIエージェント</strong>
+            <p>目標に向かって、自分で作業を進めるAI。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>3</span>
+            <strong>DotsとMuse</strong>
+            <p>これから広がる次世代AIの例。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>4</span>
+            <strong>Museを試す</strong>
+            <p>無料枠で体験できるAIエージェントとして紹介。</p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章の位置づけ：</strong>
+          ここは必須のハンズオンではありません。
+          研修の最後に、生成AIの今後の方向性を知るための「おまけ」の章です。
+        </div>
+      </section>
+
+      <section id="agent-shift" class="section">
+        <p class="eyebrow">AI Agent</p>
+        <h2>AIは「答える道具」から「動く相棒」へ</h2>
+
+        <p>
+          これまで多くの生成AIは、こちらが質問や依頼を入力すると、
+          文章、要約、コード、アイデアなどを返してくれる存在でした。
+        </p>
+
+        <p>
+          しかし最近は、AIが単に回答するだけではなく、
+          <strong>目的を理解し、複数の作業を進め、必要に応じて確認しながら動く</strong>
+          方向に進んでいます。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>従来型のAI</h3>
+            <ul class="check-list">
+              <li>質問すると答える</li>
+              <li>文章を作る</li>
+              <li>要約する</li>
+              <li>コードを書く</li>
+              <li>基本的には一回ごとの依頼で動く</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>AIエージェント</h3>
+            <ul class="check-list">
+              <li>目的に向かって作業を進める</li>
+              <li>複数のステップを扱う</li>
+              <li>ツールやファイルと連携する</li>
+              <li>必要に応じて継続的に作業する</li>
+              <li>人間の確認を挟みながら進める</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            今回の研修で扱った「調査して提案書を作る」「フォームを作る」「Webページを作る」「アプリを作る」という流れも、
+            将来的にはAIエージェントがより自然に進めてくれるようになる可能性があります。
+          </p>
+        </div>
+      </section>
+
+      <section id="dots" class="section">
+        <p class="eyebrow">Dots</p>
+        <h2>Dotsとは</h2>
+
+        <p>
+          Dotsは、OpenAIが発表しているAIエージェントの一種です。
+          複雑なプロジェクトや日常的なタスクを、継続的に進める存在として紹介されています。
+        </p>
+
+        <div class="grid-2">
+          <div class="goal-card">
+            <h3>Dotsのイメージ</h3>
+            <ul class="check-list">
+              <li>常にそばにいるアシスタント</li>
+              <li>作業の続きを覚えている</li>
+              <li>複数のタスクをまたいで動く</li>
+              <li>調査、分析、文書作成、開発などを支援する</li>
+              <li>ChatGPTの作業体験をさらにエージェント化したもの</li>
+            </ul>
+          </div>
+
+          <div class="goal-card">
+            <h3>今回の研修に置き換えると</h3>
+            <ul class="check-list">
+              <li>提案書作成の続きを覚えている</li>
+              <li>フォーム作成やWebページ作成につなげる</li>
+              <li>作業途中の状況を把握する</li>
+              <li>次にやるべきことを提案する</li>
+              <li>プロジェクト全体を管理する</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>研修での説明ポイント：</strong>
+          Dotsは「一問一答のAI」ではなく、
+          <strong>継続的に仕事を進めるAIエージェント</strong>
+          として紹介すると分かりやすいです。
+        </div>
+      </section>
+
+      <section id="muse" class="section">
+        <p class="eyebrow">Muse</p>
+        <h2>Museとは</h2>
+
+        <p>
+          Museは、Metaが提供するパーソナルAIエージェントです。
+          個人の予定、タスク、ファイル、メッセージなどと連携しながら、日常の作業を支援するAIとして紹介されています。
+        </p>
+
+        <div class="grid-2">
+          <div class="goal-card">
+            <h3>Museのイメージ</h3>
+            <ul class="check-list">
+              <li>個人用のAIアシスタント</li>
+              <li>日常のタスクを整理する</li>
+              <li>予定やメッセージと連携する</li>
+              <li>ファイル整理や作業の補助を行う</li>
+              <li>無料枠で試しやすい</li>
+            </ul>
+          </div>
+
+          <div class="goal-card">
+            <h3>業務で考えられる使い方</h3>
+            <ul class="check-list">
+              <li>今日やることの整理</li>
+              <li>打ち合わせ前の準備</li>
+              <li>資料作成の下準備</li>
+              <li>メールやメモの整理</li>
+              <li>個人タスクの抜け漏れ防止</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>ポイント：</strong>
+          Museは、難しい開発や業務自動化というより、
+          まずは日常の作業を手伝うAIエージェントとして紹介すると受講者に伝わりやすいです。
+        </div>
+      </section>
+
+      <section id="comparison" class="section">
+        <p class="eyebrow">Comparison</p>
+        <h2>DotsとMuseの違い</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>Dots</th>
+                <th>Muse</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>提供元</strong></td>
+                <td>OpenAI</td>
+                <td>Meta</td>
+              </tr>
+
+              <tr>
+                <td><strong>位置づけ</strong></td>
+                <td>
+                  ChatGPTの作業体験を発展させた、継続的に仕事を進めるAIエージェント。
+                </td>
+                <td>
+                  個人の予定、タスク、ファイル、メッセージなどを手伝うパーソナルAIエージェント。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>向いている使い方</strong></td>
+                <td>
+                  プロジェクト作業、調査、分析、文書作成、開発作業の継続支援。
+                </td>
+                <td>
+                  日常タスク、予定管理、メモ整理、個人作業の補助。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>今回の研修との関係</strong></td>
+                <td>
+                  第1章から第6章までのような連続作業を、将来的にまとめて進めるイメージに近い。
+                </td>
+                <td>
+                  研修後に、受講者が自分の日常業務でAIエージェントを試す入口として向いている。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>紹介のしやすさ</strong></td>
+                <td>
+                  「仕事を続けて進めるAI」という未来像として紹介しやすい。
+                </td>
+                <td>
+                  無料枠で試しやすく、研修後の一歩として勧めやすい。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <p>
+            どちらが上という話ではありません。
+            Dotsは「仕事やプロジェクトを継続的に進めるAI」、
+            Museは「個人の日常タスクを支援するAI」として捉えると分かりやすいです。
+          </p>
+        </div>
+      </section>
+
+      <section id="why-muse" class="section">
+        <p class="eyebrow">Recommendation</p>
+        <h2>最後にMuseを勧める理由</h2>
+
+        <p>
+          研修の最後に紹介するなら、Museは受講者に勧めやすい選択肢です。
+          理由は、無料枠で試しやすく、いきなり業務システムを大きく変えなくても、
+          個人のタスク整理や日常業務の補助から始められるためです。
+        </p>
+
+        <div class="grid-3">
+          <div class="info-card">
+            <h3>1. 試しやすい</h3>
+            <p>
+              無料枠があるため、まずは個人で触ってみる入口として紹介しやすいです。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>2. 日常業務に近い</h3>
+            <p>
+              予定、タスク、メモ、ファイル整理など、受講者がイメージしやすい作業に使えます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>3. AIエージェントを体験できる</h3>
+            <p>
+              一問一答ではなく、AIに作業を手伝ってもらう感覚を体験しやすいです。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>研修の締め方：</strong>
+          「まずはChatGPTで基本を学び、次にAIエージェントを試すならMuseから触ってみる」
+          という流れで締めると、受講者が次に何をすればよいか分かりやすくなります。
+        </div>
+      </section>
+
+      <section id="try-muse" class="section">
+        <p class="eyebrow">Try Muse</p>
+        <h2>Museで試してみること</h2>
+
+        <p>
+          研修後にMuseを試すなら、いきなり重要な業務を任せるのではなく、
+          自分だけで確認できる小さなタスクから始めます。
+        </p>
+
+        <div class="grid-2">
+          <div class="goal-card">
+            <h3>最初に試しやすいこと</h3>
+            <ul class="check-list">
+              <li>今日やることを整理してもらう</li>
+              <li>今週の予定を確認してもらう</li>
+              <li>メモをもとにタスクリストを作ってもらう</li>
+              <li>打ち合わせ前に確認事項を整理してもらう</li>
+              <li>作業の優先順位を一緒に考えてもらう</li>
+            </ul>
+          </div>
+
+          <div class="goal-card">
+            <h3>慣れてきたら試すこと</h3>
+            <ul class="check-list">
+              <li>資料作成前の構成案を出してもらう</li>
+              <li>メール返信の下書きを考えてもらう</li>
+              <li>ファイルやメモを整理してもらう</li>
+              <li>定期的な作業の抜け漏れを確認してもらう</li>
+              <li>目標に対する次の行動を提案してもらう</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Museに依頼する例</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>Museで試す依頼例</span>
+            <button class="copy-button" type="button" data-copy-target="musePromptExample">
+              コピー
+            </button>
+          </div>
+          <pre id="musePromptExample"><code>今日やることを整理したいです。
+以下のメモをもとに、優先順位をつけたタスクリストにしてください。
+
+# 今日やりたいこと
+- 研修資料を確認する
+- 参加者リストを整理する
+- 上司に進捗を報告する
+- メールの返信をする
+- 明日の打ち合わせの準備をする
+
+# 出力してほしい形式
+1. 今日必ずやること
+2. できればやること
+3. 明日以降でもよいこと
+4. 最初に取りかかるべき作業</code></pre>
+        </div>
+
+        <div class="note">
+          <p>
+            最初は、個人情報や機密情報を含まないメモで試してください。
+            便利さを感じたら、社内ルールに沿って業務利用の範囲を確認します。
+          </p>
+        </div>
+      </section>
+
+      <section id="caution" class="section">
+        <p class="eyebrow">Caution</p>
+        <h2>利用時の注意点</h2>
+
+        <p>
+          AIエージェントは便利ですが、通常のチャットAI以上に、
+          ファイル、予定、メッセージ、タスクなどと連携する可能性があります。
+          そのため、利用前に確認すべき点があります。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>確認すること</h3>
+            <ul class="check-list">
+              <li>どの情報にアクセスできるのか</li>
+              <li>どのアプリと連携しているのか</li>
+              <li>自動で何を実行できるのか</li>
+              <li>送信前に人間の確認が入るのか</li>
+              <li>会社の利用ルールに反していないか</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>入れない方がよい情報</h3>
+            <ul class="check-list">
+              <li>顧客情報</li>
+              <li>個人情報</li>
+              <li>社外秘資料</li>
+              <li>未公開の経営情報</li>
+              <li>パスワードや認証コード</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--danger">
+          <strong>重要：</strong>
+          AIエージェントは「便利だから何でも任せる」のではなく、
+          <strong>何を見せるか、何を任せるか、どこで人間が確認するか</strong>
+          を決めて使うことが大切です。
+        </div>
+      </section>
+
+      <section id="message" class="section">
+        <p class="eyebrow">Final Message</p>
+        <h2>最後のメッセージ</h2>
+
+        <div class="info-card">
+          <p>
+            今回の研修では、ChatGPTを中心に、生成AIでできることを幅広く体験しました。
+            文章を作るだけでなく、資料作成、フォーム作成、Webページ作成、アプリ作成、exe化、Web公開まで、
+            AIを使うことで多くの作業を進められることが分かったと思います。
+          </p>
+
+          <p>
+            そして、これからのAIはさらに進みます。
+            これまでのように「質問に答えるAI」だけでなく、
+            目的に向かって作業を進める <strong>AIエージェント</strong> が広がっていきます。
+          </p>
+
+          <p>
+            まずは、今回学んだChatGPTの使い方を業務の小さな作業で試してみてください。
+            その次の一歩として、無料枠で試せるMuseのようなAIエージェントにも触れてみると、
+            これからの働き方のイメージがさらに広がります。
+          </p>
+        </div>
+
+        <div class="note note--important">
+          <strong>締めの一言：</strong>
+          生成AIは、使う人の仕事を奪うものではなく、
+          使う人の可能性を広げる道具です。
+          まずは安全な範囲で、小さく試すところから始めましょう。
+        </div>
+      </section>
+
+      <section id="references" class="section">
+        <p class="eyebrow">References</p>
+        <h2>参考リンク</h2>
+
+        <p>
+          DotsやMuseは新しい領域のサービスです。
+          機能、料金、提供地域、利用条件は変わる可能性があるため、実際に使う前に公式情報を確認してください。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>Dots</h3>
+            <ul class="check-list">
+              <li>
+                <a href="https://openai.com/index/introducing-dots/" target="_blank" rel="noopener noreferrer">
+                  Introducing dots - OpenAI
+                </a>
+              </li>
+              <li>
+                <a href="https://learn.chatgpt.com/docs/dots" target="_blank" rel="noopener noreferrer">
+                  Meet dots - ChatGPT Learn
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Muse</h3>
+            <ul class="check-list">
+              <li>
+                <a href="https://ai.meta.com/muse/" target="_blank" rel="noopener noreferrer">
+                  Muse - Meta AI
+                </a>
+              </li>
+              <li>
+                <a href="https://ai.meta.com/muse/download/" target="_blank" rel="noopener noreferrer">
+                  Download Muse - Meta AI
+                </a>
+              </li>
+              <li>
+                <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" target="_blank" rel="noopener noreferrer">
+                  Introducing Muse - Meta
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="next" class="section next-section">
+        <p class="eyebrow">Navigation</p>
+        <h2>前の章へ戻る</h2>
+
+        <p>
+          これで、生成AIハンズオン研修会の本編と特別編は終了です。
+        </p>
+
+        <div class="grid-2">
+          <a class="primary-link" href="module-07-ai-comparison.html">
+            ← 第7章 ChatGPT以外で同じことをやるなら
+          </a>
+
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

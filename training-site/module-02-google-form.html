@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第2章 Googleフォーム自動生成 | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>第2章 Googleフォーム自動生成</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Hands-on 02</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="ページ内ナビゲーション">
+        <p class="side-nav__title">第2章 目次</p>
+        <a href="#overview">この章でやること</a>
+        <a href="#connection">第1章とのつながり</a>
+        <a href="#use-output">第1章の提案書を使う</a>
+        <a href="#theme">作成するフォーム</a>
+        <a href="#form-items">フォーム項目</a>
+        <a href="#preparation">事前準備</a>
+        <a href="#prompt-create">プロンプトをAIに作らせる</a>
+        <a href="#prompt-run">AIが作ったプロンプトを使う</a>
+        <a href="#apps-script">Apps Scriptでフォーム作成</a>
+        <a href="#sample-code">予備サンプルコード</a>
+        <a href="#checklist">チェックリスト</a>
+        <a href="#review">確認ポイント</a>
+        <a href="#trouble">困ったときは</a>
+        <a href="#next">前後の章へ</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section id="overview" class="section hero-section">
+        <p class="eyebrow">Hands-on 02</p>
+        <h2>この章でやること</h2>
+
+        <p class="lead">
+          この章では、Google Apps Scriptを使って、
+          <strong>生成AI研修 参加申込・活用度診断フォーム</strong>を自動生成します。
+        </p>
+
+        <p>
+          第1章では、生成AI研修の必要性を調査し、会社向けの提案書を作成しました。
+          第2章では、その提案書の内容を活用しながら、
+          研修への参加申込と、参加者の生成AI活用状況を確認できるフォームを作成します。
+        </p>
+
+        <p>
+          具体的には、氏名、所属部署、希望する研修実施日、生成AIの理解度、
+          業務で活用したい内容、不安に感じていること、学びたい内容などを入力してもらうフォームを作ります。
+        </p>
+
+        <figure class="figure-card">
+          <img
+            src="assets/images/google-form-flow-overview.png"
+            alt="第1章の提案書をもとに、AIでGoogleフォームを自動生成し、研修申込と活用度診断に使う流れ"
+            class="training-image"
+          />
+          <figcaption class="caption">
+            第1章の提案書をもとに、研修申込と事前ヒアリングを兼ねたGoogleフォームを自動生成します。
+          </figcaption>
+        </figure>
+
+        <div class="note note--important">
+          <strong>今回のポイント：</strong>
+          単なるアンケートではなく、参加申込と事前ヒアリングを兼ねたフォームを作成します。
+          これにより、誰がどの日程に参加希望なのかを確認しながら、
+          研修内容の調整にも活用できます。
+        </div>
+
+        <div class="note note--danger">
+          <strong>個人情報の取り扱い：</strong>
+          このフォームでは、研修申込のために氏名と所属部署を入力する構成にします。
+          研修中に実際のフォームを作成する場合は、実在の個人情報を入力せず、
+          テスト用の氏名や架空データで動作確認してください。
+        </div>
+      </section>
+
+      <section id="connection" class="section">
+        <p class="eyebrow">Connection</p>
+        <h2>第1章とのつながり</h2>
+
+        <p>
+          第1章では、生成AI研修の必要性を調査し、
+          会社に研修実施を提案するための資料を作成しました。
+        </p>
+
+        <p>
+          第2章では、その提案書をそのまま使って、
+          研修の参加申込と、参加者の理解度・不安・学びたい内容を確認するフォームを作成します。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>第1章で作ったもの</h3>
+            <ul class="check-list">
+              <li>生成AI研修の必要性に関する調査結果</li>
+              <li>会社向けの生成AI研修実施提案書</li>
+              <li>研修の目的・対象者・内容案・期待効果</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>この章で作るもの</h3>
+            <ul class="check-list">
+              <li>生成AI研修の参加申込フォーム</li>
+              <li>生成AI活用度の事前診断フォーム</li>
+              <li>希望研修日の集計に使える回答データ</li>
+              <li>第4章のCSV集計アプリで使える回答データ</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>この章の考え方：</strong>
+          第1章で作成した提案書を、実際の研修申込や参加者把握につなげます。
+          資料を作って終わりではなく、次の業務に展開する体験をします。
+        </div>
+      </section>
+
+      <section id="use-output" class="section">
+        <p class="eyebrow">Use Output</p>
+        <h2>第1章の提案書を使う</h2>
+
+        <p>
+          この章では、第1章で作成した提案書を全文コピーして使います。
+        </p>
+
+        <p>
+          受講者が提案書の中から研修目的や対象者を一つずつ抜き出す必要はありません。
+          提案書を全文貼り付け、AIに必要な情報を読み取ってもらいます。
+        </p>
+
+        <div class="note note--important">
+          <strong>作業のポイント：</strong>
+          第1章の提案書を開き、本文を全文コピーして、
+          この後のプロンプトの最後に貼り付けます。
+          必要な情報の整理はAIに任せます。
+        </div>
+
+        <div class="note note--warning">
+          <strong>注意：</strong>
+          提案書に実在の会社名、社員名、顧客名、機密情報などが入っている場合は、
+          研修では架空名やサンプル情報に置き換えてから使用してください。
+        </div>
+      </section>
+
+      <section id="theme" class="section">
+        <p class="eyebrow">Theme</p>
+        <h2>作成するフォーム</h2>
+
+        <p>
+          今回作成するのは、
+          <strong>生成AI研修 参加申込・活用度診断フォーム</strong>です。
+        </p>
+
+        <p>
+          研修への参加申込を受け付けるだけでなく、
+          参加者が生成AIをどの程度知っているか、
+          どのような業務で活用したいか、
+          どのような内容を学びたいかもあわせて確認します。
+        </p>
+
+        <div class="info-card">
+          <h3>完成イメージを確認する</h3>
+          <p>
+            今回作成するフォームの完成イメージとして、以下のサンプルGoogleフォームを確認できます。
+            自分でフォームを作成する前に、どのような設問構成になるのか確認しておきましょう。
+          </p>
+
+          <p>
+            <a
+              class="primary-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfzupIF-kFU2nF4rT64zXedZcrdb-hPblkwOpFIIHTLzNMWCA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              サンプルGoogleフォームを開く
+            </a>
+          </p>
+        </div>
+
+        <div class="note note--important">
+          <strong>今回のフォームの使いどころ：</strong>
+          第3章で作成する社内向けセミナー告知ページの申込ボタンから、
+          このフォームに移動できるようにします。
+          第4章では、このフォームの回答CSVをもとに集計アプリを作成します。
+        </div>
+
+        <div class="note note--danger">
+          <strong>個人情報の取り扱い：</strong>
+          氏名と所属部署を取得するため、実務で使う場合は回答データの共有範囲、
+          保管期間、閲覧権限を必ず確認してください。
+        </div>
+      </section>
+
+      <section id="form-items" class="section">
+        <p class="eyebrow">Form Items</p>
+        <h2>フォームに入れる項目</h2>
+
+        <p>
+          フォームには、研修申込に必要な項目と、
+          研修内容を調整するための事前ヒアリング項目を入れます。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>申込に必要な項目</h3>
+            <ul class="check-list">
+              <li>氏名</li>
+              <li>所属部署</li>
+              <li>現在の主な職種</li>
+              <li>所属部署または職種で「その他」を選んだ場合の補足</li>
+              <li>希望する研修実施日</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>事前ヒアリング項目</h3>
+            <ul class="check-list">
+              <li>生成AIについて、現在どの程度知っているか</li>
+              <li>使ったことがある生成AIサービス</li>
+              <li>生成AIを活用できそうな業務</li>
+              <li>生成AIを使ううえで不安に感じること</li>
+              <li>現在の業務での生成AI活用状況</li>
+              <li>研修で学びたい内容</li>
+              <li>特に扱ってほしい業務やテーマ</li>
+              <li>その他の意見・要望</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>希望する研修実施日の設問</h3>
+          <p>
+            希望する研修実施日は、3つの日程から1つを選んでもらう形にします。
+            Googleフォームでは「選択式」、Apps Scriptでは
+            <code>MultipleChoiceItem</code>
+            を使います。
+          </p>
+
+          <ul class="check-list">
+            <li>第1回：2026年○月○日（○） 13:30〜16:30</li>
+            <li>第2回：2026年○月○日（○） 13:30〜16:30</li>
+            <li>第3回：2026年○月○日（○） 13:30〜16:30</li>
+          </ul>
+
+          <p>
+            実際の研修日が決まっている場合は、この3つの日程を実日程に差し替えてください。
+          </p>
+        </div>
+
+        <div class="note">
+          <strong>第4章とのつながり：</strong>
+          この項目構成にしておくと、回答CSVから
+          「日程別の申込人数」「部署別の申込人数」「学びたい内容」「不安に感じていること」
+          を集計しやすくなります。
+        </div>
+      </section>
+
+      <section id="preparation" class="section">
+        <p class="eyebrow">Preparation</p>
+        <h2>事前準備</h2>
+
+        <p>
+          フォームを自動生成する前に、以下を準備します。
+        </p>
+
+        <div class="grid-2">
+          <div class="step-card">
+            <p class="step-label">準備 1</p>
+            <h3>第1章の提案書</h3>
+            <p>
+              第1章で作成した提案書を開きます。
+              この後のプロンプトの最後に、提案書本文を全文貼り付けます。
+            </p>
+          </div>
+
+          <div class="step-card">
+            <p class="step-label">準備 2</p>
+            <h3>Googleアカウント</h3>
+            <p>
+              GoogleフォームとGoogleスプレッドシートを作成するため、
+              Googleアカウントにログインしておきます。
+            </p>
+          </div>
+
+          <div class="step-card">
+            <p class="step-label">準備 3</p>
+            <h3>AIチャット画面</h3>
+            <p>
+              フォーム作成用のプロンプトをAIに作らせるため、
+              AIチャット画面を開いておきます。
+            </p>
+          </div>
+
+          <div class="step-card">
+            <p class="step-label">準備 4</p>
+            <h3>Google Apps Script</h3>
+            <p>
+              AIが作成したApps Scriptコードを貼り付けて実行するため、
+              Google Apps Scriptを使います。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>会社アカウントを使う場合：</strong>
+          会社のGoogle Workspaceでは、Apps Scriptや外部連携の利用が制限されている場合があります。
+          実行できない場合は、講師画面で流れを確認してください。
+        </div>
+      </section>
+
+      <section id="prompt-create" class="section">
+        <p class="eyebrow">Prompt</p>
+        <h2>フォーム作成用プロンプトをAIに作らせる</h2>
+
+        <p>
+          ここでは、いきなりApps Scriptコードを書かせるのではなく、
+          まずAIに
+          <strong>Googleフォーム作成用のプロンプト</strong>
+          を作らせます。
+        </p>
+
+        <p>
+          第1章の提案書を全文貼り付けることで、
+          AIが研修の目的や対象者を読み取り、
+          今回の研修に合ったフォーム作成用プロンプトを作成します。
+        </p>
+
+        <div class="note note--important">
+          <strong>この作業でやること：</strong>
+          AIに、Google Apps Scriptでフォームを作成するためのプロンプトを作成してもらいます。
+          この段階では、Apps Scriptコードはまだ作成しません。
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>コピーしてAIに貼り付けるプロンプト</span>
+            <button class="copy-button" type="button" data-copy-target="promptCreationRequest">
+              コピー
+            </button>
+          </div>
+
+          <pre id="promptCreationRequest"><code>あなたは、Googleフォームを使った研修申込フォーム作成を支援するアシスタントです。
+
+これから、Google Apps Scriptで
+「生成AI研修 参加申込・活用度診断フォーム」を自動作成したいです。
+
+以下に、第1章で作成した「生成AI研修会 実施提案書」の本文を貼り付けます。
+
+この提案書の内容を読み取ったうえで、
+Google Apps Scriptにコード作成を依頼するためのプロンプトを作成してください。
+
+この段階では、Apps Scriptコードはまだ作成しないでください。
+Google Apps Scriptでフォームを作成するための、完成度の高いプロンプトだけを作成してください。
+
+作成するフォームは、単なるアンケートではなく、
+「生成AI研修 参加申込・活用度診断フォーム」としてください。
+
+フォームでは、研修への参加申込を受け付けると同時に、
+参加者の生成AIに関する理解度、利用状況、学びたい内容を確認できるようにしてください。
+
+必ず以下の項目を入れてください。
+
+1. 氏名
+- 記述式
+- 必須
+
+2. 所属部署を選択してください
+- プルダウンまたはラジオボタン
+- 必須
+- 選択肢例：
+  総務部
+  営業部
+  製造部
+  経理部
+  人事部
+  企画部
+  情報システム部
+  カスタマーサポート
+  その他
+
+3. 現在の主な職種を選択してください
+- プルダウンまたはラジオボタン
+- 必須
+- 選択肢例：
+  事務職
+  営業職
+  技術職
+  企画職
+  現場管理
+  管理職
+  その他
+
+4. 所属部署または職種で「その他」を選択した場合は、差し支えない範囲で補足してください
+- 記述式
+- 任意
+
+5. 希望する研修実施日を選択してください
+- ラジオボタン、Googleフォームでは選択式
+- 必須
+- 選択肢は以下の3つ：
+  第1回：2026年○月○日（○） 13:30〜16:30
+  第2回：2026年○月○日（○） 13:30〜16:30
+  第3回：2026年○月○日（○） 13:30〜16:30
+
+6. 生成AIについて、現在どの程度知っていますか
+- ラジオボタン
+- 必須
+- 選択肢例：
+  名前は聞いたことがある
+  基本的な内容は知っている
+  業務での活用イメージがある
+  詳しく知っている
+
+7. これまでに使ったことがある生成AIサービスを選択してください
+- チェックボックス
+- 必須
+- 選択肢例：
+  ChatGPT
+  Gemini
+  Claude
+  Microsoft Copilot
+  使ったことはない
+  その他
+
+8. あなたの業務で、生成AIを活用できそうだと思うものを選択してください
+- チェックボックス
+- 必須
+- 選択肢例：
+  メール作成
+  文書作成
+  提案書作成
+  企画書作成
+  情報収集
+  議事録要約
+  マニュアル作成
+  問い合わせ対応
+  社内FAQ作成
+  アンケート作成
+  アンケート集計
+  コード作成
+  業務自動化
+  その他
+
+9. 生成AIを使ううえで、不安に感じることを選択してください
+- チェックボックス
+- 必須
+- 選択肢例：
+  情報漏えい
+  個人情報
+  回答の正確性
+  著作権
+  セキュリティ
+  社内ルールが不明
+  使い方がわからない
+  特に不安はない
+  その他
+
+10. 現在、業務で生成AIをどの程度活用していますか
+- ラジオボタン
+- 必須
+- 選択肢例：
+  まだ活用していない
+  個人的に試したことがある
+  一部の業務で活用している
+  日常的に活用している
+
+11. 生成AI研修で学びたい内容を選択してください
+- チェックボックス
+- 必須
+- 選択肢例：
+  ChatGPTの基本操作
+  プロンプト作成
+  メール作成
+  文書作成
+  資料作成
+  フォーム作成
+  業務効率化
+  業務自動化
+  アプリ作成
+  社内ルール
+  注意点
+  その他
+
+12. 生成AI研修で特に扱ってほしい業務やテーマがあれば記入してください
+- 段落
+- 任意
+
+13. その他、生成AIの活用や研修に関して意見・要望があれば記入してください
+- 段落
+- 任意
+
+以下の条件もプロンプトに含めてください。
+
+- Googleフォームを新規作成する
+- フォーム名は「生成AI研修 参加申込・活用度診断フォーム」にする
+- 回答先のGoogleスプレッドシートも作成する
+- フォームURL、編集URL、回答スプレッドシートURLをログに出力する
+- 初心者にもわかるように、コード内にコメントを入れるよう依頼する
+- 実在の個人情報や機密情報を入力しない注意書きをフォーム説明文に入れる
+- Google Apps Scriptに貼り付けて実行できるコードを作成してもらう前提にする
+
+【第1章で作成した提案書本文】
+ここに第1章で作成した提案書を全文貼り付ける</code></pre>
+        </div>
+      </section>
+
+      <section id="prompt-run" class="section">
+        <p class="eyebrow">Use Prompt</p>
+        <h2>AIが作ったプロンプトを使う</h2>
+
+        <p>
+          前の手順でAIが作成したプロンプトを確認したら、
+          そのプロンプトをそのままAIに送信します。
+        </p>
+
+        <p>
+          すると、AIがGoogle Apps Script用のコードを作成します。
+          このコードをGoogle Apps Scriptに貼り付けて実行することで、
+          Googleフォームと回答用スプレッドシートを自動で作成できます。
+        </p>
+
+        <div class="note note--important">
+          <strong>大事なポイント：</strong>
+          この教材側で完成済みのコード作成プロンプトを渡すのではなく、
+          受講者自身がAIに作らせたプロンプトを使います。
+          「AIにプロンプトを作らせ、そのプロンプトでコードを作らせる」
+          という流れを体験します。
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div>
+              <h3>AIが作成したプロンプトをコピーする</h3>
+              <p>
+                前の手順でAIが出力した、Google Apps Scriptコード作成用のプロンプトをコピーします。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div>
+              <h3>そのままAIに送信する</h3>
+              <p>
+                コピーしたプロンプトをAIに貼り付けて送信します。
+                追加で複雑な修正をする必要はありません。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div>
+              <h3>Apps Scriptコードを受け取る</h3>
+              <p>
+                AIが、Googleフォームを作成するためのApps Scriptコードを出力します。
+                次の手順で、そのコードをGoogle Apps Scriptに貼り付けます。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>注意：</strong>
+          AIが出力したコードが途中で切れている場合は、
+          「続きを出してください」と依頼してください。
+        </div>
+      </section>
+
+      <section id="apps-script" class="section">
+        <p class="eyebrow">Google Apps Script</p>
+        <h2>Google Apps Scriptでフォームを作成する</h2>
+
+        <p>
+          AIが作成したApps Scriptコードを、Google Apps Scriptに貼り付けて実行します。
+          実行すると、Googleフォームと回答用スプレッドシートが自動で作成されます。
+        </p>
+
+        <p>
+          Google Apps Scriptは、Googleフォーム、Googleスプレッドシート、Gmailなどを自動操作できる仕組みです。
+          今回は、フォーム作成の自動化に使います。
+        </p>
+
+        <figure class="figure-card">
+          <img
+            src="assets/images/apps-script-editor.png"
+            alt="Google Apps Scriptのエディタ画面"
+            class="training-image"
+          />
+          <figcaption class="caption">
+            Google Apps Scriptのエディタに、AIが作成したコードを貼り付けて実行します。
+          </figcaption>
+        </figure>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div>
+              <h3>Google Apps Scriptを開く</h3>
+              <p>
+                ブラウザで以下のURLを開きます。
+              </p>
+
+              <p>
+                <a
+                  class="primary-link"
+                  href="https://script.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Apps Scriptを開く
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div>
+              <h3>新しいプロジェクトを作成する</h3>
+              <p>
+                新しいプロジェクトを作成し、プロジェクト名を以下のようにします。
+              </p>
+
+              <div class="prompt-box">
+                <pre><code>生成AI研修申込フォーム作成</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div>
+              <h3>コードを貼り付ける</h3>
+              <p>
+                AIが作成したApps Scriptコードを、エディタに貼り付けます。
+                既存のコードがある場合は削除してから貼り付けます。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div>
+              <h3>保存して実行する</h3>
+              <p>
+                コードを保存し、実行ボタンを押します。
+                初回実行時には、Googleアカウントの権限確認が表示されます。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">5</div>
+            <div>
+              <h3>ログでURLを確認する</h3>
+              <p>
+                実行後、ログに表示されたフォームURL、編集URL、
+                回答スプレッドシートURLを確認します。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note note--danger">
+          <strong>注意：</strong>
+          権限確認では、自分が作成したスクリプトであることを確認してから許可してください。
+          不明なコードや、出所がわからないコードは実行しないでください。
+        </div>
+      </section>
+
+      <section id="sample-code" class="section">
+        <p class="eyebrow">Backup</p>
+        <h2>うまくいかない場合の予備サンプルコード</h2>
+
+        <p>
+          AIが作成したコードでうまくフォームが作れない場合は、
+          以下の予備サンプルコードを使って動作を確認できます。
+        </p>
+
+        <p>
+          ただし、研修ではまず
+          <strong>AIにプロンプトを作らせ、そのプロンプトでコードを作る流れ</strong>
+          を優先してください。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>予備サンプルコード</span>
+            <button class="copy-button" type="button" data-copy-target="sampleAppsScriptCode">
+              コピー
+            </button>
+          </div>
+
+          <pre id="sampleAppsScriptCode"><code>function createAiTrainingApplicationForm() {
+  // フォーム名
+  const formTitle = '生成AI研修 参加申込・活用度診断フォーム';
+
+  // Googleフォームを新規作成
+  const form = FormApp.create(formTitle);
+
+  // フォーム説明文
+  form.setDescription(
+    'このフォームは、生成AI研修への参加申込と、参加者の生成AI活用状況を確認するためのフォームです。' +
+    '\\n研修中の動作確認では、実在の個人情報・顧客情報・社内機密情報を入力しないでください。'
+  );
+
+  // 回答用スプレッドシートを作成してフォームに紐づけ
+  const spreadsheet = SpreadsheetApp.create('生成AI研修 参加申込・活用度診断フォーム 回答一覧');
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, spreadsheet.getId());
+
+  // 1. 氏名
+  form.addTextItem()
+    .setTitle('氏名')
+    .setHelpText('研修中のテストでは、実名ではなく「山田 太郎」などのサンプル名を入力してください。')
+    .setRequired(true);
+
+  // 2. 所属部署
+  form.addListItem()
+    .setTitle('所属部署を選択してください')
+    .setChoiceValues([
+      '総務部',
+      '営業部',
+      '製造部',
+      '経理部',
+      '人事部',
+      '企画部',
+      '情報システム部',
+      'カスタマーサポート',
+      'その他'
+    ])
+    .setRequired(true);
+
+  // 3. 職種
+  form.addListItem()
+    .setTitle('現在の主な職種を選択してください')
+    .setChoiceValues([
+      '事務職',
+      '営業職',
+      '技術職',
+      '企画職',
+      '現場管理',
+      '管理職',
+      'その他'
+    ])
+    .setRequired(true);
+
+  // 4. その他補足
+  form.addTextItem()
+    .setTitle('所属部署または職種で「その他」を選択した場合は、差し支えない範囲で補足してください')
+    .setRequired(false);
+
+  // 5. 希望する研修実施日
+  form.addMultipleChoiceItem()
+    .setTitle('希望する研修実施日を選択してください')
+    .setChoiceValues([
+      '第1回：2026年○月○日（○） 13:30〜16:30',
+      '第2回：2026年○月○日（○） 13:30〜16:30',
+      '第3回：2026年○月○日（○） 13:30〜16:30'
+    ])
+    .setRequired(true);
+
+  // 6. 生成AIの理解度
+  form.addMultipleChoiceItem()
+    .setTitle('生成AIについて、現在どの程度知っていますか')
+    .setChoiceValues([
+      '名前は聞いたことがある',
+      '基本的な内容は知っている',
+      '業務での活用イメージがある',
+      '詳しく知っている'
+    ])
+    .setRequired(true);
+
+  // 7. 使ったことがある生成AIサービス
+  form.addCheckboxItem()
+    .setTitle('これまでに使ったことがある生成AIサービスを選択してください')
+    .setChoiceValues([
+      'ChatGPT',
+      'Gemini',
+      'Claude',
+      'Microsoft Copilot',
+      '使ったことはない',
+      'その他'
+    ])
+    .setRequired(true);
+
+  // 8. 活用できそうな業務
+  form.addCheckboxItem()
+    .setTitle('あなたの業務で、生成AIを活用できそうだと思うものを選択してください')
+    .setChoiceValues([
+      'メール作成',
+      '文書作成',
+      '提案書作成',
+      '企画書作成',
+      '情報収集',
+      '議事録要約',
+      'マニュアル作成',
+      '問い合わせ対応',
+      '社内FAQ作成',
+      'アンケート作成',
+      'アンケート集計',
+      'コード作成',
+      '業務自動化',
+      'その他'
+    ])
+    .setRequired(true);
+
+  // 9. 不安に感じること
+  form.addCheckboxItem()
+    .setTitle('生成AIを使ううえで、不安に感じることを選択してください')
+    .setChoiceValues([
+      '情報漏えい',
+      '個人情報',
+      '回答の正確性',
+      '著作権',
+      'セキュリティ',
+      '社内ルールが不明',
+      '使い方がわからない',
+      '特に不安はない',
+      'その他'
+    ])
+    .setRequired(true);
+
+  // 10. 現在の業務活用状況
+  form.addMultipleChoiceItem()
+    .setTitle('現在、業務で生成AIをどの程度活用していますか')
+    .setChoiceValues([
+      'まだ活用していない',
+      '個人的に試したことがある',
+      '一部の業務で活用している',
+      '日常的に活用している'
+    ])
+    .setRequired(true);
+
+  // 11. 学びたい内容
+  form.addCheckboxItem()
+    .setTitle('生成AI研修で学びたい内容を選択してください')
+    .setChoiceValues([
+      'ChatGPTの基本操作',
+      'プロンプト作成',
+      'メール作成',
+      '文書作成',
+      '資料作成',
+      'フォーム作成',
+      '業務効率化',
+      '業務自動化',
+      'アプリ作成',
+      '社内ルール',
+      '注意点',
+      'その他'
+    ])
+    .setRequired(true);
+
+  // 12. 扱ってほしい業務やテーマ
+  form.addParagraphTextItem()
+    .setTitle('生成AI研修で特に扱ってほしい業務やテーマがあれば記入してください')
+    .setRequired(false);
+
+  // 13. 意見・要望
+  form.addParagraphTextItem()
+    .setTitle('その他、生成AIの活用や研修に関して意見・要望があれば記入してください')
+    .setRequired(false);
+
+  // 送信後メッセージ
+  form.setConfirmationMessage(
+    'お申し込みありがとうございます。入力内容を確認し、研修運営側で参考にします。'
+  );
+
+  // 回答受付を有効化
+  form.setAcceptingResponses(true);
+
+  // URLをログに出力
+  Logger.log('フォーム回答用URL: ' + form.getPublishedUrl());
+  Logger.log('フォーム編集用URL: ' + form.getEditUrl());
+  Logger.log('回答スプレッドシートURL: ' + spreadsheet.getUrl());
+}</code></pre>
+        </div>
+
+        <div class="note note--warning">
+          <strong>日程の差し替え：</strong>
+          予備コード内の
+          「2026年○月○日（○）」は仮の日程です。
+          実際に使う場合は、研修実施日に合わせて変更してください。
+        </div>
+      </section>
+
+      <section id="checklist" class="section">
+        <p class="eyebrow">Checklist</p>
+        <h2>作業チェックリスト</h2>
+
+        <p>
+          作業が完了したら、以下を確認しましょう。
+        </p>
+
+        <div class="checklist-card">
+          <label>
+            <input type="checkbox" data-id="m02-01" />
+            第1章で作成した提案書を開いた
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-02" />
+            サンプルGoogleフォームを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-03" />
+            第1章の提案書本文をコピーした
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-04" />
+            AIにフォーム作成用プロンプトを作成させた
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-05" />
+            AIが作成したプロンプトを送信してApps Scriptコードを作成した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-06" />
+            Google Apps Scriptで新しいプロジェクトを作成した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-07" />
+            AIが作成したコードをApps Scriptに貼り付けた
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-08" />
+            Apps Scriptを保存して実行した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-09" />
+            フォームURL・編集URL・回答スプレッドシートURLを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-10" />
+            氏名・所属部署・希望研修日がフォームに入っていることを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-11" />
+            テスト回答を送信した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m02-12" />
+            回答がスプレッドシートに記録されることを確認した
+          </label>
+
+          <button class="secondary-button" type="button" id="clearChecklistButton">
+            チェックをリセット
+          </button>
+        </div>
+      </section>
+
+      <section id="review" class="section">
+        <p class="eyebrow">Review</p>
+        <h2>確認ポイント</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>フォーム内容の確認</h3>
+            <ul class="check-list">
+              <li>フォーム名が「生成AI研修 参加申込・活用度診断フォーム」になっている</li>
+              <li>氏名の入力欄がある</li>
+              <li>所属部署の選択欄がある</li>
+              <li>希望する研修実施日の選択欄がある</li>
+              <li>生成AIの理解度や活用状況を確認する項目がある</li>
+              <li>学びたい内容や不安に感じることを確認する項目がある</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>実務利用の確認</h3>
+            <ul class="check-list">
+              <li>実際の研修日程に差し替えられている</li>
+              <li>回答用URLを参加者に案内できる</li>
+              <li>編集用URLを参加者に送らない</li>
+              <li>回答スプレッドシートの共有範囲を確認している</li>
+              <li>個人情報の取り扱いを確認している</li>
+              <li>第3章の告知ページからリンクできる</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章で学ぶこと：</strong>
+          AIを使うと、フォームそのものだけでなく、
+          その後の申込受付、回答管理、集計アプリ作成につながるデータ設計まで考えられます。
+        </div>
+      </section>
+
+      <section id="trouble" class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>困ったときは</h2>
+
+        <details class="details-box">
+          <summary>Google Apps Scriptの実行時に権限確認が出ます</summary>
+          <p>
+            初回実行時は、Googleフォームやスプレッドシートを作成するための権限確認が表示されます。
+            自分で作成したスクリプトであることを確認したうえで、許可してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>「このアプリは確認されていません」と表示されます</summary>
+          <p>
+            自分で作成したApps Scriptを初めて実行すると表示されることがあります。
+            詳細表示から、自分のスクリプトであることを確認して進めます。
+            会社アカウントでは制限される場合があります。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>フォームURLがどこにあるかわかりません</summary>
+          <p>
+            Apps Scriptの実行ログを確認してください。
+            コード内で
+            <code>Logger.log</code>
+            により、フォーム回答用URL、編集用URL、回答スプレッドシートURLを出力しています。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>フォームはできたが、スプレッドシートが見つかりません</summary>
+          <p>
+            実行ログに回答スプレッドシートURLが表示されます。
+            また、Google Drive上で
+            「生成AI研修 参加申込・活用度診断フォーム 回答一覧」
+            という名前で検索してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>AIが作ったコードでエラーが出ます</summary>
+          <p>
+            エラーメッセージをコピーしてAIに貼り付け、
+            「このエラーを修正して、コード全文を出してください」と依頼します。
+            それでもうまくいかない場合は、予備サンプルコードを使ってください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>研修実施日を変更したいです</summary>
+          <p>
+            Apps Scriptコード内の
+            「第1回」「第2回」「第3回」の選択肢を、実際の日程に変更してください。
+            すでにフォームを作成済みの場合は、Googleフォームの編集画面から直接修正しても構いません。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>氏名を取るのが不安です</summary>
+          <p>
+            実務で氏名を取得する場合は、利用目的、共有範囲、保管方法を確認してください。
+            研修中のテストでは、実名ではなくサンプル名を使って動作確認してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>会社アカウントでApps Scriptが使えません</summary>
+          <p>
+            会社のGoogle Workspace設定でApps Scriptが制限されている可能性があります。
+            その場合は、管理者に確認するか、講師の画面で流れを確認してください。
+          </p>
+        </details>
+      </section>
+
+      <section id="next" class="section next-section">
+        <p class="eyebrow">Next</p>
+        <h2>前の章へ戻る / 次の章へ進む</h2>
+
+        <p>
+          第2章では、第1章で作成した提案書を活用し、
+          生成AI研修の参加申込と活用度診断を兼ねたGoogleフォームを作成しました。
+        </p>
+
+        <p>
+          次の章では、このフォームを申込先として使う、
+          社内向けの生成AIセミナー告知ページをCodexで作成します。
+        </p>
+
+        <div class="grid-2">
+          <a class="primary-link" href="module-01-work.html">
+            第1章 ChatGPT Workへ戻る
+          </a>
+
+          <a class="primary-link" href="module-03-codex-web.html">
+            第3章 Codexで告知ページ作成へ進む
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

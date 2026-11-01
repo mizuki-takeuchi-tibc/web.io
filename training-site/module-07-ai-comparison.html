@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第7章 ChatGPT以外で同じことをやるなら | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>第7章 ChatGPT以外で同じことをやるなら</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Hands-on 07</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="第7章の目次">
+        <p class="side-nav__title">第7章 目次</p>
+        <a href="#overview">この章でやること</a>
+        <a href="#summary">まず結論</a>
+        <a href="#comparison-table">全体比較</a>
+        <a href="#chapter-map">章ごとの対応表</a>
+        <a href="#gemini">Gemini系でやるなら</a>
+        <a href="#claude">Claude系でやるなら</a>
+        <a href="#copilot">Copilot系でやるなら</a>
+        <a href="#workflow">目的別の選び方</a>
+        <a href="#training">企業研修で扱うなら</a>
+        <a href="#checklist">チェックリスト</a>
+        <a href="#review">まとめ</a>
+        <a href="#references">参考リンク</a>
+        <a href="#next">前後の章へ</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section id="overview" class="section hero-section">
+        <p class="eyebrow">Hands-on 07</p>
+        <h2>ここまでの作業は、他のAIならどの機能でできるのか</h2>
+        <p class="lead">
+          この章では、第1章から第6章までで体験した作業を、
+          ChatGPT以外の生成AIで行う場合に、どのサービス・どの機能を使うのかを整理します。
+        </p>
+
+        <p>
+          比較するのは、主に以下の3系統です。
+        </p>
+
+        <div class="grid-3">
+          <div class="info-card">
+            <h3>Gemini系</h3>
+            <p>
+              Googleの生成AIです。
+              Google Workspace、Googleドライブ、Gmail、Googleフォーム、Google Apps Scriptとの相性がよいのが特徴です。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>Claude系</h3>
+            <p>
+              Anthropicの生成AIです。
+              長文読解、文章作成、資料構成、コード作成、ArtifactsやClaude Codeを使った開発支援が特徴です。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>Copilot系</h3>
+            <p>
+              MicrosoftやGitHubの生成AIです。
+              Word、Excel、PowerPoint、Outlook、Teams、GitHubとの連携が強いのが特徴です。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章のポイント：</strong>
+          「どのAIが一番すごいか」ではなく、
+          <strong>自社の環境ややりたい作業に合うAIを選ぶ</strong>
+          という視点で整理します。
+        </div>
+      </section>
+
+      <section id="summary" class="section">
+        <p class="eyebrow">Summary</p>
+        <h2>まず結論</h2>
+
+        <div class="grid-2">
+          <div class="goal-card">
+            <h3>今回の研修内容を一番まとめて体験しやすいのは</h3>
+            <p>
+              今回のように、調査、資料作成、メール、フォーム作成、Web制作、Pythonコード作成までを
+              1つの流れで体験するなら、ChatGPTは扱いやすい選択肢です。
+            </p>
+            <p>
+              特に、ChatGPTのWorkやCodexのように、作業単位で進める機能があると、
+              研修の流れを作りやすくなります。
+            </p>
+          </div>
+
+          <div class="goal-card">
+            <h3>ただし、会社の環境によって最適解は変わる</h3>
+            <p>
+              Google Workspace中心の会社ならGemini系、
+              Microsoft 365中心の会社ならCopilot系、
+              文章作成や長文整理を重視するならClaude系が有力です。
+            </p>
+            <p>
+              開発やコード作成を重視する場合は、Claude Code、GitHub Copilot、Gemini Code Assist、Julesなども候補になります。
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            つまり、今回の研修で学んだ考え方はChatGPT専用ではありません。
+            「AIに作業を依頼する」「出力を確認する」「必要に応じて修正する」という流れは、
+            Gemini、Claude、Copilotでも応用できます。
+          </p>
+        </div>
+      </section>
+
+      <section id="comparison-table" class="section">
+        <p class="eyebrow">Comparison</p>
+        <h2>主要AIの特徴比較</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>AI</th>
+                <th>得意なこと</th>
+                <th>今回の研修との相性</th>
+                <th>注意点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ChatGPT</strong></td>
+                <td>
+                  調査、文章作成、資料作成、コード作成、アプリ開発支援、WorkやCodexによる作業実行。
+                </td>
+                <td>
+                  今回の一連の流れをまとめて体験しやすい。
+                  研修全体の軸にしやすい。
+                </td>
+                <td>
+                  有料機能や利用可能機能はプランによって異なる。
+                  社内利用時は情報入力ルールを決める必要がある。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Gemini系</strong></td>
+                <td>
+                  Google検索、Google Workspace、Gmail、Googleドライブ、Googleフォーム、Apps Scriptとの連携。
+                </td>
+                <td>
+                  Googleフォーム作成やGoogle系業務との相性がよい。
+                  Google Workspace中心の会社では導入しやすい。
+                </td>
+                <td>
+                  開発支援はGemini、Gemini Code Assist、Julesなど複数機能に分かれる。
+                  利用できる機能はアカウントや地域、プランに左右される。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Claude系</strong></td>
+                <td>
+                  長文読解、文章作成、要約、構成整理、Artifacts、Claude Codeによる開発支援。
+                </td>
+                <td>
+                  提案書作成、文章改善、コード作成、Webページのたたき台作成と相性がよい。
+                </td>
+                <td>
+                  GoogleフォームやMicrosoft 365との直接連携は、環境によっては手作業が必要。
+                  実行・公開は別ツールとの組み合わせになることが多い。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>Copilot系</strong></td>
+                <td>
+                  Microsoft 365、Word、Excel、PowerPoint、Outlook、Teams、GitHubとの連携。
+                </td>
+                <td>
+                  会社がMicrosoft 365中心なら、社内文書、資料、メール、会議、Excel分析との相性がよい。
+                </td>
+                <td>
+                  Copilot for Microsoft 365、Copilot Studio、GitHub Copilotなど、用途ごとに製品が分かれる。
+                  GoogleフォームやApps Scriptとは直接相性がよいわけではない。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note note--warning">
+          <strong>注意：</strong>
+          生成AIサービスは機能追加や名称変更が頻繁にあります。
+          実際に導入する場合は、契約プラン、管理者設定、利用可能地域、社内ルールを確認してください。
+        </div>
+      </section>
+
+      <section id="chapter-map" class="section">
+        <p class="eyebrow">Chapter Map</p>
+        <h2>今回やったことを他AIでやるなら</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>章</th>
+                <th>今回やったこと</th>
+                <th>Gemini系なら</th>
+                <th>Claude系なら</th>
+                <th>Copilot系なら</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>第1章</strong></td>
+                <td>
+                  調査 → 提案書作成 → Drive保存 → Gmail送信
+                </td>
+                <td>
+                  Gemini Deep Research、Gemini in Workspace、Gmail、Googleドライブを組み合わせる。
+                </td>
+                <td>
+                  Claudeで調査整理・提案書作成。
+                  メール送信やDrive保存は手作業または外部連携。
+                </td>
+                <td>
+                  Microsoft 365 Copilot Researcher、Word、PowerPoint、Outlook、OneDriveを組み合わせる。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>第2章</strong></td>
+                <td>
+                  GoogleフォームをApps Scriptで自動生成
+                </td>
+                <td>
+                  GeminiにApps Scriptコードを作成させる。
+                  Googleフォームとの相性は高い。
+                </td>
+                <td>
+                  ClaudeにApps Scriptコードを作成させる。
+                  作成後は自分でApps Scriptに貼り付けて実行する。
+                </td>
+                <td>
+                  Copilotにコード作成を相談することは可能。
+                  ただしMicrosoft FormsやPower Automateの方が環境には合いやすい。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>第3章</strong></td>
+                <td>
+                  Codexで社内向けセミナー告知ページを作成
+                </td>
+                <td>
+                  Jules、Gemini Code Assist、Google Antigravityなどの開発支援機能を使う。
+                </td>
+                <td>
+                  Claude CodeやArtifactsでWebページ作成を進める。
+                </td>
+                <td>
+                  GitHub Copilot、Copilot Chat、Copilot coding agentを使う。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>第4章</strong></td>
+                <td>
+                  ChatGPTで参加日別リスト作成アプリを作成
+                </td>
+                <td>
+                  GeminiにPythonコードを書かせる。
+                  実行は自分のPC上のPythonで行う。
+                </td>
+                <td>
+                  ClaudeにPythonコードを書かせる。
+                  長いコードの改善や説明も得意。
+                </td>
+                <td>
+                  Copilot ChatやGitHub CopilotにPythonコード作成を依頼する。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>第5章</strong></td>
+                <td>
+                  PyInstallerでexe化
+                </td>
+                <td>
+                  Geminiに手順やエラー対応を相談する。
+                  実行はPCのコマンドプロンプトで行う。
+                </td>
+                <td>
+                  Claudeにエラー文を貼り付けて原因調査や修正手順を相談する。
+                </td>
+                <td>
+                  CopilotやGitHub Copilotにコマンドやトラブル対応を相談する。
+                </td>
+              </tr>
+
+              <tr>
+                <td><strong>第6章</strong></td>
+                <td>
+                  ChatGPTでHTML/CSS/JSを書き、GitHub Pagesで公開
+                </td>
+                <td>
+                  GeminiにHTML/CSS/JSを書かせる。
+                  GitHub Pages公開手順も相談できる。
+                </td>
+                <td>
+                  Claude Artifactsで見た目を確認しながら作る。
+                  HTML/CSS/JSの修正も得意。
+                </td>
+                <td>
+                  GitHub CopilotやCopilot Chatでコード作成・GitHub公開を支援する。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <p>
+            どのAIでも「コードを書いてもらう」「手順を聞く」「エラーを貼って相談する」ことはできます。
+            違いが出るのは、どの業務ツールと直接つながっているか、どこまで自動で実行できるかです。
+          </p>
+        </div>
+      </section>
+
+      <section id="gemini" class="section">
+        <p class="eyebrow">Gemini</p>
+        <h2>Gemini系でやるなら</h2>
+
+        <p>
+          Gemini系は、Google Workspaceを使っている会社と相性がよいです。
+          Gmail、Googleドライブ、Googleドキュメント、Googleスプレッドシート、Googleフォーム、Google Apps Scriptを使う業務では特に候補になります。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>第1章の代替</h3>
+            <p>
+              調査はGemini Deep Research、文書作成はGeminiやGoogleドキュメント、
+              メール作成はGmailのGemini支援を使う流れが考えられます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第2章の代替</h3>
+            <p>
+              Googleフォームを作るApps ScriptコードをGeminiに作らせます。
+              Googleの環境内で完結しやすいので、今回の第2章とは相性がよいです。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第3章の代替</h3>
+            <p>
+              Webページやアプリ開発では、Jules、Gemini Code Assist、Google Antigravityなどが候補になります。
+              ただし、利用できる機能はプランや提供状況によって異なります。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第4章〜第6章の代替</h3>
+            <p>
+              Pythonコード、PyInstallerの手順、HTML/CSS/JavaScriptコードの作成はGeminiにも依頼できます。
+              実行や公開は自分のPCやGitHub上で行います。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>Gemini系が向いている会社：</strong>
+          Google Workspaceを日常的に使っていて、Gmail、Googleドライブ、Googleフォーム、スプレッドシートを中心に業務をしている会社。
+        </div>
+      </section>
+
+      <section id="claude" class="section">
+        <p class="eyebrow">Claude</p>
+        <h2>Claude系でやるなら</h2>
+
+        <p>
+          Claude系は、文章の整理、長文の読み込み、提案書作成、構成作り、コード作成と相性がよいです。
+          また、Artifactsを使うと作成したHTMLや簡単なWebアプリの見た目を確認しながら作業しやすくなります。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>第1章の代替</h3>
+            <p>
+              生成AI研修の必要性の整理、提案書の構成、文章の改善はClaudeに依頼できます。
+              ただし、メール送信やGoogle Drive保存は、基本的に別途操作が必要です。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第2章の代替</h3>
+            <p>
+              Googleフォーム作成用のApps ScriptコードをClaudeに書かせることはできます。
+              その後、Google Apps Scriptに貼り付けて実行する流れになります。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第3章の代替</h3>
+            <p>
+              Claude Codeを使えば、Webページやアプリのファイル作成、修正、開発作業を支援できます。
+              Artifactsを使えば、Webページのたたき台確認もしやすいです。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第4章〜第6章の代替</h3>
+            <p>
+              Pythonコード、エラー修正、HTML/CSS/JavaScript作成はClaudeでも対応しやすい作業です。
+              特に長いコードの説明や修正方針の整理に向いています。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>Claude系が向いている会社：</strong>
+          長文資料、提案書、規程文書、マニュアル、FAQ、文章品質を重視する会社。
+          また、コードやWebページを対話しながら改善したい場合にも向いています。
+        </div>
+      </section>
+
+      <section id="copilot" class="section">
+        <p class="eyebrow">Copilot</p>
+        <h2>Copilot系でやるなら</h2>
+
+        <p>
+          Copilot系は、Microsoft 365やGitHubを使っている会社と相性がよいです。
+          Word、Excel、PowerPoint、Outlook、Teams、OneDrive、SharePoint、GitHubを中心に業務をしている場合は候補になります。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>第1章の代替</h3>
+            <p>
+              調査や情報整理はMicrosoft 365 CopilotのResearcher、
+              提案書はWord、資料はPowerPoint、メールはOutlookのCopilotを使う流れが考えられます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第2章の代替</h3>
+            <p>
+              Googleフォームではなく、Microsoft FormsやPower Automate、Copilot Studioを使う方がMicrosoft環境には合いやすいです。
+              Google Apps Scriptのコード作成自体をCopilotに相談することもできます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第3章の代替</h3>
+            <p>
+              GitHub CopilotやCopilot coding agentを使えば、リポジトリ上のWebページ作成や修正を支援できます。
+              GitHub中心で開発する場合に相性がよいです。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第4章〜第6章の代替</h3>
+            <p>
+              PythonコードやHTML/CSS/JavaScriptの作成はGitHub CopilotやCopilot Chatで支援できます。
+              Excelデータの分析や社内文書化はMicrosoft 365 Copilotとの相性がよいです。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>Copilot系が向いている会社：</strong>
+          Microsoft 365を中心に業務をしていて、Word、Excel、PowerPoint、Outlook、Teams、SharePoint、GitHubをよく使う会社。
+        </div>
+      </section>
+
+      <section id="workflow" class="section">
+        <p class="eyebrow">Workflow</p>
+        <h2>目的別の選び方</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>やりたいこと</th>
+                <th>向いているAI・機能</th>
+                <th>理由</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>調査して提案書を作りたい</td>
+                <td>
+                  ChatGPT Work、Gemini Deep Research、Microsoft 365 Copilot Researcher、Claude
+                </td>
+                <td>
+                  情報収集、要約、構成作成、文書化が必要なため。
+                </td>
+              </tr>
+
+              <tr>
+                <td>GoogleフォームやApps Scriptを扱いたい</td>
+                <td>
+                  Gemini、ChatGPT、Claude
+                </td>
+                <td>
+                  Google環境との相性はGeminiが高い。
+                  ただしApps Scriptコード作成は他AIにも依頼できる。
+                </td>
+              </tr>
+
+              <tr>
+                <td>Word、Excel、PowerPoint、Outlookで使いたい</td>
+                <td>
+                  Microsoft 365 Copilot
+                </td>
+                <td>
+                  Microsoft 365アプリ内で使えるため、日常業務に組み込みやすい。
+                </td>
+              </tr>
+
+              <tr>
+                <td>Webページやアプリを作りたい</td>
+                <td>
+                  ChatGPT Codex、Claude Code、GitHub Copilot、Gemini Code Assist、Jules
+                </td>
+                <td>
+                  ファイル作成、コード修正、リポジトリ操作などの支援が必要なため。
+                </td>
+              </tr>
+
+              <tr>
+                <td>HTML/CSS/JavaScriptを書かせたい</td>
+                <td>
+                  ChatGPT、Claude、Gemini、GitHub Copilot
+                </td>
+                <td>
+                  いずれもコード生成は可能。
+                  ただし、公開やファイル配置は自分で確認する必要がある。
+                </td>
+              </tr>
+
+              <tr>
+                <td>Pythonコードやexe化手順を相談したい</td>
+                <td>
+                  ChatGPT、Claude、Gemini、GitHub Copilot
+                </td>
+                <td>
+                  コード作成、エラー修正、PyInstaller手順の説明は多くのAIで対応できる。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="training" class="section">
+        <p class="eyebrow">Training Design</p>
+        <h2>企業向け研修で扱うなら</h2>
+
+        <p>
+          企業研修では、受講者の会社で普段使っている環境に合わせてAIを選ぶのが重要です。
+          同じ生成AI研修でも、Google Workspace中心の会社とMicrosoft 365中心の会社では、実践しやすい内容が変わります。
+        </p>
+
+        <div class="grid-3">
+          <div class="goal-card">
+            <h3>Google Workspace中心</h3>
+            <p>
+              Geminiを軸に、Googleフォーム、Googleスプレッドシート、Google Apps Script、Gmail、Googleドライブを扱う研修が自然です。
+            </p>
+          </div>
+
+          <div class="goal-card">
+            <h3>Microsoft 365中心</h3>
+            <p>
+              Copilotを軸に、Word、Excel、PowerPoint、Outlook、Teams、OneDrive、SharePointを扱う研修が自然です。
+            </p>
+          </div>
+
+          <div class="goal-card">
+            <h3>開発・制作寄り</h3>
+            <p>
+              ChatGPT Codex、Claude Code、GitHub Copilot、Gemini Code Assistなどを使い、
+              Webページや簡単なアプリ作成を扱うと効果的です。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>今回の研修の位置づけ：</strong>
+          ChatGPTを軸にして、調査、提案書、フォーム、Webページ、PCアプリ、exe化、無料Web公開までを一通り体験しました。
+          他のAIを使う場合も、同じ考え方で置き換えることができます。
+        </div>
+
+        <h3>おすすめの伝え方</h3>
+        <div class="info-card">
+          <p>
+            受講者には、以下のように説明すると分かりやすいです。
+          </p>
+
+          <blockquote>
+            今回はChatGPTで一連の流れを体験しましたが、これはChatGPTでしかできないという意味ではありません。
+            Google Workspaceを使っている会社ならGemini、Microsoft 365を使っている会社ならCopilot、
+            文章作成やコード改善を重視するならClaudeも候補になります。
+            大事なのは、AIの名前を覚えることではなく、自分の業務に合わせて
+            「どのAIに、何を、どこまで任せるか」を考えられるようになることです。
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="checklist" class="section">
+        <p class="eyebrow">Checklist</p>
+        <h2>理解チェックリスト</h2>
+
+        <div class="checklist-card">
+          <label>
+            <input type="checkbox" data-id="m07-01" />
+            ChatGPT以外にも同じような作業を支援できるAIがあると理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-02" />
+            Gemini系はGoogle Workspaceとの相性がよいと理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-03" />
+            Claude系は長文整理、文章作成、コード改善と相性がよいと理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-04" />
+            Copilot系はMicrosoft 365やGitHubとの相性がよいと理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-05" />
+            GoogleフォームやApps ScriptはGeminiとも相性がよいと理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-06" />
+            Webページやアプリ開発では、Codex以外にもClaude CodeやGitHub Copilotなどの選択肢があると理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-07" />
+            AIを選ぶときは、自社で使っている業務ツールとの相性を見る必要があると理解した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m07-08" />
+            どのAIでも、出力内容の確認や社内ルールへの配慮が必要だと理解した
+          </label>
+
+          <button id="clearChecklistButton" class="secondary-button" type="button">
+            チェックをリセット
+          </button>
+        </div>
+      </section>
+
+      <section id="review" class="section">
+        <p class="eyebrow">Review</p>
+        <h2>まとめ</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>この研修で体験したこと</h3>
+            <ul class="check-list">
+              <li>AIに調査と提案書作成を依頼する</li>
+              <li>Googleフォームを自動生成する</li>
+              <li>WebページをAIで作成する</li>
+              <li>PythonアプリをAIに作らせる</li>
+              <li>Pythonアプリをexe化する</li>
+              <li>HTMLファイルをGitHub Pagesで公開する</li>
+              <li>他AIでの置き換え方を知る</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>実務で大切な考え方</h3>
+            <ul class="check-list">
+              <li>AIに任せる作業と人間が確認する作業を分ける</li>
+              <li>機密情報や個人情報を入力しない</li>
+              <li>出力された文章やコードを必ず確認する</li>
+              <li>自社の業務環境に合うAIを選ぶ</li>
+              <li>小さな業務改善から試す</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>最終メッセージ：</strong>
+          生成AIは、単に文章を作る道具ではありません。
+          調査、資料作成、フォーム作成、Web制作、アプリ作成、業務自動化の入口として使えます。
+          まずは安全な範囲で、小さな作業から試してみましょう。
+        </div>
+      </section>
+
+      <section id="references" class="section">
+        <p class="eyebrow">References</p>
+        <h2>参考リンク</h2>
+
+        <p>
+          機能や名称は変更される場合があります。
+          実際に導入・利用する場合は、公式情報を確認してください。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>Gemini系</h3>
+            <ul class="check-list">
+              <li>
+                <a href="https://gemini.google/overview/deep-research/" target="_blank" rel="noopener noreferrer">
+                  Gemini Deep Research
+                </a>
+              </li>
+              <li>
+                <a href="https://gemini.google/overview/canvas/" target="_blank" rel="noopener noreferrer">
+                  Gemini Canvas
+                </a>
+              </li>
+              <li>
+                <a href="https://jules.google/docs/" target="_blank" rel="noopener noreferrer">
+                  Jules documentation
+                </a>
+              </li>
+              <li>
+                <a href="https://docs.cloud.google.com/gemini/docs/codeassist/use-agentic-chat-pair-programmer" target="_blank" rel="noopener noreferrer">
+                  Gemini Code Assist agent mode
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Claude系</h3>
+            <ul class="check-list">
+              <li>
+                <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener noreferrer">
+                  Claude Code
+                </a>
+              </li>
+              <li>
+                <a href="https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them" target="_blank" rel="noopener noreferrer">
+                  Claude Artifacts
+                </a>
+              </li>
+              <li>
+                <a href="https://claude.com/docs" target="_blank" rel="noopener noreferrer">
+                  Claude documentation
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Copilot系</h3>
+            <ul class="check-list">
+              <li>
+                <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-researcher-in-microsoft-365-copilot" target="_blank" rel="noopener noreferrer">
+                  Microsoft 365 Copilot Researcher
+                </a>
+              </li>
+              <li>
+                <a href="https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-analyst-in-microsoft-365-copilot" target="_blank" rel="noopener noreferrer">
+                  Microsoft 365 Copilot Analyst
+                </a>
+              </li>
+              <li>
+                <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-overview" target="_blank" rel="noopener noreferrer">
+                  Copilot Studio agent flows
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>GitHub Copilot系</h3>
+            <ul class="check-list">
+              <li>
+                <a href="https://docs.github.com/copilot/concepts/agents/cloud-agent/about-cloud-agent" target="_blank" rel="noopener noreferrer">
+                  GitHub Copilot coding agent
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">
+                  GitHub Copilot
+                </a>
+              </li>
+              <li>
+                <a href="https://docs.github.com/copilot" target="_blank" rel="noopener noreferrer">
+                  GitHub Copilot documentation
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="next" class="section next-section">
+        <p class="eyebrow">Navigation</p>
+        <h2>前後の章へ</h2>
+
+        <p>
+          第7章では、ここまで体験した作業をChatGPT以外で行う場合の選択肢を整理しました。
+        </p>
+        <p>
+          これで本研修の一連のハンズオンは終了です。
+        </p>
+
+<div class="grid-2">
+  <a class="primary-link" href="module-06-html-web.html">
+    ← 第6章 ChatGPTでHTMLを書いて無料でWebページを公開
+  </a>
+
+  <a class="primary-link" href="module-08-bonus-dots-muse.html">
+    特別編 DotsとMuseで見る次世代AIエージェント →
+  </a>
+</div>
+
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

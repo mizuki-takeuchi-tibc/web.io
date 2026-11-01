@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第4章 ChatGPTで参加日別リスト作成アプリを作成・実行 | 2026年 秋田県内事業者向け 生成AIハンズオン研修会</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+        <h1>第4章 ChatGPTで参加日別リスト作成アプリを作成・実行</h1>
+      </div>
+      <div class="header-badges">
+        <span class="badge">公開期限：研修日から30日間</span>
+        <span class="badge badge--accent">Hands-on 04</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="side-nav" aria-label="第4章の目次">
+        <p class="side-nav__title">第4章 目次</p>
+        <a href="#overview">この章でやること</a>
+        <a href="#connection">前章とのつながり</a>
+        <a href="#sample-data">サンプルCSV</a>
+        <a href="#app-spec">作成するアプリ</a>
+        <a href="#preparation">事前準備</a>
+        <a href="#prompt">ChatGPTへの依頼</a>
+        <a href="#save-code">コードを保存する</a>
+        <a href="#run">Pythonで実行する</a>
+        <a href="#fix">うまく動かない場合</a>
+        <a href="#checklist">チェックリスト</a>
+        <a href="#review">確認ポイント</a>
+        <a href="#trouble">トラブル対応</a>
+        <a href="#next">前後の章へ</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section id="overview" class="section hero-section">
+        <p class="eyebrow">Hands-on 04</p>
+        <h2>申込CSVから、参加日別のメンバーリストを作る</h2>
+        <p class="lead">
+          この章では、第2章で作成した
+          <strong>「生成AI研修 参加申込・活用度診断フォーム」</strong>
+          の回答CSVを使い、参加希望日ごとに申込者を自動で振り分けるPCアプリを作成します。
+        </p>
+
+        <p>
+          作成するのは、CSVを読み込むだけで
+          <strong>第1回・第2回・第3回それぞれの参加者リスト</strong>
+          を表示できるアプリです。
+        </p>
+
+        <div class="process-flow" aria-label="第4章の作業の流れ">
+          <div class="process-flow__item">
+            <span>1</span>
+            <strong>CSVを用意</strong>
+            <p>Googleフォームの回答を想定したサンプルCSVを使います。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>2</span>
+            <strong>ChatGPTに依頼</strong>
+            <p>参加日別リスト作成アプリのPythonコードを書いてもらいます。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>3</span>
+            <strong>Pythonで実行</strong>
+            <p>作成されたコードを保存し、PC上でアプリを起動します。</p>
+          </div>
+          <div class="process-flow__arrow">→</div>
+          <div class="process-flow__item">
+            <span>4</span>
+            <strong>リストを確認</strong>
+            <p>第1回・第2回・第3回ごとの参加者リストを確認します。</p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章のポイント：</strong>
+          受講者がPythonコードを一から書く必要はありません。
+          ChatGPTにコードを書いてもらい、それをPC上で実行する体験を行います。
+        </div>
+      </section>
+
+      <section id="connection" class="section">
+        <p class="eyebrow">Connection</p>
+        <h2>第1章〜第3章とのつながり</h2>
+
+        <div class="grid-3">
+          <div class="info-card">
+            <h3>第1章</h3>
+            <p>
+              生成AI研修の必要性を調査し、社内向けの提案書を作成しました。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第2章</h3>
+            <p>
+              提案書をもとに、研修の参加申込と事前ヒアリングを兼ねたGoogleフォームを作成しました。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>第3章</h3>
+            <p>
+              GoogleフォームのURLを使い、社内向けの生成AIセミナー告知ページを作成しました。
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            第4章では、フォームに集まった回答をCSVとしてダウンロードし、
+            参加希望日ごとにメンバーを自動で振り分けるアプリを作ります。
+          </p>
+          <p>
+            実際の研修時点ではまだ回答データがないため、今回は事前に用意したサンプルCSVを使います。
+          </p>
+        </div>
+      </section>
+
+      <section id="sample-data" class="section">
+        <p class="eyebrow">Sample Data</p>
+        <h2>サンプルCSVをダウンロードする</h2>
+        <p>
+          今回は、Googleフォームの回答結果を想定したサンプルCSVを使います。
+          以下のリンクからCSVファイルをダウンロードしてください。
+        </p>
+
+        <div class="info-card">
+          <h3>サンプルCSV</h3>
+          <p>
+            ファイル名：
+            <code>ai-training-application-sample.csv</code>
+          </p>
+          <p>
+            第2章で作成する
+            <strong>「生成AI研修 参加申込・活用度診断フォーム」</strong>
+            の回答項目に合わせたサンプルデータです。
+          </p>
+          <a class="primary-link" href="assets/data/ai-training-application-sample.csv" download>
+            サンプルCSVをダウンロード
+          </a>
+        </div>
+
+        <h3>CSVの項目</h3>
+        <p>
+          今回のCSVは、以下の項目を持つ想定です。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>CSV項目</span>
+            <button class="copy-button" type="button" data-copy-target="csvColumnsExample">
+              コピー
+            </button>
+          </div>
+          <pre id="csvColumnsExample"><code>タイムスタンプ
+氏名
+所属部署を選択してください
+現在の主な職種を選択してください
+所属部署または職種で「その他」を選択した場合は、差し支えない範囲で補足してください
+希望する研修実施日を選択してください
+生成AIについて、現在どの程度知っていますか
+これまでに使ったことがある生成AIサービスを選択してください
+現在、業務で生成AIをどの程度活用していますか
+あなたの業務で、生成AIを活用できそうだと思うものを選択してください
+生成AIを使ううえで、不安に感じることを選択してください
+生成AI研修で学びたい内容を選択してください
+生成AI研修で特に扱ってほしい業務やテーマがあれば記入してください
+その他、生成AIの活用や研修に関して意見・要望があれば記入してください</code></pre>
+        </div>
+
+        <div class="note note--warning">
+          <strong>注意：</strong>
+          実際の業務データには氏名などの個人情報が含まれます。
+          研修では必ずサンプルデータを使用し、実在の個人情報や社内機密情報をChatGPTに入力しないでください。
+        </div>
+      </section>
+
+      <section id="app-spec" class="section">
+        <p class="eyebrow">Application</p>
+        <h2>作成するアプリ</h2>
+        <p>
+          今回作成するのは、
+          <strong>「生成AI研修 参加日別リスト作成ツール」</strong>
+          です。
+        </p>
+
+        <div class="grid-2">
+          <div class="goal-card">
+            <h3>アプリでできること</h3>
+            <ul class="check-list">
+              <li>Googleフォームの回答CSVを読み込む</li>
+              <li>希望する研修実施日を判定する</li>
+              <li>第1回の参加者リストを表示する</li>
+              <li>第2回の参加者リストを表示する</li>
+              <li>第3回の参加者リストを表示する</li>
+              <li>希望日が空欄、または判別できない人を別枠で表示する</li>
+              <li>各回の参加人数を表示する</li>
+              <li>参加者リストをテキストファイルとして保存する</li>
+            </ul>
+          </div>
+
+          <div class="goal-card">
+            <h3>今回の学習ポイント</h3>
+            <ul class="check-list">
+              <li>AIにプログラム作成を依頼する流れを体験する</li>
+              <li>CSVデータをアプリで読み込む考え方を知る</li>
+              <li>特定の列の値を見てデータを振り分ける処理を体験する</li>
+              <li>Pythonファイルを保存して実行する</li>
+              <li>エラーが出た場合にAIへ修正依頼する</li>
+              <li>業務で使える簡易ツールの作り方を知る</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>アプリで表示する内容</h3>
+        <p>
+          各回の参加者リストには、以下の情報を表示します。
+        </p>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>基本情報</h3>
+            <ul class="check-list">
+              <li>氏名</li>
+              <li>所属部署</li>
+              <li>職種</li>
+              <li>その他補足</li>
+              <li>希望する研修実施日</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>研修準備に役立つ情報</h3>
+            <ul class="check-list">
+              <li>生成AI研修で学びたい内容</li>
+              <li>特に扱ってほしい業務やテーマ</li>
+              <li>その他の意見・要望</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            第5章では、このPythonアプリを
+            <strong>exeファイル化</strong>
+            します。
+          </p>
+          <p>
+            第4章では、まずPythonファイルとして動かすところまでを行います。
+          </p>
+        </div>
+      </section>
+
+      <section id="preparation" class="section">
+        <p class="eyebrow">Preparation</p>
+        <h2>事前準備</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>1. Python 3.13</h3>
+            <p>
+              Python 3.13 がインストールされていることを確認します。
+            </p>
+
+            <div class="prompt-box">
+              <div class="prompt-box__header">
+                <span>確認コマンド</span>
+                <button class="copy-button" type="button" data-copy-target="pythonVersionCommand">
+                  コピー
+                </button>
+              </div>
+              <pre id="pythonVersionCommand"><code>python --version</code></pre>
+            </div>
+
+            <p>
+              環境によっては、以下のコマンドで確認します。
+            </p>
+
+            <div class="prompt-box">
+              <div class="prompt-box__header">
+                <span>別の確認コマンド</span>
+                <button class="copy-button" type="button" data-copy-target="pyVersionCommand">
+                  コピー
+                </button>
+              </div>
+              <pre id="pyVersionCommand"><code>py --version</code></pre>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>2. サンプルCSV</h3>
+            <p>
+              このページの「サンプルCSVをダウンロードする」から、
+              CSVファイルをPCに保存します。
+            </p>
+            <p>
+              保存場所は、分かりやすいように
+              <strong>デスクトップ</strong>
+              などがおすすめです。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>3. メモ帳またはVS Code</h3>
+            <p>
+              ChatGPTが作成したPythonコードを
+              <code>app.py</code>
+              として保存するために使います。
+            </p>
+            <p>
+              VS Codeがなくても、メモ帳で保存できます。
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>4. ChatGPT</h3>
+            <p>
+              参加日別リスト作成アプリのコードをChatGPTに作成してもらいます。
+            </p>
+            <p>
+              うまく動かない場合も、エラー文を貼り付けて修正を依頼します。
+            </p>
+          </div>
+        </div>
+
+        <div class="note note--important">
+          <strong>この章ではPyInstallerはまだ使いません。</strong>
+          PyInstallerを使ったexe化は第5章で行います。
+        </div>
+      </section>
+
+      <section id="prompt" class="section">
+        <p class="eyebrow">Prompt</p>
+        <h2>ChatGPTにPythonコードを書いてもらう</h2>
+        <p>
+          次のプロンプトをChatGPTに入力します。
+          ChatGPTには、標準ライブラリだけで動くPythonアプリを作成してもらいます。
+        </p>
+
+        <div class="note">
+          <p>
+            今回は初心者向けの研修なので、追加ライブラリのインストールが必要ない形にします。
+          </p>
+          <p>
+            CSV読み込みには <code>csv</code>、
+            画面表示には <code>tkinter</code> を使うように依頼します。
+          </p>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>ChatGPTに送るプロンプト</span>
+            <button class="copy-button" type="button" data-copy-target="pythonAppPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="pythonAppPrompt"><code>あなたはPythonアプリ開発に詳しい講師です。
+初心者向けの研修で使う、CSV処理用のPCアプリを作成してください。
+
+# 作りたいアプリ
+「生成AI研修 参加日別リスト作成ツール」という名前のデスクトップアプリを作りたいです。
+
+# 目的
+Googleフォームの回答CSVを読み込み、
+申込者を希望する研修実施日ごとに自動で振り分けたいです。
+
+具体的には、以下の4つのリストを作成したいです。
+
+- 第1回に参加するメンバーのリスト
+- 第2回に参加するメンバーのリスト
+- 第3回に参加するメンバーのリスト
+- 希望日が空欄、または判別できないメンバーのリスト
+
+# 条件
+- Python 3.13 で動くコードにしてください。
+- 追加ライブラリを使わず、標準ライブラリだけで作ってください。
+- GUIは tkinter を使ってください。
+- CSV読み込みには csv モジュールを使ってください。
+- 1つの app.py として保存して実行できるコードにしてください。
+- 初心者でも分かるように、コード内にコメントを入れてください。
+- 文字化けしにくいように、CSVは utf-8-sig で読み込むようにしてください。
+- エラーが起きた場合は、画面に分かりやすいメッセージを表示してください。
+- 実在する個人情報や機密情報を外部送信する処理は入れないでください。
+- インターネット通信は行わないでください。
+
+# CSVの列名
+CSVには以下の列があります。
+
+タイムスタンプ
+氏名
+所属部署を選択してください
+現在の主な職種を選択してください
+所属部署または職種で「その他」を選択した場合は、差し支えない範囲で補足してください
+希望する研修実施日を選択してください
+生成AIについて、現在どの程度知っていますか
+これまでに使ったことがある生成AIサービスを選択してください
+現在、業務で生成AIをどの程度活用していますか
+あなたの業務で、生成AIを活用できそうだと思うものを選択してください
+生成AIを使ううえで、不安に感じることを選択してください
+生成AI研修で学びたい内容を選択してください
+生成AI研修で特に扱ってほしい業務やテーマがあれば記入してください
+その他、生成AIの活用や研修に関して意見・要望があれば記入してください
+
+# 希望研修日の列
+以下の列を見て、参加希望日を判定してください。
+
+希望する研修実施日を選択してください
+
+# 参加回の判定ルール
+希望研修日の文字列に以下の文字が含まれているかで判定してください。
+
+- 「第1回」が含まれていれば、第1回参加者
+- 「第2回」が含まれていれば、第2回参加者
+- 「第3回」が含まれていれば、第3回参加者
+- どれにも当てはまらない場合は、未判定リストに入れる
+
+# アプリに入れたい機能
+1. CSVファイルを選択するボタン
+2. 読み込んだCSVのファイル名を表示
+3. 全申込者数を表示
+4. 第1回の参加人数を表示
+5. 第2回の参加人数を表示
+6. 第3回の参加人数を表示
+7. 未判定の人数を表示
+8. 第1回の参加者リストを表示
+9. 第2回の参加者リストを表示
+10. 第3回の参加者リストを表示
+11. 未判定リストを表示
+12. 参加者リストをテキストファイルとして保存するボタン
+
+# 各リストに表示したい項目
+各参加者について、以下の項目を表示してください。
+
+- 氏名
+- 所属部署
+- 職種
+- その他補足
+- 希望する研修実施日
+- 生成AI研修で学びたい内容
+- 生成AI研修で特に扱ってほしい業務やテーマ
+- その他の意見・要望
+
+# 表示形式
+- ウィンドウ上部に「生成AI研修 参加日別リスト作成ツール」と表示してください。
+- 左上にCSV選択ボタンを置いてください。
+- 集計結果はスクロール可能なテキストエリアに表示してください。
+- 第1回、第2回、第3回、未判定の順番で表示してください。
+- 各回の見出しには人数を表示してください。
+- 参加者ごとに見やすく区切って表示してください。
+
+# 保存機能
+- 表示中の参加者リストをテキストファイルとして保存できるようにしてください。
+- 保存ファイル名の初期値は「生成AI研修_参加日別リスト.txt」にしてください。
+
+# 出力形式
+最初に説明を長く書かず、app.py にそのまま貼り付けて使えるPythonコードを出力してください。</code></pre>
+        </div>
+      </section>
+
+      <section id="save-code" class="section">
+        <p class="eyebrow">Save</p>
+        <h2>ChatGPTが作ったコードを保存する</h2>
+        <p>
+          ChatGPTからPythonコードが出力されたら、以下の手順で保存します。
+        </p>
+
+        <ol class="number-list">
+          <li>ChatGPTが出力したPythonコードをすべてコピーします。</li>
+          <li>メモ帳またはVS Codeを開きます。</li>
+          <li>コピーしたコードを貼り付けます。</li>
+          <li><code>app.py</code> という名前で保存します。</li>
+          <li>保存場所は分かりやすいフォルダにします。</li>
+        </ol>
+
+        <div class="note note--warning">
+          <strong>保存時の注意：</strong>
+          メモ帳で保存する場合、ファイル名が
+          <code>app.py.txt</code>
+          にならないように注意してください。
+          拡張子は必ず <code>.py</code> にします。
+        </div>
+
+        <div class="note">
+          <p>
+            保存先は、デスクトップに
+            <strong>ai-training-app</strong>
+            のようなフォルダを作っておくと分かりやすいです。
+          </p>
+        </div>
+      </section>
+
+      <section id="run" class="section">
+        <p class="eyebrow">Run</p>
+        <h2>Pythonでアプリを実行する</h2>
+
+        <ol class="number-list">
+          <li><code>app.py</code> を保存したフォルダを開きます。</li>
+          <li>フォルダのアドレスバーに <code>cmd</code> と入力してEnterを押します。</li>
+          <li>コマンドプロンプトが開きます。</li>
+          <li>以下のコマンドを入力して実行します。</li>
+        </ol>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>実行コマンド</span>
+            <button class="copy-button" type="button" data-copy-target="runAppCommand">
+              コピー
+            </button>
+          </div>
+          <pre id="runAppCommand"><code>python app.py</code></pre>
+        </div>
+
+        <p>
+          環境によっては、以下のコマンドで実行します。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>別の実行コマンド</span>
+            <button class="copy-button" type="button" data-copy-target="runAppCommandPy">
+              コピー
+            </button>
+          </div>
+          <pre id="runAppCommandPy"><code>py app.py</code></pre>
+        </div>
+
+        <h3>アプリが起動したら</h3>
+        <ol class="number-list">
+          <li>「CSVを選択」ボタンを押します。</li>
+          <li>ダウンロードしたサンプルCSVを選びます。</li>
+          <li>第1回・第2回・第3回ごとの参加人数が表示されることを確認します。</li>
+          <li>各回の参加者リストに、氏名・部署・職種・希望日が表示されることを確認します。</li>
+          <li>未判定リストに意図しない参加者が入っていないか確認します。</li>
+          <li>必要に応じて、参加者リストをテキストファイルとして保存します。</li>
+        </ol>
+
+        <div class="note note--important">
+          <strong>ここまでできれば第4章は成功です。</strong>
+          第5章では、この <code>app.py</code> をexeファイルに変換します。
+        </div>
+      </section>
+
+      <section id="fix" class="section">
+        <p class="eyebrow">Fix</p>
+        <h2>うまく動かない場合はChatGPTに修正してもらう</h2>
+        <p>
+          エラーが出た場合は、エラー文をそのままChatGPTに貼り付けて修正を依頼します。
+        </p>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>エラー修正依頼プロンプト</span>
+            <button class="copy-button" type="button" data-copy-target="errorFixPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="errorFixPrompt"><code>先ほど作成してもらったPythonアプリを実行したところ、以下のエラーが出ました。
+原因を初心者にも分かるように説明し、修正後の app.py 全文を出してください。
+
+# エラー内容
+ここにエラー文を貼り付けます。
+
+# 補足
+- Python 3.13 を使っています。
+- CSVはGoogleフォームの回答を想定したものです。
+- 標準ライブラリだけで動く形にしてください。
+- 参加希望日ごとに、第1回・第2回・第3回・未判定へ振り分けるアプリです。</code></pre>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>項目名が合わない場合の修正依頼</span>
+            <button class="copy-button" type="button" data-copy-target="columnFixPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="columnFixPrompt"><code>CSVを読み込むと、項目名が見つからないというエラーが出ます。
+以下のCSV項目名に合わせて、app.py 全文を修正してください。
+
+タイムスタンプ
+氏名
+所属部署を選択してください
+現在の主な職種を選択してください
+所属部署または職種で「その他」を選択した場合は、差し支えない範囲で補足してください
+希望する研修実施日を選択してください
+生成AIについて、現在どの程度知っていますか
+これまでに使ったことがある生成AIサービスを選択してください
+現在、業務で生成AIをどの程度活用していますか
+あなたの業務で、生成AIを活用できそうだと思うものを選択してください
+生成AIを使ううえで、不安に感じることを選択してください
+生成AI研修で学びたい内容を選択してください
+生成AI研修で特に扱ってほしい業務やテーマがあれば記入してください
+その他、生成AIの活用や研修に関して意見・要望があれば記入してください
+
+特に、以下の列を使って参加日を判定してください。
+
+希望する研修実施日を選択してください
+
+判定ルールは以下です。
+
+- 「第1回」が含まれていれば第1回
+- 「第2回」が含まれていれば第2回
+- 「第3回」が含まれていれば第3回
+- それ以外は未判定</code></pre>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-box__header">
+            <span>参加日の振り分けがうまくいかない場合</span>
+            <button class="copy-button" type="button" data-copy-target="dateFixPrompt">
+              コピー
+            </button>
+          </div>
+          <pre id="dateFixPrompt"><code>参加希望日の振り分けがうまくいきません。
+希望研修日の列に入っている文字列を見て、以下のルールで振り分けるように app.py 全文を修正してください。
+
+# 判定ルール
+- 文字列に「第1回」が含まれていれば、第1回参加者
+- 文字列に「第2回」が含まれていれば、第2回参加者
+- 文字列に「第3回」が含まれていれば、第3回参加者
+- 空欄、または上記に当てはまらない場合は、未判定
+
+# 希望研修日の列名
+希望する研修実施日を選択してください</code></pre>
+        </div>
+
+        <div class="note">
+          <p>
+            エラーが出ること自体は失敗ではありません。
+            実務では、AIに作らせたコードを実行し、エラーを見ながら修正していく流れがよくあります。
+          </p>
+        </div>
+      </section>
+
+      <section id="checklist" class="section">
+        <p class="eyebrow">Checklist</p>
+        <h2>作業チェックリスト</h2>
+
+        <div class="checklist-card">
+          <label>
+            <input type="checkbox" data-id="m04-01" />
+            サンプルCSVをダウンロードした
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-02" />
+            Pythonのバージョンを確認した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-03" />
+            ChatGPTに参加日別リスト作成アプリのコード作成を依頼した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-04" />
+            出力されたコードをコピーした
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-05" />
+            app.py として保存した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-06" />
+            python app.py または py app.py で実行した
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-07" />
+            アプリ画面が表示された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-08" />
+            サンプルCSVを読み込んだ
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-09" />
+            第1回・第2回・第3回ごとの参加者リストが表示された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-10" />
+            各回の参加人数が表示された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-11" />
+            未判定の参加者が別枠で表示された
+          </label>
+
+          <label>
+            <input type="checkbox" data-id="m04-12" />
+            参加者リストをテキストファイルとして保存した
+          </label>
+
+          <button id="clearChecklistButton" class="secondary-button" type="button">
+            チェックをリセット
+          </button>
+        </div>
+      </section>
+
+      <section id="review" class="section">
+        <p class="eyebrow">Review</p>
+        <h2>確認ポイント</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>業務で使えそうな点</h3>
+            <ul class="check-list">
+              <li>Googleフォームの申込結果をそのまま名簿化できる</li>
+              <li>希望日ごとに参加者を自動で振り分けられる</li>
+              <li>各回の参加人数をすぐに確認できる</li>
+              <li>研修当日の受付リストとして使える</li>
+              <li>事前に参加者の関心テーマを確認できる</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>注意すべき点</h3>
+            <ul class="check-list">
+              <li>氏名などの個人情報を扱うため、保存場所に注意する</li>
+              <li>実務で使う場合はCSVの項目名を確認する</li>
+              <li>希望日が未入力の人がいないか確認する</li>
+              <li>参加者リストをメール送信する場合は宛先に注意する</li>
+              <li>AIが作ったコードは実行前に不自然な処理がないか確認する</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note note--warning">
+          <strong>実務利用時の注意：</strong>
+          氏名や部署などの情報は個人情報・社内情報に該当する場合があります。
+          実務で使う場合は、保存先、共有範囲、削除ルールを事前に確認してください。
+        </div>
+      </section>
+
+      <section id="trouble" class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>よくあるトラブル</h2>
+
+        <details class="details-box">
+          <summary>python コマンドが認識されません</summary>
+          <p>
+            Pythonがインストールされていない、またはPATHが通っていない可能性があります。
+            まず <code>py --version</code> を試してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>app.py.txt になってしまいます</summary>
+          <p>
+            メモ帳で保存すると、拡張子が自動で <code>.txt</code> になることがあります。
+            ファイル名を <code>app.py</code> にし、種類を「すべてのファイル」にして保存してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>CSVが文字化けします</summary>
+          <p>
+            ChatGPTに「CSVを utf-8-sig で読み込むように修正してください」と依頼してください。
+            Googleフォームの回答CSVでは、文字コードの扱いが原因になることがあります。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>項目名が見つからないと表示されます</summary>
+          <p>
+            CSVの列名と、アプリ側で指定している列名が一致していない可能性があります。
+            このページの「項目名が合わない場合の修正依頼」プロンプトを使ってください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>第1回・第2回・第3回に正しく振り分けられません</summary>
+          <p>
+            希望研修日の回答に「第1回」「第2回」「第3回」という文字が含まれていない可能性があります。
+            このページの「参加日の振り分けがうまくいかない場合」のプロンプトを使って修正してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>未判定に多くの人が入ってしまいます</summary>
+          <p>
+            CSVの希望研修日の列名や、日程の表記が想定と違う可能性があります。
+            実際のCSVの列名と回答例をChatGPTに伝えて、判定ルールを調整してもらってください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>画面が小さくて結果が見づらいです</summary>
+          <p>
+            ChatGPTに「ウィンドウサイズを大きくし、結果欄をスクロール可能にしてください」と依頼してください。
+          </p>
+        </details>
+
+        <details class="details-box">
+          <summary>保存したテキストファイルが文字化けします</summary>
+          <p>
+            ChatGPTに「保存するテキストファイルを utf-8-sig で保存するように修正してください」と依頼してください。
+          </p>
+        </details>
+      </section>
+
+      <section id="next" class="section next-section">
+        <p class="eyebrow">Navigation</p>
+        <h2>前後の章へ</h2>
+        <p>
+          第4章では、ChatGPTにPythonコードを書いてもらい、
+          Googleフォームの回答CSVから参加日別のメンバーリストを作成するアプリを実行しました。
+        </p>
+        <p>
+          次の第5章では、このPythonアプリをexeファイルに変換します。
+        </p>
+
+        <div class="grid-2">
+          <a class="primary-link" href="module-03-codex-web.html">
+            ← 第3章 Codexで社内向けセミナー告知ページを作成
+          </a>
+
+          <a class="primary-link" href="module-05-python-exe.html">
+            第5章 Pythonアプリをexe化する →
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>2026年 秋田県内事業者向け 生成AIハンズオン研修会</p>
+    <p>教材URLの公開期限：研修日から30日間</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
